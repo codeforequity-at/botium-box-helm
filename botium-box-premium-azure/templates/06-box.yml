@@ -23,6 +23,8 @@ spec:
       containers:
         - name: box-server
           image: botium/botium-box-server:2.1.0
+          command: ["/bin/sh"]
+          args: ["-c", "npm run prisma-deploy && npm run prisma-seed && npm run start:dist"]          
           ports:
             - name: box-4000
               containerPort: 4000
