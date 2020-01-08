@@ -9,7 +9,7 @@ entries:
     name: botium-box-premium-azure
     type: application
     urls:
-    - botium-box-premium-azure-2.1.0.tgz
+    - https://github.com/codeforequity-at/botium-box-helm/raw/master/botium-box-premium-azure-2.1.0.tgz
     version: 2.1.0
   test-helm:
   - apiVersion: v2
@@ -20,6 +20,6 @@ entries:
     name: test-helm
     type: application
     urls:
-    - test-helm-0.1.0.tgz
+    - https://github.com/codeforequity-at/botium-box-helm/raw/master/test-helm-0.1.0.tgz
     version: 0.1.0
 generated: "2020-01-08T16:54:50.96436433Z"
