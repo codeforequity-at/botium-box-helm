@@ -1,25 +1,14 @@
 apiVersion: v1
 entries:
-  botium-box-premium-azure:
+  botium-box-premium:
   - apiVersion: v2
     appVersion: 2.1.0
-    created: "2020-01-08T16:54:50.965183978Z"
+    created: "2020-01-08T22:25:38.996798712Z"
     description: Botium Box
-    digest: d3d61d01932e7d21a4a1d04cb997242fb2bbc4a1f9b36139f255203ff6b50b5e
-    name: botium-box-premium-azure
+    digest: b7ae778b584e3f16245950e72ed4b1a96673ffa074e3b3ae7ab7eee60fdb67f1
+    name: botium-box-premium
     type: application
     urls:
-    - https://github.com/codeforequity-at/botium-box-helm/raw/master/botium-box-premium-azure-1.0.2.tgz
-    version: 1.0.2
-  test-helm:
-  - apiVersion: v2
-    appVersion: 1.16.0
-    created: "2020-01-08T16:54:50.966315527Z"
-    description: A Helm chart for Kubernetes
-    digest: 94944a05a9ba53ded57062a3561cc438f849595421a36ff6f51ea5ca5a19d7e2
-    name: test-helm
-    type: application
-    urls:
-    - https://github.com/codeforequity-at/botium-box-helm/raw/master/test-helm-0.1.0.tgz
-    version: 0.1.0
-generated: "2020-01-08T16:54:50.96436433Z"
+    - https://github.com/codeforequity-at/botium-box-helm/raw/master/botium-box-premium-1.0.0.tgz
+    version: 1.0.0
+generated: "2020-01-08T22:25:38.995937331Z"

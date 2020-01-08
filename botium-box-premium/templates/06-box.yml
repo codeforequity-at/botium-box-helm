@@ -22,7 +22,7 @@ spec:
         fsGroup: 0
       containers:
         - name: box-server
-          image: botium/botium-box-server:2.1.0
+          image: botium/botium-box-server:{{ .Values.BOTIUM_BOX_VERSION }}
           command: ["/bin/sh"]
           args: ["-c", "npm run prisma-deploy && npm run prisma-seed && npm run start:dist"]          
           ports:
@@ -104,7 +104,7 @@ spec:
     spec:
       containers:
         - name: box-agent
-          image: botium/botium-box-agent:2.1.0
+          image: botium/botium-box-agent:{{ .Values.BOTIUM_BOX_VERSION }}
           volumeMounts:
           - mountPath: "/app/storage/"
             name: botium-box-storage
