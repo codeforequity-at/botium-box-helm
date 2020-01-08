@@ -1,0 +1,9 @@
+# Botium Box
+
+LICENSE_KEY: ""
+
+AGENT_COUNT: 1
+
+PRISMA_ENDPOINT: ""
+
+PRISMA_SECRET: ""

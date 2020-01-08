@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: botium-box-configmap
+  namespace: botium-box
+  labels:
+    name: config
+    app: botium-box
+data:
+  LICENSE_KEY: {{ .Values.LICENSE_KEY }}
+  PRISMA_ENDPOINT: {{ .Values.PRISMA_ENDPOINT }}
+  PRISMA_SECRET: {{ .Values.PRISMA_SECRET }}
+  BOTIUMBOX_QUEUE_REDISURL: redis://redis:6379
+  ZAP_ENDPOINT: http://zap:8080
