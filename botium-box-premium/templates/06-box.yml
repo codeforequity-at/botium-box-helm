@@ -52,6 +52,21 @@ spec:
                 configMapKeyRef:
                   name: botium-box-configmap
                   key: PRISMA_ENDPOINT
+            - name: PRISMA_SECRET
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: PRISMA_SECRET
+            - name: PRISMA_CLOUD_SESSION_KEY
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: PRISMA_CLOUD_SESSION_KEY
+            - name: SEED_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: SEED_PASSWORD
             - name: BOTIUMBOX_QUEUE_REDISURL
               valueFrom:
                 configMapKeyRef:
