@@ -9,8 +9,8 @@ entries:
     name: botium-box-premium-azure
     type: application
     urls:
-    - https://github.com/codeforequity-at/botium-box-helm/raw/master/botium-box-premium-azure-1.0.0.tgz
-    version: 1.0.0
+    - https://github.com/codeforequity-at/botium-box-helm/raw/master/botium-box-premium-azure-1.0.1.tgz
+    version: 1.0.1
   test-helm:
   - apiVersion: v2
     appVersion: 1.16.0

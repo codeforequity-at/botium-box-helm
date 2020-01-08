@@ -2,7 +2,6 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: box-server
-  namespace: botium-box
   labels:
     name: box-server
     app: botium-box
@@ -70,7 +69,6 @@ apiVersion: v1
 kind: Service
 metadata:
   name: box-server
-  namespace: botium-box
 spec:
   type: LoadBalancer
   ports:
@@ -85,7 +83,6 @@ apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: box-agent
-  namespace: botium-box
   labels:
     name: box-agent
     app: botium-box
@@ -134,7 +131,6 @@ apiVersion: v1
 kind: Service
 metadata:
   name: box-agent
-  namespace: botium-box
 spec:
   clusterIP: None
   selector:

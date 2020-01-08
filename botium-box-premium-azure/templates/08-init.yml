@@ -2,7 +2,6 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: botium-box-init
-  namespace: botium-box
 spec:
   template:
     metadata:
