@@ -3,9 +3,9 @@ entries:
   botium-box-premium-azure:
   - apiVersion: v2
     appVersion: 2.1.0
-    created: "2020-01-08T16:34:43.485901845Z"
+    created: "2020-01-08T16:50:03.761456481Z"
     description: Botium Box
-    digest: 2d1028262a5ca68073c019c1b0234324c8d267d72b52bb602566e5b80341288e
+    digest: 7cfed49fbf9abd976d11da68f4c8f6b99df406354d5522ad7183e13c2ab0dcfb
     name: botium-box-premium-azure
     type: application
     urls:
@@ -14,7 +14,7 @@ entries:
   test-helm:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2020-01-08T16:34:43.488126403Z"
+    created: "2020-01-08T16:50:03.76262684Z"
     description: A Helm chart for Kubernetes
     digest: 94944a05a9ba53ded57062a3561cc438f849595421a36ff6f51ea5ca5a19d7e2
     name: test-helm
@@ -22,4 +22,4 @@ entries:
     urls:
     - test-helm-0.1.0.tgz
     version: 0.1.0
-generated: "2020-01-08T16:34:43.485080798Z"
+generated: "2020-01-08T16:50:03.759771895Z"
