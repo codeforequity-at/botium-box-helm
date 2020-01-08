@@ -3,12 +3,12 @@ entries:
   botium-box-premium:
   - apiVersion: v2
     appVersion: 2.1.0
-    created: "2020-01-08T22:25:38.996798712Z"
+    created: "2020-01-08T22:35:02.461623638Z"
     description: Botium Box
-    digest: b7ae778b584e3f16245950e72ed4b1a96673ffa074e3b3ae7ab7eee60fdb67f1
+    digest: adbbaab18b72a24485b282d69503418391e5352a8720a6701e1fabdac65bee70
     name: botium-box-premium
     type: application
     urls:
-    - https://github.com/codeforequity-at/botium-box-helm/raw/master/botium-box-premium-1.0.0.tgz
-    version: 1.0.0
-generated: "2020-01-08T22:25:38.995937331Z"
+    - https://github.com/codeforequity-at/botium-box-helm/raw/master/botium-box-premium-1.0.1.tgz
+    version: 1.0.1
+generated: "2020-01-08T22:35:02.459306999Z"
