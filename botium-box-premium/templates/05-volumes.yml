@@ -9,7 +9,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteMany
-  storageClassName: botium-box-storage-class
+  storageClassName: {{ .Values.STORAGE_CLASS }}
   resources:
     requests:
       storage: 5Gi
