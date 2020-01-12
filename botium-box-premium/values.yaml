@@ -7,3 +7,5 @@ PRISMA_CLOUD_SESSION_KEY: ""
 SEED_PASSWORD: ""
 STORAGE_CLASS: ""
 FQDN: ""
+extraArgs:
+    default-ssl-certificate: "{{.Release.namespace}}/botium-box-certs"
