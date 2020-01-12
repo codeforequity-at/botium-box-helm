@@ -87,11 +87,8 @@ kind: Service
 metadata:
   name: box-server
 spec:
-  type: LoadBalancer
   ports:
-    - port: 80
-      targetPort: 4000
-      protocol: TCP
+    - port: 4000
   selector:
     name: box-server
     app: botium-box

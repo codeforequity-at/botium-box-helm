@@ -1,4 +1,7 @@
 
+update:
+	helm dependency update botium-box-premium
+
 package:
 	rm -f botium-box-premium-*
 	helm package botium-box-premium

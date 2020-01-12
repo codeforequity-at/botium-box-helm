@@ -3,5 +3,10 @@ name: botium-box-premium
 description: Botium Box
 
 type: application
-version: 1.0.4
+version: 1.0.5
 appVersion: 2.1.0
+
+dependencies:
+  - name: nginx-ingress
+    version: 1.28.3
+    repository: https://kubernetes-charts.storage.googleapis.com/
