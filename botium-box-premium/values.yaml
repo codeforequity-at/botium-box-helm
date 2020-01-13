@@ -1,11 +1,9 @@
 LICENSE_KEY: ""
 BOTIUM_BOX_VERSION: "2.1.0"
 AGENT_COUNT: 1
-PRISMA_ENDPOINT: ""
+PRISMA_ENDPOINT: "http://prisma.prisma:4466/box/prod"
 PRISMA_SECRET: ""
 PRISMA_CLOUD_SESSION_KEY: ""
 SEED_PASSWORD: ""
 STORAGE_CLASS: ""
 FQDN: ""
-extraArgs:
-    default-ssl-certificate: "{{.Release.namespace}}/botium-box-certs"

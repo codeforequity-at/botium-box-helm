@@ -11,11 +11,6 @@ spec:
   - hosts:
     - botiumbox.com
     secretName: botium-box-certs
-  rules:
-  - host: {{ .Values.FQDN }}
-    http:
-      paths:
-      - path: /
-        backend:
-          serviceName: box-server
-          servicePort: 4000
+  backend:
+    serviceName: box-server
+    servicePort: 4000
