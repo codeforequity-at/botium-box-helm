@@ -7,9 +7,17 @@ metadata:
     app: botium-box
 data:
   LICENSE_KEY: "{{ .Values.LICENSE_KEY }}"
-  PRISMA_ENDPOINT: "{{ .Values.PRISMA_ENDPOINT }}"
-  PRISMA_SECRET: "{{ .Values.PRISMA_SECRET }}"
-  PRISMA_CLOUD_SESSION_KEY: "{{ .Values.PRISMA_CLOUD_SESSION_KEY }}"
   SEED_PASSWORD: "{{ .Values.SEED_PASSWORD }}"
   BOTIUMBOX_QUEUE_REDISURL: redis://redis:6379
   ZAP_ENDPOINT: http://zap:8080
+  PRISMA_CONFIG: |
+    port: 4466
+    databases:
+      default:
+        connector: mysql
+        host: {{ .Values.MYSQL_HOST }}
+        port: 3306
+        user: {{ .Values.MYSQL_USER }}
+        password: {{ .Values.MYSQL_PASSWORD }}
+        migrations: true
+  

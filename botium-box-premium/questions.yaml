@@ -9,19 +9,19 @@ questions:
   description: "Botium Box Version"
   type: string
   required: true
-- variable: PRISMA_ENDPOINT
+- variable: MYSQL_HOST
   default: ""
-  description: "Prisma Endpoint URL"
+  description: "Mysql Host"
   type: string
   required: true
-- variable: PRISMA_SECRET
-  default: "prisma123"
-  description: "Prisma Secret"
+- variable: MYSQL_USER
+  default: ""
+  description: "Mysql User"
   type: string
   required: true
-- variable: PRISMA_CLOUD_SESSION_KEY 
+- variable: MYSQL_PASSWORD 
   default: ""
-  description: "Prisma Cloud Session Key"
+  description: "Mysql Password"
   type: string
   required: true
 - variable: SEED_PASSWORD 
