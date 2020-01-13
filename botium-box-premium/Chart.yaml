@@ -3,7 +3,7 @@ name: botium-box-premium
 description: Botium Box
 
 type: application
-version: 1.0.10
+version: 1.0.11
 appVersion: 2.1.0
 
 dependencies:

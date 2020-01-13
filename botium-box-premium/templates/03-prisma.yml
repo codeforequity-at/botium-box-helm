@@ -26,8 +26,8 @@ spec:
           env:
             - name: PRISMA_CONFIG
               valueFrom:
-                configMapKeyRef:
-                  name: botium-box-configmap
+                secretKeyRef:
+                  name: botium-box-prisma
                   key: PRISMA_CONFIG
 ---
 apiVersion: v1
