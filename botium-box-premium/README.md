@@ -1,9 +1,7 @@
 # Botium Box
 
-LICENSE_KEY: ""
+vorher ausführen:
 
-AGENT_COUNT: 1
+    kubectl create namespace cert-manager
+    kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v0.12.0/cert-manager.yaml
 
-PRISMA_ENDPOINT: ""
-
-PRISMA_SECRET: ""

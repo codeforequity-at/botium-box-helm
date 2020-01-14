@@ -1,0 +1,11 @@
+questions:
+- variable: PRISMA_VERSION
+  default: "1.25.4"
+  description: "Prisma Version"
+  type: string
+  required: true
+- variable: FQDN
+  description: "DNS Name (*.botiumbox.com)"
+  type: string
+  required: true
+  
