@@ -17,8 +17,8 @@ spec:
         - name: phpmyadmin
           image: phpmyadmin/phpmyadmin:latest
           ports:
-            - name: phpmyadmin-8080
-              containerPort: 8080
+            - name: phpmyadmin-80
+              containerPort: 80
           env:
             - name: PMA_HOST
               valueFrom:
@@ -37,8 +37,8 @@ metadata:
   name: phpmyadmin
 spec:
   ports:
-    - port: 8080
-      targetPort: 8080
+    - port: 80
+      targetPort: 80
       protocol: TCP
   selector:
     name: phpmyadmin

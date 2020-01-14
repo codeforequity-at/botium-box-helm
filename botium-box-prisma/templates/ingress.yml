@@ -23,7 +23,7 @@ spec:
       - path: /phpmyadmin
         backend:
           serviceName: phpmyadmin
-          servicePort: 8080
+          servicePort: 80
 ---
 apiVersion: cert-manager.io/v1alpha2
 kind: Issuer
