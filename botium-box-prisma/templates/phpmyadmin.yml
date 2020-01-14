@@ -1,0 +1,44 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: phpmyadmin
+  labels:
+    name: phpmyadmin
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        name: phpmyadmin
+    spec:
+      containers:
+        - name: phpmyadmin
+          image: phpmyadmin/phpmyadmin:latest
+          ports:
+            - name: phpmyadmin-8080
+              containerPort: 8080
+          env:
+            - name: PMA_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-prisma
+                  key: MYSQL_SERVER
+            - name: PMA_USER
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-prisma
+                  key: MYSQL_USER
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: phpmyadmin
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+  selector:
+    name: phpmyadmin
