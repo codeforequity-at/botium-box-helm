@@ -24,7 +24,7 @@ spec:
         - name: box-server
           image: botium/botium-box-server:{{ .Values.BOTIUM_BOX_VERSION }}
           command: ["/bin/sh"]
-          args: ["-c", "npm run start:dist"]          
+          args: ["-c", "npm run prisma-deploy && npm run prisma-seed && PRISMA_MANAGEMENT_API_SECRET= PRISMA_CLOUD_SESSION_KEY= npm run start:dist"]          
           ports:
             - name: box-4000
               containerPort: 4000
@@ -47,6 +47,11 @@ spec:
                 configMapKeyRef:
                   name: botium-box-configmap
                   key: LICENSE_KEY
+            - name: PRISMA_MANAGEMENT_API_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: PRISMA_MANAGEMENT_API_SECRET
             - name: PRISMA_ENDPOINT
               valueFrom:
                 configMapKeyRef:
@@ -57,6 +62,11 @@ spec:
                 configMapKeyRef:
                   name: botium-box-configmap
                   key: PRISMA_SECRET
+            - name: PRISMA_CLOUD_SESSION_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: PRISMA_CLOUD_SESSION_KEY
             - name: BOTIUMBOX_QUEUE_REDISURL
               valueFrom:
                 configMapKeyRef:
