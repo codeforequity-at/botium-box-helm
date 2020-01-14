@@ -25,11 +25,6 @@ spec:
                 secretKeyRef:
                   name: botium-box-prisma
                   key: MYSQL_SERVER
-            - name: PMA_USER
-              valueFrom:
-                secretKeyRef:
-                  name: botium-box-prisma
-                  key: MYSQL_USER
 ---
 apiVersion: v1
 kind: Service
