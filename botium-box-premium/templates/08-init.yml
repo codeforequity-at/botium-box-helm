@@ -59,7 +59,7 @@ spec:
             - name: PRISMA_CLOUD_SESSION_KEY
               valueFrom:
                 secretKeyRef:
-                  name: botium-box-configmap
+                  name: botium-box-secrets
                   key: PRISMA_CLOUD_SESSION_KEY
             - name: SEED_PASSWORD
               valueFrom:
