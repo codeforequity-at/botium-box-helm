@@ -10,7 +10,7 @@ questions:
   type: string
   required: true
 - variable: PRISMA_ENDPOINT
-  default: "http://prisma:4466/box/prod"
+  default: "https://prisma02.botiumbox.com/box/..."
   description: "Prisma Endpoint URL"
   type: string
   required: true
