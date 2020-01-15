@@ -32,9 +32,4 @@ questions:
   description: "Storage Class for Mysql Files"
   type: storageclass
   required: true
-- variable: FQDN
-  default: ".botiumbox.com"
-  description: "DNS Name (*.botiumbox.com)"
-  type: string
-  required: true
   
