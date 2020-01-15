@@ -13,7 +13,7 @@ spec:
   template:
     metadata:
       labels:
-        app: mysql
+        name: mysql
         app: botium-box
         tier: backend
     spec:
@@ -35,14 +35,14 @@ spec:
       volumes:
       - name: mysql-persistent-storage
         persistentVolumeClaim:
-          claimName: botium-box-mysql
+          claimName: storage-mysql
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: botium-box-mysql
+  name: storage-mysql
   labels:
-    name: botium-box-mysql
+    name: storage-mysql
     app: botium-box
     tier: backend
 spec:

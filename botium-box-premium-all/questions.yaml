@@ -19,6 +19,7 @@ questions:
   type: storageclass
   required: true
 - variable: FQDN
+  default: ".botiumbox.com"
   description: "DNS Name (*.botiumbox.com)"
   type: string
   required: true
