@@ -9,6 +9,16 @@ questions:
   description: "Botium Box Version"
   type: string
   required: true
+- variable: PRISMA_ENDPOINT 
+  default: "http://prisma:4466/box/prod_01"
+  description: "Prisma Endpoint"
+  type: string
+  required: true
+- variable: PRISMA_SECRET
+  default: "prisma123"
+  description: "Prisma Secret"
+  type: string
+  required: true
 - variable: SEED_PASSWORD 
   default: "nooneknows"
   description: "Initial Botium Box Password"

@@ -8,6 +8,8 @@ metadata:
 data:
   LICENSE_KEY: "{{ .Values.LICENSE_KEY }}"
   SEED_PASSWORD: "{{ .Values.SEED_PASSWORD }}"
+  PRISMA_ENDPOINT: "{{ .Values.PRISMA_ENDPOINT }}"
+  PRISMA_SECRET: "{{ .Values.PRISMA_SECRET }}"
   BOTIUMBOX_QUEUE_REDISURL: redis://redis:6379
   ZAP_ENDPOINT: http://zap:8080
   MYSQL_ROOT_PASSWORD: prisma
