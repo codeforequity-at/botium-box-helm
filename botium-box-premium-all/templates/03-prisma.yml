@@ -93,7 +93,7 @@ spec:
             - name: PRISMA_CONFIG
               valueFrom:
                 configMapKeyRef:
-                name: botium-box-configmap
+                  name: botium-box-configmap
                   key: PRISMA_CONFIG
 ---
 apiVersion: v1
