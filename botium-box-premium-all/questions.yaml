@@ -1,0 +1,25 @@
+questions:
+- variable: LICENSE_KEY
+  default: ""
+  description: "Botium Box License Key"
+  type: string
+  required: true
+- variable: BOTIUM_BOX_VERSION
+  default: "2.1.0"
+  description: "Botium Box Version"
+  type: string
+  required: true
+- variable: SEED_PASSWORD 
+  default: "nooneknows"
+  description: "Initial Botium Box Password"
+  type: string
+  required: true
+- variable: STORAGE_CLASS 
+  description: "Storage Class"
+  type: storageclass
+  required: true
+- variable: FQDN
+  description: "DNS Name (*.botiumbox.com)"
+  type: string
+  required: true
+  

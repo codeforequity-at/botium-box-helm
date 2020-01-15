@@ -1,0 +1,110 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+  labels:
+    name: mysql
+    app: botium-box
+    tier: backend  
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: mysql
+        tier: backend
+    spec:
+      containers:
+        - name: mysql
+          image: mysql:5.7
+          ports:
+            - name: mysql-3306
+              containerPort: 3306
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: MYSQL_ROOT_PASSWORD    
+          volumeMounts:
+            - name: mysql-persistent-storage
+              mountPath: /var/lib/mysql
+      volumes:
+      - name: mysql-persistent-storage
+        persistentVolumeClaim:
+          claimName: botium-box-mysql
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: botium-box-mysql
+  labels:
+    name: botium-box-mysql
+    app: botium-box
+    tier: backend
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: {{ .Values.STORAGE_CLASS }}
+  resources:
+    requests:
+      storage: 20Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+  app: botium-box
+spec:
+  ports:
+    - port: 3306
+      targetPort: 3306
+      protocol: TCP
+  selector:
+    name: mysql
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: prisma
+  labels:
+    name: prisma
+    app: botium-box
+    tier: backend
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        name: prisma
+        tier: backend
+    spec:
+      containers:
+        - name: prisma
+          image: prismagraphql/prisma:1.25.4
+          ports:
+            - name: prisma-4466
+              containerPort: 4466
+          env:
+            - name: PRISMA_CONFIG
+              valueFrom:
+                configMapKeyRef:
+                name: botium-box-configmap
+                  key: PRISMA_CONFIG
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: prisma
+  app: botium-box
+spec:
+  ports:
+    - port: 4466
+      targetPort: 4466
+      protocol: TCP
+  selector:
+    name: prisma
