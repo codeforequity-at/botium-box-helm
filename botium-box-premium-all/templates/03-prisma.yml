@@ -36,23 +36,7 @@ spec:
       volumes:
       - name: mysql-persistent-storage
         persistentVolumeClaim:
-          claimName: storage-mysql
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: storage-mysql
-  labels:
-    name: storage-mysql
-    app: botium-box
-    tier: backend
-spec:
-  accessModes:
-    - ReadWriteOnce
-  storageClassName: {{ .Values.STORAGE_CLASS_MYSQL }}
-  resources:
-    requests:
-      storage: 20Gi
+          claimName: mysql-storage
 ---
 apiVersion: v1
 kind: Service

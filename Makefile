@@ -3,6 +3,7 @@ update:
 	helm dependency update botium-box-premium
 	helm dependency update botium-box-premium-all
 	helm dependency update botium-box-premium-ingress
+	helm dependency update botium-box-premium-storage
 	helm dependency update botium-box-prisma
 
 package:
@@ -11,6 +12,7 @@ package:
 	helm package botium-box-prisma
 	helm package botium-box-premium-all
 	helm package botium-box-premium-ingress
+	helm package botium-box-premium-storage
 	helm repo index . --url https://github.com/codeforequity-at/botium-box-helm/raw/master/
 
 publish:
