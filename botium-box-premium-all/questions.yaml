@@ -4,6 +4,11 @@ questions:
   description: "Botium Box License Key"
   type: string
   required: true
+- variable: AGENT_COUNT
+  default: 1
+  description: "Botium Box Agent Count"
+  type: int
+  required: true
 - variable: BOTIUM_BOX_VERSION
   default: "2.1.0"
   description: "Botium Box Version"
