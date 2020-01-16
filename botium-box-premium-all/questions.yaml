@@ -24,3 +24,8 @@ questions:
   description: "Initial Botium Box Password"
   type: string
   required: true
+- variable: MYSQL_ROOT_PASSWORD
+  default: "prisma"
+  description: "Mysql Root Password"
+  type: string
+  required: true

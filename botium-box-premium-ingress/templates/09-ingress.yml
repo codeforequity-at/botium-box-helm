@@ -20,6 +20,10 @@ spec:
         backend:
           serviceName: box-server
           servicePort: 4000
+      - path: /mysql-admin
+        backend:
+          serviceName: mysql-admin
+          servicePort: 8080
 ---
 apiVersion: cert-manager.io/v1alpha2
 kind: Issuer

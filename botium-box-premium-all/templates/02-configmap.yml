@@ -12,7 +12,7 @@ data:
   PRISMA_SECRET: "{{ .Values.PRISMA_SECRET }}"
   BOTIUMBOX_QUEUE_REDISURL: redis://redis:6379
   ZAP_ENDPOINT: http://zap:8080
-  MYSQL_ROOT_PASSWORD: prisma
+  MYSQL_ROOT_PASSWORD: "{{ .Values.MYSQL_ROOT_PASSWORD }}"
   PRISMA_CONFIG: |
     port: 4466
     databases:
@@ -21,5 +21,5 @@ data:
         host: mysql
         port: 3306
         user: root
-        password: prisma
+        password: "{{ .Values.MYSQL_ROOT_PASSWORD }}"
         migrations: true

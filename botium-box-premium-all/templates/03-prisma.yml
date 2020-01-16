@@ -95,3 +95,45 @@ spec:
       protocol: TCP
   selector:
     name: prisma
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: mysql-admin
+  labels:
+    name: mysql-admin
+    app: botium-box
+    tier: backend
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        name: mysql-admin
+        app: botium-box
+        tier: backend
+    spec:
+      containers:
+        - name: mysql-admin
+          image: adminer
+          ports:
+            - name: mysql-admin-8080
+              containerPort: 8080
+          env:
+            - name: ADMINER_DEFAULT_SERVER
+              value: mysql
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-admin
+  app: botium-box
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+  selector:
+    name: mysql-admin
