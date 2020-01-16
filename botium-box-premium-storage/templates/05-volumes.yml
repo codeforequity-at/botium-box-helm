@@ -29,3 +29,19 @@ spec:
   resources:
     requests:
       storage: 20Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: backup-storage
+  labels:
+    name: backup-storage
+    app: botium-box
+    tier: backend
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: {{ .Values.STORAGE_CLASS_BACKUP }}
+  resources:
+    requests:
+      storage: 50Gi

@@ -7,4 +7,7 @@ questions:
   description: "Storage Class for Mysql Files"
   type: storageclass
   required: true
-  
+- variable: STORAGE_CLASS_BACKUP 
+  description: "Storage Class for Backup Files"
+  type: storageclass
+  required: true
