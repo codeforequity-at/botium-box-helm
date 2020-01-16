@@ -119,7 +119,7 @@ spec:
         - name: mysql-admin
           image: adminer
           ports:
-            - name: adminer-8080
+            - name: admin-8080
               containerPort: 8080
           env:
             - name: ADMINER_DEFAULT_SERVER
