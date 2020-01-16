@@ -3,7 +3,7 @@ kind: CronJob
 metadata:
   name: box-backup-cronjob
 spec:
-  schedule: {{ .Values.CRON_EXPRESSION }}
+  schedule: "{{ .Values.CRON_EXPRESSION }}"
   jobTemplate:
     spec:
       template:

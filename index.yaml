@@ -3,7 +3,7 @@ entries:
   botium-box-premium:
   - apiVersion: v2
     appVersion: 2.1.0
-    created: "2020-01-16T09:59:19.750237134Z"
+    created: "2020-01-16T10:00:56.122198899Z"
     description: Botium Box
     digest: 9eac7cf3fe6a5a6702fde29e312cfd5e3531b0330aa42681ec3af2729e14efef
     name: botium-box-premium
@@ -14,7 +14,7 @@ entries:
   botium-box-premium-all:
   - apiVersion: v2
     appVersion: 2.1.0
-    created: "2020-01-16T09:59:19.751406287Z"
+    created: "2020-01-16T10:00:56.122815949Z"
     description: Botium Box
     digest: ac5f05f5732c6e625723bc7984eb93e3a04a039dc4751497278e9cf47d8a1d1b
     name: botium-box-premium-all
@@ -25,18 +25,18 @@ entries:
   botium-box-premium-backup:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2020-01-16T09:59:19.751802115Z"
+    created: "2020-01-16T10:00:56.123193515Z"
     description: Botium Box
-    digest: e8f74b4b9e92e2938c787cc2725271f0a8c9634db4170ea40be1a37e2ace88e7
+    digest: c8987d197f6d5bdc9166440c9d453722dd22be5ca8a0723b7fa41236605d5752
     name: botium-box-premium-backup
     type: application
     urls:
-    - https://github.com/codeforequity-at/botium-box-helm/raw/master/botium-box-premium-backup-1.0.1.tgz
-    version: 1.0.1
+    - https://github.com/codeforequity-at/botium-box-helm/raw/master/botium-box-premium-backup-1.0.2.tgz
+    version: 1.0.2
   botium-box-premium-ingress:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2020-01-16T09:59:19.755705841Z"
+    created: "2020-01-16T10:00:56.128735037Z"
     dependencies:
     - name: nginx-ingress
       repository: https://kubernetes-charts.storage.googleapis.com/
@@ -51,7 +51,7 @@ entries:
   botium-box-premium-storage:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2020-01-16T09:59:19.756040526Z"
+    created: "2020-01-16T10:00:56.129154424Z"
     description: Botium Box
     digest: 43bfd2ba49b7aaa1ab9e66bb038eec3ece81a5303567e0014fd74c9ddbf30678
     name: botium-box-premium-storage
@@ -62,7 +62,7 @@ entries:
   botium-box-prisma:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2020-01-16T09:59:19.761657427Z"
+    created: "2020-01-16T10:00:56.134840289Z"
     dependencies:
     - name: nginx-ingress
       repository: https://kubernetes-charts.storage.googleapis.com/
@@ -74,4 +74,4 @@ entries:
     urls:
     - https://github.com/codeforequity-at/botium-box-helm/raw/master/botium-box-prisma-1.0.4.tgz
     version: 1.0.4
-generated: "2020-01-16T09:59:19.74944202Z"
+generated: "2020-01-16T10:00:56.121271909Z"
