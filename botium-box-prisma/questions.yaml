@@ -8,7 +8,4 @@ questions:
   description: "DNS Name (*.botiumbox.com)"
   type: string
   required: true
-- variable: FQDN_PHPMYADMIN
-  description: "DNS Name (*.botiumbox.com)"
-  type: string
-  required: true
+
