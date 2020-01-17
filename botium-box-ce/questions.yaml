@@ -1,0 +1,36 @@
+questions:
+- variable: LICENSE_KEY
+  default: ""
+  description: "Botium Box License Key"
+  type: string
+  required: true
+- variable: BOTIUM_BOX_VERSION
+  default: "2.1.0"
+  description: "Botium Box Version"
+  type: string
+  required: true
+- variable: PRISMA_ENDPOINT
+  default: "https://prisma02.botiumbox.com/box/..."
+  description: "Prisma Endpoint URL"
+  type: string
+  required: true
+- variable: PRISMA_SECRET
+  default: "prisma123"
+  description: "Prisma Secret"
+  type: string
+  required: true
+- variable: SEED_PASSWORD 
+  default: "nooneknows"
+  description: "Initial Botium Box Password"
+  type: string
+  required: true
+- variable: REDIS_PASSWORD
+  default: "redis123"
+  description: "Redis Password"
+  type: string
+  required: true
+- variable: STORAGE_CLASS 
+  description: "Storage Class"
+  type: storageclass
+  required: true
+  

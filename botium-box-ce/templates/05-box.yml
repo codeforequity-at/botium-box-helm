@@ -1,0 +1,81 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: box
+  labels:
+    name: box
+    app: botium-box
+    tier: frontend
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        name: box
+        app: botium-box
+        tier: frontend
+    spec:
+      containers:
+        - name: box
+          image: botium/botium-box-ce:2.1.0
+          command: ["/bin/sh"]
+          args: ["-c", "npm start"]
+          ports:
+            - name: box-4000
+              containerPort: 4000
+          volumeMounts:
+          - mountPath: "/app/storage"
+            name: storage
+          env:
+            - name: BOTIUMBOX_AGENT_NAME
+              value: Botium Agent 1
+            - name: DEBUG
+              value: botium*
+            - name: TESTSETDIR
+              value: /app/storage/testsets
+            - name: RESOURCESDIR
+              value: /app/storage/resources
+            - name: TEMPDIR
+              value: /app/storage/botiumwork
+            - name: LICENSE_KEY
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: LICENSE_KEY
+            - name: PRISMA_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: PRISMA_ENDPOINT
+            - name: PRISMA_SECRET
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: PRISMA_SECRET
+            - name: PRISMA_MANAGEMENT_API_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: PRISMA_MANAGEMENT_API_SECRET
+            - name: PRISMA_CLOUD_SESSION_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: PRISMA_CLOUD_SESSION_KEY                  
+            - name: SEED_PASSWORD
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: SEED_PASSWORD
+            - name: BOTIUMBOX_QUEUE_REDISURL
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: BOTIUMBOX_QUEUE_REDISURL
+      volumes:
+        - name: storage
+          persistentVolumeClaim:
+            claimName: botium-box-storage
+
