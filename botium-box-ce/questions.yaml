@@ -29,8 +29,4 @@ questions:
   description: "Redis Password"
   type: string
   required: true
-- variable: STORAGE_CLASS 
-  description: "Storage Class"
-  type: storageclass
-  required: true
   
