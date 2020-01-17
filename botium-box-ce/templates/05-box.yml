@@ -99,10 +99,10 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-    rancher.io/globalDNS.hostname: {{ .Values.PRISMA_CLOUD_SESSION_KEY }}.botiumbox.com
+    rancher.io/globalDNS.hostname: {{ .Values.SHORTNAME }}.botiumbox.com
 spec:
   rules:
-  - host: {{ .Values.PRISMA_CLOUD_SESSION_KEY }}.botiumbox.com
+  - host: {{ .Values.SHORTNAME }}.botiumbox.com
     http:
       paths:
       - path: /
