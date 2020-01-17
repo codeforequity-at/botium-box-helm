@@ -3,11 +3,5 @@ name: botium-box-prisma
 description: Botium Box Prisma
 
 type: application
-version: 1.0.4
+version: 1.0.5
 appVersion: 1.0.0
-
-dependencies:
-  - name: nginx-ingress
-    version: 1.28.3
-    repository: https://kubernetes-charts.storage.googleapis.com/
-

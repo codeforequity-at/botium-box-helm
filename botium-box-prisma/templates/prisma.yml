@@ -60,6 +60,10 @@ spec:
         backend:
           serviceName: prisma
           servicePort: 4466
+      - path: /mysql-admin
+        backend:
+          serviceName: mysql-admin
+          servicePort: 8080          
 ---
 apiVersion: cert-manager.io/v1alpha2
 kind: Issuer
