@@ -29,4 +29,9 @@ questions:
   description: "Redis Password"
   type: string
   required: true
+- variable: SHORTNAME
+  default: ""
+  description: "Instance Shortname (for domain name)"
+  type: string
+  required: true
   

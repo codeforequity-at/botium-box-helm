@@ -21,7 +21,7 @@ spec:
         - name: box
           image: botium/botium-box-ce:2.1.0
           command: ["/bin/sh"]
-          args: ["-c", "npm start"]
+          args: ["-c", "npx npm-run-all -p start:agent start:server"]
           ports:
             - name: box-4000
               containerPort: 4000
@@ -78,4 +78,34 @@ spec:
         - name: storage
           persistentVolumeClaim:
             claimName: botium-box-storage
-
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: box
+spec:
+  ports:
+    - port: 4000
+      targetPort: 4000
+      protocol: TCP
+  selector:
+    name: box
+    app: botium-box
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: box-ingress
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    rancher.io/globalDNS.hostname: {{ .Values.PRISMA_CLOUD_SESSION_KEY }}.botiumbox.com
+spec:
+  rules:
+  - host: {{ .Values.PRISMA_CLOUD_SESSION_KEY }}.botiumbox.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: box
+          servicePort: 4000
