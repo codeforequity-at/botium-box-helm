@@ -3,6 +3,7 @@ kind: Job
 metadata:
   name: botium-box-init
 spec:
+  activeDeadlineSeconds: 120
   template:
     metadata:
       name: botium-box-init
