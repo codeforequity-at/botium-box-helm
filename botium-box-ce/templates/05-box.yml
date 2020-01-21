@@ -19,9 +19,9 @@ spec:
     spec:
       containers:
         - name: box
-          image: botium/botium-box-ce:2.1.0
+          image: botium/botium-box-ce:{{ .Values.BOTIUM_BOX_VERSION }}
           command: ["/bin/sh"]
-          args: ["-c", "npx npm-run-all -p start:agent start:server"]
+          args: ["-c", "npm run deploy && PRISMA_MANAGEMENT_API_SECRET= PRISMA_CLOUD_SESSION_KEY= npx npm-run-all -p -r start:agent start:server"]
           ports:
             - name: box-4000
               containerPort: 4000
