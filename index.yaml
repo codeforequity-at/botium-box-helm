@@ -3,7 +3,7 @@ entries:
   botium-box-ce:
   - apiVersion: v2
     appVersion: 2.2.0
-    created: "2020-01-21T18:00:21.488493847Z"
+    created: "2020-01-21T20:52:25.145745807Z"
     description: Botium Box
     digest: 580ace90657b4a8b0e3237dd2824b5fb20d813eaff44b60a7844b9128134f798
     name: botium-box-ce
@@ -14,7 +14,7 @@ entries:
   botium-box-ce-storage:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2020-01-21T18:00:21.488730006Z"
+    created: "2020-01-21T20:52:25.146004491Z"
     description: Botium Box
     digest: 08e88288cfc57f56515fcbb180c73f24ebc782df7482a3923c04255e5241a253
     name: botium-box-ce-storage
@@ -25,18 +25,18 @@ entries:
   botium-box-premium-all:
   - apiVersion: v2
     appVersion: 2.2.0
-    created: "2020-01-21T18:00:21.489833903Z"
+    created: "2020-01-21T20:52:25.146498067Z"
     description: Botium Box
-    digest: 0465e162ef8e9552aa7edcb15ba3f03a96fb929bfaede043771b06b4f5b6cb82
+    digest: 08b99b167a442b9fbca16e0b81605d60ed7a540f17492fc4a1f10d2d782a77b9
     name: botium-box-premium-all
     type: application
     urls:
-    - https://github.com/codeforequity-at/botium-box-helm/raw/master/botium-box-premium-all-1.0.15.tgz
-    version: 1.0.15
+    - https://github.com/codeforequity-at/botium-box-helm/raw/master/botium-box-premium-all-1.0.16.tgz
+    version: 1.0.16
   botium-box-premium-backup:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2020-01-21T18:00:21.49010878Z"
+    created: "2020-01-21T20:52:25.146765044Z"
     description: Botium Box
     digest: c8987d197f6d5bdc9166440c9d453722dd22be5ca8a0723b7fa41236605d5752
     name: botium-box-premium-backup
@@ -47,7 +47,7 @@ entries:
   botium-box-premium-ingress:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2020-01-21T18:00:21.493826074Z"
+    created: "2020-01-21T20:52:25.150747494Z"
     dependencies:
     - name: nginx-ingress
       repository: https://kubernetes-charts.storage.googleapis.com/
@@ -62,7 +62,7 @@ entries:
   botium-box-premium-storage:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2020-01-21T18:00:21.494078159Z"
+    created: "2020-01-21T20:52:25.151285186Z"
     description: Botium Box
     digest: 43bfd2ba49b7aaa1ab9e66bb038eec3ece81a5303567e0014fd74c9ddbf30678
     name: botium-box-premium-storage
@@ -73,7 +73,7 @@ entries:
   botium-box-prisma:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2020-01-21T18:00:21.50892022Z"
+    created: "2020-01-21T20:52:25.156935148Z"
     description: Botium Box Prisma
     digest: 3d42681e54cd6fe173c0100140c7918f84383b7c74b557e9b51ea7a8821f434a
     name: botium-box-prisma
@@ -81,4 +81,4 @@ entries:
     urls:
     - https://github.com/codeforequity-at/botium-box-helm/raw/master/botium-box-prisma-1.0.7.tgz
     version: 1.0.7
-generated: "2020-01-21T18:00:21.487937817Z"
+generated: "2020-01-21T20:52:25.142651629Z"
