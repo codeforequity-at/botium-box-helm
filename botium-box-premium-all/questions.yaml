@@ -10,7 +10,7 @@ questions:
   type: int
   required: true
 - variable: BOTIUM_BOX_VERSION
-  default: "2.2.0"
+  default: "2.3.0"
   description: "Botium Box Version"
   type: string
   required: true
