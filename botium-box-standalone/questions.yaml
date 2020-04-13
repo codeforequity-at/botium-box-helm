@@ -1,0 +1,55 @@
+questions:
+- variable: LICENSE_KEY
+  default: ""
+  description: "Botium Box License Key"
+  type: string
+  required: true
+- variable: BOTIUMBOX_AGENT_COUNT
+  default: 1
+  description: "Botium Box Agent Count"
+  type: int
+  required: true
+- variable: BOTIUM_BOX_VERSION
+  default: "2.4.0"
+  description: "Botium Box Version"
+  type: string
+  required: true
+- variable: PRISMA_ENDPOINT
+  default: "https://prisma02.botiumbox.com/box/..."
+  description: "Prisma Endpoint URL"
+  type: string
+  required: true
+- variable: PRISMA_MANAGEMENT_API_SECRET
+  default: ""
+  description: "Prisma Management API Secret"
+  type: string
+  required: true
+- variable: PRISMA_SECRET
+  default: "prisma123"
+  description: "Prisma Secret"
+  type: string
+  required: true
+- variable: SEED_PASSWORD 
+  default: "nooneknows"
+  description: "Initial Botium Box Password"
+  type: string
+  required: true
+- variable: REDIS_PASSWORD
+  default: "redis123"
+  description: "Redis Password"
+  type: string
+  required: true
+- variable: SHORTNAME
+  default: ""
+  description: "Instance Shortname (for domain name)"
+  type: string
+  required: true
+- variable: INSTALL_ZAP
+  default: false
+  description: "Install ZAP"
+  type: boolean
+  required: true
+- variable: STORAGE_CLASS_BOX 
+  description: "Storage Class for Botium Box Files"
+  type: storageclass
+  required: true
