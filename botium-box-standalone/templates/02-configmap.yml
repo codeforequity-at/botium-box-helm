@@ -7,7 +7,7 @@ metadata:
     app: botium-box
 data:
   PRISMA_ENDPOINT: "{{ .Values.PRISMA_ENDPOINT }}"
-  BOTIUMBOX_AGENT_COUNT: {{ .Values.BOTIUMBOX_AGENT_COUNT }}
+  BOTIUMBOX_AGENT_COUNT: "{{ .Values.BOTIUMBOX_AGENT_COUNT }}"
   {{- if .Values.INSTALL_ZAP }}
-  ZAP_ENDPOINT: http://zap:8080
+  ZAP_ENDPOINT: "http://zap:8080"
   {{- end }}

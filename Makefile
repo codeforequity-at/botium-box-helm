@@ -10,7 +10,7 @@ update:
 	helm dependency update botium-box-standalone
 
 package:
-	rm -f botium-box-ce-*.tgz botium-box-premium-*.tgz botium-box-prisma-*.tgz
+	rm -f botium-box-ce-*.tgz botium-box-premium-*.tgz botium-box-prisma-*.tgz botium-box-standalone-*.tgz
 	helm package botium-box-premium-all
 	helm package botium-box-premium-ingress
 	helm package botium-box-premium-storage
