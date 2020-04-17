@@ -15,7 +15,7 @@ questions:
   type: string
   required: true
 - variable: PRISMA_ENDPOINT
-  default: "https://prisma02.botiumbox.com/box/..."
+  default: "https://prisma03.botiumbox.com/box/..."
   description: "Prisma Endpoint URL"
   type: string
   required: true
@@ -49,6 +49,31 @@ questions:
   description: "Install ZAP"
   type: boolean
   required: true
+- variable: SMTP_HOST
+  default: "email-smtp.eu-west-1.amazonaws.com"
+  description: "SMTP Host"
+  type: string
+  required: false
+- variable: SMTP_PORT
+  default: 465
+  description: "SMTP Port"
+  type: int
+  required: false
+- variable: SMTP_SECURE
+  default: true
+  description: "SMTP Secure"
+  type: boolean
+  required: false
+- variable: SMTP_USER
+  default: ""
+  description: "SMTP User"
+  type: string
+  required: false
+- variable: SMTP_PASSWORD
+  default: ""
+  description: "SMTP Password"
+  type: string
+  required: false
 - variable: STORAGE_CLASS_BOX 
   description: "Storage Class for Botium Box Files"
   type: storageclass

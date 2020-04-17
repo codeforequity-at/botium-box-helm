@@ -8,6 +8,11 @@ metadata:
 data:
   PRISMA_ENDPOINT: "{{ .Values.PRISMA_ENDPOINT }}"
   BOTIUMBOX_AGENT_COUNT: "{{ .Values.BOTIUMBOX_AGENT_COUNT }}"
+  SMTP_HOST: "{{ .Values.SMTP_HOST }}"
+  SMTP_PORT: "{{ .Values.SMTP_PORT }}"
+  {{- if .Values.SMTP_SECURE }}
+  SMTP_SECURE: "1"
+  {{- end }}
   {{- if .Values.INSTALL_ZAP }}
   ZAP_ENDPOINT: "http://zap:8080"
   {{- end }}
