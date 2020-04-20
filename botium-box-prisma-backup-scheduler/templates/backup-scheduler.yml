@@ -1,0 +1,40 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: mysql-backup-scheduler
+spec:
+  schedule: {{ .Values.BACKUP_SCHEDULE }}
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: mysql-backup-s3
+            image: schickling/mysql-backup-s3
+            env:
+            - name: MYSQL_HOST
+              value: mysql
+            - name: MYSQL_PORT
+              value: "3306"
+            - name: MYSQL_USER
+              value: root
+            - name: MYSQL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-prisma
+                  key: MYSQL_ROOT_PASSWORD
+            - name: S3_ACCESS_KEY_ID
+              value: {{ .Values.S3_ACCESS_KEY_ID }}
+            - name: S3_SECRET_ACCESS_KEY
+              value: {{ .Values.S3_SECRET_ACCESS_KEY }}
+            - name: MULTI_FILES
+              value: "yes"
+            - name: S3_BUCKET
+              value: {{ .Values.S3_BUCKET }}
+            - name: S3_PREFIX
+              value: {{ .Values.FQDN }}
+            - name: S3_REGION
+              value: {{ .Values.S3_REGION }}
+            - name: S3_ENDPOINT
+              value: {{ .Values.S3_ENDPOINT }}
+          restartPolicy: OnFailure
