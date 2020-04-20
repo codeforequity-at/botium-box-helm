@@ -3,7 +3,7 @@ kind: CronJob
 metadata:
   name: mysql-backup-scheduler
 spec:
-  schedule: {{ .Values.BACKUP_SCHEDULE }}
+  schedule: "{{ .Values.BACKUP_SCHEDULE }}"
   jobTemplate:
     spec:
       template:
