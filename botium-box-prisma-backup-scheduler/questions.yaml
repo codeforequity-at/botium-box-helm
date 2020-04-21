@@ -10,7 +10,7 @@ questions:
   required: true
 - variable: BACKUP_SCHEDULE
   type: string
-  default: "*/1 * * * *"
+  default: "0 0 * * *"
   required: true
 - variable: S3_ACCESS_KEY_ID
   type: string
