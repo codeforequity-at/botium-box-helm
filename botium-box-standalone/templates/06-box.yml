@@ -20,6 +20,7 @@ spec:
       containers:
         - name: box
           image: botium/botium-box-standalone:{{ .Values.BOTIUM_BOX_VERSION }}
+          imagePullPolicy: Always
           command: ["/bin/sh"]
           args: ["-c", "npm run deploy && PRISMA_MANAGEMENT_API_SECRET= npm run \"start_$BOTIUMBOX_AGENT_COUNT\""]
           ports:
