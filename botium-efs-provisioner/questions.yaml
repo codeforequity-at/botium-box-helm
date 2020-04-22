@@ -1,0 +1,14 @@
+questions:
+- variable: EFS_FILE_SYSTEM_ID
+  default: ""
+  description: "Ex: fs-xxxxxxxx"
+  type: string
+  required: true
+- variable: AWS_REGION
+  default: ""
+  type: string
+  required: true
+- variable: CLUSTER_NAME
+  default: ""
+  type: string
+  required: true

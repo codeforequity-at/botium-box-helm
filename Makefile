@@ -9,6 +9,7 @@ update:
 	helm dependency update botium-box-ce
 	helm dependency update botium-box-ce-storage
 	helm dependency update botium-box-standalone
+	helm dependency update botium-efs-provisioner
 
 package:
 	rm -f botium-box-ce-*.tgz botium-box-premium-*.tgz botium-box-prisma-*.tgz botium-box-standalone-*.tgz
@@ -21,6 +22,7 @@ package:
 	helm package botium-box-ce
 	helm package botium-box-ce-storage
 	helm package botium-box-standalone
+	helm package botium-efs-provisioner
 	helm repo index . --url https://github.com/codeforequity-at/botium-box-helm/raw/master/
 
 publish:

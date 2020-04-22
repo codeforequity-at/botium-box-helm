@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: efs-provisioner
+data:
+  file.system.id: {{ .Values.EFS_FILE_SYSTEM_ID }}
+  aws.region: {{ .Values.AWS_REGION }}
+  provisioner.name: botiumbox.com/aws-efs
+  dns.name: {{ .Values.EFS_FILE_SYSTEM_ID }}.efs.{{ .Values.AWS_REGION }}.amazonaws.com
