@@ -1,7 +1,7 @@
 questions:
 - variable: EFS_FILE_SYSTEM_ID
   default: ""
-  description: "Ex: fs-xxxxxxxx"
+  description: "fs-xxxxxxxx"
   type: string
   required: true
 - variable: AWS_REGION
@@ -10,5 +10,6 @@ questions:
   required: true
 - variable: CLUSTER_NAME
   default: ""
+  description: "Is needed to create an unique subdirectory in EFS System for this Cluster"
   type: string
   required: true
