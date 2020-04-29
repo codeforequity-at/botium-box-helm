@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: botium-box-storage
+  name: botium-box-{{ .Values.SHORTNAME }}-storage
   labels:
-    name: botium-box-storage
+    name: botium-box-{{ .Values.SHORTNAME }}-storage
     app: botium-box
     tier: frontend
 spec:

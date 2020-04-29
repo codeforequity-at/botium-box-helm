@@ -30,3 +30,7 @@ questions:
   default: "eu-central-1"
   type: string
   required: true
+- variable: STORAGE_CLASS_BOX
+  description: "Storage Class for Mysql Database"
+  type: storageclass
+  required: true
