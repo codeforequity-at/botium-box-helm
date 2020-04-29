@@ -48,7 +48,7 @@ spec:
       volumes:
       - name: mysql-persistent-storage
         persistentVolumeClaim:
-          claimName: mysql-storage
+          claimName: botium-box-prisma-storage
 ---
 apiVersion: v1
 kind: Service
