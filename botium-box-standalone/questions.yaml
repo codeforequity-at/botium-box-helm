@@ -10,7 +10,7 @@ questions:
   type: int
   required: true
 - variable: BOTIUM_BOX_VERSION
-  default: "2.4.0"
+  default: "2.5.0"
   description: "Botium Box Version"
   type: string
   required: true
@@ -50,17 +50,17 @@ questions:
   type: boolean
   required: true
 - variable: SMTP_HOST
-  default: "email-smtp.eu-west-1.amazonaws.com"
+  default: "smtp-relay.sendinblue.com"
   description: "SMTP Host"
   type: string
   required: false
 - variable: SMTP_PORT
-  default: 465
+  default: 587
   description: "SMTP Port"
   type: int
   required: false
 - variable: SMTP_SECURE
-  default: true
+  default: false
   description: "SMTP Secure"
   type: boolean
   required: false
