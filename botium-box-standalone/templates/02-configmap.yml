@@ -12,6 +12,8 @@ data:
   SMTP_PORT: "{{ .Values.SMTP_PORT }}"
   {{- if .Values.SMTP_SECURE }}
   SMTP_SECURE: "1"
+  {{- else }}
+  SMTP_SECURE: "0"
   {{- end }}
   {{- if .Values.INSTALL_ZAP }}
   ZAP_ENDPOINT: "http://zap:8080"
