@@ -83,11 +83,13 @@ spec:
                 configMapKeyRef:
                   name: botium-box-configmap
                   key: SMTP_PORT
+            {{- if .Values.SMTP_SECURE }}
             - name: SMTP_SECURE
               valueFrom:
                 configMapKeyRef:
                   name: botium-box-configmap
                   key: SMTP_SECURE
+            {{- end }}
             - name: SMTP_USER
               valueFrom:
                 secretKeyRef:
