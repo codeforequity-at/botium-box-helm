@@ -1,0 +1,6 @@
+questions:
+- variable: PROXY_BODY_SIZE
+  default: "16m"
+  description: "Allowed upload size"
+  type: string
+  required: true

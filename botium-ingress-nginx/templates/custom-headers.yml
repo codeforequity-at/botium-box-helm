@@ -1,0 +1,11 @@
+apiVersion: v1
+data:
+  Cache-Control: "no-cache, no-store, must-revalidate"
+  Pragma: "no-cache"
+  X-Content-Type-Options: "nosniff"
+  X-Frame-Options: "deny"
+  X-XSS-Protection: "1; mode=block"
+kind: ConfigMap
+metadata:
+  name: custom-headers
+  namespace: ingress-nginx

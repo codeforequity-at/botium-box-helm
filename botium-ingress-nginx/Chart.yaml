@@ -1,0 +1,7 @@
+apiVersion: v2
+name: botium-ingress-nginx
+description: Botium Ingress NGinx Reverse Proxy
+
+type: application
+version: 0.0.1
+appVersion: latest
