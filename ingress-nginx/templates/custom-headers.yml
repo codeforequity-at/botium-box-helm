@@ -5,7 +5,7 @@ data:
   X-Content-Type-Options: "nosniff"
   X-Frame-Options: "deny"
   X-XSS-Protection: "1; mode=block"
-  Content-Security-Policy: "default-src 'self' 'unsafe-inline' data: *.botiumbox.com botium.ai *.botium.ai"
+  Content-Security-Policy: "script-src 'self' 'unsafe-inline'; img-src * data:; media-src * data:; object-src 'none';"
 kind: ConfigMap
 metadata:
   name: custom-headers
