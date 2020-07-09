@@ -5,6 +5,7 @@ update:
 	helm dependency update botium-box-premium-storage
 	helm dependency update botium-box-premium-backup
 	helm dependency update botium-box-prisma
+	helm dependency update botium-box-prisma-rds-test
 	helm dependency update botium-box-ce
 	helm dependency update botium-box-ce-storage
 	helm dependency update botium-box-standalone
@@ -18,6 +19,7 @@ package:
 	helm package botium-box-premium-storage
 	helm package botium-box-premium-backup
 	helm package botium-box-prisma
+	helm package botium-box-prisma-rds-test
 	helm package botium-box-ce
 	helm package botium-box-ce-storage
 	helm package botium-box-standalone
