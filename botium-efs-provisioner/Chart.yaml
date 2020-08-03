@@ -1,7 +1,7 @@
-apiVersion: v2
+apiVersion: v1
 name: botium-efs-provisioner
 description: Botium EFS Provisioner
 
 type: application
-version: 0.0.2
+version: 0.0.3
 appVersion: latest
