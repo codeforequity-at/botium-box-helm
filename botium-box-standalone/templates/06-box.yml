@@ -58,6 +58,11 @@ spec:
                 secretKeyRef:
                   name: botium-box-secrets
                   key: PRISMA_MANAGEMENT_API_SECRET
+            - name: SEED_ADMIN_EMAIL
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: SEED_ADMIN_EMAIL
             - name: SEED_PASSWORD
               valueFrom:
                 secretKeyRef:
