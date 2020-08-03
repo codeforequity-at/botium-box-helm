@@ -29,6 +29,10 @@ questions:
   description: "Prisma Secret"
   type: string
   required: true
+- variable: SEED_ADMIN_EMAIL
+  default: ""
+  description: "Initial Botium Box Email for admin user (default: admin@mydomain.com)"
+  type: string
 - variable: SEED_PASSWORD 
   default: "nooneknows"
   description: "Initial Botium Box Password"
