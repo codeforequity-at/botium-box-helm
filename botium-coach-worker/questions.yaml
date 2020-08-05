@@ -9,3 +9,8 @@ questions:
   description: "Botium Coach Worker Version"
   type: string
   required: true
+- variable: WEB_CONCURRENCY
+  default: 1
+  description: "Botium Coach Worker Web Concurrency"
+  type: int
+  required: true
