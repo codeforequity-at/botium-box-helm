@@ -1,0 +1,11 @@
+questions:
+- variable: SHORTNAME
+  default: ""
+  description: "Instance Shortname (for domain name)"
+  type: string
+  required: true
+- variable: BOTIUM_BOX_VERSION
+  default: "latest"
+  description: "Botium Coach Worker Version"
+  type: string
+  required: true

@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: botium-coach-worker-configmap
+  labels:
+    name: config
+    app: botium-coach-worker
+data:
+  WEB_CONCURRENCY: "{{ .Values.WEB_CONCURRENCY }}"

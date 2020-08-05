@@ -1,0 +1,7 @@
+apiVersion: v1
+name: botium-coach-worker
+description: Botium Coach Worker
+
+type: application
+version: 0.0.1
+appVersion: 0.0.1

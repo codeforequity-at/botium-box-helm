@@ -10,6 +10,7 @@ update:
 	helm dependency update botium-box-ce-storage
 	helm dependency update botium-box-standalone
 	helm dependency update botium-efs-provisioner
+	helm dependency update botium-coach-worker
 	helm dependency update ingress-nginx
 
 package:
@@ -24,6 +25,7 @@ package:
 	helm package botium-box-ce-storage
 	helm package botium-box-standalone
 	helm package botium-efs-provisioner
+	helm package botium-coach-worker
 	helm package ingress-nginx
 	helm repo index . --url https://github.com/codeforequity-at/botium-box-helm/raw/master/
 
