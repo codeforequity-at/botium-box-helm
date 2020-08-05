@@ -14,7 +14,7 @@ update:
 	helm dependency update ingress-nginx
 
 package:
-	rm -f botium-box-ce-*.tgz botium-box-premium-*.tgz botium-box-prisma-*.tgz botium-box-standalone-*.tgz
+	rm -f botium-box-ce-*.tgz botium-box-premium-*.tgz botium-box-prisma-*.tgz botium-box-standalone-*.tgz botium-coach-worker-*.tgz botium-efs-provisioner-*.tgz ingress-nginx-*.tgz
 	helm package botium-box-premium-all
 	helm package botium-box-premium-ingress
 	helm package botium-box-premium-storage
