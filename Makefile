@@ -6,6 +6,7 @@ update:
 	helm dependency update botium-box-premium-backup
 	helm dependency update botium-box-prisma
 	helm dependency update botium-box-prisma-rds-test
+	helm dependency update botium-box-prisma-nodb
 	helm dependency update botium-box-ce
 	helm dependency update botium-box-ce-storage
 	helm dependency update botium-box-standalone
@@ -24,6 +25,7 @@ package:
 	helm package botium-box-ce
 	helm package botium-box-ce-storage
 	helm package botium-box-standalone
+	helm package botium-box-prisma-nodb
 	helm package botium-efs-provisioner
 	helm package botium-coach-worker
 	helm package ingress-nginx
