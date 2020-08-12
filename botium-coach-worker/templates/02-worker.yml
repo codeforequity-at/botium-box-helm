@@ -22,8 +22,8 @@ spec:
           image: botium/botium-coach-worker:{{ .Values.BOTIUM_COACH_WORKER_VERSION }}
           imagePullPolicy: Always
           ports:
-            - name: worker-4002
-              containerPort: 4002
+            - name: worker-80
+              containerPort: 80
           env:
             - name: WEB_CONCURRENCY
               valueFrom:
@@ -37,8 +37,8 @@ metadata:
   name: coach-worker
 spec:
   ports:
-    - port: 4002
-      targetPort: 4002
+    - port: 80
+      targetPort: 80
       protocol: TCP
   selector:
     name: coach-worker
@@ -65,7 +65,7 @@ spec:
       - path: /
         backend:
           serviceName: coach-worker
-          servicePort: 4002
+          servicePort: 80
 ---
 apiVersion: cert-manager.io/v1alpha2
 kind: Issuer
