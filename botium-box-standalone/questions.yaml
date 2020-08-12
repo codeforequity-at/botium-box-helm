@@ -82,3 +82,8 @@ questions:
   description: "Storage Class for Botium Box Files"
   type: storageclass
   required: true
+- variable: COACH_WORKER_ENDPOINT
+  default: "https://coach-worker-test.botiumbox.com/1.0"
+  description: "Coach Worker Endpoint"
+  type: string
+  required: false

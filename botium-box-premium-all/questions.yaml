@@ -34,3 +34,8 @@ questions:
   description: "Mysql Root Password"
   type: string
   required: true
+- variable: COACH_WORKER_ENDPOINT
+  default: "https://coach-worker-test.botiumbox.com/1.0"
+  description: "Coach Worker Endpoint"
+  type: string
+  required: false
