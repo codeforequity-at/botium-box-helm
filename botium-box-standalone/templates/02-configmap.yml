@@ -11,6 +11,7 @@ data:
   SMTP_HOST: "{{ .Values.SMTP_HOST }}"
   SMTP_PORT: "{{ .Values.SMTP_PORT }}"
   COACH_WORKER_ENDPOINT: "{{ .Values.COACH_WORKER_ENDPOINT }}"
+  JWT_EXPIRY_DAYS: "{{ .Values.JWT_EXPIRY_DAYS }}"
   {{- if .Values.SMTP_SECURE }}
   SMTP_SECURE: "1"
   {{- end }}

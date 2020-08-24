@@ -116,7 +116,12 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: botium-box-configmap
-                  key: COACH_WORKER_ENDPOINT            
+                  key: COACH_WORKER_ENDPOINT
+            - name: JWT_EXPIRY_DAYS
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: JWT_EXPIRY_DAYS
       volumes:
         - name: storage
           persistentVolumeClaim:
