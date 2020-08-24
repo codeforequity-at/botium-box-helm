@@ -49,7 +49,7 @@ data:
   add-headers: "ingress-nginx/custom-headers"
   hide-headers: "X-Powered-By"
   server-tokens: "false"
-  enable-ocsp: true
+  enable-ocsp: "true"
   proxy-body-size: {{ .Values.PROXY_BODY_SIZE }}
 
 ---

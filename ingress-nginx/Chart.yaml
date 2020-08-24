@@ -3,5 +3,5 @@ name: ingress-nginx
 description: Botium Ingress NGinx Reverse Proxy
 
 type: application
-version: 0.0.10
+version: 0.0.11
 appVersion: latest
