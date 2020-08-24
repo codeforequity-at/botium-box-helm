@@ -149,6 +149,9 @@ metadata:
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     rancher.io/globalDNS.hostname: {{ .Values.SHORTNAME }}.botiumbox.com
     cert-manager.io/cluster-issuer: {{ .Values.SHORTNAME }}-letsencrypt-prod
+    nginx.ingress.kubernetes.io/server-snippet: |
+      ssl_stapling on;
+      ssl_stapling_verify on;
 spec:
   tls:
   - hosts:
