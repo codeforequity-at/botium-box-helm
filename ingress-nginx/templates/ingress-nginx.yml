@@ -260,7 +260,7 @@ spec:
             - --udp-services-configmap=$(POD_NAMESPACE)/udp-services
             - --publish-service=$(POD_NAMESPACE)/ingress-nginx
             - --annotations-prefix=nginx.ingress.kubernetes.io
-            - --disable-catch-all=true
+            - --default-ssl-certificate=$(POD_NAMESPACE)/default.botiumbox.com.tls
           securityContext:
             allowPrivilegeEscalation: true
             capabilities:
