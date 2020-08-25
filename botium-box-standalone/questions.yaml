@@ -87,8 +87,8 @@ questions:
   description: "Coach Worker Endpoint"
   type: string
   required: false
-- variable: JWT_EXPIRY_DAYS
+- variable: JWT_EXPIRY_MINUTES
   default: 30
-  description: "JWT expiry days"
+  description: "JWT expiry in minutes (default: 43200 = 30 days)"
   type: int
   required: false
