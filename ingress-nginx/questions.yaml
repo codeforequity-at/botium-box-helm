@@ -4,3 +4,8 @@ questions:
   description: "Allowed upload size"
   type: string
   required: true
+- variable: AWS_CONNECTION_IDLE_TIMEOUT
+  default: "1800"
+  description: "AWS Connection Idle Timeout"
+  type: string
+  required: true
