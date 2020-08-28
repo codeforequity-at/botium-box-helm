@@ -17,7 +17,7 @@ metadata:
     app.kubernetes.io/name: ingress-nginx
     app.kubernetes.io/part-of: ingress-nginx
   annotations:
-    service.beta.kubernetes.io/aws-load-balancer-connection-idle-timeout: {{ .Values.AWS_CONNECTION_IDLE_TIMEOUT }}
+    service.beta.kubernetes.io/aws-load-balancer-connection-idle-timeout: "{{ .Values.AWS_CONNECTION_IDLE_TIMEOUT }}"
 spec:
   type: LoadBalancer
   selector:
