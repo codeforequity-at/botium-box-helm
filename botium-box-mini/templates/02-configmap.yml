@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: botium-box-configmap
+  labels:
+    name: config
+    app: botium-box
+data:
+  BOTIUMBOX_AGENT_COUNT: "{{ .Values.BOTIUMBOX_AGENT_COUNT }}"
+  SMTP_HOST: "{{ .Values.SMTP_HOST }}"
+  SMTP_PORT: "{{ .Values.SMTP_PORT }}"
+  COACH_WORKER_ENDPOINT: "{{ .Values.COACH_WORKER_ENDPOINT }}"
+  JWT_EXPIRY_MINUTES: "{{ .Values.JWT_EXPIRY_MINUTES }}"
+  {{- if .Values.SMTP_SECURE }}
+  SMTP_SECURE: "1"
+  {{- end }}
+  {{- if .Values.INSTALL_ZAP }}
+  ZAP_ENDPOINT: "http://zap:8080"
+  {{- end }}

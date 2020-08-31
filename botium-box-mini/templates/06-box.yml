@@ -1,0 +1,208 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: box
+  labels:
+    name: box
+    app: botium-box
+    tier: frontend
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        name: box
+        app: botium-box
+        tier: frontend
+    spec:
+      containers:
+        - name: box
+          image: botium/botium-box-mini:{{ .Values.BOTIUM_BOX_VERSION }}
+          imagePullPolicy: Always
+          command: ["/bin/sh"]
+          args: ["-c", "npm run deploy && PRISMA_MANAGEMENT_API_SECRET= npm run \"start_$BOTIUMBOX_AGENT_COUNT\""]
+          ports:
+            - name: box-4000
+              containerPort: 4000
+          volumeMounts:
+          - mountPath: "/app/storage"
+            name: storage
+          - mountPath: "/app/prisma-config"
+            name: prisma-config-storage
+          env:
+            - name: DEBUG
+              value: botium*
+            - name: TESTSETDIR
+              value: /app/storage/testsets
+            - name: TEMPDIR
+              value: /app/storage/botiumwork
+            - name: PRISMA_CONFIG_FILE
+              value: /app/prisma-config/prisma-config.json
+            - name: BOTIUMBOX_SCANFORTESTSETS
+              value: /app/storage/testsets
+            - name: BOTIUMBOX_AGENT_LIST
+              value: agent1,agent2,agent3,agent4,agent5,agent6,agent7,agent8,agent9,agent10,agent11,agent12,agent13,agent14,agent15,agent16,agent17,agent18,agent19,agent20
+            - name: LICENSE_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: LICENSE_KEY
+            - name: PRISMA_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: PRISMA_ENDPOINT
+            - name: PRISMA_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: PRISMA_SECRET
+            - name: PRISMA_MANAGEMENT_API_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: PRISMA_MANAGEMENT_API_SECRET
+            - name: SEED_ADMIN_EMAIL
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: SEED_ADMIN_EMAIL
+            - name: SEED_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: SEED_PASSWORD
+            - name: BOTIUMBOX_QUEUE_REDISURL
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: BOTIUMBOX_QUEUE_REDISURL
+            - name: BOTIUMBOX_AGENT_COUNT
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: BOTIUMBOX_AGENT_COUNT
+            - name: SMTP_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: SMTP_HOST
+            - name: SMTP_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: SMTP_PORT
+            {{- if .Values.SMTP_SECURE }}
+            - name: SMTP_SECURE
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: SMTP_SECURE
+            {{- end }}
+            - name: SMTP_USER
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: SMTP_USER
+            - name: SMTP_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: SMTP_PASSWORD
+            {{- if .Values.INSTALL_ZAP }}
+            - name: ZAP_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: ZAP_ENDPOINT
+            {{- end }}
+            - name: COACH_WORKER_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: COACH_WORKER_ENDPOINT
+            - name: JWT_EXPIRY_MINUTES
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: JWT_EXPIRY_MINUTES
+            - name: BOTIUMBOX_FEATURE_FILEBROWSER
+              value: 0
+            - name: BOTIUMBOX_FEATURE_DELETETESTSESSION
+              value: 0
+      volumes:
+        - name: storage
+          persistentVolumeClaim:
+            claimName: botium-box-{{ .Values.SHORTNAME }}-storage
+        - name: prisma-config-storage
+          persistentVolumeClaim:
+            claimName: botium-box-{{ .Values.SHORTNAME }}-prisma-config-storage
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: box
+spec:
+  ports:
+    - port: 4000
+      targetPort: 4000
+      protocol: TCP
+  selector:
+    name: box
+    app: botium-box
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: box-ingress
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+    rancher.io/globalDNS.hostname: {{ .Values.SHORTNAME }}.botiumbox.com
+    cert-manager.io/cluster-issuer: {{ .Values.SHORTNAME }}-letsencrypt-prod
+    nginx.ingress.kubernetes.io/server-snippet: |
+      ssl_stapling on;
+      ssl_stapling_verify on;
+spec:
+  tls:
+  - hosts:
+    - {{ .Values.SHORTNAME }}.botiumbox.com
+    secretName: {{ .Values.SHORTNAME }}.botiumbox-com-tls
+  rules:
+  - host: {{ .Values.SHORTNAME }}.botiumbox.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: box
+          servicePort: 4000
+---
+apiVersion: cert-manager.io/v1alpha2
+kind: Issuer
+metadata:
+  name: {{ .Values.SHORTNAME }}-letsencrypt-prod
+spec:
+  acme:
+    server: https://acme-v02.api.letsencrypt.org/directory
+    email: florian.treml@botium.at
+    privateKeySecretRef:
+      name: {{ .Values.SHORTNAME }}-letsencrypt-prod
+    solvers:
+    - selector: {}
+      http01:
+        ingress:
+          class: nginx
+---
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+  name: {{ .Values.SHORTNAME }}.botiumbox-com
+spec:
+  secretName: {{ .Values.SHORTNAME }}.botiumbox-com-tls
+  issuerRef:
+    name: {{ .Values.SHORTNAME }}-letsencrypt-prod
+  commonName: {{ .Values.SHORTNAME }}.botiumbox.com
+  dnsNames:
+  - {{ .Values.SHORTNAME }}.botiumbox.com

@@ -1,0 +1,7 @@
+apiVersion: v1
+name: botium-box-mini
+description: Botium Box Mini
+
+type: application
+version: 0.0.1
+appVersion: 2.6.1
