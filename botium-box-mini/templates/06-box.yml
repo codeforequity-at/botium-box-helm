@@ -23,6 +23,8 @@ spec:
       containers:
         - name: box-server
           image: botium/botium-box-server:{{ .Values.BOTIUM_BOX_VERSION }}
+          command: ["/bin/sh"]
+          args: ["-c", "npm run start:dist"]
           ports:
             - name: box-4000
               containerPort: 4000
