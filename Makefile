@@ -10,6 +10,7 @@ update:
 	helm dependency update botium-box-ce
 	helm dependency update botium-box-ce-storage
 	helm dependency update botium-box-standalone
+	helm dependency update botium-box-mini
 	helm dependency update botium-efs-provisioner
 	helm dependency update botium-coach-worker
 	helm dependency update ingress-nginx
@@ -25,6 +26,7 @@ package:
 	helm package botium-box-ce
 	helm package botium-box-ce-storage
 	helm package botium-box-standalone
+	helm package botium-box-mini
 	helm package botium-box-prisma-nodb
 	helm package botium-efs-provisioner
 	helm package botium-coach-worker
