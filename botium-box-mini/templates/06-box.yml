@@ -95,18 +95,15 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-    rancher.io/globalDNS.hostname: {{ .Values.SHORTNAME }}.botiumbox.com
+    rancher.io/globalDNS.hostname: '*.{{ .Values.SHORTNAME }}.botiumbox.com'
     cert-manager.io/cluster-issuer: {{ .Values.SHORTNAME }}-letsencrypt-prod
-    nginx.ingress.kubernetes.io/server-snippet: |
-      ssl_stapling on;
-      ssl_stapling_verify on;
 spec:
   tls:
   - hosts:
-    - {{ .Values.SHORTNAME }}.botiumbox.com
+    - '*.{{ .Values.SHORTNAME }}.botiumbox.com'
     secretName: {{ .Values.SHORTNAME }}.botiumbox-com-tls
   rules:
-  - host: {{ .Values.SHORTNAME }}.botiumbox.com
+  - host: '*.{{ .Values.SHORTNAME }}.botiumbox.com'
     http:
       paths:
       - path: /
@@ -117,13 +114,13 @@ spec:
 apiVersion: cert-manager.io/v1alpha2
 kind: Issuer
 metadata:
-  name: botium-box-mini-letsencrypt-prod
+  name: botium-box-{{ .Values.SHORTNAME }}-letsencrypt-prod
 spec:
   acme:
     server: https://acme-v02.api.letsencrypt.org/directory
     email: florian.treml@botium.at
     privateKeySecretRef:
-      name: botium-box-mini-letsencrypt-prod
+      name: botium-box-{{ .Values.SHORTNAME }}-letsencrypt-prod
     dns01:
       providers:
         - name: aws-dns
@@ -139,20 +136,20 @@ spec:
 apiVersion: cert-manager.io/v1alpha2
 kind: Certificate
 metadata:
-  name: botium-box-mini.botiumbox-com
+  name: botium-box-{{ .Values.SHORTNAME }}.botiumbox-com
 spec:
-  secretName: botium-box-mini.botiumbox-com-tls
+  secretName: botium-box-{{ .Values.SHORTNAME }}.botiumbox-com-tls
   issuerRef:
-    name: botium-box-mini-letsencrypt-prod
+    name: botium-box-{{ .Values.SHORTNAME }}-letsencrypt-prod
     kind: Issuer
-  commonName: '*.mini.botiumbox.com'
+  commonName: '*.{{ .Values.SHORTNAME }}.botiumbox.com'
   dnsNames:
-  - mini.botiumbox.com
-  - '*.mini.botiumbox.com'
+  - {{ .Values.SHORTNAME }}.botiumbox.com
+  - '*.{{ .Values.SHORTNAME }}.botiumbox.com'
   acme:
     config:
     - dns01:
         provider: aws-dns
       domains:
-      - mini.botiumbox.com
-      - '*.mini.botiumbox.com'
+      - {{ .Values.SHORTNAME }}.botiumbox.com
+      - '*.{{ .Values.SHORTNAME }}.botiumbox.com'
