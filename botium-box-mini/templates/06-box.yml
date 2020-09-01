@@ -1,9 +1,9 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: box
+  name: box-server
   labels:
-    name: box
+    name: box-server
     app: botium-box
     tier: frontend
 spec:
@@ -13,146 +13,79 @@ spec:
   template:
     metadata:
       labels:
-        name: box
+        name: box-server
         app: botium-box
         tier: frontend
     spec:
+      securityContext:
+        runAsUser: 0
+        fsGroup: 0
       containers:
-        - name: box
-          image: botium/botium-box-mini:{{ .Values.BOTIUM_BOX_VERSION }}
-          imagePullPolicy: Always
-          command: ["/bin/sh"]
-          args: ["-c", "npm run deploy && PRISMA_MANAGEMENT_API_SECRET= npm run \"start_$BOTIUMBOX_AGENT_COUNT\""]
+        - name: box-server
+          image: botium/botium-box-server:{{ .Values.BOTIUM_BOX_VERSION }}
           ports:
             - name: box-4000
               containerPort: 4000
           volumeMounts:
-          - mountPath: "/app/storage"
-            name: storage
-          - mountPath: "/app/prisma-config"
-            name: prisma-config-storage
+          - mountPath: "/app/storage/"
+            name: botium-box-mini-storage
+          - mountPath: "/app/prisma-config/"
+            name: botium-box-mini-prisma-config-storage
           env:
             - name: DEBUG
               value: botium*
             - name: TESTSETDIR
               value: /app/storage/testsets
+            - name: TESTSETDIR_PUBLIC
+              value: /app/storage/testsets
+            - name: RESOURCESDIR
+              value: /app/storage/resources
             - name: TEMPDIR
               value: /app/storage/botiumwork
-            - name: PRISMA_CONFIG_FILE
-              value: /app/prisma-config/prisma-config.json
-            - name: BOTIUMBOX_SCANFORTESTSETS
-              value: /app/storage/testsets
-            - name: BOTIUMBOX_DISABLE_CONNECTORS
-              value: directline3,dialogflow,luis,sapcai,rasa,lex,qnamaker,pandoabots
             - name: BOTIUMBOX_AGENT_LIST
-              value: agent1,agent2,agent3,agent4,agent5,agent6,agent7,agent8,agent9,agent10,agent11,agent12,agent13,agent14,agent15,agent16,agent17,agent18,agent19,agent20
+              value: agent-1,agent-2,agent-3,agent-4,agent-5,agent-6,agent-7,agent-8,agent-9,agent-10,agent-11,agent-12,agent-13,agent-14,agent-15,agent-16,agent-17,agent-18,agent-19,agent-20
+            - name: PRISMA_CONFIG_FILE
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: PRISMA_CONFIG_FILE
             - name: LICENSE_KEY
               valueFrom:
-                secretKeyRef:
-                  name: botium-box-secrets
-                  key: LICENSE_KEY
-            - name: PRISMA_ENDPOINT
-              valueFrom:
                 configMapKeyRef:
                   name: botium-box-configmap
-                  key: PRISMA_ENDPOINT
-            - name: PRISMA_SECRET
-              valueFrom:
-                secretKeyRef:
-                  name: botium-box-secrets
-                  key: PRISMA_SECRET
-            - name: PRISMA_MANAGEMENT_API_SECRET
-              valueFrom:
-                secretKeyRef:
-                  name: botium-box-secrets
-                  key: PRISMA_MANAGEMENT_API_SECRET
-            - name: SEED_ADMIN_EMAIL
-              valueFrom:
-                secretKeyRef:
-                  name: botium-box-secrets
-                  key: SEED_ADMIN_EMAIL
-            - name: SEED_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: botium-box-secrets
-                  key: SEED_PASSWORD
+                  key: LICENSE_KEY
             - name: BOTIUMBOX_QUEUE_REDISURL
               valueFrom:
-                secretKeyRef:
-                  name: botium-box-secrets
+                configMapKeyRef:
+                  name: botium-box-configmap
                   key: BOTIUMBOX_QUEUE_REDISURL
-            - name: BOTIUMBOX_AGENT_COUNT
-              valueFrom:
-                configMapKeyRef:
-                  name: botium-box-configmap
-                  key: BOTIUMBOX_AGENT_COUNT
-            - name: SMTP_HOST
-              valueFrom:
-                configMapKeyRef:
-                  name: botium-box-configmap
-                  key: SMTP_HOST
-            - name: SMTP_PORT
-              valueFrom:
-                configMapKeyRef:
-                  name: botium-box-configmap
-                  key: SMTP_PORT
-            {{- if .Values.SMTP_SECURE }}
-            - name: SMTP_SECURE
-              valueFrom:
-                configMapKeyRef:
-                  name: botium-box-configmap
-                  key: SMTP_SECURE
-            {{- end }}
-            - name: SMTP_USER
-              valueFrom:
-                secretKeyRef:
-                  name: botium-box-secrets
-                  key: SMTP_USER
-            - name: SMTP_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: botium-box-secrets
-                  key: SMTP_PASSWORD
-            {{- if .Values.INSTALL_ZAP }}
             - name: ZAP_ENDPOINT
               valueFrom:
                 configMapKeyRef:
                   name: botium-box-configmap
                   key: ZAP_ENDPOINT
-            {{- end }}
             - name: COACH_WORKER_ENDPOINT
               valueFrom:
                 configMapKeyRef:
                   name: botium-box-configmap
                   key: COACH_WORKER_ENDPOINT
-            - name: JWT_EXPIRY_MINUTES
-              valueFrom:
-                configMapKeyRef:
-                  name: botium-box-configmap
-                  key: JWT_EXPIRY_MINUTES
-            - name: BOTIUMBOX_FEATURE_FILEBROWSER
-              value: 0
-            - name: BOTIUMBOX_FEATURE_DELETETESTSESSION
-              value: 0
       volumes:
-        - name: storage
+        - name: botium-box-mini-storage
           persistentVolumeClaim:
-            claimName: botium-box-{{ .Values.SHORTNAME }}-storage
-        - name: prisma-config-storage
+            claimName: botium-box-mini-storage
+        - name: botium-box-mini-prisma-config-storage
           persistentVolumeClaim:
-            claimName: botium-box-{{ .Values.SHORTNAME }}-prisma-config-storage
+            claimName: botium-box-mini-prisma-config-storage
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: box
+  name: box-server
 spec:
   ports:
     - port: 4000
-      targetPort: 4000
-      protocol: TCP
   selector:
-    name: box
+    name: box-server
     app: botium-box
 ---
 apiVersion: extensions/v1beta1
@@ -184,27 +117,42 @@ spec:
 apiVersion: cert-manager.io/v1alpha2
 kind: Issuer
 metadata:
-  name: {{ .Values.SHORTNAME }}-letsencrypt-prod
+  name: botium-box-mini-letsencrypt-prod
 spec:
   acme:
     server: https://acme-v02.api.letsencrypt.org/directory
     email: florian.treml@botium.at
     privateKeySecretRef:
-      name: {{ .Values.SHORTNAME }}-letsencrypt-prod
-    solvers:
-    - selector: {}
-      http01:
-        ingress:
-          class: nginx
+      name: botium-box-mini-letsencrypt-prod
+    dns01:
+      providers:
+        - name: aws-dns
+          route53:
+            region: eu-west-1
+            accessKeyIDSecretRef:
+              name: botium-box-secrets
+              key: AWS_ACCESS_KEY_ID
+            secretAccessKeySecretRef:
+              name: botium-box-secrets
+              key: AWS_SECRET_ACCESS_KEY
 ---
 apiVersion: cert-manager.io/v1alpha2
 kind: Certificate
 metadata:
-  name: {{ .Values.SHORTNAME }}.botiumbox-com
+  name: botium-box-mini.botiumbox-com
 spec:
-  secretName: {{ .Values.SHORTNAME }}.botiumbox-com-tls
+  secretName: botium-box-mini.botiumbox-com-tls
   issuerRef:
-    name: {{ .Values.SHORTNAME }}-letsencrypt-prod
-  commonName: {{ .Values.SHORTNAME }}.botiumbox.com
+    name: botium-box-mini-letsencrypt-prod
+    kind: Issuer
+  commonName: '*.mini.botiumbox.com'
   dnsNames:
-  - {{ .Values.SHORTNAME }}.botiumbox.com
+  - mini.botiumbox.com
+  - '*.mini.botiumbox.com'
+  acme:
+    config:
+    - dns01:
+        provider: aws-dns
+      domains:
+      - mini.botiumbox.com
+      - '*.mini.botiumbox.com'

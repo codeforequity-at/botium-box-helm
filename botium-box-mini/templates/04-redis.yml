@@ -20,8 +20,6 @@ spec:
       containers:
         - name: redis
           image: redis:alpine
-          command: ["redis-server"]
-          args: ["--requirepass", "{{ .Values.REDIS_PASSWORD }}"]          
           ports:
             - name: redis-6379
               containerPort: 6379	  

@@ -4,7 +4,7 @@ questions:
   description: "Botium Box License Key"
   type: string
   required: true
-- variable: BOTIUMBOX_AGENT_COUNT
+- variable: AGENT_COUNT
   default: 1
   description: "Botium Box Agent Count"
   type: int
@@ -17,25 +17,6 @@ questions:
 - variable: PRISMA_MANAGEMENT_API_SECRET
   default: ""
   description: "Prisma Management API Secret"
-  type: string
-  required: true
-- variable: SEED_ADMIN_EMAIL
-  default: ""
-  description: "Initial Botium Box Email for admin user (default: admin@mydomain.com)"
-  type: string
-- variable: SEED_PASSWORD
-  default: "nooneknows"
-  description: "Initial Botium Box Password"
-  type: string
-  required: true
-- variable: REDIS_PASSWORD
-  default: "redis123"
-  description: "Redis Password"
-  type: string
-  required: true
-- variable: SHORTNAME
-  default: ""
-  description: "Instance Shortname (for domain name)"
   type: string
   required: true
 - variable: INSTALL_ZAP
@@ -82,3 +63,13 @@ questions:
   description: "JWT expiry in minutes (default: 43200 = 30 days)"
   type: int
   required: false
+- variable: AWS_ACCESS_KEY_ID
+  default: ""
+  description: "AWS Access Key ID for Wildcard Certificate Challenge"
+  type: string
+  required: true
+- variable: AWS_SECRET_ACCESS_KEY
+  default: ""
+  description: "AWS Secret Access Key for Wildcard Certificate Challenge"
+  type: string
+  required: true

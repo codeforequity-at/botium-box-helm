@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: botium-box-{{ .Values.SHORTNAME }}-storage
+  name: botium-box-mini-storage
   labels:
-    name: botium-box-{{ .Values.SHORTNAME }}-storage
+    name: botium-box-mini-storage
     app: botium-box
     tier: frontend
 spec:
@@ -17,9 +17,9 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: botium-box-prisma-config-storage
+  name: botium-box-mini-prisma-config-storage
   labels:
-    name: botium-box-{{ .Values.SHORTNAME }}-prisma-config-storage
+    name: botium-box-mini-prisma-config-storage
     app: botium-box
     tier: frontend
 spec:
@@ -28,4 +28,4 @@ spec:
   storageClassName: {{ .Values.STORAGE_CLASS_BOX }}
   resources:
     requests:
-      storage: 10Gi
+      storage: 20Gi

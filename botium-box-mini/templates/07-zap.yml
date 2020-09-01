@@ -1,4 +1,3 @@
-{{- if .Values.INSTALL_ZAP }}
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -45,4 +44,3 @@ spec:
   selector:
     name: zap
     app: botium-box
-{{- end }}
