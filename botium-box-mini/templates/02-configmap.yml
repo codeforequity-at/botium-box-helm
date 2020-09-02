@@ -11,3 +11,5 @@ data:
   BOTIUMBOX_QUEUE_REDISURL: redis://redis:6379
   PRISMA_CONFIG_FILE: /app/prisma-config/prisma-config.json
   ZAP_ENDPOINT: http://zap:8080
+  SMTP_HOST: "{{ .Values.SMTP_HOST }}"
+  SMTP_PORT: "{{ .Values.SMTP_PORT }}"
