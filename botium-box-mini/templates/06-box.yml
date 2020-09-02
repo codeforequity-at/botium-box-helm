@@ -37,13 +37,13 @@ spec:
             - name: DEBUG
               value: botium*
             - name: TESTSETDIR
-              value: /app/storage/testsets
+              value: /app/server/testsets
             - name: TESTSETDIR_PUBLIC
-              value: /app/storage/testsets
+              value: /app/server/testsets
             - name: TEMPDIR
-              value: /app/storage/botiumwork
+              value: /app/server/botiumwork
             - name: BOTIUMBOX_SCANFORTESTSETS
-              value: /app/storage/datasets-mini
+              value: /app/datasets-mini
             - name: BOTIUMBOX_AGENT_LIST
               value: agent-1,agent-2,agent-3,agent-4,agent-5,agent-6,agent-7,agent-8,agent-9,agent-10,agent-11,agent-12,agent-13,agent-14,agent-15,agent-16,agent-17,agent-18,agent-19,agent-20
             - name: PRISMA_CONFIG_FILE
