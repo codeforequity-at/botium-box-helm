@@ -72,45 +72,45 @@ spec:
                 configMapKeyRef:
                   name: botium-box-configmap
                   key: COACH_WORKER_ENDPOINT
-              - name: PRISMA_MANAGEMENT_API_SECRET
-                valueFrom:
-                  secretKeyRef:
-                    name: botium-box-secrets
-                    key: PRISMA_MANAGEMENT_API_SECRET
-              - name: SMTP_HOST
-                valueFrom:
-                  configMapKeyRef:
-                    name: botium-box-configmap
-                    key: SMTP_HOST
-              - name: SMTP_PORT
-                valueFrom:
-                  configMapKeyRef:
-                    name: botium-box-configmap
-                    key: SMTP_PORT
-              {{- if .Values.SMTP_SECURE }}
-              - name: SMTP_SECURE
-                valueFrom:
-                  configMapKeyRef:
-                    name: botium-box-configmap
-                    key: SMTP_SECURE
-              {{- end }}
-              - name: SMTP_USER
-                valueFrom:
-                  secretKeyRef:
-                    name: botium-box-secrets
-                    key: SMTP_USER
-              - name: SMTP_PASSWORD
-                valueFrom:
-                  secretKeyRef:
-                    name: botium-box-secrets
-                    key: SMTP_PASSWORD
-              {{- if .Values.INSTALL_ZAP }}
-              - name: ZAP_ENDPOINT
-                valueFrom:
-                  configMapKeyRef:
-                    name: botium-box-configmap
-                    key: ZAP_ENDPOINT
-              {{- end }}
+            - name: PRISMA_MANAGEMENT_API_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: PRISMA_MANAGEMENT_API_SECRET
+            - name: SMTP_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: SMTP_HOST
+            - name: SMTP_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: SMTP_PORT
+            {{- if .Values.SMTP_SECURE }}
+            - name: SMTP_SECURE
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: SMTP_SECURE
+            {{- end }}
+            - name: SMTP_USER
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: SMTP_USER
+            - name: SMTP_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: SMTP_PASSWORD
+            {{- if .Values.INSTALL_ZAP }}
+            - name: ZAP_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: ZAP_ENDPOINT
+            {{- end }}
       volumes:
         - name: botium-box-mini-storage
           persistentVolumeClaim:
