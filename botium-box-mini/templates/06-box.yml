@@ -96,6 +96,7 @@ metadata:
   name: box-ingress
   annotations:
     kubernetes.io/ingress.class: nginx
+    kubernetes.io/tls-acme: "true"
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     rancher.io/globalDNS.hostname: '*.{{ .Values.SHORTNAME }}.botiumbox.com'
     cert-manager.io/cluster-issuer: botium-box-{{ .Values.SHORTNAME }}-letsencrypt-prod
@@ -127,6 +128,7 @@ spec:
       providers:
         - name: aws-dns
           route53:
+            region: eu-west-1
             accessKeyIDSecretRef:
               name: botium-box-secrets
               key: AWS_ACCESS_KEY_ID
