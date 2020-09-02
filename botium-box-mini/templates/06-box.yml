@@ -127,7 +127,6 @@ spec:
       providers:
         - name: aws-dns
           route53:
-            region: eu-west-1
             accessKeyIDSecretRef:
               name: botium-box-secrets
               key: AWS_ACCESS_KEY_ID
