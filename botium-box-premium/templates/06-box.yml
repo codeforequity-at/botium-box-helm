@@ -82,6 +82,11 @@ spec:
                 configMapKeyRef:
                   name: botium-box-configmap
                   key: COACH_WORKER_ENDPOINT
+            - name: COACH_WORKER_APIKEY
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: COACH_WORKER_APIKEY
       volumes:
         - name: botium-box-storage
           persistentVolumeClaim:

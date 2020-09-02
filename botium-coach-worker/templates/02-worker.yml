@@ -25,6 +25,11 @@ spec:
             - name: worker-80
               containerPort: 80
           env:
+            - name: AUTH_APIKEYS
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-coach-worker-configmap
+                  key: AUTH_APIKEYS
             - name: WEB_CONCURRENCY
               valueFrom:
                 configMapKeyRef:

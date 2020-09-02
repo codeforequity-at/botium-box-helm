@@ -9,6 +9,9 @@ questions:
   description: "Botium Coach Worker Version"
   type: string
   required: true
+- variable: AUTH_APIKEYS
+  description: "Valid API Keys (comma separated)"
+  type: string
 - variable: WEB_CONCURRENCY
   default: 1
   description: "Botium Coach Worker Web Concurrency"
