@@ -134,7 +134,7 @@ metadata:
     kubernetes.io/tls-acme: "true"
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     rancher.io/globalDNS.hostname: '*.{{ .Values.SHORTNAME }}.botiumbox.com'
-    cert-manager.io/cluster-issuer: botium-box-{{ .Values.SHORTNAME }}-letsencrypt-prod
+    cert-manager.io/cluster-issuer: {{ .Values.SHORTNAME }}-letsencrypt-prod
 spec:
   tls:
   - hosts:
@@ -152,13 +152,13 @@ spec:
 apiVersion: cert-manager.io/v1alpha2
 kind: Issuer
 metadata:
-  name: botium-box-{{ .Values.SHORTNAME }}-letsencrypt-prod
+  name: {{ .Values.SHORTNAME }}-letsencrypt-prod
 spec:
   acme:
     server: https://acme-v02.api.letsencrypt.org/directory
     email: florian.treml@botium.at
     privateKeySecretRef:
-      name: botium-box-{{ .Values.SHORTNAME }}-letsencrypt-prod
+      name: {{ .Values.SHORTNAME }}-letsencrypt-prod
     dns01:
       providers:
         - name: aws-dns
@@ -174,20 +174,19 @@ spec:
 apiVersion: cert-manager.io/v1alpha2
 kind: Certificate
 metadata:
-  name: botium-box-{{ .Values.SHORTNAME }}.botiumbox-com
+  name: {{ .Values.SHORTNAME }}.botiumbox-com
 spec:
-  secretName: botium-box-{{ .Values.SHORTNAME }}.botiumbox-com-tls
+  secretName: {{ .Values.SHORTNAME }}.botiumbox-com-tls
   issuerRef:
-    name: botium-box-{{ .Values.SHORTNAME }}-letsencrypt-prod
+    name: {{ .Values.SHORTNAME }}-letsencrypt-prod
     kind: Issuer
   commonName: '*.{{ .Values.SHORTNAME }}.botiumbox.com'
   dnsNames:
-  - {{ .Values.SHORTNAME }}.botiumbox.com
-  - *.{{ .Values.SHORTNAME }}.botiumbox.com
+  - { .Values.SHORTNAME }}.botiumbox.com
+  - '*.{{ .Values.SHORTNAME }}.botiumbox.com'
   acme:
     config:
     - dns01:
         provider: aws-dns
       domains:
-      - {{ .Values.SHORTNAME }}.botiumbox.com
       - '*.{{ .Values.SHORTNAME }}.botiumbox.com'
