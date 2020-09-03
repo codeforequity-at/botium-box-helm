@@ -46,7 +46,14 @@ spec:
             - name: BOTIUMBOX_SCANFORTESTSETS
               value: /app/datasets-mini
             - name: BOTIUMBOX_AGENT_LIST
-              value: box-agent-0,box-agent-1,box-agent-2,box-agent-3,box-agent-4,box-agent-5,box-agent-6,box-agent-7,box-agent-8,box-agent-9,box-agent-10,box-agent-11,box-agent-12,box-agent-13,box-agent-14,box-agent-15,box-agent-16,box-agent-17,box-agent-18,box-agent-19
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: BOTIUMBOX_AGENT_LIST
+            - name: BOTIUMBOX_FEATURE_FILEBROWSER
+              value: "0"
+            - name: BOTIUMBOX_FEATURE_DELETETESTSESSION
+              value: "0"
             - name: PRISMA_CONFIG_FILE
               valueFrom:
                 configMapKeyRef:

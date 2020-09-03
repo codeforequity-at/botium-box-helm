@@ -13,3 +13,4 @@ data:
   ZAP_ENDPOINT: http://zap:8080
   SMTP_HOST: "{{ .Values.SMTP_HOST }}"
   SMTP_PORT: "{{ .Values.SMTP_PORT }}"
+  BOTIUMBOX_AGENT_LIST: "{{ .Values.BOTIUMBOX_AGENT_LIST }}"

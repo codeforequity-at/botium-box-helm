@@ -78,3 +78,8 @@ questions:
   description: "Cluster Shortname (*.shortname.botiumbox.com, e.g. *.mini01.botiumbox.com)"
   type: string
   required: true
+- variable: BOTIUMBOX_AGENT_LIST
+  default: "box-agent-0,box-agent-1,box-agent-2,box-agent-3,box-agent-4,box-agent-5,box-agent-6,box-agent-7,box-agent-8,box-agent-9,box-agent-10,box-agent-11,box-agent-12,box-agent-13,box-agent-14,box-agent-15,box-agent-16,box-agent-17,box-agent-18,box-agent-19"
+  description: "List of Agent Names (separated by komma)"
+  type: string
+  required: true
