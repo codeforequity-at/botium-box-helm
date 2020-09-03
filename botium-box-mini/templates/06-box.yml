@@ -138,6 +138,7 @@ metadata:
 spec:
   tls:
   - hosts:
+    - {{ .Values.SHORTNAME }}.botiumbox.com
     - '*.{{ .Values.SHORTNAME }}.botiumbox.com'
     secretName: {{ .Values.SHORTNAME }}.botiumbox-com-tls
   rules:
@@ -150,7 +151,7 @@ spec:
           servicePort: 4000
 ---
 apiVersion: cert-manager.io/v1alpha2
-kind: Issuer
+kind: ClusterIssuer
 metadata:
   name: {{ .Values.SHORTNAME }}-letsencrypt-prod
 spec:
@@ -159,17 +160,19 @@ spec:
     email: florian.treml@botium.at
     privateKeySecretRef:
       name: {{ .Values.SHORTNAME }}-letsencrypt-prod
-    dns01:
-      providers:
-        - name: aws-dns
-          route53:
-            region: eu-west-1
-            accessKeyIDSecretRef:
-              name: botium-box-secrets
-              key: AWS_ACCESS_KEY_ID
-            secretAccessKeySecretRef:
-              name: botium-box-secrets
-              key: AWS_SECRET_ACCESS_KEY
+    solvers:
+    - selector:
+        dnsZones:
+          - '*.{{ .Values.SHORTNAME }}.botiumbox.com'
+      dns01:
+        route53:
+          region: eu-west-1
+          accessKeyIDSecretRef:
+            name: botium-box-secrets
+            key: AWS_ACCESS_KEY_ID
+          secretAccessKeySecretRef:
+            name: botium-box-secrets
+            key: AWS_SECRET_ACCESS_KEY
 ---
 apiVersion: cert-manager.io/v1alpha2
 kind: Certificate
@@ -179,15 +182,12 @@ spec:
   secretName: {{ .Values.SHORTNAME }}.botiumbox-com-tls
   issuerRef:
     name: {{ .Values.SHORTNAME }}-letsencrypt-prod
-    kind: Issuer
-  commonName: '*.{{ .Values.SHORTNAME }}.botiumbox.com'
+    kind: ClusterIssuer
   dnsNames:
-  - {{ .Values.SHORTNAME }}.botiumbox.com
-  - '*.{{ .Values.SHORTNAME }}.botiumbox.com'
+    - '*.{{ .Values.SHORTNAME }}.botiumbox.com'
   acme:
     config:
-    - dns01:
-        provider: aws-dns
-      domains:
-      - {{ .Values.SHORTNAME }}.botiumbox.com
-      - '*.{{ .Values.SHORTNAME }}.botiumbox.com'
+      - dns01:
+          provider: route53
+        domains:
+          - '*.{{ .Values.SHORTNAME }}.botiumbox.com'
