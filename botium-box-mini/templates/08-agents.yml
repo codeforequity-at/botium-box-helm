@@ -36,6 +36,8 @@ spec:
               value: /app/storage/resources
             - name: TEMPDIR
               value: /app/storage/botiumwork
+            - name: BOTIUMBOX_QUEUE_CONCURRENCY
+              value: 10
             - name: BOTIUMBOX_QUEUE_REDISURL
               valueFrom:
                 configMapKeyRef:
