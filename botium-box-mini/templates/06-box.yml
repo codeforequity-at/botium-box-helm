@@ -165,7 +165,7 @@ spec:
       dns01:
         route53:
           region: eu-west-1
-          accessKeyIDSecretRef: "{{ .Values.AWS_ACCESS_KEY_ID }}"
+          accessKeyID: "{{ .Values.AWS_ACCESS_KEY_ID }}"
           secretAccessKeySecretRef:
             name: botium-box-acme-route53
             key: AWS_SECRET_ACCESS_KEY
