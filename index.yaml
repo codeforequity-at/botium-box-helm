@@ -3,9 +3,9 @@ entries:
   botium-box-ce:
   - apiVersion: v2
     appVersion: 2.6.1
-    created: "2020-09-02T17:53:15.124961243+02:00"
+    created: "2020-09-03T09:36:10.0951789+02:00"
     description: Botium Box
-    digest: b5474220240d76d5ebff6925ee90dbc610e35146dd795249a00cf008839d9932
+    digest: ab887f8615f4d133b9ffc502b0752026a7b1110dd4311b4d22bb1abc77868e00
     name: botium-box-ce
     type: application
     urls:
@@ -14,9 +14,9 @@ entries:
   botium-box-ce-storage:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2020-09-02T17:53:15.125285862+02:00"
+    created: "2020-09-03T09:36:10.0951789+02:00"
     description: Botium Box
-    digest: 4caa281503f5cf384b4f4ae5e4184b6687df21ab39cc5f04af8e449f04fd52d3
+    digest: 243ab390642e756396892f0cf22dc632b5d4576198e79772630d81e60e09ee10
     name: botium-box-ce-storage
     type: application
     urls:
@@ -25,20 +25,20 @@ entries:
   botium-box-mini:
   - apiVersion: v1
     appVersion: 2.6.1
-    created: "2020-09-02T17:53:15.125843566+02:00"
+    created: "2020-09-03T09:36:10.0961776+02:00"
     description: Botium Box Mini
-    digest: e242e9a66f869593fb95d9c3e0f43ac762be6e76fbcae0ec46feae7e1dc39f4d
+    digest: 8b2e9b9e2ef6d93116f4850c755aac8f58a4ad437020e6968d02f24d3dda01d5
     name: botium-box-mini
     type: application
     urls:
-    - https://github.com/codeforequity-at/botium-box-helm/raw/master/botium-box-mini-0.0.19.tgz
-    version: 0.0.19
+    - https://github.com/codeforequity-at/botium-box-helm/raw/master/botium-box-mini-0.0.20.tgz
+    version: 0.0.20
   botium-box-premium-all:
   - apiVersion: v2
     appVersion: 2.6.1
-    created: "2020-09-02T17:53:15.126521603+02:00"
+    created: "2020-09-03T09:36:10.0971778+02:00"
     description: Botium Box
-    digest: 859f82a0ed6b90e757cad3fd66b75b041e2de6eae454c41dd530563755b6fd77
+    digest: d67dd52b1298f83ea7fee10921802c54d9ee26c557f35e0ada22a3367d6c65c4
     name: botium-box-premium-all
     type: application
     urls:
@@ -47,9 +47,9 @@ entries:
   botium-box-premium-backup:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2020-09-02T17:53:15.127094789+02:00"
+    created: "2020-09-03T09:36:10.0971778+02:00"
     description: Botium Box
-    digest: bf3e8e46d8ebb851c887f2ba1f626e11cbdb80ea20f9b02ae19bc4d7bc810266
+    digest: 7719813d0d99f395dec7eeb27d2a3ab200662fff934387c9c83dde00c3c43a1b
     name: botium-box-premium-backup
     type: application
     urls:
@@ -58,13 +58,13 @@ entries:
   botium-box-premium-ingress:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2020-09-02T17:53:15.130736917+02:00"
+    created: "2020-09-03T09:36:10.1026197+02:00"
     dependencies:
     - name: nginx-ingress
       repository: https://kubernetes-charts.storage.googleapis.com/
       version: 1.28.3
     description: Botium Box
-    digest: cf24fb6c1301c8812ae84e27999cd89491828fc67c63967f49f0bd539dea2b9e
+    digest: 481ffe8ad5e3611800d0580114bc93ad469bd853adb4b6377a7ea0a7d2da63fa
     name: botium-box-premium-ingress
     type: application
     urls:
@@ -73,9 +73,9 @@ entries:
   botium-box-premium-storage:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2020-09-02T17:53:15.131018+02:00"
+    created: "2020-09-03T09:36:10.1033069+02:00"
     description: Botium Box
-    digest: 15c689a18c608d7efe99e485457f16ff0dff066acce138e1741c3552d548d546
+    digest: 21121390e369072a277f58413f56d2afeb5dcc250f509f4087b1454e9fb87dc1
     name: botium-box-premium-storage
     type: application
     urls:
@@ -84,9 +84,9 @@ entries:
   botium-box-prisma:
   - apiVersion: v1
     appVersion: 1.0.0
-    created: "2020-09-02T17:53:15.131397663+02:00"
+    created: "2020-09-03T09:36:10.1041779+02:00"
     description: Botium Box Prisma
-    digest: c8c62b04eaa09675ad69eacec9316d0c68c68303e700f6eb53b7488deb617fe0
+    digest: d3a1a003de2d6c82d425fa9da6994303ec5aafec7a9f9a40c0cfd4216fc8b555
     name: botium-box-prisma
     type: application
     urls:
@@ -95,9 +95,9 @@ entries:
   botium-box-prisma-nodb:
   - apiVersion: v1
     appVersion: 1.0.0
-    created: "2020-09-02T17:53:15.131763928+02:00"
+    created: "2020-09-03T09:36:10.1041779+02:00"
     description: Botium Box Prisma without Mysql
-    digest: 881410a4cff43f3a31199c3f51ec14a2c22b200d1566930d4797456970b42aeb
+    digest: 6edabc08961e4e66fd546f68d6bf779d8bcf04872da75fc93165912eb925a3c3
     name: botium-box-prisma-nodb
     type: application
     urls:
@@ -106,9 +106,9 @@ entries:
   botium-box-prisma-rds-test:
   - apiVersion: v1
     appVersion: 1.0.0
-    created: "2020-09-02T17:53:15.13208724+02:00"
+    created: "2020-09-03T09:36:10.1051766+02:00"
     description: Botium Box Prisma RDS Test
-    digest: e441606937b11fea73020fa4ebd18be9280eabc53dcdb63c395cef428e0f1e0f
+    digest: 5cd551e71e4980d3cd82d28a40a5eaa39676781a11bdaeb67574cb8549750d8f
     name: botium-box-prisma-rds-test
     type: application
     urls:
@@ -117,9 +117,9 @@ entries:
   botium-box-standalone:
   - apiVersion: v1
     appVersion: 2.6.1
-    created: "2020-09-02T17:53:15.132663023+02:00"
+    created: "2020-09-03T09:36:10.1061775+02:00"
     description: Botium Box Standalone
-    digest: f37f449b9f125a1e85bd9b7d8b51e8235a67930a09a669ba2c3e8e09f28d9dbf
+    digest: e7f427b50a3594fee9ee5af5f3a6f7198d3db810018562083434ad6b51acaede
     name: botium-box-standalone
     type: application
     urls:
@@ -128,9 +128,9 @@ entries:
   botium-coach-worker:
   - apiVersion: v1
     appVersion: 0.0.2
-    created: "2020-09-02T17:53:15.132994443+02:00"
+    created: "2020-09-03T09:36:10.1071764+02:00"
     description: Botium Coach Worker
-    digest: 830db88bc7a81fa5fe0f9b44ea3b0d138e57f35209b9af7ed3446e05565644e3
+    digest: 23b0fe1d7a01056c6b3373439ce7ff4dd97245561442adf244e763f74f288d65
     name: botium-coach-worker
     type: application
     urls:
@@ -139,9 +139,9 @@ entries:
   botium-efs-provisioner:
   - apiVersion: v1
     appVersion: latest
-    created: "2020-09-02T17:53:15.133877393+02:00"
+    created: "2020-09-03T09:36:10.1071764+02:00"
     description: Botium EFS Provisioner
-    digest: 717cd083fe3e454da4a871f3792137b90fdb597da541e89dd015dd6e93d1d770
+    digest: 42b7a98855f01ec6fba18d6fc30627c8a733d6aced24a685a307274e9ce54cc6
     name: botium-efs-provisioner
     type: application
     urls:
@@ -150,12 +150,12 @@ entries:
   ingress-nginx:
   - apiVersion: v1
     appVersion: latest
-    created: "2020-09-02T17:53:15.134641495+02:00"
+    created: "2020-09-03T09:36:10.1082977+02:00"
     description: Botium Ingress NGinx Reverse Proxy
-    digest: d438b19e076b752c1331800dbc1f653faeb239d268f81edb5627672376d41289
+    digest: cd1f8d6b7f7fdde2e4af5b59070499f49c92d8d6c377c1f1bab499c2f12f7e89
     name: ingress-nginx
     type: application
     urls:
     - https://github.com/codeforequity-at/botium-box-helm/raw/master/ingress-nginx-0.0.16.tgz
     version: 0.0.16
-generated: "2020-09-02T17:53:15.1238842+02:00"
+generated: "2020-09-03T09:36:10.0941776+02:00"

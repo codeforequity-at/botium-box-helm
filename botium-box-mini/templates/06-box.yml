@@ -183,7 +183,7 @@ spec:
   commonName: '*.{{ .Values.SHORTNAME }}.botiumbox.com'
   dnsNames:
   - {{ .Values.SHORTNAME }}.botiumbox.com
-  - '*.{{ .Values.SHORTNAME }}.botiumbox.com'
+  - *.{{ .Values.SHORTNAME }}.botiumbox.com
   acme:
     config:
     - dns01:
