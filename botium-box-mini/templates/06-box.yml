@@ -182,11 +182,12 @@ spec:
     kind: Issuer
   commonName: '*.{{ .Values.SHORTNAME }}.botiumbox.com'
   dnsNames:
-  - { .Values.SHORTNAME }}.botiumbox.com
+  - {{ .Values.SHORTNAME }}.botiumbox.com
   - '*.{{ .Values.SHORTNAME }}.botiumbox.com'
   acme:
     config:
     - dns01:
         provider: aws-dns
       domains:
+      - {{ .Values.SHORTNAME }}.botiumbox.com
       - '*.{{ .Values.SHORTNAME }}.botiumbox.com'
