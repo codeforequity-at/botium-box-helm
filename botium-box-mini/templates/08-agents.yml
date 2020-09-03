@@ -24,7 +24,7 @@ spec:
           image: botium/botium-box-agent:{{ .Values.BOTIUM_BOX_VERSION }}
           volumeMounts:
           - mountPath: "/app/storage/"
-            name: botium-box-storage
+            name: botium-box-mini-storage
           env:
             - name: BOTIUMBOX_AGENT_NAME
               valueFrom:
@@ -42,9 +42,9 @@ spec:
                   name: botium-box-configmap
                   key: BOTIUMBOX_QUEUE_REDISURL
       volumes:
-        - name: botium-box-storage
+        - name: botium-box-mini-storage
           persistentVolumeClaim:
-            claimName: botium-box-storage
+            claimName: botium-box-mini-storage
 ---
 apiVersion: v1
 kind: Service
