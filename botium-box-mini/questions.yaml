@@ -58,6 +58,11 @@ questions:
   description: "Coach Worker Endpoint"
   type: string
   required: false
+- variable: JWT_SECRET
+  default: ""
+  description: "Custom JWT Secret for Shared Mini Instance"
+  type: string
+  required: true
 - variable: JWT_EXPIRY_MINUTES
   default: 30
   description: "JWT expiry in minutes (default: 43200 = 30 days)"

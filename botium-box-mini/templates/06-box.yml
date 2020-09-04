@@ -54,6 +54,11 @@ spec:
               value: "0"
             - name: BOTIUMBOX_FEATURE_DELETETESTSESSION
               value: "0"
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: JWT_SECRET
             - name: PRISMA_CONFIG_FILE
               valueFrom:
                 configMapKeyRef:
