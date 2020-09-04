@@ -36,6 +36,25 @@ spec:
                   name: botium-coach-worker-configmap
                   key: WEB_CONCURRENCY
 ---
+apiVersion: autoscaling/v2beta2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: coach-worker-memory-scale 
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: coach-worker
+  minReplicas: 3
+  maxReplicas: 10
+  metrics:
+  - type: Resource
+    resource:
+      name: memory
+      target:
+        type: Utilization
+        averageValue: 10Mi
+---
 apiVersion: v1
 kind: Service
 metadata:
