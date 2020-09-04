@@ -158,7 +158,6 @@ apiVersion: cert-manager.io/v1alpha2
 kind: ClusterIssuer
 metadata:
   name: {{ .Values.SHORTNAME }}-letsencrypt-prod
-  namespace: cert-manager
 spec:
   acme:
     server: https://acme-v02.api.letsencrypt.org/directory
@@ -174,7 +173,7 @@ spec:
           region: eu-west-1
           accessKeyID: "{{ .Values.AWS_ACCESS_KEY_ID }}"
           secretAccessKeySecretRef:
-            name: botium-box-acme-route53
+            name: botium-box-secrets
             key: AWS_SECRET_ACCESS_KEY
 ---
 apiVersion: cert-manager.io/v1alpha2
