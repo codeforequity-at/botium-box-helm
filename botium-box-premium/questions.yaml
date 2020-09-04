@@ -19,17 +19,17 @@ questions:
   description: "Prisma Secret"
   type: string
   required: true
-- variable: PRISMA_CLOUD_SESSION_KEY 
+- variable: PRISMA_CLOUD_SESSION_KEY
   default: ""
   description: "Prisma Cloud Session Key"
   type: string
   required: false
-- variable: SEED_PASSWORD 
+- variable: SEED_PASSWORD
   default: "nooneknows"
   description: "Initial Botium Box Password"
   type: string
   required: true
-- variable: STORAGE_CLASS 
+- variable: STORAGE_CLASS
   description: "Storage Class"
   type: storageclass
   required: true
@@ -38,7 +38,7 @@ questions:
   type: string
   required: true
 - variable: COACH_WORKER_ENDPOINT
-  default: "https://coach-worker-test.botiumbox.com/1.0"
+  default: "https://coach-worker.botiumbox.com/1.0"
   description: "Coach Worker Endpoint"
   type: string
   required: false
