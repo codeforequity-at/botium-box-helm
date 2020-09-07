@@ -21,9 +21,9 @@ spec:
         - name: coach-worker
           resources:
             requests:
-              memory: "1.5Gi"
+              memory: "2Gi"
             limits:
-              memory: "2.5Gi"
+              memory: "3Gi"
           image: botium/botium-coach-worker:{{ .Values.BOTIUM_COACH_WORKER_VERSION }}
           imagePullPolicy: Always
           ports:
@@ -58,7 +58,7 @@ spec:
       name: memory
       target:
         type: Utilization
-        averageValue: "2Gi"
+        averageValue: "2.7Gi"
 ---
 apiVersion: v1
 kind: Service
