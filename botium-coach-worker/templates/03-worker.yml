@@ -32,7 +32,7 @@ spec:
           env:
             - name: AUTH_APIKEYS
               valueFrom:
-                secretMapKeyRef:
+                secretKeyRef:
                   name: botium-coach-worker-secrets
                   key: AUTH_APIKEYS
             - name: WEB_CONCURRENCY
