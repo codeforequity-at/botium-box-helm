@@ -151,7 +151,7 @@ spec:
           image: botium/botium-box-server:{{ .Values.BOTIUM_BOX_VERSION }}
           imagePullPolicy: Always
           command: ["/bin/sh"]
-          args: ["-c", "git clone https://{{ .Values.BITBUCKET_USERNAME }}:{{ .Values.BITBUCKET_PASSWORD }}@bitbucket.org/botiumcoreteam/botium-box.git && cd botium-box && npm install && node -r dotenv-flow/config dist/botium-box-server.js"]
+          args: ["-c", "apk add curl-dev g++ make python dos2unix && git clone https://{{ .Values.BITBUCKET_USERNAME }}:{{ .Values.BITBUCKET_PASSWORD }}@bitbucket.org/botiumcoreteam/botium-box.git && cd botium-box && npm install && node -r dotenv-flow/config dist/botium-box-server.js"]
           ports:
             - name: box-4000
               containerPort: 4000
