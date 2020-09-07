@@ -81,7 +81,7 @@ spec:
                   key: COACH_WORKER_ENDPOINT
             - name: COACH_WORKER_APIKEY
               valueFrom:
-                secretgMapKeyRef:
+                secretKeyRef:
                   name: botium-box-secrets
                   key: COACH_WORKER_APIKEY
             - name: PRISMA_MANAGEMENT_API_SECRET
