@@ -88,3 +88,13 @@ questions:
   description: "List of Agent Names (separated by komma)"
   type: string
   required: true
+- variable: BITBUCKET_USERNAME
+  default: ""
+  description: "BitBucket Username"
+  type: string
+  required: true
+- variable: BITBUCKET_PASSWORD
+  default: ""
+  description: "BitBucket Password"
+  type: string
+  required: true
