@@ -70,6 +70,11 @@ spec:
                 configMapKeyRef:
                   name: botium-box-configmap
                   key: COACH_WORKER_ENDPOINT
+            - name: COACH_WORKER_APIKEY
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-secrets
+                  key: COACH_WORKER_APIKEY
       volumes:
         - name: botium-box-storage
           persistentVolumeClaim:
@@ -99,7 +104,7 @@ spec:
   replicas: {{ .Values.AGENT_COUNT }}
   selector:
     matchLabels:
-      name: box-agent	
+      name: box-agent
   template:
     metadata:
       labels:
@@ -117,7 +122,7 @@ spec:
             - name: BOTIUMBOX_AGENT_NAME
               valueFrom:
                 fieldRef:
-                  fieldPath: metadata.name		
+                  fieldPath: metadata.name
             - name: DEBUG
               value: botium*
             - name: RESOURCESDIR
@@ -142,4 +147,4 @@ spec:
   clusterIP: None
   selector:
     name: box-agent
-    app: botium-box 		
+    app: botium-box

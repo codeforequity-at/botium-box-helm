@@ -39,3 +39,7 @@ questions:
   description: "Coach Worker Endpoint"
   type: string
   required: false
+- variable: COACH_WORKER_APIKEY
+  default: ""
+  description: "Coach Worker Api Key"
+  type: string
