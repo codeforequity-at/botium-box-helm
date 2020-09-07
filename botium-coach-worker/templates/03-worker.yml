@@ -32,8 +32,8 @@ spec:
           env:
             - name: AUTH_APIKEYS
               valueFrom:
-                configMapKeyRef:
-                  name: botium-coach-worker-configmap
+                secretMapKeyRef:
+                  name: botium-coach-worker-secrets
                   key: AUTH_APIKEYS
             - name: WEB_CONCURRENCY
               valueFrom:

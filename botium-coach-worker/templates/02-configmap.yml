@@ -6,5 +6,4 @@ metadata:
     name: config
     app: botium-coach-worker
 data:
-  AUTH_APIKEYS: "{{ .Values.AUTH_APIKEYS }}"
   WEB_CONCURRENCY: "{{ .Values.WEB_CONCURRENCY }}"
