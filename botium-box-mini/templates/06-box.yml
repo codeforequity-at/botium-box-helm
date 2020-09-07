@@ -126,6 +126,132 @@ spec:
           persistentVolumeClaim:
             claimName: botium-box-mini-prisma-config-storage
 ---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: box-server-shell
+  labels:
+    name: box-server-shell
+    app: botium-box-shell
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        name: box-server-shell
+        app: botium-box-shell
+    spec:
+      securityContext:
+        runAsUser: 0
+        fsGroup: 0
+      containers:
+        - name: box-server
+          image: botium/botium-box-server:{{ .Values.BOTIUM_BOX_VERSION }}
+          imagePullPolicy: Always
+          command: ["/bin/sh"]
+          args: ["-c", "node -r dotenv-flow/config dist/botium-box-server.js"]
+          ports:
+            - name: box-4000
+              containerPort: 4000
+          volumeMounts:
+          - mountPath: "/app/storage/"
+            name: botium-box-mini-storage
+          - mountPath: "/app/prisma-config/"
+            name: botium-box-mini-prisma-config-storage
+          env:
+            - name: DEBUG
+              value: botium*
+            - name: TESTSETDIR
+              value: /app/server/testsets
+            - name: TESTSETDIR_PUBLIC
+              value: /app/server/testsets
+            - name: TEMPDIR
+              value: /app/server/botiumwork
+            - name: BOTIUMBOX_SCANFORTESTSETS
+              value: /app/datasets-mini
+            - name: BOTIUMBOX_AGENT_LIST
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: BOTIUMBOX_AGENT_LIST
+            - name: BOTIUMBOX_FEATURE_FILEBROWSER
+              value: "0"
+            - name: BOTIUMBOX_FEATURE_DELETETESTSESSION
+              value: "0"
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: JWT_SECRET
+            - name: PRISMA_CONFIG_FILE
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: PRISMA_CONFIG_FILE
+            - name: LICENSE_KEY
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: LICENSE_KEY
+            - name: BOTIUMBOX_QUEUE_REDISURL
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: BOTIUMBOX_QUEUE_REDISURL
+            - name: COACH_WORKER_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: COACH_WORKER_ENDPOINT
+            - name: PRISMA_MANAGEMENT_API_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: PRISMA_MANAGEMENT_API_SECRET
+            - name: SMTP_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: SMTP_HOST
+            - name: SMTP_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: SMTP_PORT
+            {{- if .Values.SMTP_SECURE }}
+            - name: SMTP_SECURE
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: SMTP_SECURE
+            {{- end }}
+            - name: SMTP_USER
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: SMTP_USER
+            - name: SMTP_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: SMTP_PASSWORD
+            {{- if .Values.INSTALL_ZAP }}
+            - name: ZAP_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: ZAP_ENDPOINT
+            {{- end }}
+      volumes:
+        - name: botium-box-mini-storage
+          persistentVolumeClaim:
+            claimName: botium-box-mini-storage
+        - name: botium-box-mini-prisma-config-storage
+          persistentVolumeClaim:
+            claimName: botium-box-mini-prisma-config-storage
+---
 apiVersion: v1
 kind: Service
 metadata:
