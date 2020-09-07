@@ -19,6 +19,11 @@ spec:
     spec:
       containers:
         - name: coach-worker
+          resources:
+            requests:
+              memory: "1Gi"
+            limits:
+              memory: "2Gi"
           image: botium/botium-coach-worker:{{ .Values.BOTIUM_COACH_WORKER_VERSION }}
           imagePullPolicy: Always
           ports:
