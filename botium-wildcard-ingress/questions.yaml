@@ -1,0 +1,19 @@
+- variable: AWS_ACCESS_KEY_ID
+  default: ""
+  description: "AWS Access Key ID for Wildcard Certificate Challenge"
+  type: string
+  required: true
+- variable: AWS_SECRET_ACCESS_KEY
+  default: ""
+  description: "AWS Secret Access Key for Wildcard Certificate Challenge"
+  type: string
+  required: true
+- variable: SHORTNAME
+  default: ""
+  description: "Cluster Shortname (*.shortname.botiumbox.com, e.g. *.mini01.botiumbox.com)"
+  type: string
+  required: true
+- variable: SERVICES
+  default: "{}"
+  description: "Sevices"
+  type: array

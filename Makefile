@@ -15,6 +15,7 @@ update:
 	helm dependency update botium-coach-worker
 	helm dependency update ingress-nginx
 	helm dependency update redis-shared
+	helm dependency update botium-wildcard-ingress
 
 package:
 	rm -f botium-box-ce-*.tgz botium-box-premium-*.tgz botium-box-prisma-*.tgz botium-box-mini-*.tgz botium-box-standalone-*.tgz botium-coach-worker-*.tgz botium-efs-provisioner-*.tgz ingress-nginx-*.tgz
@@ -33,6 +34,7 @@ package:
 	helm package botium-coach-worker
 	helm package ingress-nginx
 	helm package redis-shared
+	helm package botium-wildcard-ingress
 	helm repo index . --url https://github.com/codeforequity-at/botium-box-helm/raw/master/
 
 publish:

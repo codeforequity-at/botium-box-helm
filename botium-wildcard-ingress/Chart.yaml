@@ -1,0 +1,7 @@
+apiVersion: v1
+name: botium-wildcard-ingress
+description: Botium WildCard Ingress
+
+type: application
+version: 0.0.1
+appVersion: 0.0.1
