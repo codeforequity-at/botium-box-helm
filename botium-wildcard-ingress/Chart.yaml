@@ -3,5 +3,5 @@ name: botium-wildcard-ingress
 description: Botium WildCard Ingress
 
 type: application
-version: 0.0.8
+version: 0.0.9
 appVersion: 0.0.1

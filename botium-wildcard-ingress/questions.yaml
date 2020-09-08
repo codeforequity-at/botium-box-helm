@@ -13,3 +13,6 @@
   description: "Cluster Shortname (*.shortname.botiumbox.com, e.g. *.mini01.botiumbox.com)"
   type: string
   required: true
+- variable: SERVICES
+  description: "Services"
+  type: array
