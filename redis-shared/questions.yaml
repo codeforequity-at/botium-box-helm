@@ -1,0 +1,19 @@
+questions:
+- variable: SHORTNAME
+  default: ""
+  description: "Instance Shortname (for domain name)"
+  type: string
+  required: true
+- variable: BOTIUM_COACH_WORKER_VERSION
+  default: "latest"
+  description: "Botium Coach Worker Version"
+  type: string
+  required: true
+- variable: AUTH_APIKEYS
+  description: "Valid API Keys (comma separated)"
+  type: string
+- variable: WEB_CONCURRENCY
+  default: 1
+  description: "Botium Coach Worker Web Concurrency"
+  type: int
+  required: true
