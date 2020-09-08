@@ -1,5 +1,15 @@
 {{- $root := . -}}
 
+{{- range .Values.SERVICES }}
+kind: Service
+apiVersion: v1
+metadata:
+  name: {{ .SERVICE_NAME }}
+spec:
+  type: ExternalName
+  externalName: {{ .SERVICE_NAME_EXTERNAL }}
+{{- end}}
+---
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
