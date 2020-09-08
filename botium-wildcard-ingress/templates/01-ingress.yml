@@ -14,8 +14,8 @@ spec:
     - '*.{{ .Values.SHORTNAME }}.botiumbox.com'
     secretName: {{ .Values.SHORTNAME }}.botiumbox-com-tls
   rules:
-  {{- range .Values.SERVICES}}
-  - host: '*.{{ $root.Values.SHORTNAME }}.botiumbox.com'
+  {{- range .Values.SERVICES }}
+  - host: '{{ .SERVICE_SUBDOMAIN }}.{{ $root.Values.SHORTNAME }}.botiumbox.com'
     http:
       paths:
       - path: /
