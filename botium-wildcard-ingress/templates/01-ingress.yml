@@ -1,3 +1,5 @@
+{{- $root := . -}}
+
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
@@ -13,7 +15,7 @@ spec:
     secretName: {{ .Values.SHORTNAME }}.botiumbox-com-tls
   rules:
   {{- range .Values.SERVICES}}
-  - host: '*.{{ .Values.SHORTNAME }}.botiumbox.com'
+  - host: '*.{{ $root.Values.SHORTNAME }}.botiumbox.com'
     http:
       paths:
       - path: /

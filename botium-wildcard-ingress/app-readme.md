@@ -1,1 +1,1 @@
-Botium Box Mini for Kubernetes Deployment
+Botium Wildcard Ingress
