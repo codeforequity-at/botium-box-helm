@@ -37,6 +37,7 @@ spec:
       protocol: TCP
   selector:
     name: prisma
+{{- if .Values.INSTALL_INGRESS }}
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
@@ -63,7 +64,7 @@ spec:
       - path: /mysql-admin
         backend:
           serviceName: mysql-admin
-          servicePort: 8080          
+          servicePort: 8080
 ---
 apiVersion: cert-manager.io/v1alpha2
 kind: Issuer
@@ -92,3 +93,4 @@ spec:
   commonName: {{ .Values.FQDN }}
   dnsNames:
   - {{ .Values.FQDN }}
+{{- end }}
