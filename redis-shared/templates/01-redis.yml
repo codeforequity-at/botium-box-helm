@@ -31,4 +31,3 @@ spec:
       protocol: TCP
   selector:
     name: redis
-    app: botium-box
