@@ -110,3 +110,8 @@ questions:
   description: "Redis Service Name"
   type: string
   required: true
+- variable: BOTIUMBOX_QUEUE_PREFIX
+  default: "qprod"
+  description: "Redis Prefix"
+  type: string
+  required: true
