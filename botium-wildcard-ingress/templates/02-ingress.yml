@@ -35,7 +35,7 @@ spec:
   {{- end}}
 ---
 apiVersion: cert-manager.io/v1alpha2
-kind: Issuer
+kind: ClusterIssuer
 metadata:
   name: {{ .Values.SHORTNAME }}-letsencrypt-prod
 spec:
@@ -64,7 +64,7 @@ spec:
   secretName: {{ .Values.SHORTNAME }}.botiumbox-com-tls
   issuerRef:
     name: {{ .Values.SHORTNAME }}-letsencrypt-prod
-    kind: Issuer
+    kind: ClusterIssuer
   dnsNames:
     - '*.{{ .Values.SHORTNAME }}.botiumbox.com'
   acme:
