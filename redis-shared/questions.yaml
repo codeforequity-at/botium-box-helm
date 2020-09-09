@@ -1,0 +1,6 @@
+questions:
+- variable: REDIS_PASSWORD
+  default: "redis123"
+  description: "Redis Password"
+  type: string
+  required: true
