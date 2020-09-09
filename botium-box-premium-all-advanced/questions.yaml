@@ -115,6 +115,11 @@ questions:
   description: "Install Redis"
   type: boolean
   required: true
+- variable: INSTALL_PRSIMA
+  default: true
+  description: "Install PRISMA"
+  type: boolean
+  required: true
 - variable: REDIS_SERVICE
   default: "redis"
   description: "Redis Service Name"
