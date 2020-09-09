@@ -1,6 +1,7 @@
 
 update:
 	helm dependency update botium-box-premium-all
+	helm dependency update botium-box-premium-all-advanced
 	helm dependency update botium-box-premium-ingress
 	helm dependency update botium-box-premium-storage
 	helm dependency update botium-box-premium-backup
@@ -20,6 +21,7 @@ update:
 package:
 	rm -f botium-box-ce-*.tgz botium-box-premium-*.tgz botium-box-prisma-*.tgz botium-box-mini-*.tgz botium-box-standalone-*.tgz botium-coach-worker-*.tgz botium-efs-provisioner-*.tgz ingress-nginx-*.tgz
 	helm package botium-box-premium-all
+	helm package botium-box-premium-all-advanced
 	helm package botium-box-premium-ingress
 	helm package botium-box-premium-storage
 	helm package botium-box-premium-backup

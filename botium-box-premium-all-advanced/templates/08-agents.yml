@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: box-agent
+  labels:
+    name: box-agent
+    app: botium-box
+    tier: frontend
+spec:
+  serviceName: "box-agent"
+  replicas: {{ .Values.AGENT_COUNT }}
+  selector:
+    matchLabels:
+      name: box-agent
+  template:
+    metadata:
+      labels:
+        name: box-agent
+        app: botium-box
+        tier: frontend
+    spec:
+      containers:
+        - name: box-agent
+          image: botium/botium-box-agent:{{ .Values.BOTIUM_BOX_VERSION }}
+          volumeMounts:
+          - mountPath: "/app/storage/"
+            name: botium-box-mini-storage
+          env:
+            - name: BOTIUMBOX_AGENT_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: DEBUG
+              value: botium*
+            - name: RESOURCESDIR
+              value: /app/storage/resources
+            - name: TEMPDIR
+              value: /app/storage/botiumwork
+            - name: BOTIUMBOX_QUEUE_CONCURRENCY
+              value: "10"
+            - name: BOTIUMBOX_QUEUE_REDISURL
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: BOTIUMBOX_QUEUE_REDISURL
+      volumes:
+        - name: botium-box-storage
+          persistentVolumeClaim:
+            claimName: botium-box-storage
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: box-agent
+spec:
+  clusterIP: None
+  selector:
+    name: box-agent
+    app: botium-box
