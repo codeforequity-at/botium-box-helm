@@ -53,7 +53,7 @@ spec:
           region: eu-west-1
           accessKeyID: "{{ .Values.AWS_ACCESS_KEY_ID }}"
           secretAccessKeySecretRef:
-            name: botium-box-secrets
+            name: botium-wildcard-secrets
             key: AWS_SECRET_ACCESS_KEY
 ---
 apiVersion: cert-manager.io/v1alpha2
