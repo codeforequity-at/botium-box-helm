@@ -8,8 +8,8 @@ metadata:
 spec:
   type: ExternalName
   externalName: {{ .SERVICE_NAME_EXTERNAL }}
-{{- end}}
 ---
+{{- end}}
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
