@@ -60,7 +60,6 @@ apiVersion: cert-manager.io/v1alpha2
 kind: Certificate
 metadata:
   name: {{ .Values.SHORTNAME }}.botiumbox-com
-  namespace: cert-manager
 spec:
   secretName: {{ .Values.SHORTNAME }}.botiumbox-com-tls
   issuerRef:
