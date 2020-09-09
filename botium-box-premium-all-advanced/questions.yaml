@@ -115,7 +115,7 @@ questions:
   description: "Install Redis"
   type: boolean
   required: true
-- variable: INSTALL_PRSIMA
+- variable: INSTALL_PRISMA
   default: true
   description: "Install PRISMA"
   type: boolean
