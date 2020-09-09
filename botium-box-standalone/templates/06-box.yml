@@ -144,6 +144,7 @@ spec:
   selector:
     name: box
     app: botium-box
+{{- if .Values.INSTALL_INGRESS }}
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
@@ -198,3 +199,4 @@ spec:
   commonName: {{ .Values.SHORTNAME }}.botiumbox.com
   dnsNames:
   - {{ .Values.SHORTNAME }}.botiumbox.com
+{{- end }}
