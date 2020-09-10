@@ -39,6 +39,11 @@ spec:
       containers:
         - name: box-server
           image: botium/botium-box-server:{{ .Values.BOTIUM_BOX_VERSION }}
+          imagePullPolicy: Always
+          {{- if eq .Values.INSTALL_PRISMA false }}
+          command: ["/bin/sh"]
+          args: ["-c", "node -r dotenv-flow/config dist/botium-box-server.js"]
+          {{- end }}
           ports:
             - name: box-4000
               containerPort: 4000
