@@ -21,7 +21,11 @@ spec:
     spec:
       containers:
         - name: box-agent
+          {{- if eq .Values.CONTAINER_REGISTRY "" }}
           image: botium/botium-box-agent:{{ .Values.BOTIUM_BOX_VERSION }}
+          {{- else }}
+          image: {{ .Values.CONTAINER_REGISTRY }}/botium/botium-box-agent:{{ .Values.BOTIUM_BOX_VERSION }}
+          {{- end }}
           volumeMounts:
           - mountPath: "/app/storage/"
             name: botium-box-mini-storage

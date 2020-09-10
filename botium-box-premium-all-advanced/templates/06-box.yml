@@ -38,7 +38,11 @@ spec:
         fsGroup: 0
       containers:
         - name: box-server
+          {{- if eq .Values.CONTAINER_REGISTRY "" }}
           image: botium/botium-box-server:{{ .Values.BOTIUM_BOX_VERSION }}
+          {{- else }}
+          image: {{ .Values.CONTAINER_REGISTRY }}/botium/botium-box-server:{{ .Values.BOTIUM_BOX_VERSION }}
+          {{- end }}
           imagePullPolicy: Always
           {{- if eq .Values.INSTALL_PRISMA false }}
           command: ["/bin/sh"]
