@@ -16,6 +16,4 @@ data:
   {{- if .Values.SMTP_SECURE }}
   SMTP_SECURE: "1"
   {{- end }}
-  {{- if .Values.INSTALL_ZAP }}
   ZAP_ENDPOINT: "http://{{ .Values.ZAP_SERVICE }}:8080"
-  {{- end }}

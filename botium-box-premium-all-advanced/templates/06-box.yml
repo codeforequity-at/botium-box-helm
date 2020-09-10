@@ -42,7 +42,7 @@ spec:
           imagePullPolicy: Always
           {{- if eq .Values.INSTALL_PRISMA false }}
           command: ["/bin/sh"]
-          args: ["-c", "node -r dotenv-flow/config dist/botium-box-server.js"]
+          args: ["-c", "npm run prisma-deploy && npm run prisma-seed && node -r dotenv-flow/config dist/botium-box-server.js"]
           {{- end }}
           ports:
             - name: box-4000
@@ -131,7 +131,7 @@ spec:
                 secretKeyRef:
                   name: botium-box-secrets
                   key: SMTP_PASSWORD
-            {{- if .Values.INSTALL_ZAP }}
+            {{- if .Values.ACTIVATE_ZAP }}
             - name: ZAP_ENDPOINT
               valueFrom:
                 configMapKeyRef:

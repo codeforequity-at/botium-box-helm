@@ -63,6 +63,11 @@ questions:
   description: "Install ZAP"
   type: boolean
   required: true
+- variable: ACTIVATE_ZAP
+  default: false
+  description: "Activate ZAP"
+  type: boolean
+  required: true
 - variable: SMTP_HOST
   default: "smtp-relay.sendinblue.com"
   description: "SMTP Host"
