@@ -9,6 +9,11 @@ questions:
   description: "Botium Box Agent Count"
   type: int
   required: true
+- variable: CONTAINER_REGISTRY
+  default: ""
+  description: "Container Registry"
+  type: string
+  required: false
 - variable: BOTIUM_BOX_VERSION
   default: "2.6.1"
   description: "Botium Box Version"

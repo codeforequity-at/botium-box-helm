@@ -19,7 +19,11 @@ spec:
     spec:
       containers:
         - name: box
+          {{- if eq .Values.CONTAINER_REGISTRY "" }}
           image: botium/botium-box-standalone:{{ .Values.BOTIUM_BOX_VERSION }}
+          {{- else }}
+          image: {{ .Values.CONTAINER_REGISTRY }}/botium/botium-box-standalone:{{ .Values.BOTIUM_BOX_VERSION }}
+          {{- end }}
           imagePullPolicy: Always
           command: ["/bin/sh"]
           args: ["-c", "npm run deploy && PRISMA_MANAGEMENT_API_SECRET= npm run \"start_$BOTIUMBOX_AGENT_COUNT\""]
