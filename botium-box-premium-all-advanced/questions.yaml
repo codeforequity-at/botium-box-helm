@@ -137,6 +137,6 @@ questions:
   required: true
 - variable: ZAP_SERVICE
   default: "zap"
-  description: "ZAP_SERVICE"
+  description: "ZAP Service"
   type: string
   required: true
