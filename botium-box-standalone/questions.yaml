@@ -11,7 +11,7 @@ questions:
   required: true
 - variable: CONTAINER_REGISTRY
   default: ""
-  description: "Container Registry"
+  description: "Container Registry (default is dockerhub)"
   type: string
   required: false
 - variable: BOTIUM_BOX_VERSION
