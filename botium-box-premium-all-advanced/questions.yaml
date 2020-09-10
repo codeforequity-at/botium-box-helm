@@ -130,3 +130,8 @@ questions:
   description: "Redis Prefix"
   type: string
   required: true
+- variable: ZAP_SERVICE
+  default: "zap"
+  description: "ZAP_SERVICE"
+  type: string
+  required: true
