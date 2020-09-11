@@ -1,5 +1,9 @@
 {{- if .Values.INSTALL_ZAP }}
+{{- if .Values.NEWER_KUBERNETES }}
+apiVersion: apps/v1
+{{- else }}
 apiVersion: extensions/v1beta1
+{{- end }}
 kind: Deployment
 metadata:
   name: zap
@@ -11,6 +15,12 @@ spec:
   replicas: 1
   strategy:
     type: Recreate
+    {{- if .Values.NEWER_KUBERNETES }}
+    selector:
+      matchLabels:
+        name: zap
+        app: botium-box
+    {{- end }}
   template:
     metadata:
       labels:
@@ -28,10 +38,10 @@ spec:
             "-config", "api.disablekey=true",
             "-config", "api.addrs.addr.name=.*",
             "-config", "api.addrs.addr.regex=true"
-          ]		  
+          ]
           ports:
             - name: zap-8080
-              containerPort: 8080	  
+              containerPort: 8080
 ---
 apiVersion: v1
 kind: Service

@@ -130,3 +130,8 @@ questions:
   description: "Redis Prefix"
   type: string
   required: true
+- variable: NEWER_KUBERNETES
+  default: false
+  description: "for Kubernetes Version > 1.16"
+  type: boolean
+  required: true
