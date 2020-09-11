@@ -80,6 +80,11 @@ spec:
   replicas: 1
   strategy:
     type: Recreate
+  {{- if .Values.NEWER_KUBERNETES }}
+  selector:
+    matchLabels:
+      app: mysql-admin
+  {{- end }}
   template:
     metadata:
       labels:
