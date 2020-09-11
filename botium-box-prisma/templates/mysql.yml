@@ -14,7 +14,11 @@ spec:
     requests:
       storage: 20Gi
 ---
+{{- if .Values.NEWER_KUBERNETES }}
+apiVersion: apps/v1
+{{- else }}
 apiVersion: extensions/v1beta1
+{{- end }}
 kind: Deployment
 metadata:
   name: mysql
@@ -62,7 +66,11 @@ spec:
   selector:
     name: mysql
 ---
+{{- if .Values.NEWER_KUBERNETES }}
+apiVersion: apps/v1
+{{- else }}
 apiVersion: extensions/v1beta1
+{{- end }}
 kind: Deployment
 metadata:
   name: mysql-admin

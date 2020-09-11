@@ -1,4 +1,8 @@
+{{- if .Values.NEWER_KUBERNETES }}
+apiVersion: apps/v1
+{{- else }}
 apiVersion: extensions/v1beta1
+{{- end }}
 kind: Deployment
 metadata:
   name: prisma

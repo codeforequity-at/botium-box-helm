@@ -8,3 +8,4 @@ S3_ENDPOINT: "https://s3.eu-central-1.wasabisys.com"
 BACKUP_SCHEDULE: "0 0 * * *"
 STORAGE_CLASS_BOX: ""
 INSTALL_INGRESS: true
+NEWER_KUBERNETES: false
