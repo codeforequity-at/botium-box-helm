@@ -12,6 +12,11 @@ spec:
   replicas: 1
   strategy:
     type: Recreate
+  {{- if .Values.NEWER_KUBERNETES }}
+  selector:
+    matchLabels:
+      app: prisma
+  {{- end }}
   template:
     metadata:
       labels:
