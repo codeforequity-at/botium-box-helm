@@ -132,6 +132,6 @@ questions:
   required: true
 - variable: NEWER_KUBERNETES
   default: false
-  description: "for Kubernetes Version > 1.16"
+  description: "true for Kubernetes Version >= 1.16"
   type: boolean
   required: true
