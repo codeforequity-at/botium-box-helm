@@ -21,6 +21,6 @@ spec:
       volumes:
         - name: storage
           persistentVolumeClaim:
-            claimName: botium-box-storage
+            claimName: botium-box-{{ .Values.SHORTNAME }}-storage
       restartPolicy: Never
   backoffLimit: 0
