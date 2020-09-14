@@ -9,7 +9,9 @@ data:
   LICENSE_KEY: "{{ .Values.LICENSE_KEY }}"
   COACH_WORKER_ENDPOINT: "{{ .Values.COACH_WORKER_ENDPOINT }}"
   PRISMA_CONFIG_FILE: /app/prisma-config/prisma-config.json
-  ZAP_ENDPOINT: http://zap:8080
+  {{- if .Values.ACTIVATE_ZAP }}
+  ZAP_ENDPOINT: http://{{ .Values.ZAP_SERVICE }}:8080
+  {{- end }}
   SMTP_HOST: "{{ .Values.SMTP_HOST }}"
   SMTP_PORT: "{{ .Values.SMTP_PORT }}"
   BOTIUMBOX_AGENT_LIST: "{{ .Values.BOTIUMBOX_AGENT_LIST }}"

@@ -121,7 +121,7 @@ spec:
                 secretKeyRef:
                   name: botium-box-secrets
                   key: SMTP_PASSWORD
-            {{- if .Values.INSTALL_ZAP }}
+            {{- if .Values.ACTIVATE_ZAP }}
             - name: ZAP_ENDPOINT
               valueFrom:
                 configMapKeyRef:
