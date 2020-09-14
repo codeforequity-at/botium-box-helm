@@ -27,7 +27,7 @@ spec:
           image: {{ .Values.CONTAINER_REGISTRY }}/botium/botium-box-agent:{{ .Values.BOTIUM_BOX_VERSION }}
           {{- end }}
           volumeMounts:
-          - mountPath: "/app/storage/"
+          - mountPath: "/app/agent/storage/"
             name: botium-box-storage
           command: ["/bin/sh"]
           args: ["-c", "./wait-for-it.sh -s -t 120 {{ .Values.REDIS_SERVICE }}:6379 -- npm run start:dist"]
@@ -39,9 +39,9 @@ spec:
             - name: DEBUG
               value: botium*
             - name: RESOURCESDIR
-              value: /app/storage/resources
+              value: /app/agent/storage/resources
             - name: TEMPDIR
-              value: /app/storage/botiumwork
+              value: /app/agent/storage/botiumwork
             - name: BOTIUMBOX_QUEUE_CONCURRENCY
               value: "10"
             - name: BOTIUMBOX_QUEUE_REDISURL

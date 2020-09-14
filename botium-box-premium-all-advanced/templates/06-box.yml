@@ -52,17 +52,17 @@ spec:
             - name: box-4000
               containerPort: 4000
           volumeMounts:
-          - mountPath: "/app/storage/"
+          - mountPath: "/app/server/storage/"
             name: botium-box-storage
           env:
             - name: DEBUG
               value: botium*
             - name: TESTSETDIR
-              value: /app/storage/testsets
+              value: /app/server/storage/testsets
             - name: RESOURCESDIR
-              value: /app/storage/resources
+              value: /app/server/storage/resources
             - name: TEMPDIR
-              value: /app/storage/botiumwork
+              value: /app/server/storage/botiumwork
             - name: LICENSE_KEY
               valueFrom:
                 secretKeyRef:
