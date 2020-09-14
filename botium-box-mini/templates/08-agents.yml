@@ -22,6 +22,8 @@ spec:
       containers:
         - name: box-agent
           image: botium/botium-box-agent:{{ .Values.BOTIUM_BOX_VERSION }}
+          command: ["/bin/sh"]
+          args: ["-c", "./wait-for-it.sh -s -t 120 {{ .Values.REDIS_SERVICE }}:6379 -- npm run start:dist"]
           volumeMounts:
           - mountPath: "/app/storage/"
             name: botium-box-mini-storage
