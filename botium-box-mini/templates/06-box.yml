@@ -43,8 +43,6 @@ spec:
               value: /app/server/testsets
             - name: TEMPDIR
               value: /app/server/botiumwork
-            - name: BOTIUMBOX_SCANFORTESTSETS
-              value: /app/datasets-mini
             - name: BOTIUMBOX_AGENT_LIST
               valueFrom:
                 configMapKeyRef:
