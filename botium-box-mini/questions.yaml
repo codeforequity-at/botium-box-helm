@@ -14,6 +14,11 @@ questions:
   description: "Botium Box Version"
   type: string
   required: true
+- variable: CONTAINER_REGISTRY
+  default: ""
+  description: "Container Registry (default is dockerhub)"
+  type: string
+  required: false
 - variable: PRISMA_MANAGEMENT_API_SECRET
   default: ""
   description: "Prisma Management API Secret"

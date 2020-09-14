@@ -21,7 +21,11 @@ spec:
     spec:
       containers:
         - name: box-agent
+          {{- if eq .Values.CONTAINER_REGISTRY "" }}
           image: botium/botium-box-agent:{{ .Values.BOTIUM_BOX_VERSION }}
+          {{- else }}
+          image: {{ .Values.CONTAINER_REGISTRY }}/botium/botium-box-agent:{{ .Values.BOTIUM_BOX_VERSION }}
+          {{- end }}
           command: ["/bin/sh"]
           args: ["-c", "./wait-for-it.sh -s -t 120 {{ .Values.REDIS_SERVICE }}:6379 -- npm run start:dist"]
           volumeMounts:
