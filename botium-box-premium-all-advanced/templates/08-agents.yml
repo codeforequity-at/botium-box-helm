@@ -28,7 +28,7 @@ spec:
           {{- end }}
           volumeMounts:
           - mountPath: "/app/storage/"
-            name: botium-box-mini-storage
+            name: botium-box-storage
           env:
             - name: BOTIUMBOX_AGENT_NAME
               valueFrom:
