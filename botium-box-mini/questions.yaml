@@ -79,7 +79,7 @@ questions:
   type: string
   required: true
 - variable: JWT_EXPIRY_MINUTES
-  default: 30
+  default: 43200
   description: "JWT expiry in minutes (default: 43200 = 30 days)"
   type: int
   required: false
@@ -138,3 +138,8 @@ questions:
   description: "Redis Password"
   type: string
   required: true
+- variable: REDIS_SELECT_INDEX
+  default: 0
+  description: "Redis Select Index (Namespace)"
+  type: int
+  required: false
