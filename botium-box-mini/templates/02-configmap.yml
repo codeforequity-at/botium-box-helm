@@ -8,9 +8,9 @@ metadata:
 data:
   LICENSE_KEY: "{{ .Values.LICENSE_KEY }}"
   COACH_WORKER_ENDPOINT: "{{ .Values.COACH_WORKER_ENDPOINT }}"
-  BOTIUMBOX_QUEUE_REDISURL: redis://redis:6379
   PRISMA_CONFIG_FILE: /app/prisma-config/prisma-config.json
   ZAP_ENDPOINT: http://zap:8080
   SMTP_HOST: "{{ .Values.SMTP_HOST }}"
   SMTP_PORT: "{{ .Values.SMTP_PORT }}"
   BOTIUMBOX_AGENT_LIST: "{{ .Values.BOTIUMBOX_AGENT_LIST }}"
+  BOTIUMBOX_QUEUE_PREFIX: "{{ .Values.BOTIUMBOX_QUEUE_PREFIX }}"

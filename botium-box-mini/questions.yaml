@@ -93,6 +93,16 @@ questions:
   description: "List of Agent Names (separated by komma)"
   type: string
   required: true
+- variable: REDIS_SERVICE
+  default: "redis"
+  description: "Redis Service Name"
+  type: string
+  required: true
+- variable: BOTIUMBOX_QUEUE_PREFIX
+  default: "qprod"
+  description: "Redis Prefix"
+  type: string
+  required: true
 - variable: BITBUCKET_USERNAME
   default: ""
   description: "BitBucket Username"
@@ -107,4 +117,14 @@ questions:
   default: true
   description: "Install 'Ingress'"
   type: boolean
+  required: true
+- variable: INSTALL_REDIS
+  default: true
+  description: "Install Redis"
+  type: boolean
+  required: true
+- variable: REDIS_PASSWORD
+  default: "redis123"
+  description: "Redis Password"
+  type: string
   required: true
