@@ -103,3 +103,8 @@ questions:
   description: "BitBucket Password"
   type: string
   required: true
+- variable: INSTALL_INGRESS
+  default: true
+  description: "Install 'Ingress'"
+  type: boolean
+  required: true

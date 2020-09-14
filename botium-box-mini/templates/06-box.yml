@@ -267,6 +267,7 @@ spec:
   selector:
     name: box-server
     app: botium-box
+{{- if .Values.INSTALL_INGRESS }}
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
@@ -329,3 +330,4 @@ spec:
           provider: route53
         domains:
           - '*.{{ .Values.SHORTNAME }}.botiumbox.com'
+{{- end }}
