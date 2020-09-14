@@ -140,6 +140,11 @@ questions:
   description: "Redis Prefix"
   type: string
   required: true
+- variable: REDIS_SELECT_INDEX
+  default: 0
+  description: "Redis Select Index (Namespace)"
+  type: int
+  required: true
 - variable: ZAP_SERVICE
   default: "zap"
   description: "ZAP Service"

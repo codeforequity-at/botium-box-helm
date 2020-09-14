@@ -142,4 +142,4 @@ questions:
   default: 0
   description: "Redis Select Index (Namespace)"
   type: int
-  required: false
+  required: true

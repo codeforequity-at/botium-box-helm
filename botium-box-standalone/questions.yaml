@@ -130,8 +130,13 @@ questions:
   description: "Redis Prefix"
   type: string
   required: true
+- variable: REDIS_SELECT_INDEX
+  default: 0
+  description: "Redis Select Index (Namespace)"
+  type: int
+  required: true
 - variable: NEWER_KUBERNETES
   default: false
-  description: "true for Kubernetes Version >= 1.16"
+  description: "On for Kubernetes Version >= 1.16"
   type: boolean
   required: true
