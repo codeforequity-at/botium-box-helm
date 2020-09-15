@@ -167,7 +167,7 @@ spec:
           {{- end }}
           imagePullPolicy: Always
           command: ["/bin/sh"]
-          args: ["-c", "apk add curl-dev g++ make python dos2unix nano && git clone https://{{ .Values.BITBUCKET_USERNAME }}:{{ .Values.BITBUCKET_PASSWORD }}@bitbucket.org/botiumcoreteam/botium-datasets.git && mkdir -p /app/datasets-mini && cp -R botium-datasets/mini/* /app/datasets-mini && git clone https://{{ .Values.BITBUCKET_USERNAME }}:{{ .Values.BITBUCKET_PASSWORD }}@bitbucket.org/botiumcoreteam/botium-box.git && cd botium-box && git fetch && git checkout feature/box-mini && npm link nodegit && npm link chromedriver && BOTIUM_ANALYTICS=false npm install && BOTIUM_ANALYTICS=false npm run install:all && cd /app/server && while :; do echo 'Press <CTRL+C> to exit.'; sleep 1; done"]
+          args: ["-c", "apk add curl-dev g++ make python dos2unix nano && git clone https://{{ .Values.BITBUCKET_USERNAME }}:{{ .Values.BITBUCKET_PASSWORD }}@bitbucket.org/botiumcoreteam/botium-datasets.git && mkdir -p /app/datasets-mini && cp -R botium-datasets/mini/* /app/datasets-mini && git clone https://{{ .Values.BITBUCKET_USERNAME }}:{{ .Values.BITBUCKET_PASSWORD }}@bitbucket.org/botiumcoreteam/botium-box.git && cd botium-box && git fetch && git checkout feature/box-mini && BOTIUM_ANALYTICS=false npm install && BOTIUM_ANALYTICS=false npm run install:all && cd /app/server && while :; do echo 'Press <CTRL+C> to exit.'; sleep 1; done"]
           ports:
             - name: box-4000
               containerPort: 4000
@@ -179,28 +179,10 @@ spec:
           env:
             - name: DEBUG
               value: botium*
-            - name: TESTSETDIR
-              value: /app/server/testsets
-            - name: TESTSETDIR_PUBLIC
-              value: /app/server/testsets
-            - name: TEMPDIR
-              value: /app/server/botiumwork
+            - name: RESOURCESDIR
+              value: /app/storage/resources
             - name: BOTIUMBOX_SCANFORTESTSETS
               value: /app/datasets-mini
-            - name: BOTIUMBOX_AGENT_LIST
-              valueFrom:
-                configMapKeyRef:
-                  name: botium-box-configmap
-                  key: BOTIUMBOX_AGENT_LIST
-            - name: BOTIUMBOX_FEATURE_FILEBROWSER
-              value: "0"
-            - name: BOTIUMBOX_FEATURE_DELETETESTSESSION
-              value: "0"
-            - name: JWT_SECRET
-              valueFrom:
-                secretKeyRef:
-                  name: botium-box-secrets
-                  key: JWT_SECRET
             - name: PRISMA_CONFIG_FILE
               valueFrom:
                 configMapKeyRef:
@@ -211,60 +193,11 @@ spec:
                 configMapKeyRef:
                   name: botium-box-configmap
                   key: LICENSE_KEY
-            - name: BOTIUMBOX_QUEUE_REDISURL
-              valueFrom:
-                secretKeyRef:
-                  name: botium-box-secrets
-                  key: BOTIUMBOX_QUEUE_REDISURL
-            - name: BOTIUMBOX_QUEUE_PREFIX
-              valueFrom:
-                configMapKeyRef:
-                  name: botium-box-configmap
-                  key: BOTIUMBOX_QUEUE_PREFIX
-            - name: COACH_WORKER_ENDPOINT
-              valueFrom:
-                configMapKeyRef:
-                  name: botium-box-configmap
-                  key: COACH_WORKER_ENDPOINT
             - name: PRISMA_MANAGEMENT_API_SECRET
               valueFrom:
                 secretKeyRef:
                   name: botium-box-secrets
                   key: PRISMA_MANAGEMENT_API_SECRET
-            - name: SMTP_HOST
-              valueFrom:
-                configMapKeyRef:
-                  name: botium-box-configmap
-                  key: SMTP_HOST
-            - name: SMTP_PORT
-              valueFrom:
-                configMapKeyRef:
-                  name: botium-box-configmap
-                  key: SMTP_PORT
-            {{- if .Values.SMTP_SECURE }}
-            - name: SMTP_SECURE
-              valueFrom:
-                configMapKeyRef:
-                  name: botium-box-configmap
-                  key: SMTP_SECURE
-            {{- end }}
-            - name: SMTP_USER
-              valueFrom:
-                secretKeyRef:
-                  name: botium-box-secrets
-                  key: SMTP_USER
-            - name: SMTP_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: botium-box-secrets
-                  key: SMTP_PASSWORD
-            {{- if .Values.INSTALL_ZAP }}
-            - name: ZAP_ENDPOINT
-              valueFrom:
-                configMapKeyRef:
-                  name: botium-box-configmap
-                  key: ZAP_ENDPOINT
-            {{- end }}
       volumes:
         - name: botium-box-mini-storage
           persistentVolumeClaim:
