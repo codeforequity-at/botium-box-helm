@@ -3,9 +3,9 @@ entries:
   botium-box-ce:
   - apiVersion: v2
     appVersion: 2.7.0
-    created: "2020-09-15T12:04:41.283567771+02:00"
+    created: "2020-09-15T12:47:43.665688701+02:00"
     description: Botium Box
-    digest: 7823f5ffeb9b48c1451fa397c38a21fb7c34cc493f11fd90e6a4c99f980c591a
+    digest: 97aef69436e6fa53d9d92ea4df0c28388fffb7a257c00de7c2cc7ff30401a941
     name: botium-box-ce
     type: application
     urls:
@@ -14,9 +14,9 @@ entries:
   botium-box-ce-storage:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2020-09-15T12:04:41.28382254+02:00"
+    created: "2020-09-15T12:47:43.665946194+02:00"
     description: Botium Box
-    digest: ffdca62acacf8731921764aea648f13342c7d71f161001a6baea4c39a79d57f8
+    digest: 501ac849ce6a981c25a2640476966a933716179ab3197d78d918f7afe24feb3c
     name: botium-box-ce-storage
     type: application
     urls:
@@ -25,20 +25,20 @@ entries:
   botium-box-mini:
   - apiVersion: v1
     appVersion: 2.7.0
-    created: "2020-09-15T12:04:41.284496699+02:00"
+    created: "2020-09-15T12:47:43.666667956+02:00"
     description: Botium Box Mini
-    digest: 686f793c2f10a6a7dd737f73ff322b9fe8c66c81c10380fd8f0a42eb61028b24
+    digest: b8014ed6a4c363972e93a6ac1b12d6b56e4f84b2356c66b182c04732f7d0abf0
     name: botium-box-mini
     type: application
     urls:
-    - https://github.com/codeforequity-at/botium-box-helm/raw/master/botium-box-mini-0.0.68.tgz
-    version: 0.0.68
+    - https://github.com/codeforequity-at/botium-box-helm/raw/master/botium-box-mini-0.0.69.tgz
+    version: 0.0.69
   botium-box-premium-all:
   - apiVersion: v2
     appVersion: 2.7.0
-    created: "2020-09-15T12:04:41.284974291+02:00"
+    created: "2020-09-15T12:47:43.6671279+02:00"
     description: Botium Box
-    digest: 4b525ea9561681395b5f1a383b0bb5c11e7306ff0a72b16225876e42a9ab03e8
+    digest: fbf302f28c7715ee2de548e96fc034b1f1cb791d00461e24774c95c3ace8e2b2
     name: botium-box-premium-all
     type: application
     urls:
@@ -47,9 +47,9 @@ entries:
   botium-box-premium-all-advanced:
   - apiVersion: v1
     appVersion: 2.7.0
-    created: "2020-09-15T12:04:41.285690417+02:00"
+    created: "2020-09-15T12:47:43.667822387+02:00"
     description: Botium Box
-    digest: 3b27b8a08c914885fd1bd749f204cf03811d6afac6fc4e71dd03dce585ce18d8
+    digest: 980400ba113df64954482e2551f076f0e1c85f4b59880629ee72663679624482
     name: botium-box-premium-all-advanced
     type: application
     urls:
@@ -58,9 +58,9 @@ entries:
   botium-box-premium-backup:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2020-09-15T12:04:41.28596692+02:00"
+    created: "2020-09-15T12:47:43.668095259+02:00"
     description: Botium Box
-    digest: 62eb2b2707354cad77fc0d0fc9b948c53af6cb96c8e2d3cd016201025e83a18f
+    digest: 0296e6469c933f8ee21984bbf3b3a597de68624a4be8cd579922710b89bfe70f
     name: botium-box-premium-backup
     type: application
     urls:
@@ -69,13 +69,13 @@ entries:
   botium-box-premium-ingress:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2020-09-15T12:04:41.291701203+02:00"
+    created: "2020-09-15T12:47:43.671568935+02:00"
     dependencies:
     - name: nginx-ingress
       repository: https://kubernetes-charts.storage.googleapis.com/
       version: 1.28.3
     description: Botium Box
-    digest: 36a6303a0c4208315c0761082089e60a57fe763a00147a95063cee141d9c7953
+    digest: 122b8f4cfb2d09e530d4db953c01e231ab4ad441f355b5811b6d559d15064ede
     name: botium-box-premium-ingress
     type: application
     urls:
@@ -84,9 +84,9 @@ entries:
   botium-box-premium-storage:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2020-09-15T12:04:41.292230907+02:00"
+    created: "2020-09-15T12:47:43.672673072+02:00"
     description: Botium Box
-    digest: 0f7d05f0807bbf0610d8e2ab08440f7f9e7f2f749917c960f0a552f547882b00
+    digest: f696d42f89ea44bc69afc0333ca596fe95be39bed9b927d015f0f90784614b26
     name: botium-box-premium-storage
     type: application
     urls:
@@ -95,9 +95,9 @@ entries:
   botium-box-prisma:
   - apiVersion: v1
     appVersion: 1.0.0
-    created: "2020-09-15T12:04:41.292823082+02:00"
+    created: "2020-09-15T12:47:43.673587457+02:00"
     description: Botium Box Prisma
-    digest: e86bb32a3dcfbb518cef5548695aee2f4f9076370b2a7bd254a42a02f1f55443
+    digest: 467fd5abbf6a52127172e501c3c9c88a56e90cb1c34e3e2483e27f31ba9db689
     name: botium-box-prisma
     type: application
     urls:
@@ -106,9 +106,9 @@ entries:
   botium-box-prisma-nodb:
   - apiVersion: v1
     appVersion: 1.0.0
-    created: "2020-09-15T12:04:41.293276332+02:00"
+    created: "2020-09-15T12:47:43.674229559+02:00"
     description: Botium Box Prisma without Mysql
-    digest: f70a85ddba6e1a0d511e952df35057a5c05579354ee99c6ceed3dd6eaa166092
+    digest: 50879756ffd93ed1a11b4d5778204166465a003ee05ae8450fb3a1b8217db09c
     name: botium-box-prisma-nodb
     type: application
     urls:
@@ -117,9 +117,9 @@ entries:
   botium-box-prisma-rds-test:
   - apiVersion: v1
     appVersion: 1.0.0
-    created: "2020-09-15T12:04:41.293569478+02:00"
+    created: "2020-09-15T12:47:43.674561664+02:00"
     description: Botium Box Prisma RDS Test
-    digest: fc59e2ce305d405edaccdf1385163a11db17a1b2ddfc5d1333f4295f2642dd27
+    digest: cd93b2a58e163b2ced4db7739c5082eceaba394d67d7a5269a08c6a7cf9f5cb8
     name: botium-box-prisma-rds-test
     type: application
     urls:
@@ -128,9 +128,9 @@ entries:
   botium-box-standalone:
   - apiVersion: v1
     appVersion: 2.7.0
-    created: "2020-09-15T12:04:41.294176049+02:00"
+    created: "2020-09-15T12:47:43.675210284+02:00"
     description: Botium Box Standalone
-    digest: 053fd73afcd76e5137f2533a5ad6644ff3731e72a44fee0e1654bf1be0f32e38
+    digest: 4e7c2953524c4da6eb2c222fc93724358ea98d915246fca3176c21b6c583dd53
     name: botium-box-standalone
     type: application
     urls:
@@ -139,9 +139,9 @@ entries:
   botium-coach-worker:
   - apiVersion: v1
     appVersion: 0.0.2
-    created: "2020-09-15T12:04:41.294520201+02:00"
+    created: "2020-09-15T12:47:43.675701182+02:00"
     description: Botium Coach Worker
-    digest: 8ebcc06c582b32041362515c87a73fb719eeb94fb8b776fc0eab01cc8edfca34
+    digest: 46fab58229c9a2dd13c346f28ba45a92d48823bdc2561e381becd807c0c88dac
     name: botium-coach-worker
     type: application
     urls:
@@ -150,9 +150,9 @@ entries:
   botium-efs-provisioner:
   - apiVersion: v1
     appVersion: latest
-    created: "2020-09-15T12:04:41.29482047+02:00"
+    created: "2020-09-15T12:47:43.676046073+02:00"
     description: Botium EFS Provisioner
-    digest: 40868d21b1e1552af176624c2b65326c0c3f7befc7949a05cc9bccc9569f43f6
+    digest: e48107624f03b8a653b7ef293810e141cc8f9ab1639a1633c52ca34993e3193b
     name: botium-efs-provisioner
     type: application
     urls:
@@ -161,9 +161,9 @@ entries:
   botium-wildcard-ingress:
   - apiVersion: v1
     appVersion: 0.0.1
-    created: "2020-09-15T12:04:41.295121007+02:00"
+    created: "2020-09-15T12:47:43.67639886+02:00"
     description: Botium WildCard Ingress
-    digest: 00f97f291ab76b99483744eea71262832abe84fc285e3879dfed9c25557050f5
+    digest: 1310063949e101802d48236c9aa6f00bb10f4ea75b5e5bfbd30b596895ac26d8
     name: botium-wildcard-ingress
     type: application
     urls:
@@ -172,9 +172,9 @@ entries:
   ingress-nginx:
   - apiVersion: v1
     appVersion: latest
-    created: "2020-09-15T12:04:41.295467449+02:00"
+    created: "2020-09-15T12:47:43.676731555+02:00"
     description: Botium Ingress NGinx Reverse Proxy
-    digest: 6355c52d0c0dfd412b640fabfe44ed968a9f7c871045f3e83b065786635721d9
+    digest: 1da5c4c9c46d4f624fc4bf6f04447973979b625fb8bb533d7f6489e06bf3f0d6
     name: ingress-nginx
     type: application
     urls:
@@ -183,9 +183,9 @@ entries:
   redis-shared:
   - apiVersion: v1
     appVersion: 0.0.1
-    created: "2020-09-15T12:04:41.29575231+02:00"
+    created: "2020-09-15T12:47:43.677013531+02:00"
     description: Redis shared
-    digest: 19b66582f66148c4c66bbd26319d79425d78f18a650de16f853def1d90a5849f
+    digest: 95c94cee18648f5c8ef80ec59e612cf30e604bb3dea5b8ea51e216d4ee875098
     name: redis-shared
     type: application
     urls:
@@ -194,12 +194,12 @@ entries:
   zap-shared:
   - apiVersion: v1
     appVersion: 0.0.1
-    created: "2020-09-15T12:04:41.296012883+02:00"
+    created: "2020-09-15T12:47:43.677376565+02:00"
     description: ZAP shared
-    digest: 10e098b7f37616f52e57aa6338a451a791fda99fa51069e64f8c5baa9842570c
+    digest: c7d9c4a02cd714db13f8e07f845296271b92d6bf5efd7c5879b4272f78c5ce25
     name: zap-shared
     type: application
     urls:
     - https://github.com/codeforequity-at/botium-box-helm/raw/master/zap-shared-0.0.1.tgz
     version: 0.0.1
-generated: "2020-09-15T12:04:41.283003967+02:00"
+generated: "2020-09-15T12:47:43.665052135+02:00"
