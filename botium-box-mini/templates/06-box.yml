@@ -22,12 +22,12 @@ spec:
         fsGroup: 0
       containers:
         - name: box-server
+          imagePullPolicy: Always
           {{- if eq .Values.CONTAINER_REGISTRY "" }}
           image: botium/botium-box-server:{{ .Values.BOTIUM_BOX_VERSION }}
           {{- else }}
           image: {{ .Values.CONTAINER_REGISTRY }}/botium/botium-box-server:{{ .Values.BOTIUM_BOX_VERSION }}
           {{- end }}
-          imagePullPolicy: Always
           command: ["/bin/sh"]
           args: ["-c", "node -r dotenv-flow/config dist/botium-box-server.js"]
           ports:
