@@ -26,6 +26,7 @@ spec:
           {{- else }}
           image: {{ .Values.CONTAINER_REGISTRY }}/botium/botium-box-agent:{{ .Values.BOTIUM_BOX_VERSION }}
           {{- end }}
+          imagePullPolicy: Always
           command: ["/bin/sh"]
           args: ["-c", "./wait-for-it.sh -s -t 120 {{ .Values.REDIS_SERVICE }}:6379 -- npm run start:dist"]
           volumeMounts:
