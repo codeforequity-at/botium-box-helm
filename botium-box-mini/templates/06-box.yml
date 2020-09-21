@@ -169,7 +169,7 @@ spec:
           {{- end }}
           imagePullPolicy: Always
           command: ["/bin/sh"]
-          args: ["-c", "apk add curl-dev g++ make python dos2unix nano && git clone https://{{ .Values.BITBUCKET_USERNAME }}:{{ .Values.BITBUCKET_PASSWORD }}@bitbucket.org/botiumcoreteam/botium-datasets.git && mkdir -p /app/datasets-mini && cp -R botium-datasets/mini/* /app/datasets-mini && git clone https://{{ .Values.BITBUCKET_USERNAME }}:{{ .Values.BITBUCKET_PASSWORD }}@bitbucket.org/botiumcoreteam/botium-box.git && cd botium-box && git fetch && git checkout feature/box-mini && BOTIUM_ANALYTICS=false npm install && BOTIUM_ANALYTICS=false npm run install:all && cd /app/server && while :; do echo 'Press <CTRL+C> to exit.'; sleep 1; done"]
+          args: ["-c", "apk add curl-dev g++ make python dos2unix nano && git clone https://{{ .Values.BITBUCKET_USERNAME }}:{{ .Values.BITBUCKET_PASSWORD }}@bitbucket.org/botiumcoreteam/botium-datasets.git && mkdir -p /app/datasets-mini && cp -R botium-datasets/mini/* /app/datasets-mini && git clone https://{{ .Values.BITBUCKET_USERNAME }}:{{ .Values.BITBUCKET_PASSWORD }}@bitbucket.org/botiumcoreteam/botium-box.git && cd botium-box && git fetch && git checkout develop && BOTIUM_ANALYTICS=false npm install && BOTIUM_ANALYTICS=false npm run install:all && cd /app/server && while :; do echo 'Press <CTRL+C> to exit.'; sleep 10; done"]
           ports:
             - name: box-4000
               containerPort: 4000
