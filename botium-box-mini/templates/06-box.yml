@@ -125,6 +125,36 @@ spec:
                 secretKeyRef:
                   name: botium-box-secrets
                   key: SMTP_PASSWORD
+            - name: BOTIUMBOX_CLEANUP_JOB_INTERVAL_MINUTES
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: BOTIUMBOX_CLEANUP_JOB_INTERVAL_MINUTES
+            - name: BOTIUMBOX_KEEP_SUCCESS_SCREENSHOTS_DAYS
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: BOTIUMBOX_KEEP_SUCCESS_SCREENSHOTS_DAYS
+            - name: BOTIUMBOX_KEEP_SUCCESS_CONVERSATION_DAYS
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: BOTIUMBOX_KEEP_SUCCESS_CONVERSATION_DAYS
+            - name: BOTIUMBOX_KEEP_FAILED_SCREENSHOTS_DAYS
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: BOTIUMBOX_KEEP_FAILED_SCREENSHOTS_DAYS
+            - name: BOTIUMBOX_KEEP_FAILED_CONVERSATION_DAYS
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: BOTIUMBOX_KEEP_FAILED_CONVERSATION_DAYS
+            - name: BOTIUMBOX_KEEP_COACH_DETAILS_DAYS
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: BOTIUMBOX_KEEP_COACH_DETAILS_DAYS
             {{- if .Values.ACTIVATE_ZAP }}
             - name: ZAP_ENDPOINT
               valueFrom:
