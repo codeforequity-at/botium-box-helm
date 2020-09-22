@@ -10,4 +10,4 @@ spec:
     defaultRequest:
       cpu: {{ .Values.RESOURCE_CPU_REQUEST }}
     type: Container
-{{-end }}
+{{- end }}
