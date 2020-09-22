@@ -160,12 +160,12 @@ questions:
   description: "CPU Limit"
   type: string
   required: true
-- variable: RESOURCE_CPU_REQUEST
+- variable: RESOURCE_MEM_REQUEST
   default: "256m"
   description: "Minimum required MEM"
   type: string
   required: true
-- variable: RESOURCE_CPU_LIMIT
+- variable: RESOURCE_MEM_LIMIT
   default: "512m"
   description: "MEM Limit"
   type: string
