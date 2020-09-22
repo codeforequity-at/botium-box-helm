@@ -10,4 +10,16 @@ spec:
     defaultRequest:
       cpu: {{ .Values.RESOURCE_CPU_REQUEST }}
     type: Container
+---
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: mem-limit-range
+spec:
+  limits:
+  - default:
+      memory: {{ .Values.RESOURCE_MEM_LIMIT }}
+    defaultRequest:
+      memory: {{ .Values.RESOURCE_MEM_REQUEST }}
+    type: Container
 {{- end }}
