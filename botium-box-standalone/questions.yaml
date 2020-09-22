@@ -150,23 +150,13 @@ questions:
   description: "Enable Limits for all containers"
   type: boolean
   required: true
-- variable: RESOURCE_CPU_REQUEST
-  default: "0.1"
-  description: "Minimum required CPU"
-  type: string
-  required: true
 - variable: RESOURCE_CPU_LIMIT
   default: "0.5"
   description: "CPU Limit"
   type: string
   required: true
-- variable: RESOURCE_MEM_REQUEST
-  default: "256m"
-  description: "Minimum required MEM"
-  type: string
-  required: true
 - variable: RESOURCE_MEM_LIMIT
-  default: "512m"
+  default: "512Mi"
   description: "MEM Limit"
   type: string
   required: true
