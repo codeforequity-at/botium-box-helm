@@ -170,3 +170,7 @@ questions:
   description: "MEM Limit"
   type: string
   required: true
+- variable: BOTIUMBOX_SMARTLOOK_KEY
+  description: "Smartlook Key"
+  type: string
+  required: false

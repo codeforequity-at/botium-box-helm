@@ -162,6 +162,11 @@ spec:
                   name: botium-box-configmap
                   key: ZAP_ENDPOINT
             {{- end }}
+            - name: BOTIUMBOX_SMARTLOOK_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: BOTIUMBOX_SMARTLOOK_KEY            
       volumes:
         - name: botium-box-mini-storage
           persistentVolumeClaim:

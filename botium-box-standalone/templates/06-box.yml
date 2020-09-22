@@ -146,6 +146,11 @@ spec:
                 configMapKeyRef:
                   name: botium-box-configmap
                   key: JWT_EXPIRY_MINUTES
+            - name: BOTIUMBOX_SMARTLOOK_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: BOTIUMBOX_SMARTLOOK_KEY
       volumes:
         - name: storage
           persistentVolumeClaim:
