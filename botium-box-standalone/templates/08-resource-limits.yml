@@ -1,0 +1,13 @@
+{{- if eq .Values.ENABLE_RESOURCE_LIMIT  }}
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: cpu-limit-range
+spec:
+  limits:
+  - default:
+      cpu: {{ .Values.RESOURCE_CPU_LIMIT }}
+    defaultRequest:
+      cpu: {{ .Values.RESOURCE_CPU_REQUEST }}
+    type: Container
+{{-end }}

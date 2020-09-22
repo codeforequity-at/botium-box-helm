@@ -14,9 +14,9 @@ spec:
           command: ["/bin/sh"]
           args:
             - -c
-            - apk add curl unzip && mkdir -p /app/server/storage/testsets && mkdir -p /app/server/storage/resources && mkdir -p /app/server/storage/botiumwork && cd /tmp && curl -L https://github.com/codeforequity-at/botium-box-basic-dist/archive/master.zip -o master.zip && unzip master.zip && cp -u  botium-box-basic-dist-master/resources/* /app/server/storage/resources && ls -a /app/server/storage/resources
+            - apk add curl unzip && mkdir -p /app/storage/testsets && mkdir -p /app/storage/resources && mkdir -p /app/storage/botiumwork && cd /tmp && curl -L https://github.com/codeforequity-at/botium-box-basic-dist/archive/master.zip -o master.zip && unzip master.zip && cp -u  botium-box-basic-dist-master/resources/* /app/server/resources && ls -a /app/server/resources
           volumeMounts:
-          - mountPath: "/app/server/storage"
+          - mountPath: "/app/storage"
             name: storage
       volumes:
         - name: storage
