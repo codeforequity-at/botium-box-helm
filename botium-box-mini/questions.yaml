@@ -148,3 +148,28 @@ questions:
   description: "Redis Select Index (Namespace)"
   type: int
   required: true
+- variable: ENABLE_RESOURCE_LIMIT
+  default: false
+  description: "Enable Limits for agents"
+  type: boolean
+  required: true
+- variable: RESOURCE_CPU_REQUEST
+  default: "0.1"
+  description: "Minimum required CPU"
+  type: string
+  required: true
+- variable: RESOURCE_CPU_LIMIT
+  default: "0.5"
+  description: "CPU Limit"
+  type: string
+  required: true
+- variable: RESOURCE_MEM_REQUEST
+  default: "512Mi"
+  description: "Minimum required MEM"
+  type: string
+  required: true
+- variable: RESOURCE_MEM_LIMIT
+  default: "1Gi"
+  description: "MEM Limit"
+  type: string
+  required: true
