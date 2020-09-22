@@ -29,6 +29,7 @@ spec:
           imagePullPolicy: Always
           command: ["/bin/sh"]
           args: ["-c", "./wait-for-it.sh -s -t 120 {{ .Values.REDIS_SERVICE }}:6379 -- npm run start:dist"]
+          {{- if eq .Values.ENABLE_RESOURCE_LIMIT }}
           resources:
             limits:
               cpu: {{ .Values.RESOURCE_CPU_LIMIT }}
@@ -36,6 +37,7 @@ spec:
             requests:
               cpu: {{ .Values.RESOURCE_CPU_REQUEST }}
               memory: {{ .Values.RESOURCE_MEM_REQUEST }}
+          {{- end }}
           volumeMounts:
           - mountPath: "/app/agent/storage/"
             name: botium-box-mini-storage
