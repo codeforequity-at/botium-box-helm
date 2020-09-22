@@ -140,6 +140,11 @@ questions:
   description: "On for Kubernetes Version >= 1.16"
   type: boolean
   required: true
+- variable: FIRST_INSTALLATION
+  default: true
+  description: "Is used to initalize data"
+  type: boolean
+  required: true
 - variable: ENABLE_RESOURCE_LIMIT
   default: false
   description: "Enable Limits for all containers"

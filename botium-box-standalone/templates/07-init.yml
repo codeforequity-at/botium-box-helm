@@ -1,3 +1,4 @@
+{{- if eq .Values.FIRST_INSTALLATION true }}
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -24,3 +25,4 @@ spec:
             claimName: botium-box-{{ .Values.SHORTNAME }}-storage
       restartPolicy: Never
   backoffLimit: 0
+{{- end }}
