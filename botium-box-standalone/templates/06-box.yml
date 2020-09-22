@@ -37,6 +37,9 @@ spec:
           imagePullPolicy: Always
           command: ["/bin/sh"]
           args: ["-c", "npm run deploy && PRISMA_MANAGEMENT_API_SECRET= npm run \"start_$BOTIUMBOX_AGENT_COUNT\""]
+          resources:
+            requests:
+              cpu: 10m
           ports:
             - name: box-4000
               containerPort: 4000

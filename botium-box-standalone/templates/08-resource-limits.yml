@@ -7,8 +7,6 @@ spec:
   limits:
   - default:
       cpu: {{ .Values.RESOURCE_CPU_LIMIT }}
-    defaultRequests:
-      cpu: 10m
     type: Container
 ---
 apiVersion: v1
