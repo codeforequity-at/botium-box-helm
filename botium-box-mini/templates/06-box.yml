@@ -54,6 +54,8 @@ spec:
                 configMapKeyRef:
                   name: botium-box-configmap
                   key: BOTIUMBOX_AGENT_LIST
+            - name: CHOKIDAR_USEPOLLING
+              value: "1"
             - name: BOTIUMBOX_FEATURE_FILEBROWSER
               value: "0"
             - name: BOTIUMBOX_FEATURE_DELETETESTSESSION
