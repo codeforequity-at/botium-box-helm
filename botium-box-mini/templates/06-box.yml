@@ -168,7 +168,12 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: botium-box-secrets
-                  key: BOTIUMBOX_SMARTLOOK_KEY            
+                  key: BOTIUMBOX_SMARTLOOK_KEY
+            - name: BOTIUMBOX_PASSPORT_ADMINPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: BOTIUMBOX_PASSPORT_ADMINPASSWORD            
       volumes:
         - name: botium-box-mini-storage
           persistentVolumeClaim:

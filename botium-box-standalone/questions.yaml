@@ -174,3 +174,7 @@ questions:
   description: "Smartlook Key"
   type: string
   required: false
+- variable: BOTIUMBOX_PASSPORT_ADMINPASSWORD
+  description: "Administrative Access Password"
+  type: string
+  required: false
