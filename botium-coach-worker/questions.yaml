@@ -17,3 +17,8 @@ questions:
   description: "Botium Coach Worker Web Concurrency"
   type: int
   required: true
+- variable: COACH_MAX_UTTERANCES_FOR_EMBEDDINGS
+  default: 500
+  description: "Max Utterance Count per Call"
+  type: int
+  required: true

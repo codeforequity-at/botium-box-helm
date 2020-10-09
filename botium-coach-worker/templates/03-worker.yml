@@ -40,6 +40,11 @@ spec:
                 configMapKeyRef:
                   name: botium-coach-worker-configmap
                   key: WEB_CONCURRENCY
+            - name: COACH_MAX_UTTERANCES_FOR_EMBEDDINGS
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-coach-worker-configmap
+                  key: COACH_MAX_UTTERANCES_FOR_EMBEDDINGS
 ---
 apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler

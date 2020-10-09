@@ -7,3 +7,4 @@ metadata:
     app: botium-coach-worker
 data:
   WEB_CONCURRENCY: "{{ .Values.WEB_CONCURRENCY }}"
+  COACH_MAX_UTTERANCES_FOR_EMBEDDINGS: "{{ .Values.COACH_MAX_UTTERANCES_FOR_EMBEDDINGS }}"
