@@ -8,7 +8,7 @@ metadata:
     tier: frontend
 spec:
   serviceName: "box-agent"
-  replicas: {{ .Values.AGENT_COUNT }}
+  replicas: {{ .Values.BOTIUMBOX_AGENT_COUNT }}
   selector:
     matchLabels:
       name: box-agent
