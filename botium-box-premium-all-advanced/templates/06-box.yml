@@ -197,7 +197,7 @@ spec:
       paths:
       - path: /
         backend:
-          serviceName: box
+          serviceName: box-server
           servicePort: 4000
 ---
 apiVersion: cert-manager.io/v1alpha2
