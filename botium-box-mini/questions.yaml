@@ -181,3 +181,15 @@ questions:
   description: "Administrative Access Password"
   type: string
   required: false
+- variable: GOOGLE_TRANSLATE_CLIENT_EMAIL
+  description: "Google Translate Client Email"
+  type: string
+  required: false
+- variable: GOOGLE_TRANSLATE_PRIVATE_KEY
+  description: "Google Translate Private Key"
+  type: string
+  required: false
+- variable: PARAPHRASING_APIKEY
+  description: "Paraphrasing API Key"
+  type: string
+  required: false

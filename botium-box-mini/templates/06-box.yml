@@ -173,7 +173,22 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: botium-box-secrets
-                  key: BOTIUMBOX_PASSPORT_ADMINPASSWORD            
+                  key: BOTIUMBOX_PASSPORT_ADMINPASSWORD
+            - name: GOOGLE_TRANSLATE_CLIENT_EMAIL
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: GOOGLE_TRANSLATE_CLIENT_EMAIL
+            - name: GOOGLE_TRANSLATE_PRIVATE_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: GOOGLE_TRANSLATE_PRIVATE_KEY
+            - name: PARAPHRASING_APIKEY
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: PARAPHRASING_APIKEY
       volumes:
         - name: botium-box-mini-storage
           persistentVolumeClaim:
