@@ -24,7 +24,7 @@ entries:
     version: 1.0.0
   botium-box-mini:
   - apiVersion: v1
-    appVersion: 2.7.2
+    appVersion: 2.8.0
     created: "2020-10-23T14:46:43.754453036+02:00"
     description: Botium Box Mini
     digest: ff67b0027e08675c6a6ac6cf2b3464e3308cedd2e5e5079787bbf2d4b4caeb1d
@@ -35,7 +35,7 @@ entries:
     version: 0.0.87
   botium-box-premium-all:
   - apiVersion: v2
-    appVersion: 2.7.2
+    appVersion: 2.8.0
     created: "2020-10-23T14:46:43.754932724+02:00"
     description: Botium Box
     digest: e8054b122b44bbc843d171a771d540bf303023838e29ef2eee61565ed4a5a569
@@ -46,7 +46,7 @@ entries:
     version: 1.0.27
   botium-box-premium-all-advanced:
   - apiVersion: v1
-    appVersion: 2.7.2
+    appVersion: 2.8.0
     created: "2020-10-23T14:46:43.755618877+02:00"
     description: Botium Box
     digest: 83db91112317eeacdfbd6c55c594e8f172bdd9afa64719d0576ed023b7b61d83
@@ -127,7 +127,7 @@ entries:
     version: 1.0.1
   botium-box-standalone:
   - apiVersion: v1
-    appVersion: 2.7.2
+    appVersion: 2.8.0
     created: "2020-10-23T14:46:43.763142902+02:00"
     description: Botium Box Standalone
     digest: 68d7f5fc2bb9998c366ac9167e3b981cde58fcf7078a44af412cd8ab56c58ad2
