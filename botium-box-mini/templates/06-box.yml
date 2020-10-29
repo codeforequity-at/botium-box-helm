@@ -70,6 +70,11 @@ spec:
                 configMapKeyRef:
                   name: botium-box-configmap
                   key: PRISMA_CONFIG_FILE
+            - name: BOTIUMBOX_AUDIT_FOLDER
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: BOTIUMBOX_AUDIT_FOLDER
             - name: LICENSE_KEY
               valueFrom:
                 configMapKeyRef:
