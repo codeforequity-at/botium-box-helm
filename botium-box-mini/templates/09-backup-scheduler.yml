@@ -36,7 +36,7 @@ spec:
               value: "s3://{{ .Values.S3_BUCKET }}/"
             - name: S3_ENDPOINT
               value: "{{ .Values.S3_ENDPOINT }}"
-            - name: AWS_REGION
+            - name: S3_REGION
               value: "{{ .Values.S3_REGION }}"
           restartPolicy: OnFailure
           volumes:
