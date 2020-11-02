@@ -31,7 +31,7 @@ spec:
             - name: BACKUP_NAME
               value: "prisma-config"
             - name: SUB_PATH
-              value: "/app/server/resources/auditmini"
+              value: "/"
             - name: AWS_DEFAULT_REGION
               value: "{{ .Values.S3_REGION }}"
             - name: S3_BUCKET_URL
