@@ -35,7 +35,7 @@ spec:
             - name: AWS_DEFAULT_REGION
               value: "{{ .Values.S3_REGION }}"
             - name: S3_BUCKET_URL
-              value: "s3://{{ .Values.S3_BUCKET }}/"
+              value: "s3://{{ .Values.S3_BUCKET }}/prisma-config/"
             - name: S3_ENDPOINT
               value: "{{ .Values.S3_ENDPOINT }}"
             - name: S3_REGION
@@ -78,13 +78,13 @@ spec:
                   name: botium-box-secrets
                   key: S3_SECRET_ACCESS_KEY
             - name: BACKUP_NAME
-              value: "prisma-config"
+              value: "audit"
             - name: SUB_PATH
               value: "/app/server/resources/auditmini"
             - name: AWS_DEFAULT_REGION
               value: "{{ .Values.S3_REGION }}"
             - name: S3_BUCKET_URL
-              value: "s3://{{ .Values.S3_BUCKET }}/"
+              value: "s3://{{ .Values.S3_BUCKET }}/audit/"
             - name: S3_ENDPOINT
               value: "{{ .Values.S3_ENDPOINT }}"
             - name: S3_REGION
