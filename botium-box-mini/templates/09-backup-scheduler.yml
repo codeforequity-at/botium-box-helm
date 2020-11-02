@@ -18,7 +18,7 @@ spec:
             - mountPath: "/data"
               name: botium-box-mini-prisma-config-storage
             env:
-            - name: AWS_ACCESS_KEY
+            - name: AWS_ACCESS_KEY_ID
               valueFrom:
                 secretKeyRef:
                   name: botium-box-secrets
