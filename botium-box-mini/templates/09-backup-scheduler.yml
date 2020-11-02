@@ -1,0 +1,38 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: prisma-config-backup-scheduler
+spec:
+  schedule: "{{ .Values.BACKUP_SCHEDULE }}"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+          - name: prisma-config-backup-s3
+            image: peterrus/s3-cron-backup
+            volumeMounts:
+            - mountPath: "/app/prisma-config/"
+              name: botium-box-mini-prisma-config-storage
+            env:
+            - name: AWS_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: S3_ACCESS_KEY_ID
+            - name: S3_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: S3_SECRET_ACCESS_KEY
+            - name: BACKUP_NAME
+              value: "prisma-config"
+            - name: AWS_DEFAULT_REGION
+              value: "{{ .Values.S3_REGION }}"
+            - name: S3_BUCKET_URL
+              value: "{{ .Values.S3_ENDPOINT }}/{{ .Values.S3_BUCKET }}"
+          restartPolicy: OnFailure
+          volumes:
+            - name: botium-box-mini-prisma-config-storage
+              persistentVolumeClaim:
+                claimName: botium-box-mini-prisma-config-storage
