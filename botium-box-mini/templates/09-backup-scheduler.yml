@@ -11,6 +11,8 @@ spec:
           containers:
           - name: prisma-config-backup-s3
             image: murliwatz/docker-s3-backup
+            command: ["/bin/sh"]
+            args: ["dobackup.sh"]
             volumeMounts:
             - mountPath: "/data"
               name: botium-box-mini-prisma-config-storage
