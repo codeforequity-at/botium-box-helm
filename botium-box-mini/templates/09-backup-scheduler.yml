@@ -11,6 +11,8 @@ spec:
           containers:
           - name: prisma-config-backup-s3
             image: peterrus/s3-cron-backup
+            command: ["/bin/sh"]
+            args: ["dobackup.sh"]
             volumeMounts:
             - mountPath: "/app/prisma-config/"
               name: botium-box-mini-prisma-config-storage
@@ -36,3 +38,4 @@ spec:
             - name: botium-box-mini-prisma-config-storage
               persistentVolumeClaim:
                 claimName: botium-box-mini-prisma-config-storage
+                readOnly: true
