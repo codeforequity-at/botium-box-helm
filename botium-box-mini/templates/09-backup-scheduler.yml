@@ -23,7 +23,7 @@ spec:
                 secretKeyRef:
                   name: botium-box-secrets
                   key: S3_ACCESS_KEY_ID
-            - name: S3_SECRET_ACCESS_KEY
+            - name: AWS_SECRET_ACCESS_KEY
               valueFrom:
                 secretKeyRef:
                   name: botium-box-secrets
