@@ -209,7 +209,7 @@ questions:
   type: string
   required: true
 - variable: S3_ENDPOINT
-  default: "s3://s3.eu-central-1.wasabisys.com"
+  default: "https://s3.eu-central-1.wasabisys.com"
   type: string
   required: true
 - variable: S3_REGION

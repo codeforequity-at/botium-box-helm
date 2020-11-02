@@ -10,9 +10,7 @@ spec:
         spec:
           containers:
           - name: prisma-config-backup-s3
-            image: peterrus/s3-cron-backup
-            command: ["/bin/sh"]
-            args: ["dobackup.sh"]
+            image: murliwatz/docker-s3-backup
             volumeMounts:
             - mountPath: "/data"
               name: botium-box-mini-prisma-config-storage
@@ -32,7 +30,9 @@ spec:
             - name: AWS_DEFAULT_REGION
               value: "{{ .Values.S3_REGION }}"
             - name: S3_BUCKET_URL
-              value: "{{ .Values.S3_ENDPOINT }}/{{ .Values.S3_BUCKET }}"
+              value: "s3://{{ .Values.S3_BUCKET }}/"
+            - name: S3_ENDPOINT
+              value: "{{ .Values.S3_ENDPOINT }}"
           restartPolicy: OnFailure
           volumes:
             - name: botium-box-mini-prisma-config-storage
