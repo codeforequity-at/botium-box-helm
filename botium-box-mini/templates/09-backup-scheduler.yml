@@ -10,7 +10,7 @@ spec:
         spec:
           containers:
           - name: prisma-config-backup-s3
-            image: murliwatz/docker-s3-backup:1.4
+            image: murliwatz/docker-s3-backup:1.5
             imagePullPolicy: Always
             command: ["/bin/sh"]
             args: ["dobackup.sh"]
