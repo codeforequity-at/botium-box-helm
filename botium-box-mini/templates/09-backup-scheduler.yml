@@ -11,6 +11,7 @@ spec:
           containers:
           - name: prisma-config-backup-s3
             image: murliwatz/docker-s3-backup
+            imagePullPolicy: Always
             command: ["/bin/sh"]
             args: ["dobackup.sh"]
             volumeMounts:
@@ -35,6 +36,8 @@ spec:
               value: "s3://{{ .Values.S3_BUCKET }}/"
             - name: S3_ENDPOINT
               value: "{{ .Values.S3_ENDPOINT }}"
+            - name: S3_REGION
+              value: "{{ .Values.S3_REGION }}"
           restartPolicy: OnFailure
           volumes:
             - name: botium-box-mini-prisma-config-storage
