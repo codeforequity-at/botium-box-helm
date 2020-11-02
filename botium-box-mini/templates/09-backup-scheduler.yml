@@ -14,7 +14,7 @@ spec:
             command: ["/bin/sh"]
             args: ["dobackup.sh"]
             volumeMounts:
-            - mountPath: "/app/prisma-config/"
+            - mountPath: "/data"
               name: botium-box-mini-prisma-config-storage
             env:
             - name: AWS_ACCESS_KEY
