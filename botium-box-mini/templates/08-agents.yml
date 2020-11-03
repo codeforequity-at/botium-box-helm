@@ -50,7 +50,7 @@ spec:
               value: botium*
             - name: RESOURCESDIR
               value: /app/agent/storage/resources
-            - name: TEMPDIR
+            - name: BOTIUM_TEMPDIR
               value: /app/agent/storage/botiumwork
             - name: BOTIUMBOX_QUEUE_CONCURRENCY
               value: "10"

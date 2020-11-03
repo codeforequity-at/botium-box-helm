@@ -47,7 +47,7 @@ spec:
               value: /app/server/storage/testsets
             - name: BOTIUMBOX_SCANFORTESTSETS
               value: ""
-            - name: TEMPDIR
+            - name: BOTIUM_TEMPDIR
               value: /app/server/storage/botiumwork
             - name: BOTIUMBOX_AGENT_LIST
               valueFrom:

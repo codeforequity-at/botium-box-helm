@@ -27,6 +27,18 @@ spec:
         app: botium-box
         tier: frontend
     spec:
+      initContainers:
+        - name: box-chmod-er
+          image: busybox:latest
+          command:
+          - /bin/chown
+          - -R
+          - "1000:1000"
+          - /app/server/storage
+          volumeMounts:
+          - mountPath: "/app/server/storage"
+            name: storage
+    mountPath: /data/db    
       containers:
         - name: box
           {{- if eq .Values.CONTAINER_REGISTRY "" }}
@@ -50,7 +62,7 @@ spec:
               value: /app/server/storage/testsets
             - name: RESOURCESDIR
               value: /app/server/storage/resources
-            - name: TEMPDIR
+            - name: BOTIUM_TEMPDIR
               value: /app/server/storage/botiumwork
             - name: LICENSE_KEY
               valueFrom:

@@ -40,7 +40,7 @@ spec:
               value: /app/server/storage/testsets
             - name: RESOURCESDIR
               value: /app/server/storage/resources
-            - name: TEMPDIR
+            - name: BOTIUM_TEMPDIR
               value: /app/server/storage/botiumwork
             - name: LICENSE_KEY
               valueFrom:
@@ -139,7 +139,7 @@ spec:
               value: botium*
             - name: RESOURCESDIR
               value: /app/agent/storage/resources
-            - name: TEMPDIR
+            - name: BOTIUM_TEMPDIR
               value: /app/agent/storage/botiumwork
             - name: BOTIUMBOX_QUEUE_REDISURL
               valueFrom:
