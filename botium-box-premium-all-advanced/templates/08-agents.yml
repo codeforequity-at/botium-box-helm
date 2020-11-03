@@ -19,6 +19,17 @@ spec:
         app: botium-box
         tier: frontend
     spec:
+      initContainers:
+        - name: box-agent-chmod-er
+          image: busybox:latest
+          command:
+          - /bin/chown
+          - -R
+          - "1000:1000"
+          - /app/agent/storage
+          volumeMounts:
+          - mountPath: "/app/agent/storage"
+            name: botium-box-storage
       containers:
         - name: box-agent
           {{- if eq .Values.CONTAINER_REGISTRY "" }}

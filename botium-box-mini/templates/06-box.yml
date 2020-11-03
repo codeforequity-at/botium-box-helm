@@ -17,9 +17,27 @@ spec:
         app: botium-box
         tier: frontend
     spec:
-      securityContext:
-        runAsUser: 0
-        fsGroup: 0
+      initContainers:
+        - name: box-server-chmod-er-storage
+          image: busybox:latest
+          command:
+          - /bin/chown
+          - -R
+          - "1000:1000"
+          - /app/server/storage
+          volumeMounts:
+          - mountPath: "/app/server/storage"
+            name: botium-box-mini-storage
+        - name: box-server-chmod-er-config
+          image: busybox:latest
+          command:
+          - /bin/chown
+          - -R
+          - "1000:1000"
+          - /app/prisma-config/
+          volumeMounts:
+          - mountPath: "/app/prisma-config/"
+            name: botium-box-mini-prisma-config-storage
       containers:
         - name: box-server
           imagePullPolicy: Always
@@ -219,9 +237,6 @@ spec:
         name: box-server-shell
         app: botium-box-shell
     spec:
-      securityContext:
-        runAsUser: 0
-        fsGroup: 0
       containers:
         - name: box-server
           {{- if eq .Values.CONTAINER_REGISTRY "" }}

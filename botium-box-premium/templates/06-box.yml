@@ -17,9 +17,17 @@ spec:
         app: botium-box
         tier: frontend
     spec:
-      securityContext:
-        runAsUser: 0
-        fsGroup: 0
+      initContainers:
+        - name: box-server-chmod-er
+          image: busybox:latest
+          command:
+          - /bin/chown
+          - -R
+          - "1000:1000"
+          - /app/agent/storage
+          volumeMounts:
+          - mountPath: "/app/server/storage"
+            name: botium-box-storage    
       containers:
         - name: box-server
           image: botium/botium-box-server:{{ .Values.BOTIUM_BOX_VERSION }}
@@ -124,6 +132,17 @@ spec:
         app: botium-box
         tier: frontend
     spec:
+      initContainers:
+        - name: box-agent-chmod-er
+          image: busybox:latest
+          command:
+          - /bin/chown
+          - -R
+          - "1000:1000"
+          - /app/agent/storage
+          volumeMounts:
+          - mountPath: "/app/agent/storage"
+            name: botium-box-storage     
       containers:
         - name: box-agent
           image: botium/botium-box-agent:{{ .Values.BOTIUM_BOX_VERSION }}
