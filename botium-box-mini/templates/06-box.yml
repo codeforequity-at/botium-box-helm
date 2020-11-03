@@ -34,7 +34,7 @@ spec:
             - name: box-4000
               containerPort: 4000
           volumeMounts:
-          - mountPath: "/app/storage/"
+          - mountPath: "/app/server/storage/"
             name: botium-box-mini-storage
           - mountPath: "/app/prisma-config/"
             name: botium-box-mini-prisma-config-storage
@@ -42,13 +42,13 @@ spec:
             - name: DEBUG
               value: botium*
             - name: RESOURCESDIR
-              value: /app/storage/resources
+              value: /app/server/storage/resources
             - name: TESTSETDIR
-              value: /app/storage/testsets
+              value: /app/server/storage/testsets
             - name: BOTIUMBOX_SCANFORTESTSETS
               value: ""
             - name: TEMPDIR
-              value: /app/storage/botiumwork
+              value: /app/server/storage/botiumwork
             - name: BOTIUMBOX_AGENT_LIST
               valueFrom:
                 configMapKeyRef:
