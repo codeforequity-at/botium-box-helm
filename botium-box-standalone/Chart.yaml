@@ -3,5 +3,5 @@ name: botium-box-standalone
 description: Botium Box Standalone
 
 type: application
-version: 0.0.56
+version: 0.0.57
 appVersion: 2.8.0

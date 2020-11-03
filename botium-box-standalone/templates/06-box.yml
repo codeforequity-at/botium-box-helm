@@ -38,7 +38,6 @@ spec:
           volumeMounts:
           - mountPath: "/app/server/storage"
             name: storage
-    mountPath: /data/db    
       containers:
         - name: box
           {{- if eq .Values.CONTAINER_REGISTRY "" }}
