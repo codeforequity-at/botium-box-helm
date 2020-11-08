@@ -53,7 +53,7 @@ spec:
               containerPort: 4000
           resources:
             requests:
-              memory: "8Gi"
+              memory: "10Gi"
           volumeMounts:
           - mountPath: "/app/server/storage/"
             name: botium-box-mini-storage
