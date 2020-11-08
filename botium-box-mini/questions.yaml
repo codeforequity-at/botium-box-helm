@@ -216,3 +216,7 @@ questions:
   default: "eu-central-1"
   type: string
   required: true
+- variable: NODE_OPTIONS
+  default: "--max-old-space-size=4096"
+  type: string
+  required: false
