@@ -30,7 +30,7 @@ spec:
                   name: botium-box-secrets
                   key: S3_SECRET_ACCESS_KEY
             - name: BACKUP_NAME
-              value: "prisma-config"
+              value: "resources"
             - name: SUB_PATH
               value: "/resources"
             - name: AWS_DEFAULT_REGION

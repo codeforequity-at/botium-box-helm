@@ -195,7 +195,7 @@ questions:
   type: string
   required: true
 - variable: S3_BUCKET
-  default: "botium-mini-backups"
+  default: "resources-live-backups"
   type: string
   required: true
 - variable: S3_ENDPOINT
