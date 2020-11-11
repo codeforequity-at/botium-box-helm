@@ -36,7 +36,7 @@ spec:
             - name: AWS_DEFAULT_REGION
               value: "{{ .Values.S3_REGION }}"
             - name: S3_BUCKET_URL
-              value: "s3://{{ .Values.S3_BUCKET }}/resources/"
+              value: "s3://{{ .Values.S3_BUCKET }}/{{ .Values.SHORTNAME }}/resources/"
             - name: S3_ENDPOINT
               value: "{{ .Values.S3_ENDPOINT }}"
             - name: S3_REGION
