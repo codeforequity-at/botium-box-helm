@@ -263,6 +263,10 @@ spec:
             name: botium-box-mini-storage
           - mountPath: "/app/prisma-config/"
             name: botium-box-mini-prisma-config-storage
+          securityContext:
+            runAsUser: 0
+            runAsGroup: 0
+            fsGroup: 0
           env:
             - name: DEBUG
               value: botium*
