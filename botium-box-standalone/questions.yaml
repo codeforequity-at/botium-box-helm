@@ -206,3 +206,11 @@ questions:
   default: "eu-central-1"
   type: string
   required: true
+- variable: GOOGLE_TRANSLATE_CLIENT_EMAIL
+  description: "Google Translate Client Email"
+  type: string
+  required: false
+- variable: GOOGLE_TRANSLATE_PRIVATE_KEY
+  description: "Google Translate Private Key"
+  type: string
+  required: false
