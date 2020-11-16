@@ -220,3 +220,8 @@ questions:
   default: "--max-old-space-size=4096"
   type: string
   required: false
+- variable: MAINTENANCE
+  default: false
+  description: "Enable maintenance mode for Botium Box"
+  type: boolean
+  required: true

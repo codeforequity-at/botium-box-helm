@@ -304,10 +304,41 @@ metadata:
   name: box-server
 spec:
   ports:
+    {{- if .Values.MAINTENANCE }}
     - port: 4000
+    {{- else }}
+    - port: 4000
+      targetPort: 8080
+      protocol: TCP
+    {{- end }}
   selector:
     name: box-server
     app: botium-box
+{{- if .Values.MAINTENANCE }}
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: maintencance
+  labels:
+    app: maintencance
+    tier: backend
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: maintencance
+        tier: backend
+    spec:
+      containers:
+        - name: maintencance
+          image: adrianrudnik/maintenance-server:latest
+          ports:
+            - name: maintenance-8080
+              containerPort: 8080
+{{- end }}
 {{- if .Values.INSTALL_INGRESS }}
 ---
 apiVersion: extensions/v1beta1
