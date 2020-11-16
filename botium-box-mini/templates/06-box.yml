@@ -308,7 +308,7 @@ spec:
     - port: 4000
     {{- else }}
     - port: 4000
-      targetPort: 8080
+      targetPort: 80
       protocol: TCP
     {{- end }}
   selector:
@@ -341,8 +341,8 @@ spec:
         - name: maintencance
           image: adrianrudnik/maintenance-server:latest
           ports:
-            - name: mt-8080
-              containerPort: 8080
+            - name: mt-80
+              containerPort: 80
 {{- end }}
 {{- if .Values.INSTALL_INGRESS }}
 ---
