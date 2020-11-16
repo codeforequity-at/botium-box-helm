@@ -304,7 +304,7 @@ metadata:
   name: box-server
 spec:
   ports:
-    {{- if .Values.MAINTENANCE }}
+    {{- if eq .Values.MAINTENANCE false }}
     - port: 4000
     {{- else }}
     - port: 4000
@@ -312,8 +312,12 @@ spec:
       protocol: TCP
     {{- end }}
   selector:
+    {{- if eq .Values.MAINTENANCE false }}
     name: box-server
     app: botium-box
+    {{- else }}
+    app: maintenance
+    {{- end }}
 {{- if .Values.MAINTENANCE }}
 ---
 apiVersion: extensions/v1beta1
