@@ -323,9 +323,9 @@ spec:
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: maintencance
+  name: maintenance
   labels:
-    app: maintencance
+    app: maintenance
     tier: backend
 spec:
   replicas: 1
@@ -334,11 +334,11 @@ spec:
   template:
     metadata:
       labels:
-        app: maintencance
+        app: maintenance
         tier: backend
     spec:
       containers:
-        - name: maintencance
+        - name: maintenance
           image: adrianrudnik/maintenance-server:latest
           ports:
             - name: mt-80
