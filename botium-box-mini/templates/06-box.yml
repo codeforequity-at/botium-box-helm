@@ -296,6 +296,16 @@ spec:
                 secretKeyRef:
                   name: botium-box-secrets
                   key: PRISMA_MANAGEMENT_API_SECRET
+            - name: BOTIUMBOX_QUEUE_REDISURL
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: BOTIUMBOX_QUEUE_REDISURL
+            - name: BOTIUMBOX_QUEUE_PREFIX
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: BOTIUMBOX_QUEUE_PREFIX
       volumes:
         - name: botium-box-mini-storage
           persistentVolumeClaim:
