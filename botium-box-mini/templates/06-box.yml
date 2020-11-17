@@ -85,6 +85,10 @@ spec:
               value: "0"
             - name: BOTIUMBOX_FEATURE_DELETETESTSESSION
               value: "0"
+            - name: BOTIUMBOX_FEATURE_REPAIRTESTPROJECTHISTORY
+              value: "0"
+            - name: BOTIUMBOX_MAX_EXECUTION_INTERVAL_MINUTES
+              value: "10"
             - name: JWT_SECRET
               valueFrom:
                 secretKeyRef:
