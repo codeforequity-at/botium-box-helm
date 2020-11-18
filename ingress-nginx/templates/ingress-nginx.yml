@@ -50,9 +50,9 @@ data:
   hide-headers: "X-Powered-By"
   server-tokens: "false"
   enable-ocsp: "true"
-  proxy-send-timeout: 600
-  proxy-read-timeout: 600
-  proxy-connect-timeout: 600
+  proxy-send-timeout: "600"
+  proxy-read-timeout: "600"
+  proxy-connect-timeout: "600"
   proxy-body-size: {{ .Values.PROXY_BODY_SIZE }}
 
 ---
