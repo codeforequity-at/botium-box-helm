@@ -1,3 +1,4 @@
+{{ if .Values.ENABLE_BACKUP_PRISMA_CONFIG }}
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
@@ -46,3 +47,4 @@ spec:
               persistentVolumeClaim:
                 claimName: botium-box-mini-prisma-config-storage
                 readOnly: true
+{{- end }}
