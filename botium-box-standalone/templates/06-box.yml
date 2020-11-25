@@ -57,7 +57,7 @@ spec:
           securityContext:
             runAsUser: 0
             runAsGroup: 0
-            fsGroup: 0            
+            fsGroup: 0
           env:
             - name: DEBUG
               value: botium*
@@ -181,6 +181,11 @@ spec:
                 secretKeyRef:
                   name: botium-box-secrets
                   key: GOOGLE_TRANSLATE_PRIVATE_KEY
+            - name: PARAPHRASING_APIKEY
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: PARAPHRASING_APIKEY
       volumes:
         - name: storage
           persistentVolumeClaim:

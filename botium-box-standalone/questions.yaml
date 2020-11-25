@@ -214,3 +214,7 @@ questions:
   description: "Google Translate Private Key"
   type: string
   required: false
+- variable: PARAPHRASING_APIKEY
+  description: "Api Key for Paraphrasing"
+  type: string
+  required: false
