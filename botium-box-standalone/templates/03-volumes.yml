@@ -28,4 +28,4 @@ spec:
   storageClassName: {{ .Values.STORAGE_CLASS_BOX_BOTIUMWORK }}
   resources:
     requests:
-      storage: 20Gi
+      storage: 1Gi
