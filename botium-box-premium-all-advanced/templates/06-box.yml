@@ -14,6 +14,22 @@ spec:
     requests:
       storage: 20Gi
 ---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: botium-box-botiumwork-storage
+  labels:
+    name: botium-box-botiumwork-storage
+    app: botium-box
+    tier: frontend
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: {{ .Values.STORAGE_CLASS_BOX_BOTIUMWORK }}
+  resources:
+    requests:
+      storage: 1Gi
+---
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -42,8 +58,10 @@ spec:
           - "1000:1000"
           - /app/server/storage
           volumeMounts:
-          - mountPath: "/app/server/storage"
+          - mountPath: "/app/server/storage/main"
             name: botium-box-storage
+          - mountPath: "/app/server/storage/botiumwork"
+            name: botium-box-botiumwork-storage
       containers:
         - name: box-server
           {{- if eq .Values.CONTAINER_REGISTRY "" }}
@@ -66,9 +84,9 @@ spec:
             - name: DEBUG
               value: botium*
             - name: TESTSETDIR
-              value: /app/server/storage/testsets
+              value: /app/server/storage/mein/testsets
             - name: RESOURCESDIR
-              value: /app/server/storage/resources
+              value: /app/server/storage/main/resources
             - name: BOTIUM_TEMPDIR
               value: /app/server/storage/botiumwork
             - name: LICENSE_KEY
@@ -179,6 +197,9 @@ spec:
         - name: botium-box-storage
           persistentVolumeClaim:
             claimName: botium-box-storage
+        - name: botium-box-botiumwork-storage
+          persistentVolumeClaim:
+            claimName: botium-box-botiumwork-storage
 ---
 apiVersion: v1
 kind: Service
