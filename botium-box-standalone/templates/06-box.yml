@@ -36,8 +36,10 @@ spec:
           - "1000:1000"
           - /app/server/storage
           volumeMounts:
-          - mountPath: "/app/server/storage"
+          - mountPath: "/app/server/storage/main"
             name: storage
+          - mountPath: "/app/server/storage/botiumwork"
+            name: storage-botiumwork
       containers:
         - name: box
           {{- if eq .Values.CONTAINER_REGISTRY "" }}
@@ -58,9 +60,9 @@ spec:
             - name: DEBUG
               value: botium*
             - name: TESTSETDIR
-              value: /app/server/storage/testsets
+              value: /app/server/storage/main/testsets
             - name: RESOURCESDIR
-              value: /app/server/storage/resources
+              value: /app/server/storage/main/resources
             - name: BOTIUM_TEMPDIR
               value: /app/server/storage/botiumwork
             - name: LICENSE_KEY
@@ -186,6 +188,9 @@ spec:
         - name: storage
           persistentVolumeClaim:
             claimName: botium-box-{{ .Values.SHORTNAME }}-storage
+        - name: storage-botiumwork
+          persistentVolumeClaim:
+            claimName: botium-box-{{ .Values.SHORTNAME }}-botiumwork-storage
 ---
 apiVersion: v1
 kind: Service

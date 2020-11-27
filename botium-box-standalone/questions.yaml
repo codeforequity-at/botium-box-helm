@@ -97,6 +97,10 @@ questions:
   description: "Storage Class for Botium Box Files"
   type: storageclass
   required: true
+- variable: STORAGE_CLASS_BOX_BOTIUMWORK
+  description: "Storage Class for Botium Box Botiumwork (temp folder)"
+  type: storageclass
+  required: true
 - variable: COACH_WORKER_ENDPOINT
   default: "https://coach-worker.botiumbox.com/1.0"
   description: "Coach Worker Endpoint"
