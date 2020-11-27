@@ -56,6 +56,8 @@ spec:
           volumeMounts:
           - mountPath: "/app/server/storage"
             name: storage
+          - mountPath: "/app/server/storage/botiumwork"
+            name: storage-botiumwork
           env:
             - name: DEBUG
               value: botium*
