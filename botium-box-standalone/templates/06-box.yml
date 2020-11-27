@@ -54,10 +54,6 @@ spec:
           volumeMounts:
           - mountPath: "/app/server/storage"
             name: storage
-          securityContext:
-            runAsUser: 0
-            runAsGroup: 0
-            fsGroup: 0
           env:
             - name: DEBUG
               value: botium*
