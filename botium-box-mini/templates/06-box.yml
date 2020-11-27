@@ -82,7 +82,7 @@ spec:
             - name: CHOKIDAR_USEPOLLING
               value: "1"
             - name: BOTIUMBOX_FEATURE_FILEBROWSER
-              value: "0"
+              value: "1"
             - name: BOTIUMBOX_FEATURE_DELETETESTSESSION
               value: "0"
             - name: BOTIUMBOX_FEATURE_REPAIRTESTPROJECTHISTORY
