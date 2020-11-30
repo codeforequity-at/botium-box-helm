@@ -15,7 +15,7 @@ questions:
   type: string
   required: false
 - variable: BOTIUM_BOX_VERSION
-  default: "2.8.1"
+  default: "2.8.2"
   description: "Botium Box Version"
   type: string
   required: true
@@ -176,6 +176,10 @@ questions:
   required: true
 - variable: BOTIUMBOX_SMARTLOOK_KEY
   description: "Smartlook Key"
+  type: string
+  required: false
+- variable: BOTIUMBOX_SENTRY_DSN
+  default: "https://bcb73b49e35c4b4db3fe68247e5af0f4@o484598.ingest.sentry.io/5538179"
   type: string
   required: false
 - variable: BOTIUMBOX_PASSPORT_ADMINPASSWORD

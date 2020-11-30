@@ -166,6 +166,11 @@ spec:
                 secretKeyRef:
                   name: botium-box-secrets
                   key: BOTIUMBOX_SMARTLOOK_KEY
+            - name: BOTIUMBOX_SENTRY_DSN
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: BOTIUMBOX_SENTRY_DSN                  
             - name: BOTIUMBOX_PASSPORT_ADMINPASSWORD
               valueFrom:
                 secretKeyRef:
