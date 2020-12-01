@@ -8,7 +8,7 @@ data:
   {{- if eq .Values.CSP_DEFAULT true }}
   Content-Security-Policy: "script-src 'self' 'unsafe-inline'; img-src * data: blob:; media-src * data:; object-src 'none';"
   {{- else if eq .Values.CSP_SMARTLOOK true }}
-  Content-Security-Policy: "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.smartlook.com https://*.smartlook.cloud; img-src * data:; media-src * data:; object-src 'none'; worker-src 'self' blob:; connect-src 'self' https://*.smartlook.com https://*.smartlook.cloud wss://*.botiumbox.com https://www.botium.ai"
+  Content-Security-Policy: "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.smartlook.com https://*.smartlook.cloud; img-src * data: blob:; media-src * data:; object-src 'none'; worker-src 'self' blob:; connect-src 'self' https://*.smartlook.com https://*.smartlook.cloud wss://*.botiumbox.com https://www.botium.ai"
   {{- else if eq .Values.CSP_CUSTOM true }}
   Content-Security-Policy: "{{ .Values.CSP_CUSTOM_HEADER }}"
   {{- end }}
