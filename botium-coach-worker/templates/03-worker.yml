@@ -27,8 +27,8 @@ spec:
           image: botium/botium-coach-worker:{{ .Values.BOTIUM_COACH_WORKER_VERSION }}
           imagePullPolicy: Always
           ports:
-            - name: worker-80
-              containerPort: 80
+            - name: worker-8080
+              containerPort: 8080
           env:
             - name: AUTH_APIKEYS
               valueFrom:
@@ -71,8 +71,8 @@ metadata:
   name: coach-worker
 spec:
   ports:
-    - port: 80
-      targetPort: 80
+    - port: 8080
+      targetPort: 8080
       protocol: TCP
   selector:
     name: coach-worker
@@ -102,7 +102,7 @@ spec:
       - path: /
         backend:
           serviceName: coach-worker
-          servicePort: 80
+          servicePort: 8080
 ---
 apiVersion: cert-manager.io/v1alpha2
 kind: Issuer
