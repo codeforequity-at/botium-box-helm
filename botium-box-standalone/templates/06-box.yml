@@ -54,7 +54,7 @@ spec:
             - name: box-4000
               containerPort: 4000
           volumeMounts:
-          - mountPath: "/app/server/storage"
+          - mountPath: "/app/server/storage/main"
             name: storage
           - mountPath: "/app/server/storage/botiumwork"
             name: storage-botiumwork
@@ -170,7 +170,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: botium-box-secrets
-                  key: BOTIUMBOX_SENTRY_DSN                  
+                  key: BOTIUMBOX_SENTRY_DSN
             - name: BOTIUMBOX_PASSPORT_ADMINPASSWORD
               valueFrom:
                 secretKeyRef:
