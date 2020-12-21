@@ -11,7 +11,7 @@ questions:
   type: boolean
 - variable: CSP_SMARTLOOK
   default: false
-  description: "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.smartlook.com https://*.smartlook.cloud; img-src * data: blob:; media-src * data:; object-src 'none'; worker-src 'self' blob:; connect-src 'self' https://*.smartlook.com https://*.smartlook.cloud wss://*.botiumbox.com https://www.botium.ai"
+  description: "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.ingest.sentry.io https://*.smartlook.com https://*.smartlook.cloud; img-src * data: blob:; media-src * data:; object-src 'none'; worker-src 'self' blob:; connect-src 'self' https://*.ingest.sentry.io https://*.smartlook.com https://*.smartlook.cloud wss://*.botiumbox.com https://www.botium.ai"
   required: true
   type: boolean
 - variable: CSP_CUSTOM
