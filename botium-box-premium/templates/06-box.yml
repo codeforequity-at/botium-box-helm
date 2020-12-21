@@ -95,6 +95,11 @@ spec:
                 configMapKeyRef:
                   name: botium-box-configmap
                   key: COACH_WORKER_APIKEY
+            - name: BOTIUMBOX_SENTRY_DSN
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-configmap
+                  key: BOTIUMBOX_SENTRY_DSN                  
       volumes:
         - name: botium-box-storage
           persistentVolumeClaim:

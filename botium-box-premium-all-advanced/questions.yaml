@@ -15,7 +15,7 @@ questions:
   type: string
   required: false
 - variable: BOTIUM_BOX_VERSION
-  default: "2.8.2"
+  default: "2.8.3"
   description: "Botium Box Version"
   type: string
   required: true
@@ -160,5 +160,8 @@ questions:
   required: false
 - variable: GOOGLE_TRANSLATE_PRIVATE_KEY
   description: "Google Translate Private Key"
+  type: string
+  required: false
+- variable: BOTIUMBOX_SENTRY_DSN
   type: string
   required: false
