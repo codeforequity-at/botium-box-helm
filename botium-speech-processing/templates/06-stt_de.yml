@@ -1,0 +1,35 @@
+{{- if eq .Values.BOTIUM_SPEECH_PROVIDER_TTS "kaldi"}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stt_de
+  labels:
+    name: stt_de
+    app: botium-speech-processing
+    tier: stt_de
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      name: stt_de
+      app: botium-speech-processing
+  template:
+    metadata:
+      labels:
+        name: stt_de
+        app: botium-speech-processing
+        tier: stt_de
+    spec:
+      volumes:
+        - name: botium-speech-processing-storage
+          persistentVolumeClaim:
+            claimName: botium-speech-processing-claim
+      containers:
+        - name: stt_de
+          image: botium/botium-speech-kaldi-de:{{ .Values.BOTIUM_SPEECH_PROCESSING_VERSION }}
+          volumeMounts:
+            - mountPath: /opt/logs
+              name: botium-speech-processing-storage
+{{- end }}

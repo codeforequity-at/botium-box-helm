@@ -1,0 +1,43 @@
+questions:
+- variable: SHORTNAME
+  default: ""
+  description: "Instance Shortname (for domain name)"
+  type: string
+  required: true
+- variable: BOTIUM_SPEECH_PROCESSING_VERSION
+  default: "latest"
+  description: "Botium Speech Processing Version"
+  type: string
+  required: true
+- variable: AUTH_APIKEYS
+  description: "Valid API Keys (comma separated)"
+  type: string
+- variable: BOTIUM_SPEECH_PROVIDER_TTS
+  default: "marytts"
+  description: "Provider for TTS"
+  type: string
+  required: true
+  options:
+    - "marytts"
+    - "google"
+    - "picotts"
+- variable: BOTIUM_SPEECH_PROVIDER_STT
+  default: "kaldi"
+  description: "Provider for STT"
+  type: string
+  required: true
+  options:
+    - "kaldi"
+    - "google"
+- variable: BOTIUM_SPEECH_GOOGLE_CLIENT_EMAIL
+  description: "Google Client Email"
+  type: string
+  required: true
+  group: "Google Settings"
+  show_if: "BOTIUM_SPEECH_PROVIDER_TTS=google || BOTIUM_SPEECH_PROVIDER_STT=google"
+- variable: BOTIUM_SPEECH_GOOGLE_PRIVATE_KEY
+  description: "Google Private Key"
+  type: string
+  group: "Google Settings"
+  required: true
+  show_if: "BOTIUM_SPEECH_PROVIDER_TTS=google || BOTIUM_SPEECH_PROVIDER_STT=google"

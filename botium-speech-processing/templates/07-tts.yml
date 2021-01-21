@@ -1,0 +1,28 @@
+{{- if eq .Values.BOTIUM_SPEECH_PROVIDER_TTS "kaldi"}}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tts
+  labels:
+    name: tts
+    app: botium-speech-processing
+    tier: tts
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      name: tts
+      app: botium-speech-processing
+  template:
+    metadata:
+      labels:
+        name: tts
+        app: botium-speech-processing
+        tier: tts
+    spec:
+      containers:
+        - name: tts
+          image: botium/botium-speech-marytts:{{ .Values.BOTIUM_SPEECH_PROCESSING_VERSION }}
+{{- end }}
