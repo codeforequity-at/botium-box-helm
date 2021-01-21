@@ -78,6 +78,16 @@ questions:
   description: "Coach Worker Api Key"
   type: string
   required: false
+- variable: SPEECH_PROCESSING_ENDPOINT
+  default: "https://speech.botiumbox.com"
+  description: "Speech Processing Endpoint"
+  type: string
+  required: false
+- variable: SPEECH_PROCESSING_APIKEY
+  default: ""
+  description: "Speech Processing Api Key"
+  type: string
+  required: false
 - variable: JWT_SECRET
   default: ""
   description: "Custom JWT Secret for Shared Mini Instance"
