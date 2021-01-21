@@ -8,7 +8,7 @@ metadata:
     tier: frontend
 spec:
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
 #  ??? PersistentVolume does not exists yet
   storageClassName: botium-speech-processing-class
   resources:
