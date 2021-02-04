@@ -74,17 +74,17 @@ questions:
   type: boolean
   required: true
 - variable: SMTP_HOST
-  default: "smtp-relay.sendinblue.com"
+  default: "email-smtp.eu-west-1.amazonaws.com"
   description: "SMTP Host"
   type: string
   required: false
 - variable: SMTP_PORT
-  default: 587
+  default: 465
   description: "SMTP Port"
   type: int
   required: false
 - variable: SMTP_SECURE
-  default: false
+  default: true
   description: "SMTP Secure"
   type: boolean
   required: false
