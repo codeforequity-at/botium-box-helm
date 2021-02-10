@@ -14,22 +14,6 @@ spec:
     requests:
       storage: 20Gi
 ---
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: botium-box-botiumwork-storage
-  labels:
-    name: botium-box-botiumwork-storage
-    app: botium-box
-    tier: frontend
-spec:
-  accessModes:
-    - ReadWriteOnce
-  storageClassName: {{ .Values.STORAGE_CLASS_BOX_BOTIUMWORK }}
-  resources:
-    requests:
-      storage: 1Gi
----
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
