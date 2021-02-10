@@ -9,8 +9,7 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
-#  ??? PersistentVolume does not exists yet
-  storageClassName: botium-speech-processing-class
+  storageClassName: {{ .Values.BOTIUM_SPEECH_PROCESSING_STORAGE_CLASS}}
   resources:
     requests:
 {{- if eq .Values.BOTIUM_SPEECH_PROVIDER_TTS "kaldi"}}

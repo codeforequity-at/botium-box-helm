@@ -45,3 +45,8 @@ questions:
   group: "Google Settings"
   required: true
   show_if: "BOTIUM_SPEECH_PROVIDER_TTS=google || BOTIUM_SPEECH_PROVIDER_STT=google"
+- variable: BOTIUM_SPEECH_PROCESSING_STORAGE_CLASS
+  default: "efs"
+  description: "Storage Class"
+  type: string
+  required: true
