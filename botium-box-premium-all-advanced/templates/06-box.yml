@@ -187,7 +187,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: botium-box-secrets
-                  key: SPEECH_PROCESSING_APIKEY                    
+                  key: SPEECH_PROCESSING_APIKEY
             - name: JWT_EXPIRY_MINUTES
               valueFrom:
                 configMapKeyRef:
@@ -207,14 +207,13 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: botium-box-secrets
-                  key: BOTIUMBOX_SENTRY_DSN                  
+                  key: BOTIUMBOX_SENTRY_DSN
       volumes:
         - name: botium-box-storage
           persistentVolumeClaim:
             claimName: botium-box-storage
         - name: botium-box-botiumwork-storage
-          persistentVolumeClaim:
-            claimName: botium-box-botiumwork-storage
+          emptyDir: {}
 ---
 apiVersion: v1
 kind: Service
