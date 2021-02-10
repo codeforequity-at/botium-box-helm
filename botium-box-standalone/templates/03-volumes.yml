@@ -13,19 +13,3 @@ spec:
   resources:
     requests:
       storage: 20Gi
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: botium-box-{{ .Values.SHORTNAME }}-botiumwork-storage
-  labels:
-    name: botium-box-{{ .Values.SHORTNAME }}-botiumwork-storage
-    app: botium-box
-    tier: frontend
-spec:
-  accessModes:
-    - ReadWriteOnce
-  storageClassName: {{ .Values.STORAGE_CLASS_BOX_BOTIUMWORK }}
-  resources:
-    requests:
-      storage: 1Gi
