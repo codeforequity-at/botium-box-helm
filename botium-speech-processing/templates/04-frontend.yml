@@ -61,17 +61,29 @@ spec:
                   name: botium-speech-processing-configmap
                   key: BOTIUM_SPEECH_GOOGLE_PRIVATE_KEY
 ---
-# TODO just a temporary service, delete it
 apiVersion: v1
 kind: Service
 metadata:
   name: frontend
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   ports:
     - protocol: TCP
-      port: 80
+      port: 56000
       targetPort: 56000
   selector:
     name: frontend
     app: botium-speech-processing
+#apiVersion: v1
+#kind: Service
+#metadata:
+#  name: frontend
+#spec:
+#  type: LoadBalancer
+#  ports:
+#    - protocol: TCP
+#      port: 80
+#      targetPort: 56000
+#  selector:
+#    name: frontend
+#    app: botium-speech-processing

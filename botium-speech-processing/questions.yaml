@@ -1,6 +1,6 @@
 questions:
 - variable: SHORTNAME
-  default: ""
+  default: "speechprocessing"
   description: "Instance Shortname (for domain name)"
   type: string
   required: true

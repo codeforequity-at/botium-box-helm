@@ -14,8 +14,10 @@ spec:
     requests:
 {{- if and (eq .Values.BOTIUM_SPEECH_PROVIDER_STT "kaldi") (eq .Values.BOTIUM_SPEECH_PROVIDER_TTS "marytts") }}
       storage: 10Gi
-{{- if and (ne .Values.BOTIUM_SPEECH_PROVIDER_STT "kaldi") (ne .Values.BOTIUM_SPEECH_PROVIDER_TTS "marytts") }}
-      storage: 512Mi
 {{- else }}
+  {{- if and (ne .Values.BOTIUM_SPEECH_PROVIDER_STT "kaldi") (ne .Values.BOTIUM_SPEECH_PROVIDER_TTS "marytts") }}
+      storage: 512Mi
+  {{- else }}
       storage: 5Gi
+  {{- end }}
 {{- end }}

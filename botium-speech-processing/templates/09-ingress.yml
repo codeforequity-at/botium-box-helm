@@ -4,20 +4,21 @@ metadata:
   name: speech-processing-ingress
   annotations:
     kubernetes.io/ingress.class: nginx
-    rancher.io/globalDNS.hostname: {{ .Values.SHORTNAME }}.botiumbox.com
 spec:
   rules:
-    - host: {{ .Values.SHORTNAME }}.botiumbox.com
-      http:
+    - http:
         paths:
           - path: /
             backend:
               serviceName: frontend
               servicePort: 56000
+{{- if eq .Values.BOTIUM_SPEECH_PROVIDER_TTS "marytts"}}
           - path: /tts
             backend:
               serviceName: tts
               servicePort: 59125
+{{- end }}
+{{- if eq .Values.BOTIUM_SPEECH_PROVIDER_STT "kaldi"}}
           - path: /stt_en
             backend:
               serviceName: stt_en
@@ -26,6 +27,7 @@ spec:
             backend:
               serviceName: stt_de
               servicePort: 80
+{{- end }}
           - path: /dictate
             backend:
               serviceName: dictate
