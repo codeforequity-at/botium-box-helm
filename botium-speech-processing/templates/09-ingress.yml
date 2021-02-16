@@ -19,20 +19,19 @@ spec:
               servicePort: 59125
 {{- end }}
 {{- if eq .Values.BOTIUM_SPEECH_PROVIDER_STT "kaldi"}}
-          - path: /stt_en
+          - path: /stt-en
             backend:
-              serviceName: stt_en
+              serviceName: stt-en
               servicePort: 80
-          - path: /stt_de
+          - path: /stt-de
             backend:
-              serviceName: stt_de
+              serviceName: stt-de
               servicePort: 80
-{{- end }}
           - path: /dictate
             backend:
               serviceName: dictate
               servicePort: 56100
-
+{{- end }}
 ---
 #apiVersion: cert-manager.io/v1alpha2
 #kind: Issuer
