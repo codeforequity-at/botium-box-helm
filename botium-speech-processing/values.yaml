@@ -1,4 +1,4 @@
-SHORTNAME: "speechprocessing"
+FQDN: "speechprocessing.botium.box"
 BOTIUM_SPEECH_PROCESSING_VERSION: "latest"
 AUTH_APIKEYS: ""
 BOTIUM_SPEECH_PROVIDER_TTS: "picotts"
