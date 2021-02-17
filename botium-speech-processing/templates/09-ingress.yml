@@ -5,7 +5,7 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
     {{- if .Values.USE_RANCHER}}
-    {{- if not .Values.FQDN ""}}
+    {{- if ne .Values.FQDN ""}}
     rancher.io/globalDNS.hostname: {{ .Values.FQDN }}
     {{- end }}
     {{- end }}
@@ -17,13 +17,13 @@ spec:
             backend:
               serviceName: frontend
               servicePort: 56000
-          {{- if eq .Values.BOTIUM_SPEECH_PROVIDER_TTS "marytts"}}
+          {{- if eq .Values.BOTIUM_SPEECH_PROVIDER_TTS "marytts" }}
           - path: /tts
             backend:
               serviceName: tts
               servicePort: 59125
           {{- end }}
-          {{- if eq .Values.BOTIUM_SPEECH_PROVIDER_STT "kaldi"}}
+          {{- if eq .Values.BOTIUM_SPEECH_PROVIDER_STT "kaldi" }}
           - path: /stt-en
             backend:
               serviceName: stt-en
@@ -36,7 +36,7 @@ spec:
             backend:
               serviceName: dictate
               servicePort: 56100
-    {{- if not .Values.FQDN ""}}
+          {{- end }}
+    {{- if ne .Values.FQDN ""}}
     host: { { .Values.FQDN } }
-    { { - end } }
-  {{- end }}
+    {{- end }}
