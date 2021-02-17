@@ -4,23 +4,26 @@ metadata:
   name: speech-processing-ingress
   annotations:
     kubernetes.io/ingress.class: nginx
+    {{- if .Values.USE_RANCHER}}
+    {{- if not .Values.FQDN ""}}
     rancher.io/globalDNS.hostname: {{ .Values.FQDN }}
+    {{- end }}
+    {{- end }}
 spec:
   rules:
-    - host: {{ .Values.FQDN }}
-      http:
+    - http:
         paths:
           - path: /
             backend:
               serviceName: frontend
               servicePort: 56000
-{{- if eq .Values.BOTIUM_SPEECH_PROVIDER_TTS "marytts"}}
+          {{- if eq .Values.BOTIUM_SPEECH_PROVIDER_TTS "marytts"}}
           - path: /tts
             backend:
               serviceName: tts
               servicePort: 59125
-{{- end }}
-{{- if eq .Values.BOTIUM_SPEECH_PROVIDER_STT "kaldi"}}
+          {{- end }}
+          {{- if eq .Values.BOTIUM_SPEECH_PROVIDER_STT "kaldi"}}
           - path: /stt-en
             backend:
               serviceName: stt-en
@@ -33,32 +36,7 @@ spec:
             backend:
               serviceName: dictate
               servicePort: 56100
-{{- end }}
----
-#apiVersion: cert-manager.io/v1alpha2
-#kind: Issuer
-#metadata:
-#  name: {{ .Values.SHORTNAME }}-letsencrypt-prod
-#spec:
-#  acme:
-#    server: https://acme-v02.api.letsencrypt.org/directory
-#    email: florian.treml@botium.at
-#    privateKeySecretRef:
-#      name: {{ .Values.SHORTNAME }}-letsencrypt-prod
-#    solvers:
-#      - selector: {}
-#        http01:
-#          ingress:
-#            class: nginx
----
-#apiVersion: cert-manager.io/v1alpha2
-#kind: Certificate
-#metadata:
-#  name: {{ .Values.SHORTNAME }}.botiumbox-com
-#spec:
-#  secretName: {{ .Values.SHORTNAME }}.botiumbox-com-tls
-#  issuerRef:
-#    name: {{ .Values.SHORTNAME }}-letsencrypt-prod
-#  commonName: {{ .Values.SHORTNAME }}.botiumbox.com
-#  dnsNames:
-#    - {{ .Values.SHORTNAME }}.botiumbox.com
+    {{- if not .Values.FQDN ""}}
+    host: { { .Values.FQDN } }
+    { { - end } }
+  {{- end }}

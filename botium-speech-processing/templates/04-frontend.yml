@@ -52,13 +52,13 @@ spec:
                   key: BOTIUM_SPEECH_PROVIDER_STT
             - name: BOTIUM_SPEECH_GOOGLE_CLIENT_EMAIL
               valueFrom:
-                configMapKeyRef:
-                  name: botium-speech-processing-configmap
+                secretKeyRef:
+                  name: botium-speech-processing-secrets
                   key: BOTIUM_SPEECH_GOOGLE_CLIENT_EMAIL
             - name: BOTIUM_SPEECH_GOOGLE_PRIVATE_KEY
               valueFrom:
-                configMapKeyRef:
-                  name: botium-speech-processing-configmap
+                secretKeyRef:
+                  name: botium-speech-processing-secrets
                   key: BOTIUM_SPEECH_GOOGLE_PRIVATE_KEY
 ---
 apiVersion: v1
@@ -74,16 +74,3 @@ spec:
   selector:
     name: frontend
     app: botium-speech-processing
-#apiVersion: v1
-#kind: Service
-#metadata:
-#  name: frontend
-#spec:
-#  type: LoadBalancer
-#  ports:
-#    - protocol: TCP
-#      port: 80
-#      targetPort: 56000
-#  selector:
-#    name: frontend
-#    app: botium-speech-processing

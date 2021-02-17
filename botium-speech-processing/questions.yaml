@@ -4,7 +4,7 @@ questions:
   description: "Instance Shortname (for domain name)"
   type: string
   required: true
-- variable: STORAGE_CLASS_SPEECH_PROCESSING
+- variable: BOTIUM_SPEECH_PROCESSING_STORAGE_CLASS
   description: "Storage Class for Botium Speech Processing Files"
   type: storageclass
   required: true
