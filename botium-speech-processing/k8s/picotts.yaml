@@ -1,4 +1,4 @@
-FQDN: "<<FQDN-Placeholder>>"
+FQDN: "FQDN Placeholder"
 BOTIUM_SPEECH_PROCESSING_VERSION: "latest"
 AUTH_APIKEYS: ""
 USE_RANCHER: false

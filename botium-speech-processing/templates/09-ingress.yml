@@ -37,6 +37,6 @@ spec:
               serviceName: dictate
               servicePort: 56100
           {{- end }}
-    {{- if ne .Values.FQDN ""}}
-    host: { { .Values.FQDN } }
-    {{- end }}
+      {{- if ne .Values.FQDN ""}}
+      host: {{ .Values.FQDN }}
+      {{- end }}
