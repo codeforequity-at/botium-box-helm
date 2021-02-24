@@ -18,9 +18,10 @@ update:
 	helm dependency update redis-shared
 	helm dependency update zap-shared
 	helm dependency update botium-wildcard-ingress
+	helm dependency update botium-speech-processing
 
 package:
-	rm -f botium-box-ce-*.tgz botium-box-premium-*.tgz botium-box-prisma-*.tgz botium-box-mini-*.tgz botium-box-standalone-*.tgz botium-coach-worker-*.tgz botium-efs-provisioner-*.tgz botium-wildcard-ingress-*.tgz ingress-nginx-*.tgz redis-shared-*.tgz zap-shared-*.tgz
+	rm -f botium-box-ce-*.tgz botium-box-premium-*.tgz botium-box-prisma-*.tgz botium-box-mini-*.tgz botium-box-standalone-*.tgz botium-coach-worker-*.tgz botium-efs-provisioner-*.tgz botium-wildcard-ingress-*.tgz ingress-nginx-*.tgz redis-shared-*.tgz zap-shared-*.tgz botium-speech-processing-*.tgz
 	helm package botium-box-premium-all
 	helm package botium-box-premium-all-advanced
 	helm package botium-box-premium-ingress
@@ -39,6 +40,7 @@ package:
 	helm package redis-shared
 	helm package zap-shared
 	helm package botium-wildcard-ingress
+	helm package botium-speech-processing
 	helm repo index . --url https://github.com/codeforequity-at/botium-box-helm/raw/master/
 
 publish:

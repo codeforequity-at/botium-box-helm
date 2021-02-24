@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: botium-speech-processing-configmap
+  labels:
+    name: config
+    app: botium-speech-processing
+data:
+  BOTIUM_SPEECH_PROVIDER_TTS: "{{ .Values.BOTIUM_SPEECH_PROVIDER_TTS }}"
+  BOTIUM_SPEECH_PROVIDER_STT: "{{ .Values.BOTIUM_SPEECH_PROVIDER_STT }}"

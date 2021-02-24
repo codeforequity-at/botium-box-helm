@@ -158,6 +158,17 @@ entries:
     urls:
     - https://github.com/codeforequity-at/botium-box-helm/raw/master/botium-efs-provisioner-0.0.3.tgz
     version: 0.0.3
+  botium-speech-processing:
+  - apiVersion: v1
+    appVersion: latest
+    created: "2021-02-23T18:27:01.078906871+01:00"
+    description: Botium Speech Processing
+    digest: b60877f79843e027c977fb813eaa546efef80d6318d3dcd1d5d4c1d9c39cff01
+    name: botium-speech-processing
+    type: application
+    urls:
+    - https://github.com/codeforequity-at/botium-box-helm/raw/master/botium-speech-processing-0.0.1.tgz
+    version: 0.0.1
   botium-wildcard-ingress:
   - apiVersion: v1
     appVersion: 0.0.1

@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: botium-speech-processing-claim
+  labels:
+    name: botium-speech-processing-claim
+    app: botium-speech-processing
+    tier: frontend
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: {{ .Values.BOTIUM_SPEECH_PROCESSING_STORAGE_CLASS}}
+  resources:
+    requests:
+{{- if and (eq .Values.BOTIUM_SPEECH_PROVIDER_STT "kaldi") (eq .Values.BOTIUM_SPEECH_PROVIDER_TTS "marytts") }}
+      storage: 10Gi
+{{- else }}
+  {{- if and (ne .Values.BOTIUM_SPEECH_PROVIDER_STT "kaldi") (ne .Values.BOTIUM_SPEECH_PROVIDER_TTS "marytts") }}
+      storage: 512Mi
+  {{- else }}
+      storage: 5Gi
+  {{- end }}
+{{- end }}
