@@ -129,6 +129,16 @@ spec:
                 secretKeyRef:
                   name: botium-box-secrets
                   key: COACH_WORKER_APIKEY
+            - name: SPEECH_PROCESSING_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: SPEECH_PROCESSING_ENDPOINT
+            - name: SPEECH_PROCESSING_APIKEY
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: SPEECH_PROCESSING_APIKEY                  
             - name: PRISMA_MANAGEMENT_API_SECRET
               valueFrom:
                 secretKeyRef:

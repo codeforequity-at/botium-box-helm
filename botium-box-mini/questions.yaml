@@ -10,7 +10,7 @@ questions:
   type: int
   required: true
 - variable: BOTIUM_BOX_VERSION
-  default: "2.8.3"
+  default: "2.8.4"
   description: "Botium Box Version"
   type: string
   required: true
@@ -40,17 +40,17 @@ questions:
   type: string
   required: true
 - variable: SMTP_HOST
-  default: "smtp-relay.sendinblue.com"
+  default: "email-smtp.eu-west-1.amazonaws.com"
   description: "SMTP Host"
   type: string
   required: false
 - variable: SMTP_PORT
-  default: 587
+  default: 465
   description: "SMTP Port"
   type: int
   required: false
 - variable: SMTP_SECURE
-  default: false
+  default: true
   description: "SMTP Secure"
   type: boolean
   required: false
@@ -76,6 +76,16 @@ questions:
 - variable: COACH_WORKER_APIKEY
   default: ""
   description: "Coach Worker Api Key"
+  type: string
+  required: false
+- variable: SPEECH_PROCESSING_ENDPOINT
+  default: "https://speech.botiumbox.com"
+  description: "Speech Processing Endpoint"
+  type: string
+  required: false
+- variable: SPEECH_PROCESSING_APIKEY
+  default: ""
+  description: "Speech Processing Api Key"
   type: string
   required: false
 - variable: JWT_SECRET

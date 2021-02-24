@@ -14,22 +14,6 @@ spec:
     requests:
       storage: 20Gi
 ---
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: botium-box-botiumwork-storage
-  labels:
-    name: botium-box-botiumwork-storage
-    app: botium-box
-    tier: frontend
-spec:
-  accessModes:
-    - ReadWriteOnce
-  storageClassName: {{ .Values.STORAGE_CLASS_BOX_BOTIUMWORK }}
-  resources:
-    requests:
-      storage: 1Gi
----
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -178,6 +162,16 @@ spec:
                 secretKeyRef:
                   name: botium-box-secrets
                   key: COACH_WORKER_APIKEY
+            - name: SPEECH_PROCESSING_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: SPEECH_PROCESSING_ENDPOINT
+            - name: SPEECH_PROCESSING_APIKEY
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: SPEECH_PROCESSING_APIKEY
             - name: JWT_EXPIRY_MINUTES
               valueFrom:
                 configMapKeyRef:
@@ -197,14 +191,13 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: botium-box-secrets
-                  key: BOTIUMBOX_SENTRY_DSN                  
+                  key: BOTIUMBOX_SENTRY_DSN
       volumes:
         - name: botium-box-storage
           persistentVolumeClaim:
             claimName: botium-box-storage
         - name: botium-box-botiumwork-storage
-          persistentVolumeClaim:
-            claimName: botium-box-botiumwork-storage
+          emptyDir: {}
 ---
 apiVersion: v1
 kind: Service
