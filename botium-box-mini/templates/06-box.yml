@@ -82,11 +82,20 @@ spec:
             - name: CHOKIDAR_USEPOLLING
               value: "1"
             - name: BOTIUMBOX_FEATURE_FILEBROWSER
-              value: "1"
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: BOTIUMBOX_FEATURE_FILEBROWSER            
             - name: BOTIUMBOX_FEATURE_DELETETESTSESSION
-              value: "0"
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: BOTIUMBOX_FEATURE_DELETETESTSESSION
             - name: BOTIUMBOX_FEATURE_REPAIRTESTPROJECTHISTORY
-              value: "0"
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: BOTIUMBOX_FEATURE_REPAIRTESTPROJECTHISTORY
             - name: BOTIUMBOX_MAX_EXECUTION_INTERVAL_MINUTES
               value: "10"
             - name: JWT_SECRET

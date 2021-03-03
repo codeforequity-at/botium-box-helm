@@ -6,7 +6,12 @@ questions:
   required: true
 - variable: AGENT_COUNT
   default: 1
-  description: "Botium Box Agent Count"
+  description: "Botium Box Common Agent Count"
+  type: int
+  required: true
+- variable: AGENTP_COUNT
+  default: 1
+  description: "Botium Box Performance Test Agent Count"
   type: int
   required: true
 - variable: BOTIUM_BOX_VERSION
@@ -117,6 +122,18 @@ questions:
   default: "box-agent-0,box-agent-1,box-agent-2,box-agent-3,box-agent-4,box-agent-5,box-agent-6,box-agent-7,box-agent-8,box-agent-9,box-agent-10,box-agent-11,box-agent-12,box-agent-13,box-agent-14,box-agent-15,box-agent-16,box-agent-17,box-agent-18,box-agent-19"
   description: "List of Agent Names (separated by komma)"
   type: string
+  required: true
+- variable: BOTIUMBOX_FEATURE_FILEBROWSER
+  default: true
+  type: boolean
+  required: true
+- variable: BOTIUMBOX_FEATURE_DELETETESTSESSION
+  default: true
+  type: boolean
+  required: true
+- variable: BOTIUMBOX_FEATURE_REPAIRTESTPROJECTHISTORY
+  default: true
+  type: boolean
   required: true
 - variable: REDIS_SERVICE
   default: "redis"

@@ -19,6 +19,8 @@ spec:
         app: botium-box
         tier: frontend
     spec:
+      nodeSelector:
+        box-agent-type: common
       initContainers:
         - name: box-agent-chmod-er
           image: busybox:latest
@@ -65,6 +67,10 @@ spec:
               value: /app/agent/storage/botiumwork
             - name: BOTIUMBOX_QUEUE_CONCURRENCY
               value: "10"
+            - name: BOTIUMBOX_QUEUE_CONCURRENCY_COACH
+              value: "10"
+            - name: BOTIUMBOX_QUEUE_CONCURRENCY_PERFORMANCE
+              value: "0"
             - name: BOTIUMBOX_QUEUE_HEARTBEAT
               value: "0"
             - name: BOTIUMBOX_QUEUE_REDISURL
@@ -85,9 +91,108 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: box-agent
+  name: box-agentp
 spec:
   clusterIP: None
   selector:
-    name: box-agent
+    name: box-agentp
+    app: botium-box
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: box-agentp
+  labels:
+    name: box-agentp
+    app: botium-box
+    tier: frontend
+spec:
+  serviceName: "box-agentp"
+  replicas: {{ .Values.AGENTP_COUNT }}
+  selector:
+    matchLabels:
+      name: box-agentp
+  template:
+    metadata:
+      labels:
+        name: box-agentp
+        app: botium-box
+        tier: frontend
+    spec:
+      nodeSelector:
+        box-agent-type: performance
+      initContainers:
+        - name: box-agentp-chmod-er
+          image: busybox:latest
+          command:
+          - /bin/chown
+          - -R
+          - "1000:1000"
+          - /app/agent/storage
+          volumeMounts:
+          - mountPath: "/app/agent/storage"
+            name: botium-box-mini-storage
+      containers:
+        - name: box-agentp
+          {{- if eq .Values.CONTAINER_REGISTRY "" }}
+          image: botium/botium-box-agent:{{ .Values.BOTIUM_BOX_VERSION }}
+          {{- else }}
+          image: {{ .Values.CONTAINER_REGISTRY }}/botium/botium-box-agent:{{ .Values.BOTIUM_BOX_VERSION }}
+          {{- end }}
+          imagePullPolicy: Always
+          command: ["/bin/sh"]
+          args: ["-c", "./wait.sh -t $WAIT_TIMEOUT -e $BOTIUMBOX_QUEUE_REDISURL && npm run start:dist"]
+          {{- if eq .Values.ENABLE_RESOURCE_LIMIT true }}
+          resources:
+            limits:
+              cpu: {{ .Values.RESOURCE_CPU_LIMIT }}
+              memory: {{ .Values.RESOURCE_MEM_LIMIT }}
+            requests:
+              cpu: {{ .Values.RESOURCE_CPU_REQUEST }}
+              memory: {{ .Values.RESOURCE_MEM_REQUEST }}
+          {{- end }}
+          volumeMounts:
+          - mountPath: "/app/agent/storage/"
+            name: botium-box-mini-storage
+          env:
+            - name: BOTIUMBOX_AGENT_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: DEBUG
+              value: botium*
+            - name: RESOURCESDIR
+              value: /app/agent/storage/resources
+            - name: BOTIUM_TEMPDIR
+              value: /app/agent/storage/botiumwork
+            - name: BOTIUMBOX_QUEUE_CONCURRENCY
+              value: "0"
+            - name: BOTIUMBOX_QUEUE_CONCURRENCY_COACH
+              value: "0"
+            - name: BOTIUMBOX_QUEUE_CONCURRENCY_PERFORMANCE
+              value: "10"
+            - name: BOTIUMBOX_QUEUE_HEARTBEAT
+              value: "0"
+            - name: BOTIUMBOX_QUEUE_REDISURL
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: BOTIUMBOX_QUEUE_REDISURL
+            - name: BOTIUMBOX_QUEUE_PREFIX
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: BOTIUMBOX_QUEUE_PREFIX
+      volumes:
+        - name: botium-box-mini-storage
+          persistentVolumeClaim:
+            claimName: botium-box-mini-storage
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: box-agentp
+spec:
+  clusterIP: None
+  selector:
+    name: box-agentp
     app: botium-box
