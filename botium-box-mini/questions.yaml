@@ -123,18 +123,6 @@ questions:
   description: "List of Agent Names (separated by komma)"
   type: string
   required: true
-- variable: BOTIUMBOX_FEATURE_FILEBROWSER
-  default: true
-  type: boolean
-  required: true
-- variable: BOTIUMBOX_FEATURE_DELETETESTSESSION
-  default: true
-  type: boolean
-  required: true
-- variable: BOTIUMBOX_FEATURE_REPAIRTESTPROJECTHISTORY
-  default: true
-  type: boolean
-  required: true
 - variable: REDIS_SERVICE
   default: "redis"
   description: "Redis Service Name"
