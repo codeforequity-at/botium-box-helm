@@ -17,7 +17,14 @@ spec:
     type: RollingUpdate
     rollingUpdate:
       maxUnavailable: 1
+  {{- else }}
+  strategy:
+    type: Recreate
   {{- end }}
+  selector:
+    matchLabels:
+      name: box-server
+      app: botium-box
   template:
     metadata:
       labels:
