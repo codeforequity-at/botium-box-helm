@@ -294,8 +294,8 @@ spec:
     type: Recreate
   selector:
     matchLabels:
-      name: box-server
-      app: botium-box
+      name: box-server-shell
+      app: botium-box-shell
   template:
     metadata:
       labels:
