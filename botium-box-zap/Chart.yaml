@@ -1,0 +1,7 @@
+apiVersion: v1
+name: botium-box-zap
+description: ZAP shared
+
+type: application
+version: 0.0.2
+appVersion: 0.0.1

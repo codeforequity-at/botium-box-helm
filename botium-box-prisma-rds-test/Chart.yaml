@@ -1,7 +1,0 @@
-apiVersion: v1
-name: botium-box-prisma-rds-test
-description: Botium Box Prisma RDS Test
-
-type: application
-version: 1.0.1
-appVersion: 1.0.0

@@ -1,3 +1,4 @@
+{{- if .Values.INSTALL_MYSQL }}
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
@@ -14,11 +15,7 @@ spec:
     requests:
       storage: 20Gi
 ---
-{{- if .Values.NEWER_KUBERNETES }}
 apiVersion: apps/v1
-{{- else }}
-apiVersion: extensions/v1beta1
-{{- end }}
 kind: Deployment
 metadata:
   name: mysql
@@ -28,11 +25,9 @@ spec:
   replicas: 1
   strategy:
     type: Recreate
-  {{- if .Values.NEWER_KUBERNETES }}
   selector:
     matchLabels:
       name: mysql
-  {{- end }}
   template:
     metadata:
       labels:
@@ -71,11 +66,9 @@ spec:
   selector:
     name: mysql
 ---
-{{- if .Values.NEWER_KUBERNETES }}
-apiVersion: apps/v1
-{{- else }}
-apiVersion: extensions/v1beta1
 {{- end }}
+apiVersion: apps/v1
+apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: mysql-admin
@@ -85,11 +78,9 @@ spec:
   replicas: 1
   strategy:
     type: Recreate
-  {{- if .Values.NEWER_KUBERNETES }}
   selector:
     matchLabels:
       name: mysql-admin
-  {{- end }}
   template:
     metadata:
       labels:

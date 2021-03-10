@@ -1,7 +1,0 @@
-apiVersion: v1
-name: redis-shared
-description: Redis shared
-
-type: application
-version: 0.0.5
-appVersion: 0.0.1

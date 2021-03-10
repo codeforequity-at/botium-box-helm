@@ -1,7 +1,0 @@
-questions:
-- variable: FQDN
-  default: ".botiumbox.com"
-  description: "DNS Name (*.botiumbox.com)"
-  type: string
-  required: true
-  

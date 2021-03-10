@@ -1,3 +1,4 @@
+{{- if .Values.ENABLE_S3_BACKUP }}
 apiVersion: v1
 kind: Secret
 metadata:
@@ -56,3 +57,4 @@ spec:
             - name: S3_ENDPOINT
               value: "{{ .Values.S3_ENDPOINT }}"
           restartPolicy: OnFailure
+{{- end }}

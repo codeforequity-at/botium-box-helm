@@ -4,43 +4,88 @@ questions:
   description: "Prisma Version"
   type: string
   required: true
-- variable: FQDN
-  description: "DNS Name (*.botiumbox.com)"
-  type: string
-  required: true
-- variable: BACKUP_SCHEDULE
-  type: string
-  default: "0 0 * * *"
-  description: "Default schedule is daily at 00:00"
-  required: true
-- variable: S3_ACCESS_KEY_ID
-  type: string
-  required: true
-- variable: S3_SECRET_ACCESS_KEY
-  type: string
-  required: true
-- variable: S3_BUCKET
-  type: string
-  required: true
-- variable: S3_ENDPOINT
-  default: "https://s3.eu-central-1.wasabisys.com"
-  type: string
-  required: true
-- variable: S3_REGION
-  default: "eu-central-1"
-  type: string
-  required: true
-- variable: STORAGE_CLASS_BOX
-  description: "Storage Class for Mysql Database"
-  type: storageclass
-  required: true
 - variable: INSTALL_INGRESS
   default: true
   description: "Install Ingress with Letsencrypt"
   type: boolean
   required: true
-- variable: NEWER_KUBERNETES
-  default: false
-  description: "On for Kubernetes Version >= 1.16"
+  group: "ingress"
+  show_subquestion_if: "true"
+  subquestions:
+  - variable: LETS_ENCRYPT_EMAIL
+    default: ""
+    description: "Email for Lets Encrypt"
+    type: string
+    required: true
+- variable: FQDN
+  description: "DNS Name (*.botiumbox.com)"
+  type: string
+  required: true
+  group: "ingress"
+- variable: ENABLE_S3_BACKUP
+  default: true
+  description: "Enable S3 Backup (mysqldump to S3)"
   type: boolean
   required: true
+  group: "backup"
+  show_subquestion_if: "true"
+  subquestions:
+  - variable: BACKUP_SCHEDULE
+    type: string
+    default: "0 0 * * *"
+    description: "Default schedule is daily at 00:00"
+    required: true
+  - variable: S3_ACCESS_KEY_ID
+    type: string
+    required: true
+  - variable: S3_SECRET_ACCESS_KEY
+    type: string
+    required: true
+  - variable: S3_BUCKET
+    type: string
+    required: true
+  - variable: S3_ENDPOINT
+    default: "https://s3.eu-central-1.wasabisys.com"
+    type: string
+    required: true
+  - variable: S3_REGION
+    default: "eu-central-1"
+    type: string
+    required: true
+- variable: STORAGE_CLASS_BOX
+  description: "Storage Class for Mysql Database"
+  type: storageclass
+  required: true
+  group: "storage"
+- variable: PRISMA_MANAGEMENT_API_SECRET
+  default: ""
+  type: string
+  required: true
+  group: "prisma"
+- variable: PRISMA_MANAGEMENT_SCHEMA
+  default: "prisma"
+  type: string
+  required: true
+  group: "prisma"
+- variable: INSTALL_MYSQL
+  default: true
+  description: "Install Mysql Service or use an external service (i.e. RBS)"
+  type: boolean
+  required: true
+  group: "mysql"
+  show_subquestion_if: "false"
+  subquestions:
+  - variable: MYSQL_HOST
+    default: "mysql"
+    type: string
+    required: true
+- variable: MYSQL_USER
+  default: ""
+  type: string
+  required: true
+  group: "mysql"
+- variable: MYSQL_PASSWORD
+  default: ""
+  type: string
+  required: true
+  group: "mysql"

@@ -1,8 +1,4 @@
-{{- if .Values.NEWER_KUBERNETES }}
 apiVersion: apps/v1
-{{- else }}
-apiVersion: extensions/v1beta1
-{{- end }}
 kind: Deployment
 metadata:
   name: prisma
@@ -12,11 +8,9 @@ spec:
   replicas: 1
   strategy:
     type: Recreate
-  {{- if .Values.NEWER_KUBERNETES }}
   selector:
     matchLabels:
       name: prisma
-  {{- end }}
   template:
     metadata:
       labels:
@@ -61,7 +55,7 @@ spec:
   tls:
   - hosts:
     - {{ .Values.FQDN }}
-    secretName: botiumbox-com-tls
+    secretName: botiumbox-tls
   rules:
   - host: {{ .Values.FQDN }}
     http:
@@ -82,7 +76,7 @@ metadata:
 spec:
   acme:
     server: https://acme-v02.api.letsencrypt.org/directory
-    email: florian.treml@botium.at
+    email: {{ .Values.LETS_ENCRYPT_EMAIL }}
     privateKeySecretRef:
       name: letsencrypt-prod
     solvers:
@@ -94,9 +88,9 @@ spec:
 apiVersion: cert-manager.io/v1alpha2
 kind: Certificate
 metadata:
-  name: botiumbox-com
+  name: botiumbox
 spec:
-  secretName: botiumbox-com-tls
+  secretName: botiumbox-tls
   issuerRef:
     name: letsencrypt-prod
   commonName: {{ .Values.FQDN }}

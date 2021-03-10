@@ -1,0 +1,28 @@
+{{- if eq .Values.ENABLE_MULTI_TENANCY false }}
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: botium-box-init
+spec:
+  activeDeadlineSeconds: 120
+  template:
+    metadata:
+      name: botium-box-init
+    spec:
+      containers:
+        - name: botium-box-init
+          image: alpine
+          command: ["/bin/sh"]
+          args:
+            - -c
+            - apk add curl unzip && mkdir -p /app/server/storage/testsets && mkdir -p /app/server/storage/resources && mkdir -p /app/server/storage/botiumwork && cd /tmp && curl -L https://github.com/codeforequity-at/botium-box-basic-dist/archive/master.zip -o master.zip && unzip master.zip && cp -u  botium-box-basic-dist-master/resources/* /app/server/storage/resources && ls -a /app/server/storage/resources
+          volumeMounts:
+          - mountPath: "/app/server/storage"
+            name: storage
+      volumes:
+        - name: storage
+          persistentVolumeClaim:
+            claimName: botium-box-storage
+      restartPolicy: Never
+  backoffLimit: 0
+{{- end }}
