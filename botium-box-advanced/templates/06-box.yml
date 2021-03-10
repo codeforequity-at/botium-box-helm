@@ -292,6 +292,10 @@ spec:
   replicas: 1
   strategy:
     type: Recreate
+  selector:
+    matchLabels:
+      name: box-server
+      app: botium-box
   template:
     metadata:
       labels:
