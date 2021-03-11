@@ -48,9 +48,9 @@ questions:
   description: "Redis Password"
   type: string
   required: true
-- variable: SHORTNAME
+- variable: FQDN
   default: ""
-  description: "Instance Shortname (for domain name)"
+  description: "Instance FQDN"
   type: string
   required: true
 - variable: INSTALL_ZAP
@@ -129,6 +129,11 @@ questions:
   description: "Install Ingress with Letsencrypt"
   type: boolean
   required: true
+- variable: LETS_ENCRYPT_EMAIL
+  default: ""
+  description: "Email for Lets Encrypt Challenge"
+  type: string
+  required: false
 - variable: INSTALL_REDIS
   default: true
   description: "Install Redis"

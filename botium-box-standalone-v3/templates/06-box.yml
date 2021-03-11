@@ -223,7 +223,7 @@ metadata:
   annotations:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-    rancher.io/globalDNS.hostname: {{ .Values.FQDN }}.botiumbox
+    rancher.io/globalDNS.hostname: {{ .Values.FQDN }}
     cert-manager.io/cluster-issuer: {{ .Values.FQDN }}-letsencrypt-prod
     nginx.ingress.kubernetes.io/server-snippet: |
       ssl_stapling on;
@@ -231,10 +231,10 @@ metadata:
 spec:
   tls:
   - hosts:
-    - {{ .Values.FQDN }}.botiumbox
+    - {{ .Values.FQDN }}
     secretName: {{ .Values.FQDN }}.botiumbox-com-tls
   rules:
-  - host: {{ .Values.FQDN }}.botiumbox
+  - host: {{ .Values.FQDN }}
     http:
       paths:
       - path: /
@@ -249,7 +249,7 @@ metadata:
 spec:
   acme:
     server: https://acme-v02.api.letsencrypt.org/directory
-    email: florian.treml@botium.at
+    email: {{ .Values.LETS_ENCRYPT_EMAIL }}
     privateKeySecretRef:
       name: {{ .Values.FQDN }}-letsencrypt-prod
     solvers:
@@ -266,7 +266,7 @@ spec:
   secretName: {{ .Values.FQDN }}.botiumbox-com-tls
   issuerRef:
     name: {{ .Values.FQDN }}-letsencrypt-prod
-  commonName: {{ .Values.FQDN }}.botiumbox
+  commonName: {{ .Values.FQDN }}
   dnsNames:
-  - {{ .Values.FQDN }}.botiumbox
+  - {{ .Values.FQDN }}
 {{- end }}
