@@ -3,5 +3,15 @@ name: botium-box-standalone-v3
 description: Botium Box Standalone
 
 type: application
-version: 0.0.3
+version: 0.0.4
 appVersion: 2.8.4
+
+dependencies:
+  - name: botium-box-redis
+    version: 0.0.1
+    repository: 'file://../botium-box-redis'
+    condition: INSTALL_REDIS
+  - name: botium-box-zap
+    version: 0.0.2
+    repository: 'file://../botium-box-zap'
+    condition: INSTALL_ZAP

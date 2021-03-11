@@ -48,6 +48,12 @@ questions:
   description: "Redis Password"
   type: string
   required: true
+- variable: botium-box-redis.REDIS_PASSWORD
+  default: "redis123"
+  description: "Redis Password for Redis Service"
+  type: string
+  required: true
+  group: "redis"
 - variable: FQDN
   default: ""
   description: "Instance FQDN"
@@ -148,11 +154,6 @@ questions:
   default: "qprod"
   description: "Redis Prefix"
   type: string
-  required: true
-- variable: REDIS_SELECT_INDEX
-  default: 0
-  description: "Redis Select Index (Namespace)"
-  type: int
   required: true
 - variable: NEWER_KUBERNETES
   default: false
