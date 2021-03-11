@@ -1,7 +1,0 @@
-apiVersion: v2
-name: botium-box-premium-all
-description: Botium Box
-
-type: application
-version: 1.0.34
-appVersion: 2.8.4
