@@ -144,6 +144,12 @@ questions:
   type: string
   required: false
   group: "speech processing"
+- variable: JWT_SECRET
+  description: "The JWT Secret"
+  type: string
+  required: true
+  group: "jwt"
+  show_if: "ENABLE_MULTI_TENANCY=false"
 - variable: JWT_EXPIRY_MINUTES
   default: 43200
   description: "JWT expiry in minutes (default: 43200 = 30 days)"
@@ -169,6 +175,7 @@ questions:
     description: "Email for Lets Encrypt"
     type: string
     required: true
+    show_if: "ENABLE_MULTI_TENANCY=false"
 - variable: ENABLE_RESOURCE_LIMIT
   default: false
   description: "Enable Limits for agents"
