@@ -317,7 +317,27 @@ spec:
           {{- end }}
           imagePullPolicy: Always
           command: ["/bin/sh"]
-          args: ["-c", "git clone https://{{ .Values.BITBUCKET_USERNAME }}:{{ .Values.BITBUCKET_PASSWORD }}@bitbucket.org/botiumcoreteam/botium-datasets.git && mkdir -p /app/datasets-mini && cp -R botium-datasets/mini/* /app/datasets-mini && git clone https://{{ .Values.BITBUCKET_USERNAME }}:{{ .Values.BITBUCKET_PASSWORD }}@bitbucket.org/botiumcoreteam/botium-box.git && cd botium-box && git fetch && git checkout {{ if eq .Values.BOTIUM_BOX_VERSION "develop" }}develop{{ else }} release/{{ .Values.BOTIUM_BOX_VERSION }}{{ end }} && mkdir packages/botium-box-server/node_modules && ln -s ../../license-creator packages/botium-box-server/node_modules/license-creator && ln -s ../../botium-box-shared packages/botium-box-server/node_modules/botium-box-shared && cd /app/server && while :; do echo 'Press <CTRL+C> to exit.'; sleep 10; done"]
+          args: ["-c", "
+            git clone https://{{ .Values.BITBUCKET_USERNAME }}:{{ .Values.BITBUCKET_PASSWORD }}@bitbucket.org/botiumcoreteam/botium-datasets.git &&
+            mkdir -p /app/datasets-mini &&
+            cp -R botium-datasets/mini/* /app/datasets-mini &&
+            git clone https://{{ .Values.BITBUCKET_USERNAME }}:{{ .Values.BITBUCKET_PASSWORD }}@bitbucket.org/botiumcoreteam/botium-box.git &&
+            cd botium-box &&
+            git fetch &&
+            git checkout {{ if eq .Values.BOTIUM_BOX_VERSION "develop" }}develop{{ else }} release/{{ .Values.BOTIUM_BOX_VERSION }}{{ end }} &&
+            mkdir packages/botium-box-server/node_modules &&
+            ln -s ../../license-creator packages/botium-box-server/node_modules/license-creator &&
+            ln -s ../../botium-box-shared packages/botium-box-server/node_modules/botium-box-shared &&
+            {{- if .Values.ENABLE_MULTI_TENANCY }}
+              {{ - if .Values.FIRST_TENANT_ENABLE }}
+            node packages/botium-box-server/src/management/createshared.js {{ .Values.FQDN }} {{ .Values.FIRST_TENANT_EMAIL }} {{ .Values.FIRST_TENANT_PASSWORD }} {{ .Values.FIRST_TENANT_PRISMA_ENDPOINT }} {{ .Values.FIRST_TENANT_PRISMA_SECRET }} {{ .Values.FIRST_TENANT_BUILDTARGET }} &&
+              {{ - else }}
+            echo {} > /app/prisma-config/prisma-config.json
+              {{- end }}
+            {{- end }}
+            cd /app/server &&
+            while :; do echo 'Press <CTRL+C> to exit.'; sleep 10; done"
+          ]
           ports:
             - name: box-4000
               containerPort: 4000

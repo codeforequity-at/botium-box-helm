@@ -329,3 +329,37 @@ questions:
   type: string
   required: true
   group: "prisma"
+- variable: FIRST_TENANT_ENABLE
+  default: false
+  description: "Generate first tenant"
+  type: boolean
+  required: true
+  group: "firsttenant"
+  show_if: "ENABLE_MULTI_TENANCY=true"
+  show_subquestion_if: "true"
+  subquestions:
+    - variable: FIRST_TENANT_EMAIL
+      default: ""
+      description: "Email"
+      type: string
+      required: true
+    - variable: FIRST_TENANT_PASSWORD
+      default: ""
+      description: "Password"
+      type: string
+      required: true
+    - variable: FIRST_TENANT_PRISMA_ENDPOINT
+      default: ""
+      description: "Prisma endpoint"
+      type: string
+      required: true
+    - variable: FIRST_TENANT_PRISMA_SECRET
+      default: ""
+      description: "Prisma secret"
+      type: string
+      required: true
+    - variable: FIRST_TENANT_BUILDTARGET
+      default: ""
+      description: "Build target"
+      type: string
+      required: true
