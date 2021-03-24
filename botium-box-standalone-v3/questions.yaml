@@ -125,6 +125,10 @@ questions:
   description: "Speech Processing Api Key"
   type: string
   required: false
+- variable: JWT_SECRET
+  description: "The JWT Secret"
+  type: string
+  required: true
 - variable: JWT_EXPIRY_MINUTES
   default: 43200
   description: "JWT expiry in minutes (default: 43200 = 30 days)"

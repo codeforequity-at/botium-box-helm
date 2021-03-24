@@ -144,6 +144,69 @@ questions:
   type: string
   required: false
   group: "speech processing"
+- variable: ENABLE_MULTI_TENANCY
+  default: false
+  description: "Enable Multi Tenancy"
+  type: boolean
+  required: true
+  group: "multi tenancy"
+  show_subquestion_if: "true"
+  subquestions:
+    - variable: AWS_ACCESS_KEY_ID
+      default: ""
+      description: "AWS Access Key ID for Wildcard Certificate Challenge"
+      type: string
+      required: true
+    - variable: AWS_SECRET_ACCESS_KEY
+      default: ""
+      description: "AWS Secret Access Key for Wildcard Certificate Challenge"
+      type: string
+      required: true
+    - variable: BITBUCKET_USERNAME
+      default: ""
+      description: "BitBucket Username for Box Shell (to fetch management scripts)"
+      type: string
+      required: true
+    - variable: BITBUCKET_PASSWORD
+      default: ""
+      description: "BitBucket Password Box Shell (to fetch management scripts)"
+      type: string
+      required: true
+    - variable: ENABLE_BACKUP_PRISMA_CONFIG
+      default: false
+      description: "Enable Backup for prisma config folder"
+      type: boolean
+      required: true
+      group: "multi tenancy backup"
+    - variable: BACKUP_SCHEDULE
+      type: string
+      default: "0 0 * * *"
+      description: "Default schedule is daily at 00:00"
+      required: false
+      group: "multi tenancy backup"
+    - variable: S3_ACCESS_KEY_ID
+      type: string
+      required: false
+      group: "multi tenancy backup"
+    - variable: S3_SECRET_ACCESS_KEY
+      type: string
+      required: false
+      group: "multi tenancy backup"
+    - variable: S3_BUCKET
+      default: "botium-mini-backups"
+      type: string
+      required: true
+      group: "multi tenancy backup"
+    - variable: S3_ENDPOINT
+      default: "https://s3.eu-central-1.wasabisys.com"
+      type: string
+      required: false
+      group: "multi tenancy backup"
+    - variable: S3_REGION
+      default: "eu-central-1"
+      type: string
+      required: false
+      group: "multi tenancy backup"
 - variable: JWT_SECRET
   description: "The JWT Secret"
   type: string
@@ -156,6 +219,7 @@ questions:
   type: int
   required: false
   group: "jwt"
+  show_if: "ENABLE_MULTI_TENANCY=false"
 - variable: FQDN
   default: ""
   description: "Cluster FQDN (shortname.botiumbox.com, e.g. mini01.botiumbox.com)"
@@ -245,74 +309,6 @@ questions:
   type: boolean
   required: true
   group: "maintenance"
-- variable: ENABLE_MULTI_TENANCY
-  default: false
-  description: "Enable Multi Tenancy"
-  type: boolean
-  required: true
-  group: "multi tenancy"
-  show_subquestion_if: "true"
-  subquestions:
-  - variable: AWS_ACCESS_KEY_ID
-    default: ""
-    description: "AWS Access Key ID for Wildcard Certificate Challenge"
-    type: string
-    required: true
-  - variable: JWT_SECRET
-    default: ""
-    description: "Custom JWT Secret for Multi Tenancy Instance"
-    type: string
-    required: true
-  - variable: AWS_SECRET_ACCESS_KEY
-    default: ""
-    description: "AWS Secret Access Key for Wildcard Certificate Challenge"
-    type: string
-    required: true
-  - variable: BITBUCKET_USERNAME
-    default: ""
-    description: "BitBucket Username for Box Shell (to fetch management scripts)"
-    type: string
-    required: true
-  - variable: BITBUCKET_PASSWORD
-    default: ""
-    description: "BitBucket Password Box Shell (to fetch management scripts)"
-    type: string
-    required: true
-  - variable: ENABLE_BACKUP_PRISMA_CONFIG
-    default: false
-    description: "Enable Backup for prisma config folder"
-    type: boolean
-    required: true
-    group: "multi tenancy backup"
-  - variable: BACKUP_SCHEDULE
-    type: string
-    default: "0 0 * * *"
-    description: "Default schedule is daily at 00:00"
-    required: false
-    group: "multi tenancy backup"
-  - variable: S3_ACCESS_KEY_ID
-    type: string
-    required: false
-    group: "multi tenancy backup"
-  - variable: S3_SECRET_ACCESS_KEY
-    type: string
-    required: false
-    group: "multi tenancy backup"
-  - variable: S3_BUCKET
-    default: "botium-mini-backups"
-    type: string
-    required: true
-    group: "multi tenancy backup"
-  - variable: S3_ENDPOINT
-    default: "https://s3.eu-central-1.wasabisys.com"
-    type: string
-    required: false
-    group: "multi tenancy backup"
-  - variable: S3_REGION
-    default: "eu-central-1"
-    type: string
-    required: false
-    group: "multi tenancy backup"
 - variable: PRISMA_ENDPOINT
   default: "https://prisma03.botiumbox.com/box/..."
   description: "Prisma Endpoint URL"

@@ -160,6 +160,11 @@ spec:
                 secretKeyRef:
                   name: botium-box-secrets
                   key: SPEECH_PROCESSING_APIKEY
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: JWT_SECRET
             - name: JWT_EXPIRY_MINUTES
               valueFrom:
                 configMapKeyRef:
