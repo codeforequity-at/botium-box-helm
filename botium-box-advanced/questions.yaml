@@ -5,6 +5,7 @@ questions:
   type: string
   required: true
   group: "license"
+
 - variable: AGENT_COUNT
   default: 1
   description: "Botium Box Common Agent Count"
@@ -29,6 +30,7 @@ questions:
   type: string
   required: true
   group: "agents"
+
 - variable: BOTIUM_BOX_VERSION
   default: "2.8.4"
   description: "Botium Box Version"
@@ -41,6 +43,7 @@ questions:
   type: string
   required: false
   group: "container"
+
 - variable: ACTIVATE_ZAP
   default: false
   description: "Activate ZAP"
@@ -59,6 +62,7 @@ questions:
     description: "ZAP Service"
     type: string
     required: true
+
 - variable: INSTALL_REDIS
   default: true
   description: "Install Redis Service or use external Redis Service"
@@ -85,6 +89,7 @@ questions:
   type: string
   required: true
   group: "redis"
+
 - variable: SMTP_HOST
   default: "email-smtp.eu-west-1.amazonaws.com"
   description: "SMTP Host"
@@ -115,11 +120,13 @@ questions:
   type: string
   required: false
   group: "email"
+
 - variable: STORAGE_CLASS_BOX
   description: "Storage Class for Botium Box Files"
   type: storageclass
   required: true
   group: "storage"
+
 - variable: COACH_WORKER_ENDPOINT
   default: "https://coach-worker.botiumbox.com/1.0"
   description: "Coach Worker Endpoint"
@@ -132,6 +139,7 @@ questions:
   type: string
   required: false
   group: "coach"
+
 - variable: SPEECH_PROCESSING_ENDPOINT
   default: "https://speech.botiumbox.com"
   description: "Speech Processing Endpoint"
@@ -334,7 +342,7 @@ questions:
   description: "Generate first tenant"
   type: boolean
   required: true
-  group: "firsttenant"
+  group: "Init first tenant"
   show_if: "ENABLE_MULTI_TENANCY=true"
   show_subquestion_if: "true"
   subquestions:
