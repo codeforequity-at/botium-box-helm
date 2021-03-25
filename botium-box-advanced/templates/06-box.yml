@@ -118,6 +118,7 @@ spec:
                 configMapKeyRef:
                   name: botium-box-configmap
                   key: JWT_EXPIRY_MINUTES
+            {{- if .Values.ENABLE_MULTI_TENANCY }}
             - name: PRISMA_CONFIG_FILE
               valueFrom:
                 configMapKeyRef:
