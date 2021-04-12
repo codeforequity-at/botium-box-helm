@@ -19,8 +19,6 @@ spec:
         app: botium-box
         tier: frontend
     spec:
-      nodeSelector:
-        box-agent-type: common
       initContainers:
         - name: box-agent-chmod-er
           image: busybox:latest
@@ -118,8 +116,6 @@ spec:
         app: botium-box
         tier: frontend
     spec:
-      nodeSelector:
-        box-agent-type: performance
       initContainers:
         - name: box-agentp-chmod-er
           image: busybox:latest

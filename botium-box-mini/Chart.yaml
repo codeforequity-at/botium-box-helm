@@ -3,5 +3,5 @@ name: botium-box-mini
 description: Botium Box Multi Tenancy
 
 type: application
-version: 0.0.142
+version: 0.0.143
 appVersion: 2.8.6
