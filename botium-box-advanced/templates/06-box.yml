@@ -11,13 +11,13 @@ metadata:
     app: botium-box
     tier: frontend
 spec:
-  replicas: 1
   {{- if .Values.ENABLE_MULTI_TENANCY }}
   updateStrategy:
     type: RollingUpdate
     rollingUpdate:
       maxUnavailable: 1
   {{- else }}
+  replicas: 1
   strategy:
     type: Recreate
   {{- end }}
@@ -108,11 +108,6 @@ spec:
               value: "1"
             - name: BOTIUMBOX_MAX_EXECUTION_INTERVAL_MINUTES
               value: "10"
-            - name: JWT_SECRET
-              valueFrom:
-                secretKeyRef:
-                  name: botium-box-secrets
-                  key: JWT_SECRET
             - name: JWT_EXPIRY_MINUTES
               valueFrom:
                 configMapKeyRef:
@@ -130,6 +125,11 @@ spec:
                   name: botium-box-configmap
                   key: BOTIUMBOX_AUDIT_FOLDER
             {{- else }}
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: JWT_SECRET
             - name: PRISMA_ENDPOINT
               valueFrom:
                 configMapKeyRef:
@@ -352,7 +352,6 @@ spec:
           securityContext:
             runAsUser: 0
             runAsGroup: 0
-            fsGroup: 0
           env:
             - name: DEBUG
               value: botium*
