@@ -333,7 +333,7 @@ spec:
             ln -s ../../license-creator packages/botium-box-server/node_modules/license-creator &&
             ln -s ../../botium-box-shared packages/botium-box-server/node_modules/botium-box-shared &&
             {{- if .Values.ENABLE_MULTI_TENANCY }}
-              {{- if ew .Values.FIRST_TENANT_ENABLE true }}
+              {{- if eq .Values.FIRST_TENANT_ENABLE true }}
             node packages/botium-box-server/src/management/createshared.js {{ .Values.FQDN }} {{ .Values.FIRST_TENANT_EMAIL }} {{ .Values.FIRST_TENANT_PASSWORD }} {{ .Values.FIRST_TENANT_PRISMA_ENDPOINT }} {{ .Values.FIRST_TENANT_PRISMA_SECRET }} {{ .Values.FIRST_TENANT_BUILDTARGET }} &&
               {{- end }}
             {{- end }}
