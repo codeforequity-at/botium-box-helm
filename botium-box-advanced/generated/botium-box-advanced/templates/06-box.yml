@@ -61,7 +61,7 @@ spec:
       containers:
         - name: box-server
           imagePullPolicy: Always
-          image: botium/botium-box-server:2.8.4
+          image: botium/botium-box-server:2.8.7
           command: ["/bin/sh"]
           args: ["-c", "node -r dotenv-flow/config dist/botium-box-server.js"]
           ports:
@@ -274,7 +274,7 @@ spec:
     spec:
       containers:
         - name: box-server
-          image: botium/botium-box-server:2.8.4
+          image: botium/botium-box-server:2.8.7
           imagePullPolicy: Always
           command: ["/bin/sh"]
           args: ["-c", "
@@ -284,7 +284,7 @@ spec:
             git clone https://:@bitbucket.org/botiumcoreteam/botium-box.git &&
             cd botium-box &&
             git fetch &&
-            git checkout  release/2.8.4 &&
+            git checkout  release/2.8.7 &&
             mkdir packages/botium-box-server/node_modules &&
             ln -s ../../license-creator packages/botium-box-server/node_modules/license-creator &&
             ln -s ../../botium-box-shared packages/botium-box-server/node_modules/botium-box-shared &&
