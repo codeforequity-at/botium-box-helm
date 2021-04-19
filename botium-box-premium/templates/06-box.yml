@@ -152,7 +152,7 @@ spec:
         - name: box-agent
           image: botium/botium-box-agent:{{ .Values.BOTIUM_BOX_VERSION }}
           volumeMounts:
-          - mountPath: "/app/agent/storage/"
+          - mountPath: "/app/server/storage/"
             name: botium-box-storage
           env:
             - name: BOTIUMBOX_AGENT_NAME
@@ -162,9 +162,9 @@ spec:
             - name: DEBUG
               value: botium*
             - name: RESOURCESDIR
-              value: /app/agent/storage/resources
+              value: /app/server/storage/resources
             - name: BOTIUM_TEMPDIR
-              value: /app/agent/storage/botiumwork
+              value: /app/server/storage/botiumwork
             - name: BOTIUMBOX_QUEUE_REDISURL
               valueFrom:
                 configMapKeyRef:

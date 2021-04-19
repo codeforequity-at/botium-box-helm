@@ -50,7 +50,7 @@ spec:
               memory: {{ .Values.RESOURCE_MEM_REQUEST }}
           {{- end }}
           volumeMounts:
-          - mountPath: "/app/agent/storage/"
+          - mountPath: "/app/server/storage/"
             name: botium-box-mini-storage
           env:
             - name: BOTIUMBOX_AGENT_NAME
@@ -60,9 +60,9 @@ spec:
             - name: DEBUG
               value: botium*
             - name: RESOURCESDIR
-              value: /app/agent/storage/resources
+              value: /app/server/storage/resources
             - name: BOTIUM_TEMPDIR
-              value: /app/agent/storage/botiumwork
+              value: /app/server/storage/botiumwork
             - name: BOTIUMBOX_QUEUE_CONCURRENCY
               value: "10"
             - name: BOTIUMBOX_QUEUE_CONCURRENCY_COACH
@@ -147,7 +147,7 @@ spec:
               memory: {{ .Values.RESOURCE_MEM_REQUEST }}
           {{- end }}
           volumeMounts:
-          - mountPath: "/app/agent/storage/"
+          - mountPath: "/app/server/storage/"
             name: botium-box-mini-storage
           env:
             - name: BOTIUMBOX_AGENT_NAME
@@ -157,9 +157,9 @@ spec:
             - name: DEBUG
               value: botium*
             - name: RESOURCESDIR
-              value: /app/agent/storage/resources
+              value: /app/server/storage/resources
             - name: BOTIUM_TEMPDIR
-              value: /app/agent/storage/botiumwork
+              value: /app/server/storage/botiumwork
             - name: BOTIUMBOX_QUEUE_CONCURRENCY
               value: "0"
             - name: BOTIUMBOX_QUEUE_CONCURRENCY_COACH
