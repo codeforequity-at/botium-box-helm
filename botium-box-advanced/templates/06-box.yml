@@ -333,7 +333,7 @@ spec:
               {{- if .Values.FIRST_TENANT_ENABLE }}
             node packages/botium-box-server/src/management/createshared.js {{ .Values.FQDN }} {{ .Values.FIRST_TENANT_EMAIL }} {{ .Values.FIRST_TENANT_PASSWORD }} {{ .Values.FIRST_TENANT_PRISMA_ENDPOINT }} {{ .Values.FIRST_TENANT_PRISMA_SECRET }} {{ .Values.FIRST_TENANT_BUILDTARGET }} &&
               {{- else }}
-            echo {} > /app/prisma-config/prisma-config.json
+            echo {} > /app/prisma-config/prisma-config.json &&
               {{- end }}
             {{- end }}
             cd /app/server &&
