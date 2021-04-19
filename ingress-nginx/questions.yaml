@@ -6,12 +6,12 @@ questions:
   required: true
 - variable: CSP_DEFAULT
   default: true
-  description: "script-src 'self' 'unsafe-inline'; img-src * data: blob:; media-src * data:; object-src 'self';"
+  description: "script-src 'self' 'unsafe-inline'; img-src * data: blob:; media-src * data: blob:; object-src 'self';"
   required: true
   type: boolean
 - variable: CSP_SMARTLOOK
   default: false
-  description: "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.ingest.sentry.io https://*.smartlook.com https://*.smartlook.cloud; img-src * data: blob:; media-src * data:; object-src 'self'; worker-src 'self' blob:; connect-src 'self' https://*.ingest.sentry.io https://*.smartlook.com https://*.smartlook.cloud wss://*.botiumbox.com https://www.botium.ai"
+  description: "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.ingest.sentry.io https://*.smartlook.com https://*.smartlook.cloud; img-src * data: blob:; media-src * data: blob:; object-src 'self'; worker-src 'self' blob:; connect-src 'self' https://*.ingest.sentry.io https://*.smartlook.com https://*.smartlook.cloud wss://*.botiumbox.com https://www.botium.ai"
   required: true
   type: boolean
 - variable: CSP_CUSTOM
@@ -20,7 +20,7 @@ questions:
   required: true
   type: boolean
 - variable: CSP_CUSTOM_HEADER
-  default: "script-src 'self' 'unsafe-inline'; img-src * data: blob:; media-src * data:; object-src 'self';"
+  default: "script-src 'self' 'unsafe-inline'; img-src * data: blob:; media-src * data: blob:; object-src 'self';"
   description: "Using a custom CSP header"
   required: false
   type: string
