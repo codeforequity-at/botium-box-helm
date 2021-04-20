@@ -1,0 +1,29 @@
+---
+# Source: botium-box-advanced/templates/02-configmap.yml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: botium-box-configmap
+  labels:
+    name: config
+    app: botium-box
+data:
+  PRISMA_ENDPOINT: ""
+  LICENSE_KEY: ""
+  COACH_WORKER_ENDPOINT: ""
+  SPEECH_PROCESSING_ENDPOINT: ""
+  PRISMA_CONFIG_FILE: /app/prisma-config/prisma-config.json
+  BOTIUMBOX_AUDIT_FOLDER: /app/prisma-config/audit
+  SMTP_HOST: ""
+  SMTP_PORT: "0"
+  SMTP_SECURE: "0"
+  BOTIUMBOX_AGENT_LIST: ""
+  BOTIUMBOX_QUEUE_PREFIX: "qprod"
+  BOTIUMBOX_CLEANUP_JOB_INTERVAL_MINUTES: "1440"
+  BOTIUMBOX_KEEP_SUCCESS_SCREENSHOTS_DAYS: "10"
+  BOTIUMBOX_KEEP_SUCCESS_CONVERSATION_DAYS: "10"
+  BOTIUMBOX_KEEP_FAILED_SCREENSHOTS_DAYS: "60"
+  BOTIUMBOX_KEEP_FAILED_CONVERSATION_DAYS: "60"
+  BOTIUMBOX_KEEP_COACH_DETAILS_DAYS: "30"
+  NODE_OPTIONS: ""
+  JWT_EXPIRY_MINUTES: ""
