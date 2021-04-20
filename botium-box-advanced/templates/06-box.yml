@@ -344,7 +344,7 @@ spec:
             echo '-> Initializing first tenant' &&
             echo {} > /app/prisma-config/prisma-config.json &&
             cd /app/server/botium-box/packages/botium-box-server &&
-            node src/management/createshared.js {{ .Values.FQDN }} {{ .Values.FIRST_TENANT_EMAIL }} {{ .Values.FIRST_TENANT_PASSWORD }} {{ .Values.FIRST_TENANT_PRISMA_ENDPOINT }} {{ .Values.FIRST_TENANT_PRISMA_SECRET }} {{ .Values.FIRST_TENANT_BUILDTARGET }} &&
+            node src/management/createshared.js {{ .Values.FIRST_TENANT_NAME }}.{{ .Values.FQDN }} {{ .Values.FIRST_TENANT_EMAIL }} {{ .Values.FIRST_TENANT_PASSWORD }} {{ .Values.FIRST_TENANT_PRISMA_ENDPOINT }} {{ .Values.FIRST_TENANT_PRISMA_SECRET }} {{ .Values.FIRST_TENANT_BUILDTARGET }} &&
             cat /app/prisma-config/prisma-config.json &&
               {{- end }}
             {{- end }}

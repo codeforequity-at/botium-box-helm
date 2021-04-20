@@ -346,6 +346,11 @@ questions:
   show_if: "ENABLE_MULTI_TENANCY=true"
   show_subquestion_if: "true"
   subquestions:
+    - variable: FIRST_TENANT_NAME
+      default: ""
+      description: "Subdomain"
+      type: string
+      required: true
     - variable: FIRST_TENANT_EMAIL
       default: ""
       description: "Email"
