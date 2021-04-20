@@ -318,7 +318,9 @@ spec:
           {{- end }}
           imagePullPolicy: Always
           command: ["/bin/sh"]
-          args: ["-c", "
+            # createshared.js depends on box and datasets repo
+            # box server depends on createshared.js
+            args: ["-c", "
             {{- if .Values.ENABLE_MULTI_TENANCY }}
               {{- if eq .Values.FIRST_TENANT_ENABLE false }}
             echo '-> Creating empty prisma-config.json' &&
@@ -340,9 +342,9 @@ spec:
             {{- if .Values.ENABLE_MULTI_TENANCY }}
               {{- if eq .Values.FIRST_TENANT_ENABLE true }}
             echo '-> Initializing first tenant' &&
-            # createshared.js depends on box and datasets repo
-            # box server depends on createshared.js
-            node packages/botium-box-server/src/management/createshared.js {{ .Values.FQDN }} {{ .Values.FIRST_TENANT_EMAIL }} {{ .Values.FIRST_TENANT_PASSWORD }} {{ .Values.FIRST_TENANT_PRISMA_ENDPOINT }} {{ .Values.FIRST_TENANT_PRISMA_SECRET }} {{ .Values.FIRST_TENANT_BUILDTARGET }} &&
+            echo {} > /app/prisma-config/prisma-config.json &&
+            cd /app/server/botium-box/packages/botium-box-server &&
+            node src/management/createshared.js {{ .Values.FQDN }} {{ .Values.FIRST_TENANT_EMAIL }} {{ .Values.FIRST_TENANT_PASSWORD }} {{ .Values.FIRST_TENANT_PRISMA_ENDPOINT }} {{ .Values.FIRST_TENANT_PRISMA_SECRET }} {{ .Values.FIRST_TENANT_BUILDTARGET }} &&
             cat /app/prisma-config/prisma-config.json &&
               {{- end }}
             {{- end }}
