@@ -66,7 +66,7 @@ spec:
         - name: prisma-worker
           image: prismagraphql/prisma-prod:{{ .Values.PRISMA_VERSION }}
           ports:
-            - name: prisma-worker-4466
+            - name: prisma-w-4466
               containerPort: 4466
           env:
             - name: SLOW_QUERIES_LOGGING

@@ -3,7 +3,7 @@ name: botium-box-prisma
 description: Botium Box Prisma
 
 type: application
-version: 3.0.1
+version: 3.0.2
 appVersion: 2.0.0
 
 dependencies:
