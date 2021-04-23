@@ -18,6 +18,7 @@ PRISMA_MANAGEMENT_API_SECRET: ""
 LETS_ENCRYPT_EMAIL: ""
 rabbitmq:
   fullnameOverride: "rabbitmq"
-  auth.username: "rabbitmq"
-  auth.password: "rabbit123"
-  auth.erlangCookie: "rabbit123secretcookie"
+  auth:
+    username: "rabbitmq"
+    password: "rabbit123"
+    erlangCookie: "rabbit123secretcookie"
