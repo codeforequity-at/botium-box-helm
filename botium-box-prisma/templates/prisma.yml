@@ -18,16 +18,18 @@ spec:
     spec:
       containers:
         - name: prisma
-          image: prismagraphql/prisma:{{ .Values.PRISMA_VERSION }}
+          image: prismagraphql/prisma-prod:{{ .Values.PRISMA_VERSION }}
           ports:
             - name: prisma-4466
               containerPort: 4466
           env:
+            - name: SLOW_QUERIES_LOGGING
+              value: "true"
             - name: PRISMA_CONFIG
               valueFrom:
                 secretKeyRef:
                   name: botium-box-prisma
-                  key: PRISMA_CONFIG
+                  key: PRISMA_CONFIG_MANAGEMENT
 ---
 apiVersion: v1
 kind: Service
@@ -40,6 +42,52 @@ spec:
       protocol: TCP
   selector:
     name: prisma
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: prisma-worker
+  labels:
+    name: prisma-worker
+spec:
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+  selector:
+    matchLabels:
+      name: prisma-worker
+  template:
+    metadata:
+      labels:
+        name: prisma-worker
+    spec:
+      containers:
+        - name: prisma-worker
+          image: prismagraphql/prisma-prod:{{ .Values.PRISMA_VERSION }}
+          ports:
+            - name: prisma-worker-4466
+              containerPort: 4466
+          env:
+            - name: SLOW_QUERIES_LOGGING
+              value: "true"
+            - name: PRISMA_CONFIG
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-prisma
+                  key: PRISMA_CONFIG_WORKER
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: prisma-worker
+spec:
+  ports:
+    - port: 4466
+      targetPort: 4466
+      protocol: TCP
+  selector:
+    name: prisma-worker
 {{- if .Values.INSTALL_INGRESS }}
 ---
 apiVersion: extensions/v1beta1

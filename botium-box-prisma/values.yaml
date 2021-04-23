@@ -16,3 +16,7 @@ MYSQL_PASSWORD: ""
 PRISMA_MANAGEMENT_SCHEMA: "prisma"
 PRISMA_MANAGEMENT_API_SECRET: ""
 LETS_ENCRYPT_EMAIL: ""
+rabbitmq:
+  auth.username: "rabbitmq"
+  auth.password: "rabbit123"
+  auth.erlangCookie: "rabbit123secretcookie"

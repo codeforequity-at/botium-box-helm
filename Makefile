@@ -15,7 +15,7 @@ update:
 	helm dependency update botium-speech-processing
 
 package:
-	rm -f botium-box-advanced-*.tgz botium-box-prisma-*.tgz botium-box-mini-*.tgz botium-box-standalone-*.tgz botium-coach-worker-*.tgz botium-efs-provisioner-*.tgz botium-wildcard-ingress-*.tgz ingress-nginx-*.tgz botium-box-redis-*.tgz botium-box-zap-*.tgz botium-speech-processing-*.tgz
+	#rm -f botium-box-advanced-*.tgz botium-box-prisma-*.tgz botium-box-mini-*.tgz botium-box-standalone-*.tgz botium-coach-worker-*.tgz botium-efs-provisioner-*.tgz botium-wildcard-ingress-*.tgz ingress-nginx-*.tgz botium-box-redis-*.tgz botium-box-zap-*.tgz botium-speech-processing-*.tgz
 	helm package botium-box-advanced
 	helm package botium-box-prisma
 	helm package botium-box-standalone
