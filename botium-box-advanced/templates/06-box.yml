@@ -330,8 +330,14 @@ spec:
           command: ["/bin/sh"]
           args: ["-c", "
             {{- if .Values.ENABLE_MULTI_TENANCY }}
-            echo '-> Creating empty prisma-config.json to allow the server to start' &&
-            echo {} > /app/prisma-config/prisma-config.json &&
+              {{- if eq .Values.FIRST_TENANT_ENABLE false }}
+                if test -f /app/prisma-config/prisma-config.json; then
+                  echo 'Creating empty prisma-config skipped, file exists'
+                else
+                  echo 'Creating empty prisma-config.json' &&
+                  echo {} > /app/prisma-config/prisma-config.json
+                fi &&
+              {{- end }}
             {{- end }}
             echo '-> Initializing box repo' &&
             git clone https://{{ .Values.BITBUCKET_USERNAME }}:{{ .Values.BITBUCKET_PASSWORD }}@bitbucket.org/botiumcoreteam/botium-box.git &&
@@ -347,10 +353,14 @@ spec:
             cp -R botium-datasets/mini/* /app/datasets-mini &&
             {{- if .Values.ENABLE_MULTI_TENANCY }}
               {{- if eq .Values.FIRST_TENANT_ENABLE true }}
-            echo '-> Initializing first tenant, updating prisma config' &&
-            cd /app/server/botium-box/packages/botium-box-server &&
-            node src/management/createshared.js {{ .Values.FIRST_TENANT_NAME }}.{{ .Values.FQDN }} {{ .Values.FIRST_TENANT_EMAIL }} {{ .Values.FIRST_TENANT_PASSWORD }} {{ .Values.FIRST_TENANT_PRISMA_ENDPOINT }} {{ .Values.FIRST_TENANT_PRISMA_SECRET }} {{ .Values.FIRST_TENANT_BUILDTARGET }} &&
-            cat /app/prisma-config/prisma-config.json &&
+                if test -f /app/prisma-config/prisma-config.json; then
+                  echo 'Initializing first tenant skipped, prisma-config.json exists'
+                else
+                  echo '-> Initializing first tenant, updating prisma config' &&
+                  cd /app/server/botium-box/packages/botium-box-server &&
+                  node src/management/createshared.js {{ .Values.FIRST_TENANT_NAME }}.{{ .Values.FQDN }} {{ .Values.FIRST_TENANT_EMAIL }} {{ .Values.FIRST_TENANT_PASSWORD }} {{ .Values.FIRST_TENANT_PRISMA_ENDPOINT }} {{ .Values.FIRST_TENANT_PRISMA_SECRET }} {{ .Values.FIRST_TENANT_BUILDTARGET }} &&
+                  cat /app/prisma-config/prisma-config.json &&
+                fi &&
               {{- end }}
             {{- end }}
             cd /app/server &&
