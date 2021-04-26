@@ -332,10 +332,10 @@ spec:
             {{- if .Values.ENABLE_MULTI_TENANCY }}
               {{- if eq .Values.FIRST_TENANT_ENABLE false }}
                 if test -f /app/prisma-config/prisma-config.json; then
-                  echo 'Creating empty prisma-config skipped, file exists'
+                  echo 'Creating empty prisma-config skipped, file exists';
                 else
                   echo 'Creating empty prisma-config.json' &&
-                  echo {} > /app/prisma-config/prisma-config.json
+                  echo {} > /app/prisma-config/prisma-config.json;
                 fi &&
               {{- end }}
             {{- end }}
@@ -354,12 +354,12 @@ spec:
             {{- if .Values.ENABLE_MULTI_TENANCY }}
               {{- if eq .Values.FIRST_TENANT_ENABLE true }}
                 if test -f /app/prisma-config/prisma-config.json; then
-                  echo 'Initializing first tenant skipped, prisma-config.json exists'
+                  echo 'Initializing first tenant skipped, prisma-config.json exists';
                 else
                   echo '-> Initializing first tenant, updating prisma config' &&
                   cd /app/server/botium-box/packages/botium-box-server &&
                   node src/management/createshared.js {{ .Values.FIRST_TENANT_NAME }}.{{ .Values.FQDN }} {{ .Values.FIRST_TENANT_EMAIL }} {{ .Values.FIRST_TENANT_PASSWORD }} {{ .Values.FIRST_TENANT_PRISMA_ENDPOINT }} {{ .Values.FIRST_TENANT_PRISMA_SECRET }} {{ .Values.FIRST_TENANT_BUILDTARGET }} &&
-                  cat /app/prisma-config/prisma-config.json &&
+                  cat /app/prisma-config/prisma-config.json;
                 fi &&
               {{- end }}
             {{- end }}
