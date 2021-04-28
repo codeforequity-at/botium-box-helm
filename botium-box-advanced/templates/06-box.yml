@@ -1,5 +1,6 @@
 apiVersion: apps/v1
 {{- if .Values.ENABLE_MULTI_TENANCY }}
+  {{- if .Values.ENABLE_MULTI_TENANCY }}
 kind: DaemonSet
 {{- else }}
 kind: Deployment

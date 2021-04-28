@@ -13,3 +13,8 @@ questions:
   description: "Is needed to create an unique subdirectory in EFS System for this Cluster"
   type: string
   required: true
+- variable: SYNC
+  default: false
+  description: "Should be true in case of parallel access"
+  type: boolean
+  required: true
