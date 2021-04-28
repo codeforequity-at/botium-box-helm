@@ -5,6 +5,3 @@ metadata:
 provisioner: botiumbox.com/aws-efs
 mountOptions:
   - debug
-    {{- if .Values.SYNC }}
-    sync
-    {{- end }}
