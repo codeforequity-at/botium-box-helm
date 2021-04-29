@@ -1,9 +1,19 @@
+---
+# Source: botium-box-advanced/templates/06-box.yml
+apiVersion: v1
+kind: Service
+metadata:
+  name: box-server
+spec:
+  ports:
+    - port: 4000
+  selector:
+    name: box-server
+    app: botium-box
+---
+# Source: botium-box-advanced/templates/06-box.yml
 apiVersion: apps/v1
-{{- if .Values.ENABLE_MULTI_TENANCY }}
 kind: DaemonSet
-{{- else }}
-kind: Deployment
-{{- end }}
 metadata:
   name: box-server
   labels:
@@ -11,16 +21,10 @@ metadata:
     app: botium-box
     tier: frontend
 spec:
-  {{- if .Values.ENABLE_MULTI_TENANCY }}
   updateStrategy:
     type: RollingUpdate
     rollingUpdate:
       maxUnavailable: 1
-  {{- else }}
-  replicas: 1
-  strategy:
-    type: Recreate
-  {{- end }}
   selector:
     matchLabels:
       name: box-server
@@ -32,10 +36,6 @@ spec:
         app: botium-box
         tier: frontend
     spec:
-      {{- if .Values.ENABLE_AGENT_NODESELECTION }}
-      nodeSelector:
-        box-agent-type: common
-      {{- end }}
       initContainers:
         - name: box-server-chmod-er-storage
           image: busybox:latest
@@ -47,7 +47,6 @@ spec:
           volumeMounts:
           - mountPath: "/app/server/storage"
             name: botium-box-storage
-        {{- if .Values.ENABLE_MULTI_TENANCY }}
         - name: box-server-chmod-er-config
           image: busybox:latest
           command:
@@ -58,31 +57,20 @@ spec:
           volumeMounts:
           - mountPath: "/app/prisma-config/"
             name: botium-box-prisma-config-storage
-        {{- end }}
       containers:
         - name: box-server
           imagePullPolicy: Always
-          {{- if eq .Values.CONTAINER_REGISTRY "" }}
-          image: botium/botium-box-server:{{ .Values.BOTIUM_BOX_VERSION }}
-          {{- else }}
-          image: {{ .Values.CONTAINER_REGISTRY }}/botium/botium-box-server:{{ .Values.BOTIUM_BOX_VERSION }}
-          {{- end }}
+          image: botium/botium-box-server:2.8.7
           command: ["/bin/sh"]
-          {{- if .Values.ENABLE_MULTI_TENANCY }}
           args: ["-c", "node -r dotenv-flow/config dist/botium-box-server.js"]
-          {{- else }}
-          args: ["-c", "./wait.sh -t $WAIT_TIMEOUT -e $PRISMA_ENDPOINT && npm run prisma-deploy && npm run prisma-seed && node -r dotenv-flow/config dist/botium-box-server.js"]
-          {{- end }}
           ports:
             - name: box-4000
               containerPort: 4000
           volumeMounts:
           - mountPath: "/app/server/storage/"
             name: botium-box-storage
-          {{- if .Values.ENABLE_MULTI_TENANCY }}
           - mountPath: "/app/prisma-config/"
             name: botium-box-prisma-config-storage
-          {{- end }}
           env:
             - name: DEBUG
               value: botium*
@@ -113,7 +101,6 @@ spec:
                 configMapKeyRef:
                   name: botium-box-configmap
                   key: JWT_EXPIRY_MINUTES
-            {{- if .Values.ENABLE_MULTI_TENANCY }}
             - name: PRISMA_CONFIG_FILE
               valueFrom:
                 configMapKeyRef:
@@ -134,23 +121,6 @@ spec:
                 configMapKeyRef:
                   name: botium-box-configmap
                   key: BOTIUMBOX_AUDIT_FOLDER
-            {{- else }}
-            - name: JWT_SECRET
-              valueFrom:
-                secretKeyRef:
-                  name: botium-box-secrets
-                  key: JWT_SECRET
-            - name: PRISMA_ENDPOINT
-              valueFrom:
-                configMapKeyRef:
-                  name: botium-box-configmap
-                  key: PRISMA_ENDPOINT
-            - name: PRISMA_SECRET
-              valueFrom:
-                secretKeyRef:
-                  name: botium-box-secrets
-                  key: PRISMA_SECRET
-            {{- end }}
             - name: LICENSE_KEY
               valueFrom:
                 configMapKeyRef:
@@ -246,13 +216,6 @@ spec:
                 configMapKeyRef:
                   name: botium-box-configmap
                   key: BOTIUMBOX_KEEP_COACH_DETAILS_DAYS
-            {{- if .Values.ACTIVATE_ZAP }}
-            - name: ZAP_ENDPOINT
-              valueFrom:
-                configMapKeyRef:
-                  name: botium-box-configmap
-                  key: ZAP_ENDPOINT
-            {{- end }}
             - name: BOTIUMBOX_SMARTLOOK_KEY
               valueFrom:
                 secretKeyRef:
@@ -287,13 +250,11 @@ spec:
         - name: botium-box-storage
           persistentVolumeClaim:
             claimName: botium-box-storage
-        {{- if .Values.ENABLE_MULTI_TENANCY }}
         - name: botium-box-prisma-config-storage
           persistentVolumeClaim:
             claimName: botium-box-prisma-config-storage
-        {{- end }}
-{{- if .Values.ENABLE_MULTI_TENANCY }}
 ---
+# Source: botium-box-advanced/templates/06-box.yml
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -315,55 +276,30 @@ spec:
         name: box-server-shell
         app: botium-box-shell
     spec:
-      {{- if .Values.ENABLE_AGENT_NODESELECTION}}
-      nodeSelector:
-        box-agent-type: common
-      {{- end }}
       containers:
         - name: box-server
-          {{- if eq .Values.CONTAINER_REGISTRY "" }}
-          image: botium/botium-box-server:{{ .Values.BOTIUM_BOX_VERSION }}
-          {{- else }}
-          image: {{ .Values.CONTAINER_REGISTRY }}/botium/botium-box-server:{{ .Values.BOTIUM_BOX_VERSION }}
-          {{- end }}
+          image: botium/botium-box-server:2.8.7
           imagePullPolicy: Always
           command: ["/bin/sh"]
           args: ["-c", "
-            {{- if .Values.ENABLE_MULTI_TENANCY }}
-              {{- if eq .Values.FIRST_TENANT_ENABLE false }}
                 if test -f /app/prisma-config/prisma-config.json; then
                   echo 'Creating empty prisma-config skipped, file exists';
                 else
                   echo 'Creating empty prisma-config.json' &&
                   echo {} > /app/prisma-config/prisma-config.json;
                 fi &&
-              {{- end }}
-            {{- end }}
             echo '-> Initializing box repo' &&
-            git clone https://{{ .Values.BITBUCKET_USERNAME }}:{{ .Values.BITBUCKET_PASSWORD }}@bitbucket.org/botiumcoreteam/botium-box.git &&
+            git clone https://:@bitbucket.org/botiumcoreteam/botium-box.git &&
             cd botium-box &&
             git fetch &&
-            git checkout {{ if eq .Values.BOTIUM_BOX_VERSION "develop" }}develop{{ else }} release/{{ .Values.BOTIUM_BOX_VERSION }}{{ end }} &&
+            git checkout  release/2.8.7 &&
             mkdir packages/botium-box-server/node_modules &&
             ln -s ../../license-creator packages/botium-box-server/node_modules/license-creator &&
             ln -s ../../botium-box-shared packages/botium-box-server/node_modules/botium-box-shared &&
             echo '-> Initializing datasets repo' &&
-            git clone https://{{ .Values.BITBUCKET_USERNAME }}:{{ .Values.BITBUCKET_PASSWORD }}@bitbucket.org/botiumcoreteam/botium-datasets.git &&
+            git clone https://:@bitbucket.org/botiumcoreteam/botium-datasets.git &&
             mkdir -p /app/datasets-mini &&
             cp -R botium-datasets/mini/* /app/datasets-mini &&
-            {{- if .Values.ENABLE_MULTI_TENANCY }}
-              {{- if eq .Values.FIRST_TENANT_ENABLE true }}
-                if test -f /app/prisma-config/prisma-config.json; then
-                  echo 'Initializing first tenant skipped, prisma-config.json exists';
-                else
-                  echo '-> Initializing first tenant, updating prisma config' &&
-                  echo {} > /app/prisma-config/prisma-config.json &&
-                  cd /app/server/botium-box/packages/botium-box-server &&
-                  node src/management/createshared.js {{ .Values.FIRST_TENANT_NAME }}.{{ .Values.FQDN }} {{ .Values.FIRST_TENANT_EMAIL }} {{ .Values.FIRST_TENANT_PASSWORD }} {{ .Values.FIRST_TENANT_PRISMA_ENDPOINT }} {{ .Values.FIRST_TENANT_PRISMA_SECRET }} {{ .Values.FIRST_TENANT_BUILDTARGET }} &&
-                  cat /app/prisma-config/prisma-config.json;
-                fi &&
-              {{- end }}
-            {{- end }}
             cd /app/server &&
             while :; do echo 'Press <CTRL+C> to exit.'; sleep 10; done"
           ]
@@ -373,10 +309,8 @@ spec:
           volumeMounts:
           - mountPath: "/app/storage/"
             name: botium-box-storage
-          {{- if .Values.ENABLE_MULTI_TENANCY }}
           - mountPath: "/app/prisma-config/"
             name: botium-box-prisma-config-storage
-          {{- end }}
           securityContext:
             runAsUser: 0
             runAsGroup: 0
@@ -420,77 +354,26 @@ spec:
         - name: botium-box-storage
           persistentVolumeClaim:
             claimName: botium-box-storage
-        {{- if .Values.ENABLE_MULTI_TENANCY }}
         - name: botium-box-prisma-config-storage
           persistentVolumeClaim:
             claimName: botium-box-prisma-config-storage
-        {{- end }}
-{{- end }}
 ---
-apiVersion: v1
-kind: Service
-metadata:
-  name: box-server
-spec:
-  ports:
-    {{- if eq .Values.MAINTENANCE false }}
-    - port: 4000
-    {{- else }}
-    - port: 4000
-      targetPort: 80
-      protocol: TCP
-    {{- end }}
-  selector:
-    {{- if eq .Values.MAINTENANCE false }}
-    name: box-server
-    app: botium-box
-    {{- else }}
-    app: maintenance
-    {{- end }}
-{{- if .Values.MAINTENANCE }}
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: maintenance
-  labels:
-    app: maintenance
-    tier: backend
-spec:
-  replicas: 1
-  strategy:
-    type: Recreate
-  template:
-    metadata:
-      labels:
-        app: maintenance
-        tier: backend
-    spec:
-      containers:
-        - name: maintenance
-          image: adrianrudnik/maintenance-server:latest
-          ports:
-            - name: mt-80
-              containerPort: 80
-{{- end }}
-{{- if .Values.INSTALL_INGRESS }}
-{{- if .Values.ENABLE_MULTI_TENANCY }}
----
+# Source: botium-box-advanced/templates/06-box.yml
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: box-ingress
   annotations:
     kubernetes.io/ingress.class: nginx
-    cert-manager.io/issuer: {{ .Values.FQDN }}-letsencrypt-prod
+    cert-manager.io/issuer: -letsencrypt-prod
 spec:
   tls:
   - hosts:
-    - {{ .Values.FQDN }}
-    - '*.{{ .Values.FQDN }}'
-    secretName: {{ .Values.FQDN }}.botiumbox-tls
+    - 
+    - '*.'
+    secretName: .botiumbox-tls
   rules:
-  - host: '*.{{ .Values.FQDN }}'
+  - host: '*.'
     http:
       paths:
       - path: /
@@ -498,99 +381,44 @@ spec:
           serviceName: box-server
           servicePort: 4000
 ---
-apiVersion: cert-manager.io/v1alpha2
-kind: Issuer
-metadata:
-  name: {{ .Values.FQDN }}-letsencrypt-prod
-spec:
-  acme:
-    server: https://acme-v02.api.letsencrypt.org/directory
-    email: {{ .Values.LETS_ENCRYPT_EMAIL }}
-    privateKeySecretRef:
-      name: {{ .Values.FQDN }}-letsencrypt-prod
-    solvers:
-    - selector:
-        dnsZones:
-          - '*.{{ .Values.FQDN }}'
-      dns01:
-        route53:
-          region: eu-west-1
-          accessKeyID: "{{ .Values.AWS_ACCESS_KEY_ID }}"
-          secretAccessKeySecretRef:
-            name: botium-box-secrets
-            key: AWS_SECRET_ACCESS_KEY
----
+# Source: botium-box-advanced/templates/06-box.yml
 apiVersion: cert-manager.io/v1alpha2
 kind: Certificate
 metadata:
-  name: {{ .Values.FQDN }}
+  name: 
 spec:
-  secretName: {{ .Values.FQDN }}.botiumbox-tls
+  secretName: .botiumbox-tls
   issuerRef:
-    name: {{ .Values.FQDN }}-letsencrypt-prod
+    name: -letsencrypt-prod
     kind: Issuer
   dnsNames:
-    - '*.{{ .Values.FQDN }}'
+    - '*.'
   acme:
     config:
       - dns01:
           provider: route53
         domains:
-          - '*.{{ .Values.FQDN }}'
-{{- else}}
+          - '*.'
 ---
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  name: box-ingress
-  annotations:
-    kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
-    rancher.io/globalDNS.hostname: {{ .Values.FQDN }}
-    cert-manager.io/cluster-issuer: {{ .Values.FQDN }}-letsencrypt-prod
-    nginx.ingress.kubernetes.io/server-snippet: |
-      ssl_stapling on;
-      ssl_stapling_verify on;
-spec:
-  tls:
-  - hosts:
-    - {{ .Values.FQDN }}
-    secretName: {{ .Values.FQDN }}.botiumbox-tls
-  rules:
-  - host: {{ .Values.FQDN }}
-    http:
-      paths:
-      - path: /
-        backend:
-          serviceName: box-server
-          servicePort: 4000
----
+# Source: botium-box-advanced/templates/06-box.yml
 apiVersion: cert-manager.io/v1alpha2
 kind: Issuer
 metadata:
-  name: {{ .Values.FQDN }}-letsencrypt-prod
+  name: -letsencrypt-prod
 spec:
   acme:
     server: https://acme-v02.api.letsencrypt.org/directory
-    email: {{ .Values.LETS_ENCRYPT_EMAIL }}
+    email: 
     privateKeySecretRef:
-      name: {{ .Values.FQDN }}-letsencrypt-prod
+      name: -letsencrypt-prod
     solvers:
-    - selector: {}
-      http01:
-        ingress:
-          class: nginx
----
-apiVersion: cert-manager.io/v1alpha2
-kind: Certificate
-metadata:
-  name: {{ .Values.FQDN }}.botiumbox
-spec:
-  secretName: {{ .Values.FQDN }}.botiumbox-tls
-  issuerRef:
-    name: {{ .Values.FQDN }}-letsencrypt-prod
-  commonName: {{ .Values.FQDN }}.botiumbox
-  dnsNames:
-  - {{ .Values.FQDN }}
-{{- end }}
-{{- end }}
+    - selector:
+        dnsZones:
+          - '*.'
+      dns01:
+        route53:
+          region: eu-west-1
+          accessKeyID: ""
+          secretAccessKeySecretRef:
+            name: botium-box-secrets
+            key: AWS_SECRET_ACCESS_KEY
