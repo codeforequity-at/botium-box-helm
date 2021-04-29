@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-{{- if .Values.ENABLE_MULTI_TENANCY }}
+{{- if and (eq .Values.ENABLE_MULTI_TENANCY true) (eq .Values.FORCE_SINGLE_BOX_SERVER false) }}
 kind: DaemonSet
 {{- else }}
 kind: Deployment

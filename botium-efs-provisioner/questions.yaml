@@ -15,6 +15,6 @@ questions:
   required: true
 - variable: SYNC
   default: false
-  description: "Should be true in case of parallel access"
+  description: "Sync or async mounting. Experimental flag!"
   type: boolean
   required: true
