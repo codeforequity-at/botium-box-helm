@@ -47,6 +47,8 @@ spec:
           volumeMounts:
           - mountPath: "/app/server/storage"
             name: botium-box-storage
+          - mountPath: "/app/server/storage/botiumwork"
+            name: botium-box-storage-botiumwork
         {{- if .Values.ENABLE_MULTI_TENANCY }}
         - name: box-server-chmod-er-config
           image: busybox:latest
@@ -79,6 +81,8 @@ spec:
           volumeMounts:
           - mountPath: "/app/server/storage/"
             name: botium-box-storage
+          - mountPath: "/app/server/storage/botiumwork/"
+            name: botium-box-storage-botiumwork
           {{- if .Values.ENABLE_MULTI_TENANCY }}
           - mountPath: "/app/prisma-config/"
             name: botium-box-prisma-config-storage
@@ -287,6 +291,8 @@ spec:
         - name: botium-box-storage
           persistentVolumeClaim:
             claimName: botium-box-storage
+        - name: botium-box-storage-botiumwork
+          emptyDir: { }
         {{- if .Values.ENABLE_MULTI_TENANCY }}
         - name: botium-box-prisma-config-storage
           persistentVolumeClaim:
