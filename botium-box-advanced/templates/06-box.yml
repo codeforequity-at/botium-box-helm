@@ -499,7 +499,7 @@ spec:
           servicePort: 4000
 ---
 apiVersion: cert-manager.io/v1alpha2
-kind: Issuer
+kind: ClusterIssuer
 metadata:
   name: {{ .Values.FQDN }}-letsencrypt-prod
 spec:
