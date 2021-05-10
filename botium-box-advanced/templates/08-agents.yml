@@ -56,6 +56,8 @@ spec:
           volumeMounts:
           - mountPath: "/app/server/storage/"
             name: botium-box-storage
+          - mountPath: "/app/server/storage/botiumwork/"
+            name: botium-box-storage-botiumwork               
           env:
             - name: BOTIUMBOX_AGENT_NAME
               valueFrom:
@@ -89,6 +91,8 @@ spec:
         - name: botium-box-storage
           persistentVolumeClaim:
             claimName: botium-box-storage
+        - name: botium-box-storage-botiumwork
+          emptyDir: { }            
 ---
 apiVersion: v1
 kind: Service
@@ -159,6 +163,8 @@ spec:
           volumeMounts:
           - mountPath: "/app/server/storage/"
             name: botium-box-storage
+          - mountPath: "/app/server/storage/botiumwork/"
+            name: botium-box-storage-botiumwork            
           env:
             - name: BOTIUMBOX_AGENT_NAME
               valueFrom:
@@ -192,6 +198,8 @@ spec:
         - name: botium-box-storage
           persistentVolumeClaim:
             claimName: botium-box-storage
+        - name: botium-box-storage-botiumwork
+          emptyDir: { }            
 ---
 apiVersion: v1
 kind: Service
