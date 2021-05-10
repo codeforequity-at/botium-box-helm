@@ -232,6 +232,16 @@ spec:
                 secretKeyRef:
                   name: botium-box-secrets
                   key: PARAPHRASING_APIKEY
+            - name: PRISMA_ENDPOINT_FORCE_HOSTNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: PRISMA_ENDPOINT_FORCE_HOSTNAME
+            - name: PRISMA_ENDPOINT_FORCE_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: PRISMA_ENDPOINT_FORCE_PORT                  
       volumes:
         - name: botium-box-mini-storage
           persistentVolumeClaim:
