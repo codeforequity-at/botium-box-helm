@@ -451,7 +451,6 @@ spec:
     name: box-server
     app: botium-box
     {{- else }}
-    name: maintenance
     app: maintenance
     {{- end }}
 {{- if .Values.MAINTENANCE }}
@@ -464,6 +463,9 @@ metadata:
     app: maintenance
     tier: backend
 spec:
+  selector:
+    matchLabels:
+      app: maintenance
   replicas: 1
   strategy:
     type: Recreate
