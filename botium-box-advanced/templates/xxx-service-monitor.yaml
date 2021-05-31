@@ -1,0 +1,13 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: box-server-prometheus-metrics-monitor
+  labels:
+    app: box-server-prometheus-metrics-monitor
+    tier: backend
+spec:
+  selector:
+    matchLabels:
+      app: box-server
+  endpoints:
+    - port: box-server-port

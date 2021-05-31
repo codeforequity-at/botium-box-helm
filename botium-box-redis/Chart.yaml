@@ -3,5 +3,5 @@ name: botium-box-redis
 description: Redis for Botium Box
 
 type: application
-version: 0.0.1
+version: 0.0.2-v1
 appVersion: 0.0.1

@@ -1,9 +1,9 @@
 dependencies:
 - name: botium-box-redis
   repository: file://../botium-box-redis
-  version: 0.0.1
+  version: 0.0.2-v1
 - name: botium-box-zap
   repository: file://../botium-box-zap
   version: 0.0.2
-digest: sha256:b8e5f14bfe112ce8fa7f88c5d3fc1368f99a262ddbd941f3a87a2cae66cedc01
-generated: "2021-03-10T06:28:24.919432184+01:00"
+digest: sha256:03fc8a63edde80f9ac2d9126c65547bfc63e1e3cc28bd67c36530fe006f5e374
+generated: "2021-05-31T12:40:27.660649704+02:00"
