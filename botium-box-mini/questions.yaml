@@ -244,6 +244,14 @@ questions:
   default: "--max-old-space-size=4096"
   type: string
   required: false
+- variable: PRISMA_ENDPOINT_FORCE_HOSTNAME
+  description: "Force Prisma Hostname"
+  type: string
+  required: false
+- variable: PRISMA_ENDPOINT_FORCE_PORT
+  description: "Force Prisma Port"
+  type: int
+  required: false
 - variable: MAINTENANCE
   default: false
   description: "Enable maintenance mode for Botium Box"

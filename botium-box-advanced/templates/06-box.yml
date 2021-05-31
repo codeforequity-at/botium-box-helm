@@ -463,6 +463,9 @@ metadata:
     app: maintenance
     tier: backend
 spec:
+  selector:
+    matchLabels:
+      app: maintenance
   replicas: 1
   strategy:
     type: Recreate
@@ -553,7 +556,7 @@ metadata:
     kubernetes.io/ingress.class: nginx
     nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     rancher.io/globalDNS.hostname: {{ .Values.FQDN }}
-    cert-manager.io/issuer: {{ .Values.FQDN }}-letsencrypt-prod
+    cert-manager.io/cluster-issuer: {{ .Values.FQDN }}-letsencrypt-prod
     nginx.ingress.kubernetes.io/server-snippet: |
       ssl_stapling on;
       ssl_stapling_verify on;

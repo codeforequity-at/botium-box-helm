@@ -16,6 +16,10 @@ spec:
       labels:
         name: prisma
     spec:
+      initContainers:
+        - name: prisma-wait-rabbitmq
+          image: martin/wait
+          args: ["-c", "rabbitmq:5672", "-t", "30"]
       containers:
         - name: prisma
           image: prismagraphql/prisma-prod:{{ .Values.PRISMA_VERSION }}
@@ -62,6 +66,10 @@ spec:
       labels:
         name: prisma-worker
     spec:
+      initContainers:
+        - name: prisma-worker-wait-rabbitmq
+          image: martin/wait
+          args: ["-c", "rabbitmq:5672", "-t", "30"]
       containers:
         - name: prisma-worker
           image: prismagraphql/prisma-prod:{{ .Values.PRISMA_VERSION }}
