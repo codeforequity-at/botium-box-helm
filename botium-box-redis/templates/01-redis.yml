@@ -50,7 +50,7 @@ spec:
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
-  name: redis-cart
+  name: redis-metrics-monitor
 spec:
   endpoints:
     - interval: 30s
@@ -62,4 +62,4 @@ spec:
       - default
   selector:
     matchLabels:
-      app: redis-cart
+      app: redis-metrics-monitor
