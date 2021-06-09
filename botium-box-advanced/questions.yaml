@@ -140,6 +140,25 @@ questions:
   required: false
   group: "coach"
 
+- variable: BOTIUMBOX_AUDIT_CRMURL
+  default: ""
+  description: "Audit CRM URL"
+  type: string
+  required: false
+  group: "crm"
+- variable: BOTIUMBOX_AUDIT_CRMAUTH_CLIENTID
+  default: ""
+  description: "Audit CRM Client-Id"
+  type: string
+  required: false
+  group: "crm"
+- variable: BOTIUMBOX_AUDIT_CRMAUTH_CLIENTSECRET
+  default: ""
+  description: "Audit CRM Client-Secret"
+  type: string
+  required: false
+  group: "crm"
+
 - variable: SPEECH_PROCESSING_ENDPOINT
   default: "https://speech.botiumbox.com"
   description: "Speech Processing Endpoint"

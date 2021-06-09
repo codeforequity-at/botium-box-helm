@@ -180,6 +180,21 @@ spec:
                 secretKeyRef:
                   name: botium-box-secrets
                   key: COACH_WORKER_APIKEY
+            - name: BOTIUMBOX_AUDIT_CRMURL
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: BOTIUMBOX_AUDIT_CRMURL
+            - name: BOTIUMBOX_AUDIT_CRMAUTH_CLIENTID
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: BOTIUMBOX_AUDIT_CRMAUTH_CLIENTID
+            - name: BOTIUMBOX_AUDIT_CRMAUTH_CLIENTSECRET
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: BOTIUMBOX_AUDIT_CRMAUTH_CLIENTSECRET
             - name: SPEECH_PROCESSING_ENDPOINT
               valueFrom:
                 configMapKeyRef:
