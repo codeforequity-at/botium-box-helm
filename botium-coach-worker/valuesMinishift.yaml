@@ -1,0 +1,9 @@
+# Minishift does not support openshift version 4.x
+# The latest openshift supported by minishift supports kibernetes 1.11
+# The value of this flag can be just "1.11" or nothing.
+KUBERNETES_VERSION: "1.11"
+BOTIUM_COACH_WORKER_VERSION: "latest"
+AUTH_APIKEYS: ""
+SHORTNAME: ""
+WEB_CONCURRENCY: 1
+COACH_MAX_UTTERANCES_FOR_EMBEDDINGS: 500

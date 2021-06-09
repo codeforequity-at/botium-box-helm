@@ -21,6 +21,15 @@ spec:
           ports:
             - name: redis-6379
               containerPort: 6379
+        - name: redis-exporter
+          image: oliver006/redis_exporter:latest
+          ports:
+            - containerPort: 9121
+              name: metrics
+          readinessProbe:
+            periodSeconds: 5
+            tcpSocket:
+              port: 9121
 ---
 apiVersion: v1
 kind: Service
@@ -28,8 +37,29 @@ metadata:
   name: redis
 spec:
   ports:
-    - port: 6379
+    - name: redis
+      port: 6379
       targetPort: 6379
       protocol: TCP
+    - name: metrics
+      port: 9121
+      targetPort: 9121
   selector:
     name: redis
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: redis-metrics-monitor
+spec:
+  endpoints:
+    - interval: 30s
+      scrapeTimeout: 20s
+      path: "/metrics"
+      targetPort: metrics
+  namespaceSelector:
+    matchNames:
+      - default
+  selector:
+    matchLabels:
+      app: redis-metrics-monitor

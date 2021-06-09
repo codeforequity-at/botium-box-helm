@@ -211,15 +211,32 @@ apiVersion: v1
 kind: Service
 metadata:
   name: box
+  labels:
+    app: box-service
 spec:
   ports:
-    - port: 4000
+    - name: box-service-port
+      port: 4000
       targetPort: 4000
       protocol: TCP
   selector:
     name: box
     app: botium-box
 {{- if .Values.INSTALL_INGRESS }}
+---
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: box-prometheus-metrics-monitor
+  labels:
+    app: box-prometheus-metrics-monitor
+    tier: backend
+spec:
+  selector:
+    matchLabels:
+      app: box-service
+  endpoints:
+    - port: box-service-port
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
