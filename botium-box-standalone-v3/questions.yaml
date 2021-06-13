@@ -15,7 +15,7 @@ questions:
   type: string
   required: false
 - variable: BOTIUM_BOX_VERSION
-  default: "2.8.8"
+  default: "2.8.9"
   description: "Botium Box Version"
   type: string
   required: true

@@ -1,1 +1,0 @@
-Botium Box for Kubernetes Deployment
