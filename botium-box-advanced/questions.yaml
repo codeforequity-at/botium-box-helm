@@ -140,6 +140,12 @@ questions:
   required: false
   group: "coach"
 
+- variable: BOTIUMBOX_AUDIT_FOLDER
+  default: ""
+  description: "Audit Folder (/app/prisma-config/audit)"
+  type: string
+  required: false
+  group: "crm"
 - variable: BOTIUMBOX_AUDIT_CRMURL
   default: ""
   description: "Audit CRM URL"
