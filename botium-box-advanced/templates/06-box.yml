@@ -452,16 +452,12 @@ apiVersion: v1
 kind: Service
 metadata:
   name: box-server
-  labels:
-    app: box-server
 spec:
   ports:
     {{- if eq .Values.MAINTENANCE false }}
-    - name: box-server-port
-      port: 4000
+    - port: 4000
     {{- else }}
-    - name: box-server-port
-      port: 4000
+    - port: 4000
       targetPort: 80
       protocol: TCP
     {{- end }}
@@ -473,20 +469,6 @@ spec:
     app: maintenance
     {{- end }}
 {{- if .Values.MAINTENANCE }}
----
-apiVersion: monitoring.coreos.com/v1
-kind: ServiceMonitor
-metadata:
-  name: box-server-prometheus-metrics-monitor
-  labels:
-    app: box-server-prometheus-metrics-monitor
-    tier: backend
-spec:
-  selector:
-    matchLabels:
-      app: box-server
-  endpoints:
-    - port: box-server-port
 ---
 apiVersion: apps/v1
 kind: Deployment
