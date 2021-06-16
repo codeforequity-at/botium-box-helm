@@ -22,3 +22,5 @@ rabbitmq:
     username: "rabbitmq"
     password: "rabbit123"
     erlangCookie: "rabbit123secretcookie"
+  persistence:
+    enabled: false
