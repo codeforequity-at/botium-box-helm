@@ -10,6 +10,11 @@ spec:
   replicas: 1
   strategy:
     type: Recreate
+  selector:
+    matchLabels:
+      name: coach-worker
+      app: botium-coach-worker
+      tier: frontend
   template:
     metadata:
       labels:
