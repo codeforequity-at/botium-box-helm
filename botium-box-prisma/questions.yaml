@@ -67,6 +67,11 @@ questions:
   type: string
   required: true
   group: "prisma"
+- variable: PRISMA_WORKER_REPLICAS
+  default: 2
+  type: int
+  required: true
+  group: "prisma"
 - variable: INSTALL_MYSQL
   default: true
   description: "Install Mysql Service or use an external service (i.e. RBS)"

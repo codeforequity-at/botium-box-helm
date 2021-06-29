@@ -48,16 +48,15 @@ spec:
     name: prisma
 ---
 apiVersion: apps/v1
-kind: DaemonSet
+kind: Deployment
 metadata:
   name: prisma-worker
   labels:
     name: prisma-worker
 spec:
-  updateStrategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxUnavailable: 1
+  replicas: {{ .Values.PRISMA_WORKER_REPLICAS }}
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
       name: prisma-worker
