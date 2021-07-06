@@ -287,6 +287,11 @@ spec:
                 secretKeyRef:
                   name: botium-box-secrets
                   key: BOTIUMBOX_PASSPORT_ADMINPASSWORD
+            - name: BOTIUMBOX_ADMIN_APIKEY
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: BOTIUMBOX_ADMIN_APIKEY                  
             - name: GOOGLE_TRANSLATE_CLIENT_EMAIL
               valueFrom:
                 secretKeyRef:

@@ -316,6 +316,11 @@ questions:
   type: string
   required: false
   group: "others"
+- variable: BOTIUMBOX_ADMIN_APIKEY
+  description: "Administrative API Access Key"
+  type: string
+  required: false
+  group: "others"
 - variable: GOOGLE_TRANSLATE_CLIENT_EMAIL
   description: "Google Translate Client Email"
   type: string

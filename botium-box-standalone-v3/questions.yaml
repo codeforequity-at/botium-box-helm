@@ -205,6 +205,10 @@ questions:
   description: "Administrative Access Password"
   type: string
   required: false
+- variable: BOTIUMBOX_ADMIN_APIKEY
+  description: "Administrative API Access Key"
+  type: string
+  required: false
 - variable: ENABLE_BACKUP_RESOURCES_FOLDER
   default: false
   description: "Enable S3 Backup Scheduler for resources folder"
