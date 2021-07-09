@@ -72,6 +72,11 @@ questions:
   type: int
   required: true
   group: "prisma"
+- variable: PRISMA_CONNECTION_LIMIT
+  default: 10
+  type: int
+  required: true
+  group: "prisma"  
 - variable: INSTALL_MYSQL
   default: true
   description: "Install Mysql Service or use an external service (i.e. RBS)"
