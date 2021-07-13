@@ -72,6 +72,11 @@ questions:
   type: int
   required: true
   group: "prisma"
+- variable: PRISMA_SERVICE_WORKER_REPLICAS
+  default: 1
+  type: int
+  required: true
+  group: "prisma"
 - variable: PRISMA_CONNECTION_LIMIT
   default: 10
   type: int

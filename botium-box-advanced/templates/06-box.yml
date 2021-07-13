@@ -133,6 +133,16 @@ spec:
                 configMapKeyRef:
                   name: botium-box-configmap
                   key: PRISMA_ENDPOINT_FORCE_PORT
+            - name: PRISMA_ENDPOINT_FORCE_SERVICE_HOSTNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: PRISMA_ENDPOINT_FORCE_SERVICE_HOSTNAME
+            - name: PRISMA_ENDPOINT_FORCE_SERVICE_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: PRISMA_ENDPOINT_FORCE_SERVICE_PORT                  
             - name: BOTIUMBOX_AUDIT_FOLDER
               valueFrom:
                 configMapKeyRef:

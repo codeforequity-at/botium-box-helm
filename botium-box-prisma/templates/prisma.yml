@@ -95,6 +95,55 @@ spec:
       protocol: TCP
   selector:
     name: prisma-worker
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prisma-service-worker
+  labels:
+    name: prisma-service-worker
+spec:
+  replicas: {{ .Values.PRISMA_SERVICE_WORKER_REPLICAS }}
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      name: prisma-service-worker
+  template:
+    metadata:
+      labels:
+        name: prisma-service-worker
+    spec:
+      initContainers:
+        - name: prisma-service-worker-wait-rabbitmq
+          image: martin/wait
+          args: ["-c", "rabbitmq:5672", "-t", "30"]
+      containers:
+        - name: prisma-service-worker
+          image: prismagraphql/prisma-prod:{{ .Values.PRISMA_VERSION }}
+          ports:
+            - name: prisma-w-4466
+              containerPort: 4466
+          env:
+            - name: SLOW_QUERIES_LOGGING
+              value: "true"
+            - name: PRISMA_CONFIG
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-prisma
+                  key: PRISMA_CONFIG_WORKER
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: prisma-service-worker
+spec:
+  ports:
+    - port: 4466
+      targetPort: 4466
+      protocol: TCP
+  selector:
+    name: prisma-service-worker
 {{- if .Values.INSTALL_INGRESS }}
 ---
 apiVersion: extensions/v1beta1
