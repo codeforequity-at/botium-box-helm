@@ -98,6 +98,8 @@ spec:
               value: ""
             - name: BOTIUM_TEMPDIR
               value: /app/server/storage/botiumwork
+            - name: PRISMA_HOME
+              value: /app/server/storage/botiumwork
             - name: NODE_OPTIONS
               valueFrom:
                 configMapKeyRef:

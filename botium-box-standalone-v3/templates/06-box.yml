@@ -61,6 +61,8 @@ spec:
               value: /app/server/storage/resources
             - name: BOTIUM_TEMPDIR
               value: /app/server/storage/botiumwork
+            - name: PRISMA_HOME
+              value: /app/server/storage/prismahome                
             - name: LICENSE_KEY
               valueFrom:
                 secretKeyRef:
