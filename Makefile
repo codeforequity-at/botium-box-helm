@@ -25,7 +25,7 @@ package:
 	helm package botium-box-zap
 	helm package botium-wildcard-ingress
 	helm package botium-speech-processing
-	helm repo index . --url https://github.com/codeforequity-at/botium-box-helm/raw/master/
+	helm repo index . --url https://github.com/codeforequity-at/botium-box-helm/raw/develop/
 
 publish:
 	git add .
