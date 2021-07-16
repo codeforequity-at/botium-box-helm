@@ -94,8 +94,16 @@ spec:
               value: /app/server/storage/resources
             - name: TESTSETDIR
               value: /app/server/storage/testsets
+            {{- if .Values.ENABLE_MULTI_TENANCY }}
             - name: BOTIUMBOX_SCANFORTESTSETS
               value: ""
+            {{- else }}
+            - name: BOTIUMBOX_SCANFORTESTSETS
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: BOTIUMBOX_SCANFORTESTSETS
+            {{- end }}
             - name: BOTIUM_TEMPDIR
               value: /app/server/storage/botiumwork
             - name: PRISMA_HOME
@@ -385,10 +393,6 @@ spec:
             mkdir packages/botium-box-server/node_modules &&
             ln -s ../../license-creator packages/botium-box-server/node_modules/license-creator &&
             ln -s ../../botium-box-shared packages/botium-box-server/node_modules/botium-box-shared &&
-            echo '-> Initializing datasets repo' &&
-            git clone https://{{ .Values.BITBUCKET_USERNAME }}:{{ .Values.BITBUCKET_PASSWORD }}@bitbucket.org/botiumcoreteam/botium-datasets.git &&
-            mkdir -p /app/datasets-mini &&
-            cp -R botium-datasets/mini/* /app/datasets-mini &&
             {{- if .Values.ENABLE_MULTI_TENANCY }}
               {{- if eq .Values.FIRST_TENANT_ENABLE true }}
                 if test -f /app/prisma-config/prisma-config.json; then
@@ -426,7 +430,10 @@ spec:
             - name: RESOURCESDIR
               value: /app/storage/resources
             - name: BOTIUMBOX_SCANFORTESTSETS
-              value: /app/datasets-mini
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: BOTIUMBOX_SCANFORTESTSETS
             - name: PRISMA_BIN_FILE
               value: /app/server/node_modules/.bin/prisma
             - name: PRISMA_CONFIG_FILE
