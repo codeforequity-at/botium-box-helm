@@ -23,7 +23,7 @@ spec:
         spec:
           containers:
           - name: mysql-backup-s3
-            image: schickling/mysql-backup-s3
+            image: murliwatz/mysql-backup-s3
             env:
             - name: MYSQL_HOST
               value: mysql
@@ -56,5 +56,7 @@ spec:
               value: "{{ .Values.S3_REGION }}"
             - name: S3_ENDPOINT
               value: "{{ .Values.S3_ENDPOINT }}"
+            - name: DB_SIZE_THRESHOLD
+              value: "{{ .Values.DB_SIZE_THRESHOLD }}"
           restartPolicy: OnFailure
 {{- end }}

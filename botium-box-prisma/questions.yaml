@@ -81,7 +81,7 @@ questions:
   default: 10
   type: int
   required: true
-  group: "prisma"  
+  group: "prisma"
 - variable: INSTALL_MYSQL
   default: true
   description: "Install Mysql Service or use an external service (i.e. RBS)"
@@ -101,6 +101,11 @@ questions:
   group: "mysql"
 - variable: MYSQL_PASSWORD
   default: ""
+  type: string
+  required: true
+  group: "mysql"
+- variable: DB_SIZE_THRESHOLD
+  default: "1000000"
   type: string
   required: true
   group: "mysql"
