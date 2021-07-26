@@ -17,7 +17,10 @@ metadata:
   name: prisma-backup-scheduler
 spec:
   schedule: "{{ .Values.BACKUP_SCHEDULE }}"
+  concurrencyPolicy: "Forbid"
   jobTemplate:
+    parallelism: 1
+    completions: 1
     spec:
       template:
         spec:
