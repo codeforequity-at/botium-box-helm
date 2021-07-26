@@ -26,11 +26,17 @@ spec:
             image: murliwatz/mysql-backup-s3
             env:
             - name: MYSQL_HOST
-              value: mysql
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-prisma
+                  key: MYSQL_SERVER
             - name: MYSQL_PORT
               value: "3306"
             - name: MYSQL_USER
-              value: root
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-prisma
+                  key: MYSQL_USER
             - name: MYSQL_PASSWORD
               valueFrom:
                 secretKeyRef:
