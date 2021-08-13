@@ -128,7 +128,7 @@ questions:
   group: "storage"
 
 - variable: COACH_WORKER_ENDPOINT
-  default: "https://coach-worker.botiumbox.com/1.0"
+  default: "https://coach.botiumcloud.com/1.0"
   description: "Coach Worker Endpoint"
   type: string
   required: false
@@ -307,7 +307,7 @@ questions:
   required: false
   group: "others"
 - variable: BOTIUMBOX_SENTRY_DSN
-  default: "https://e021ac9d983249a585e66f8840895898@o484598.ingest.sentry.io/5538186"
+  default: ""
   type: string
   required: false
   group: "others"

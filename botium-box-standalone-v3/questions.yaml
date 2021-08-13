@@ -108,7 +108,7 @@ questions:
   type: storageclass
   required: true
 - variable: COACH_WORKER_ENDPOINT
-  default: "https://coach-worker.botiumbox.com/1.0"
+  default: "https://coach.botiumcloud.com/1.0"
   description: "Coach Worker Endpoint"
   type: string
   required: false
