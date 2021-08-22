@@ -2,8 +2,18 @@ apiVersion: v1
 entries:
   botium-box-advanced:
   - apiVersion: v1
+    appVersion: 2.9.1-v1
+    created: "2021-08-22T11:25:31.922999017+02:00"
+    description: Botium Box Advanced
+    digest: 77fe48561af8899a78ab23dbdcb37792b2e380be00c8f1b915932ea6fcc282b4
+    name: botium-box-advanced
+    type: application
+    urls:
+    - https://github.com/codeforequity-at/botium-box-helm/raw/master/botium-box-advanced-2.9.1-v1.tgz
+    version: 2.9.1-v1
+  - apiVersion: v1
     appVersion: 2.9.0-v1
-    created: "2021-08-15T13:34:25.544436247+02:00"
+    created: "2021-08-22T11:25:31.920760891+02:00"
     description: Botium Box Advanced
     digest: 854902f48b92b8ba127cd1c81622e71204ea1ccc00ad3bb7149a7fd04bc91860
     name: botium-box-advanced
@@ -13,7 +23,7 @@ entries:
     version: 2.9.0-v1
   - apiVersion: v1
     appVersion: 2.8.11-v2
-    created: "2021-08-15T13:34:25.514327274+02:00"
+    created: "2021-08-22T11:25:31.896052974+02:00"
     description: Botium Box Advanced
     digest: 6f0aef146b6a7d0cc89e7fbde3f1418294b09197834a8436ae9604721cd3f7ad
     name: botium-box-advanced
@@ -23,7 +33,7 @@ entries:
     version: 2.8.11-v2
   - apiVersion: v1
     appVersion: 2.8.11-v1
-    created: "2021-08-15T13:34:25.510175163+02:00"
+    created: "2021-08-22T11:25:31.894306416+02:00"
     description: Botium Box Advanced
     digest: 40e2a5f85c4a63aa5fa0fc5a04e2b9f71bb289d0ce204f277ebd2a3bc679cd80
     name: botium-box-advanced
@@ -33,7 +43,7 @@ entries:
     version: 2.8.11-v1
   - apiVersion: v1
     appVersion: 2.8.10-v1
-    created: "2021-08-15T13:34:25.507633656+02:00"
+    created: "2021-08-22T11:25:31.892328877+02:00"
     description: Botium Box Advanced
     digest: 41538fb30f350e7771b8e3f7abcfdf1321aa0fcb88df7248756c4520d606790b
     name: botium-box-advanced
@@ -43,7 +53,7 @@ entries:
     version: 2.8.10-v5
   - apiVersion: v1
     appVersion: 2.8.10-v1
-    created: "2021-08-15T13:34:25.505237329+02:00"
+    created: "2021-08-22T11:25:31.890203871+02:00"
     description: Botium Box Advanced
     digest: 78a3a7b78f49ba141751ddda0b95158295e8f403fe459262f40fabf1f9e49436
     name: botium-box-advanced
@@ -53,7 +63,7 @@ entries:
     version: 2.8.10-v4
   - apiVersion: v1
     appVersion: 2.8.10-v1
-    created: "2021-08-15T13:34:25.502789951+02:00"
+    created: "2021-08-22T11:25:31.888124475+02:00"
     description: Botium Box Advanced
     digest: 5e6ae2fd77eb115f326fbfa91bebaa2c3e3c42a76a1761599ad09d2287b7c877
     name: botium-box-advanced
@@ -63,7 +73,7 @@ entries:
     version: 2.8.10-v3
   - apiVersion: v1
     appVersion: 2.8.10-v1
-    created: "2021-08-15T13:34:25.500297655+02:00"
+    created: "2021-08-22T11:25:31.885714032+02:00"
     description: Botium Box Advanced
     digest: 774c69be7662bc81c282278ef8772b1488bd61a19f9021a5005881757e85dcbc
     name: botium-box-advanced
@@ -73,7 +83,7 @@ entries:
     version: 2.8.10-v2
   - apiVersion: v1
     appVersion: 2.8.10-v1
-    created: "2021-08-15T13:34:25.497955535+02:00"
+    created: "2021-08-22T11:25:31.883544688+02:00"
     description: Botium Box Advanced
     digest: 39ad1a67edcf6bf4afccd6d3cd812812a7f6443a73f153fc6bd11b611eb49b94
     name: botium-box-advanced
@@ -83,7 +93,7 @@ entries:
     version: 2.8.10-v1
   - apiVersion: v1
     appVersion: 2.8.9-v1
-    created: "2021-08-15T13:34:25.542837319+02:00"
+    created: "2021-08-22T11:25:31.918298809+02:00"
     description: Botium Box Advanced
     digest: 2d631b0a23cb8eaefd5446ec0d1c284a39e49ed1ec90860e136e443ae554411e
     name: botium-box-advanced
@@ -93,7 +103,7 @@ entries:
     version: 2.8.9-v3
   - apiVersion: v1
     appVersion: 2.8.9-v1
-    created: "2021-08-15T13:34:25.541209346+02:00"
+    created: "2021-08-22T11:25:31.916916769+02:00"
     description: Botium Box Advanced
     digest: 8c3142f5305a832ad5f44a75ada11a8ae9592d100cc76addf4e609b6d36dbb1c
     name: botium-box-advanced
@@ -103,7 +113,7 @@ entries:
     version: 2.8.9-v2
   - apiVersion: v1
     appVersion: 2.8.9-v1
-    created: "2021-08-15T13:34:25.537244248+02:00"
+    created: "2021-08-22T11:25:31.91547892+02:00"
     description: Botium Box Advanced
     digest: 541026a1f9d6de71800d13a47f49f45dba3a21de370ea7b89cc7fc971dff05a5
     name: botium-box-advanced
@@ -113,7 +123,7 @@ entries:
     version: 2.8.9-v1
   - apiVersion: v1
     appVersion: 2.8.8-v1
-    created: "2021-08-15T13:34:25.535032947+02:00"
+    created: "2021-08-22T11:25:31.914061766+02:00"
     description: Botium Box Advanced
     digest: 6c756c11cb44da117fa57a4a7ad3eb0eff584eef7fc3354180397f866f6ff4a2
     name: botium-box-advanced
@@ -123,7 +133,7 @@ entries:
     version: 2.8.8-v6
   - apiVersion: v1
     appVersion: 2.8.8-v1
-    created: "2021-08-15T13:34:25.53016498+02:00"
+    created: "2021-08-22T11:25:31.910903043+02:00"
     description: Botium Box Advanced
     digest: ff59008212e2987264f71086ca5d5c72742e2356fbfeec66fc01f88f8a73ad84
     name: botium-box-advanced
@@ -133,7 +143,7 @@ entries:
     version: 2.8.8-v5-3
   - apiVersion: v1
     appVersion: 2.8.8-v1
-    created: "2021-08-15T13:34:25.527256455+02:00"
+    created: "2021-08-22T11:25:31.909400097+02:00"
     description: Botium Box Advanced
     digest: 05cffe876e6e42c31af75734b380f76c7ee8c6c9ab1c09302ed6c3ae838bf345
     name: botium-box-advanced
@@ -143,7 +153,7 @@ entries:
     version: 2.8.8-v5-2
   - apiVersion: v1
     appVersion: 2.8.8-v1
-    created: "2021-08-15T13:34:25.52538211+02:00"
+    created: "2021-08-22T11:25:31.908026064+02:00"
     description: Botium Box Advanced
     digest: 4072aff51490d8359b454167b70100a2f972b174629c34ec2389b6d828dc9571
     name: botium-box-advanced
@@ -153,7 +163,7 @@ entries:
     version: 2.8.8-v5-1
   - apiVersion: v1
     appVersion: 2.8.8-v1
-    created: "2021-08-15T13:34:25.532232372+02:00"
+    created: "2021-08-22T11:25:31.912372005+02:00"
     description: Botium Box Advanced
     digest: f9ac3014c633a06cd782dd84cd75851f2246d0b80a4d5c4ca7a1ca0d4dc2275e
     name: botium-box-advanced
@@ -163,7 +173,7 @@ entries:
     version: 2.8.8-v5
   - apiVersion: v1
     appVersion: 2.8.8-v1
-    created: "2021-08-15T13:34:25.523188+02:00"
+    created: "2021-08-22T11:25:31.906501525+02:00"
     description: Botium Box Advanced
     digest: 13a6ae57074e287bed2888f526e8b18fd492ec5804cf08686b0bab47137721fc
     name: botium-box-advanced
@@ -173,7 +183,7 @@ entries:
     version: 2.8.8-v4
   - apiVersion: v1
     appVersion: 2.8.8-v1
-    created: "2021-08-15T13:34:25.521079097+02:00"
+    created: "2021-08-22T11:25:31.905023651+02:00"
     description: Botium Box Advanced
     digest: 465346ac5e8a821bc3603830730d4be83cc98576854026439ba6a97372e8a8cf
     name: botium-box-advanced
@@ -183,7 +193,7 @@ entries:
     version: 2.8.8-v3
   - apiVersion: v1
     appVersion: 2.8.8-v1
-    created: "2021-08-15T13:34:25.519092294+02:00"
+    created: "2021-08-22T11:25:31.902185524+02:00"
     description: Botium Box Advanced
     digest: aebb044ad3162b9553bb979f6ab583bddd5fd1fe460ce9eee08f4ea8cbb2e16b
     name: botium-box-advanced
@@ -193,7 +203,7 @@ entries:
     version: 2.8.8-v2
   - apiVersion: v1
     appVersion: 2.8.8-v1
-    created: "2021-08-15T13:34:25.517487956+02:00"
+    created: "2021-08-22T11:25:31.898794226+02:00"
     description: Botium Box Advanced
     digest: e531e2786be1c7cbe4185b1e1ac77d7aa0dfc8da47caba863c909a482ae53e9e
     name: botium-box-advanced
@@ -203,7 +213,7 @@ entries:
     version: 2.8.8-v1
   - apiVersion: v1
     appVersion: 2.8.7
-    created: "2021-08-15T13:34:25.495501333+02:00"
+    created: "2021-08-22T11:25:31.881118626+02:00"
     description: Botium Box Advanced
     digest: 165979fac55bc484c5cd5ccd3cc81df7972f4983786f7aa9234dd2bebdbad180
     name: botium-box-advanced
@@ -213,7 +223,7 @@ entries:
     version: 0.0.33
   - apiVersion: v1
     appVersion: 2.8.7
-    created: "2021-08-15T13:34:25.493034599+02:00"
+    created: "2021-08-22T11:25:31.879032238+02:00"
     description: Botium Box Advanced
     digest: 1ee812b169f1f65708220634624dc31e7593640bd6747ebdbf7a9980da0867e4
     name: botium-box-advanced
@@ -223,7 +233,7 @@ entries:
     version: 0.0.32
   - apiVersion: v1
     appVersion: 2.8.7
-    created: "2021-08-15T13:34:25.490780685+02:00"
+    created: "2021-08-22T11:25:31.877308355+02:00"
     description: Botium Box Advanced
     digest: 838e8f60ead47c40d30e8dc6071e187bf6ec6139354b8f3ead3da5cb89afb0e8
     name: botium-box-advanced
@@ -233,7 +243,7 @@ entries:
     version: 0.0.31
   - apiVersion: v1
     appVersion: 2.8.7
-    created: "2021-08-15T13:34:25.476873142+02:00"
+    created: "2021-08-22T11:25:31.875071231+02:00"
     description: Botium Box Advanced
     digest: 90af038690e852b23b1d3fb36b5ce0f6ab043696c238693876adb2b74919409d
     name: botium-box-advanced
@@ -243,7 +253,7 @@ entries:
     version: 0.0.30
   - apiVersion: v1
     appVersion: 2.8.7
-    created: "2021-08-15T13:34:25.474583354+02:00"
+    created: "2021-08-22T11:25:31.872270801+02:00"
     description: Botium Box Advanced
     digest: c0f8f427760ce56bdd7304a1b6cc058e5005f8bb565ebc0258e3a474e91248bf
     name: botium-box-advanced
@@ -253,7 +263,7 @@ entries:
     version: 0.0.29
   - apiVersion: v1
     appVersion: 2.8.7
-    created: "2021-08-15T13:34:25.472388602+02:00"
+    created: "2021-08-22T11:25:31.868851307+02:00"
     description: Botium Box Advanced
     digest: b9155304ec57dabe8e39f06c61073468162acad99ac4a26ef7e5addfcff833cf
     name: botium-box-advanced
@@ -263,7 +273,7 @@ entries:
     version: 0.0.28
   - apiVersion: v1
     appVersion: 2.8.7
-    created: "2021-08-15T13:34:25.470197954+02:00"
+    created: "2021-08-22T11:25:31.866250877+02:00"
     description: Botium Box Advanced
     digest: c77ad509efd888d90df104dc65a0ba82fbed5b7232427e8574ecd78d85c579b4
     name: botium-box-advanced
@@ -273,7 +283,7 @@ entries:
     version: 0.0.27
   - apiVersion: v1
     appVersion: 2.8.7
-    created: "2021-08-15T13:34:25.468007273+02:00"
+    created: "2021-08-22T11:25:31.863548279+02:00"
     description: Botium Box Advanced
     digest: 2216f6dde96e4dad1f8b17110f3c21aeddafacb81e0a40c1bb7af37837119d6a
     name: botium-box-advanced
@@ -283,7 +293,7 @@ entries:
     version: 0.0.26
   - apiVersion: v1
     appVersion: 2.8.7
-    created: "2021-08-15T13:34:25.465658978+02:00"
+    created: "2021-08-22T11:25:31.861190457+02:00"
     description: Botium Box Advanced
     digest: dfdf7c9b6bc5db93428dafbe91df7f48aed95a5725d93e2f1b5e5c5c6e002c1c
     name: botium-box-advanced
@@ -293,7 +303,7 @@ entries:
     version: 0.0.25
   - apiVersion: v1
     appVersion: 2.8.7
-    created: "2021-08-15T13:34:25.463892057+02:00"
+    created: "2021-08-22T11:25:31.859352087+02:00"
     description: Botium Box Advanced
     digest: 726097a895a7496ee2332451a56595df7eedd8e373bef7036e28f6cef75599c5
     name: botium-box-advanced
@@ -303,7 +313,7 @@ entries:
     version: 0.0.24
   - apiVersion: v1
     appVersion: 2.8.7
-    created: "2021-08-15T13:34:25.461175282+02:00"
+    created: "2021-08-22T11:25:31.857193787+02:00"
     description: Botium Box Advanced
     digest: f26e0e9847a7e3063562c9a5e61520eedaa55bb8d6c88be8e07ea08a869b151d
     name: botium-box-advanced
@@ -313,7 +323,7 @@ entries:
     version: 0.0.23
   - apiVersion: v1
     appVersion: 2.8.7
-    created: "2021-08-15T13:34:25.456150482+02:00"
+    created: "2021-08-22T11:25:31.854714449+02:00"
     description: Botium Box Advanced
     digest: 03e5d8bef89db297be69e39a8b327b97e7340dc1adae98f763fc9f71f177fe38
     name: botium-box-advanced
@@ -324,7 +334,7 @@ entries:
   botium-box-mini:
   - apiVersion: v1
     appVersion: 2.8.9
-    created: "2021-08-15T13:34:25.548766454+02:00"
+    created: "2021-08-22T11:25:31.924909351+02:00"
     description: Botium Box Multi Tenancy
     digest: efcdaefe8027c10bc07549fd0ac2a2d89c0a5f25ac2f5948861e5e374fab238e
     name: botium-box-mini
@@ -334,7 +344,7 @@ entries:
     version: 0.0.145
   - apiVersion: v1
     appVersion: 2.8.7
-    created: "2021-08-15T13:34:25.54708326+02:00"
+    created: "2021-08-22T11:25:31.92391659+02:00"
     description: Botium Box Multi Tenancy
     digest: 50032b731d2e283ee9292156f0bd7e406a56172b977cf70b82bf66b2816b69ac
     name: botium-box-mini
@@ -345,9 +355,9 @@ entries:
   botium-box-prisma:
   - apiVersion: v1
     appVersion: 2.0.0
-    created: "2021-08-15T13:34:25.627850972+02:00"
+    created: "2021-08-22T11:25:31.971888291+02:00"
     description: Botium Box Prisma
-    digest: b85adb14a9f8ff40a6250259be765a64d706b670e90943e5c41d1b252e70559f
+    digest: 2b59da13d5aca914bded9414f0045075fb2a7290962526323ceb0060c6bd3ead
     name: botium-box-prisma
     type: application
     urls:
@@ -355,7 +365,7 @@ entries:
     version: 3.4.0
   - apiVersion: v1
     appVersion: 2.0.0
-    created: "2021-08-15T13:34:25.623290602+02:00"
+    created: "2021-08-22T11:25:31.967665781+02:00"
     description: Botium Box Prisma
     digest: f6405666a163361196f6ee9c70b141f57ef202ce5452dfbbda1363d0df9dd4a5
     name: botium-box-prisma
@@ -365,7 +375,7 @@ entries:
     version: 3.3.0
   - apiVersion: v1
     appVersion: 2.0.0
-    created: "2021-08-15T13:34:25.618138328+02:00"
+    created: "2021-08-22T11:25:31.963270927+02:00"
     description: Botium Box Prisma
     digest: 3d75b39e24c400669abfaf498e0c3b151d69318a2da5ffbe951ecbe205c5bc35
     name: botium-box-prisma
@@ -375,7 +385,7 @@ entries:
     version: 3.2.0
   - apiVersion: v1
     appVersion: 2.0.0
-    created: "2021-08-15T13:34:25.604308172+02:00"
+    created: "2021-08-22T11:25:31.958951762+02:00"
     description: Botium Box Prisma
     digest: ac03d4345c1dfc92680bd30c28d5d7506976b797d834f8af08ce053657346443
     name: botium-box-prisma
@@ -385,7 +395,7 @@ entries:
     version: 3.1.0
   - apiVersion: v1
     appVersion: 2.0.0
-    created: "2021-08-15T13:34:25.597667253+02:00"
+    created: "2021-08-22T11:25:31.953037648+02:00"
     description: Botium Box Prisma
     digest: d06b792ac3391341cf09838633713167ff1137ccf58e902f3d16acc46d551dcc
     name: botium-box-prisma
@@ -395,7 +405,7 @@ entries:
     version: 3.0.9
   - apiVersion: v1
     appVersion: 2.0.0
-    created: "2021-08-15T13:34:25.590437034+02:00"
+    created: "2021-08-22T11:25:31.948664303+02:00"
     description: Botium Box Prisma
     digest: dec8013d4614fc73ceba45dc8dc2077dab6d27fe0abd5cb7f723e1db5dd51b17
     name: botium-box-prisma
@@ -405,7 +415,7 @@ entries:
     version: 3.0.8
   - apiVersion: v1
     appVersion: 2.0.0
-    created: "2021-08-15T13:34:25.583791258+02:00"
+    created: "2021-08-22T11:25:31.944409804+02:00"
     description: Botium Box Prisma
     digest: c74ca72707fb9aed56d19b8ae99b6c01d88f8cd3dcfd97cc52822a4b558ca16b
     name: botium-box-prisma
@@ -415,7 +425,7 @@ entries:
     version: 3.0.7
   - apiVersion: v1
     appVersion: 2.0.0
-    created: "2021-08-15T13:34:25.575536656+02:00"
+    created: "2021-08-22T11:25:31.940089987+02:00"
     description: Botium Box Prisma
     digest: 36e4c7970ba89375bc892525d8f08f9f29d24c0152a54e14a73615fd17c8b936
     name: botium-box-prisma
@@ -425,7 +435,7 @@ entries:
     version: 3.0.6
   - apiVersion: v1
     appVersion: 2.0.0
-    created: "2021-08-15T13:34:25.565066139+02:00"
+    created: "2021-08-22T11:25:31.934257475+02:00"
     description: Botium Box Prisma
     digest: dfd717b72c6aac189eeb97c5a12c4b1119e592d910d6424a8ea8f66d117a7a89
     name: botium-box-prisma
@@ -435,7 +445,7 @@ entries:
     version: 3.0.5
   - apiVersion: v1
     appVersion: 2.0.0
-    created: "2021-08-15T13:34:25.558889132+02:00"
+    created: "2021-08-22T11:25:31.929874485+02:00"
     description: Botium Box Prisma
     digest: 4f9457a26adc689ebf5a21e33a8b736213f6735857b3fbb6a34690eed9b8b5a8
     name: botium-box-prisma
@@ -445,7 +455,7 @@ entries:
     version: 3.0.4
   - apiVersion: v1
     appVersion: 1.0.0
-    created: "2021-08-15T13:34:25.549572673+02:00"
+    created: "2021-08-22T11:25:31.925399991+02:00"
     description: Botium Box Prisma
     digest: e788e6563e5532cdc463afafec65715d72c103f0079d300e85b8313bb577e20a
     name: botium-box-prisma
@@ -456,9 +466,9 @@ entries:
   botium-box-prisma-nodb:
   - apiVersion: v1
     appVersion: 1.0.0
-    created: "2021-08-15T13:34:25.62943669+02:00"
+    created: "2021-08-22T11:25:31.972596621+02:00"
     description: Botium Box Prisma without Mysql
-    digest: e72b1818f50262b0091186d085bbdcf1d54c8a73db10d1c45f4a0a5ca16709b5
+    digest: 69af41fe41c75212107164140d3332edc953b70b767dfa581e41e81d16c93e86
     name: botium-box-prisma-nodb
     type: application
     urls:
@@ -466,7 +476,7 @@ entries:
     version: 1.0.5
   - apiVersion: v1
     appVersion: 1.0.0
-    created: "2021-08-15T13:34:25.628489238+02:00"
+    created: "2021-08-22T11:25:31.972233763+02:00"
     description: Botium Box Prisma without Mysql
     digest: 6cb8b20ae3d643b4fe5ee2261dd2255983e7f1cad878640a0b6d0e4d520fc19a
     name: botium-box-prisma-nodb
@@ -477,9 +487,9 @@ entries:
   botium-box-redis:
   - apiVersion: v1
     appVersion: 0.0.1
-    created: "2021-08-15T13:34:25.631949175+02:00"
+    created: "2021-08-22T11:25:31.974923001+02:00"
     description: Redis for Botium Box
-    digest: f6de430391e35e67d7de60726c9e8e7cd257002c7479bd604f039b88eb18be66
+    digest: 6f559720915db118d82b3112d2d270e569d4984aab458d2c9404b773a54b96eb
     name: botium-box-redis
     type: application
     urls:
@@ -487,7 +497,7 @@ entries:
     version: 0.0.5
   - apiVersion: v1
     appVersion: 0.0.1
-    created: "2021-08-15T13:34:25.631520603+02:00"
+    created: "2021-08-22T11:25:31.974424581+02:00"
     description: Redis for Botium Box
     digest: 7b9165989fada1a5b8f322dcc8de817ab5bf1bb5d04388b124830648e5b657a4
     name: botium-box-redis
@@ -497,7 +507,7 @@ entries:
     version: 0.0.4
   - apiVersion: v1
     appVersion: 0.0.1
-    created: "2021-08-15T13:34:25.631128341+02:00"
+    created: "2021-08-22T11:25:31.973564554+02:00"
     description: Redis for Botium Box
     digest: 814628414d6e5232ea4af04c53433fcbcd9f3cb305a80ab5476d8d3a3e346a3c
     name: botium-box-redis
@@ -507,7 +517,7 @@ entries:
     version: 0.0.3
   - apiVersion: v1
     appVersion: 0.0.1
-    created: "2021-08-15T13:34:25.630716402+02:00"
+    created: "2021-08-22T11:25:31.97333349+02:00"
     description: Redis for Botium Box
     digest: 3e5875a3e69feaad340056a2111619a205dc47ff1d3e8240619f9ec53d0c5b65
     name: botium-box-redis
@@ -517,7 +527,7 @@ entries:
     version: 0.0.2-v2
   - apiVersion: v1
     appVersion: 0.0.1
-    created: "2021-08-15T13:34:25.630266663+02:00"
+    created: "2021-08-22T11:25:31.973089347+02:00"
     description: Redis for Botium Box
     digest: 11038d1a508fcde458d605d6f5623ae4067268cc0cc379a457569dbae3d4daf3
     name: botium-box-redis
@@ -527,7 +537,7 @@ entries:
     version: 0.0.2-v1
   - apiVersion: v1
     appVersion: 0.0.1
-    created: "2021-08-15T13:34:25.629842568+02:00"
+    created: "2021-08-22T11:25:31.972843275+02:00"
     description: Redis for Botium Box
     digest: eb26222dd0aaf36daf988a11a56aa0c9974de480f78fcce546ddab9e57ecfb8c
     name: botium-box-redis
@@ -538,7 +548,7 @@ entries:
   botium-box-standalone:
   - apiVersion: v1
     appVersion: 2.8.7
-    created: "2021-08-15T13:34:25.633246958+02:00"
+    created: "2021-08-22T11:25:31.976611267+02:00"
     description: Botium Box Standalone
     digest: 7fd2eaff84276a479f47d6d8c528607b63b21a6a92fc0d55131102144e6a24bf
     name: botium-box-standalone
@@ -548,8 +558,18 @@ entries:
     version: 0.0.78
   botium-box-standalone-v3:
   - apiVersion: v1
+    appVersion: 2.9.1-v1
+    created: "2021-08-22T11:25:31.997982516+02:00"
+    description: Botium Box Standalone
+    digest: 474c679fdc406afaf2af3f4461265fddc38b9a45db19112b647e451f5cee0934
+    name: botium-box-standalone-v3
+    type: application
+    urls:
+    - https://github.com/codeforequity-at/botium-box-helm/raw/master/botium-box-standalone-v3-2.9.1-v1.tgz
+    version: 2.9.1-v1
+  - apiVersion: v1
     appVersion: 2.9.0-v1
-    created: "2021-08-15T13:34:25.656741177+02:00"
+    created: "2021-08-22T11:25:31.996810264+02:00"
     description: Botium Box Standalone
     digest: d2346cb5c5ae36afd4b7c83511d9544103757947f03989a75362b684ac8edf8e
     name: botium-box-standalone-v3
@@ -559,7 +579,7 @@ entries:
     version: 2.9.0-v1
   - apiVersion: v1
     appVersion: 2.8.11-v1
-    created: "2021-08-15T13:34:25.646699825+02:00"
+    created: "2021-08-22T11:25:31.987087406+02:00"
     description: Botium Box Standalone
     digest: 6c224b2077d80bd5e06b9a817969f3893c339545b944b16d5b9f5ed125cf4ce6
     name: botium-box-standalone-v3
@@ -569,7 +589,7 @@ entries:
     version: 2.8.11-v1
   - apiVersion: v1
     appVersion: 2.8.10-v1
-    created: "2021-08-15T13:34:25.644513759+02:00"
+    created: "2021-08-22T11:25:31.986007825+02:00"
     description: Botium Box Standalone
     digest: 14098f48f29a2c56ef0833e2a88ba5af24345311dffc47cceb2bce44af6fc679
     name: botium-box-standalone-v3
@@ -579,7 +599,7 @@ entries:
     version: 2.8.10-v4
   - apiVersion: v1
     appVersion: 2.8.10-v1
-    created: "2021-08-15T13:34:25.643399766+02:00"
+    created: "2021-08-22T11:25:31.984910879+02:00"
     description: Botium Box Standalone
     digest: 2523f774afb5cbae20d46607e31195a4b43335a46cdef2ca09b317180d6065b0
     name: botium-box-standalone-v3
@@ -589,7 +609,7 @@ entries:
     version: 2.8.10-v3
   - apiVersion: v1
     appVersion: 2.8.10-v1
-    created: "2021-08-15T13:34:25.64229479+02:00"
+    created: "2021-08-22T11:25:31.983775572+02:00"
     description: Botium Box Standalone
     digest: 9404d0480cd6bde85526985b0e56b4ef45a0e4df9e6f26167445baa7d26e59b7
     name: botium-box-standalone-v3
@@ -599,7 +619,7 @@ entries:
     version: 2.8.10-v2
   - apiVersion: v1
     appVersion: 2.8.10-v1
-    created: "2021-08-15T13:34:25.640085172+02:00"
+    created: "2021-08-22T11:25:31.982675107+02:00"
     description: Botium Box Standalone
     digest: 993cc502a7b328b768bb9bfdf3c78047752aaee9958ddee1611062ffb3126c25
     name: botium-box-standalone-v3
@@ -609,7 +629,7 @@ entries:
     version: 2.8.10-v1
   - apiVersion: v1
     appVersion: 2.8.9-v1
-    created: "2021-08-15T13:34:25.655548534+02:00"
+    created: "2021-08-22T11:25:31.995700891+02:00"
     description: Botium Box Standalone
     digest: 43fb20550ff7bfac1c3810c649883cbf9b3844b1a0895955e13a0091187907d7
     name: botium-box-standalone-v3
@@ -619,7 +639,7 @@ entries:
     version: 2.8.9-v4
   - apiVersion: v1
     appVersion: 2.8.9-v1
-    created: "2021-08-15T13:34:25.654395132+02:00"
+    created: "2021-08-22T11:25:31.994614965+02:00"
     description: Botium Box Standalone
     digest: e6e3d447055c26e7df37e8458fd9e760dd47f73b4f6c29ec2e80b70058214293
     name: botium-box-standalone-v3
@@ -629,7 +649,7 @@ entries:
     version: 2.8.9-v3
   - apiVersion: v1
     appVersion: 2.8.9-v1
-    created: "2021-08-15T13:34:25.653193333+02:00"
+    created: "2021-08-22T11:25:31.993510758+02:00"
     description: Botium Box Standalone
     digest: 4b792981f57b226a64ab4f97ac97730024be303148cbeb0ba91d1dcdb723ce14
     name: botium-box-standalone-v3
@@ -639,7 +659,7 @@ entries:
     version: 2.8.9-v2
   - apiVersion: v1
     appVersion: 2.8.9-v1
-    created: "2021-08-15T13:34:25.651964067+02:00"
+    created: "2021-08-22T11:25:31.991269615+02:00"
     description: Botium Box Standalone
     digest: 656aef903805afa27aca1bd4a891edbfaa2040ccdd2ad24b4e673229fca5e491
     name: botium-box-standalone-v3
@@ -649,7 +669,7 @@ entries:
     version: 2.8.9-v1
   - apiVersion: v1
     appVersion: 2.8.8-v1
-    created: "2021-08-15T13:34:25.650189093+02:00"
+    created: "2021-08-22T11:25:31.989289886+02:00"
     description: Botium Box Standalone
     digest: 7047714eb11bfd5505261195a32ed8c125c147a11bb35b7657aab367af54d9af
     name: botium-box-standalone-v3
@@ -659,7 +679,7 @@ entries:
     version: 2.8.8-v2-1
   - apiVersion: v1
     appVersion: 2.8.8-v1
-    created: "2021-08-15T13:34:25.648310443+02:00"
+    created: "2021-08-22T11:25:31.988209268+02:00"
     description: Botium Box Standalone
     digest: 42ffeaca63c5f8c419ed7443404a699486e271271732ded78ce278acb97d881d
     name: botium-box-standalone-v3
@@ -669,7 +689,7 @@ entries:
     version: 2.8.8-v1
   - apiVersion: v1
     appVersion: 2.8.7
-    created: "2021-08-15T13:34:25.634587887+02:00"
+    created: "2021-08-22T11:25:31.977912563+02:00"
     description: Botium Box Standalone
     digest: a85ecd37c19c5581c08ca366f04c0c13be371bb512b5799ccb9e36b055c92ef5
     name: botium-box-standalone-v3
@@ -679,7 +699,7 @@ entries:
     version: 0.0.10
   - apiVersion: v1
     appVersion: 2.8.7
-    created: "2021-08-15T13:34:25.638395441+02:00"
+    created: "2021-08-22T11:25:31.981486023+02:00"
     description: Botium Box Standalone
     digest: 1ddf25fe9b4da42cb9e0ee991d332791b6c187f4f1b6085248f7bf1b22906fcc
     name: botium-box-standalone-v3
@@ -689,7 +709,7 @@ entries:
     version: 0.0.9
   - apiVersion: v1
     appVersion: 2.8.7
-    created: "2021-08-15T13:34:25.637272601+02:00"
+    created: "2021-08-22T11:25:31.980376149+02:00"
     description: Botium Box Standalone
     digest: fcb90203f9797f59c678c54351417870377294b357f04992ad3671bb05a71b0e
     name: botium-box-standalone-v3
@@ -699,7 +719,7 @@ entries:
     version: 0.0.8
   - apiVersion: v1
     appVersion: 2.8.7
-    created: "2021-08-15T13:34:25.635936178+02:00"
+    created: "2021-08-22T11:25:31.979122881+02:00"
     description: Botium Box Standalone
     digest: 475caefd338e8da7ce674cfce0550de0dab3f4b5115294a620d4af28ef4f13bb
     name: botium-box-standalone-v3
@@ -710,9 +730,9 @@ entries:
   botium-box-zap:
   - apiVersion: v1
     appVersion: 0.0.1
-    created: "2021-08-15T13:34:25.657746736+02:00"
+    created: "2021-08-22T11:25:31.998627892+02:00"
     description: ZAP shared
-    digest: d205b13464bdc2406869f8b30d054dd633feac98ae6e7a7f4dc3bf421f9dd3e6
+    digest: c2d2353e590889456ecec926c24c803d49720a659aab63f6f7276b9ad0ffc6ec
     name: botium-box-zap
     type: application
     urls:
@@ -720,7 +740,7 @@ entries:
     version: 0.0.4
   - apiVersion: v1
     appVersion: 0.0.1
-    created: "2021-08-15T13:34:25.65715251+02:00"
+    created: "2021-08-22T11:25:31.998417786+02:00"
     description: ZAP shared
     digest: 067dbc805c9c6080298baa4c889b35e172faec7097994589822218743f71e77f
     name: botium-box-zap
@@ -730,7 +750,7 @@ entries:
     version: 0.0.3
   - apiVersion: v1
     appVersion: 0.0.1
-    created: "2021-08-15T13:34:25.656953223+02:00"
+    created: "2021-08-22T11:25:31.99819968+02:00"
     description: ZAP shared
     digest: 7f6bb7797be2df164e1cbcc58d4281dde8a34a743da3f2bd800d5fd77f748438
     name: botium-box-zap
@@ -741,9 +761,9 @@ entries:
   botium-coach-worker:
   - apiVersion: v1
     appVersion: 0.0.5
-    created: "2021-08-15T13:34:25.659417326+02:00"
+    created: "2021-08-22T11:25:31.999302432+02:00"
     description: Botium Coach Worker
-    digest: 51c498e7db694f09efdf0ea912635e05bef5a5878458f1427da06b94cf353787
+    digest: 75ca5226708faa7ad2bf923a09cf8f2b05c54f2a3bd4f50f8024019e546a1914
     name: botium-coach-worker
     type: application
     urls:
@@ -751,7 +771,7 @@ entries:
     version: 0.0.21
   - apiVersion: v1
     appVersion: 0.0.5
-    created: "2021-08-15T13:34:25.658688484+02:00"
+    created: "2021-08-22T11:25:31.998959929+02:00"
     description: Botium Coach Worker
     digest: 37894e4b40b5acfea9a0f0aa93d1d778108d11b8eb39f4b15150c9e6aa11e041
     name: botium-coach-worker
@@ -762,9 +782,9 @@ entries:
   botium-efs-provisioner:
   - apiVersion: v1
     appVersion: latest
-    created: "2021-08-15T13:34:25.661421736+02:00"
+    created: "2021-08-22T11:25:32.001748972+02:00"
     description: Botium EFS Provisioner
-    digest: 3ce58514193e8824718e33e6c7b53408f8fc93f6137dd730b6fcfe7ff07cdc4e
+    digest: 6fa74c7de38d404558eb02c48245c8ec377ce99e54bcfd98c49f8015f6e28a0e
     name: botium-efs-provisioner
     type: application
     urls:
@@ -772,7 +792,7 @@ entries:
     version: 0.0.8
   - apiVersion: v1
     appVersion: latest
-    created: "2021-08-15T13:34:25.661087332+02:00"
+    created: "2021-08-22T11:25:32.00124007+02:00"
     description: Botium EFS Provisioner
     digest: 2d69f0a27c5323a8d38ff4d5c82ae694240e6d847a8b5d840506309b08d5f629
     name: botium-efs-provisioner
@@ -782,7 +802,7 @@ entries:
     version: 0.0.7-justsync
   - apiVersion: v1
     appVersion: latest
-    created: "2021-08-15T13:34:25.660797143+02:00"
+    created: "2021-08-22T11:25:32.000723299+02:00"
     description: Botium EFS Provisioner
     digest: a75d9eb69a1640fd723a14be183036cf609d7b9b97a63a9e20e8308c99a769ce
     name: botium-efs-provisioner
@@ -792,7 +812,7 @@ entries:
     version: 0.0.6-justdebug
   - apiVersion: v1
     appVersion: latest
-    created: "2021-08-15T13:34:25.660508109+02:00"
+    created: "2021-08-22T11:25:32.000233573+02:00"
     description: Botium EFS Provisioner
     digest: a1ea01d4bf6b159a246333370a1f63c2056ab9c95ea0a502e637e44b4c6d62ec
     name: botium-efs-provisioner
@@ -802,7 +822,7 @@ entries:
     version: 0.0.5
   - apiVersion: v1
     appVersion: latest
-    created: "2021-08-15T13:34:25.660224271+02:00"
+    created: "2021-08-22T11:25:31.999880526+02:00"
     description: Botium EFS Provisioner
     digest: d5c5396c450ba3d3f7e1f76c4e5ceee7fdc3b5c1133fc0d5f273db5ca9048d6a
     name: botium-efs-provisioner
@@ -812,7 +832,7 @@ entries:
     version: 0.0.4
   - apiVersion: v1
     appVersion: latest
-    created: "2021-08-15T13:34:25.659893359+02:00"
+    created: "2021-08-22T11:25:31.999577542+02:00"
     description: Botium EFS Provisioner
     digest: 7a1ce0f4ace3229bbf54aedefff2a5cd767a0d0116a83bc72cb8f5d3d726c4dc
     name: botium-efs-provisioner
@@ -823,9 +843,9 @@ entries:
   botium-speech-processing:
   - apiVersion: v1
     appVersion: latest
-    created: "2021-08-15T13:34:25.662311905+02:00"
+    created: "2021-08-22T11:25:32.002397288+02:00"
     description: Botium Speech Processing
-    digest: 79f6ecc7d45c178f5b8d67c8809d6dda3e1d5b100952866951341d406a714e6d
+    digest: 419ddf428f4418e32fef8ed2a80020b1988b2ba4de8ad861fe4b08b5494ab7e7
     name: botium-speech-processing
     type: application
     urls:
@@ -834,9 +854,9 @@ entries:
   botium-wildcard-ingress:
   - apiVersion: v1
     appVersion: 0.0.1
-    created: "2021-08-15T13:34:25.662972461+02:00"
+    created: "2021-08-22T11:25:32.002702704+02:00"
     description: Botium WildCard Ingress
-    digest: 55cad43f85dc2fcb0f03a64c8003ec32244031ea656f8aa8eb88bc455cb8575c
+    digest: f7aea8c827472c4e1ccbb1995981894a4b2bef4ba0ca1ecd8f496060cabbaea5
     name: botium-wildcard-ingress
     type: application
     urls:
@@ -845,12 +865,12 @@ entries:
   ingress-nginx:
   - apiVersion: v1
     appVersion: latest
-    created: "2021-08-15T13:34:25.663713172+02:00"
+    created: "2021-08-22T11:25:32.003053446+02:00"
     description: Botium Ingress NGinx Reverse Proxy
-    digest: 2ac007ab0cba60ff46c45f05f4ea2f0c6480299a2681a62f945262a75ce54eee
+    digest: e4745bfe2bc6c653f0ebf18ddd85c073911efd7250f8fc04fdd9cf8fe0840cde
     name: ingress-nginx
     type: application
     urls:
     - https://github.com/codeforequity-at/botium-box-helm/raw/master/ingress-nginx-0.0.24.tgz
     version: 0.0.24
-generated: "2021-08-15T13:34:25.446527707+02:00"
+generated: "2021-08-22T11:25:31.845416225+02:00"
