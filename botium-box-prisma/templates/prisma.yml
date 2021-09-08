@@ -26,6 +26,19 @@ spec:
           ports:
             - name: prisma-4466
               containerPort: 4466
+          livenessProbe:
+            httpGet:
+              path: /
+              port: prisma-4466
+            failureThreshold: 1
+            periodSeconds: 10
+          startupProbe:
+            httpGet:
+              path: /
+              port: prisma-4466
+            initialDelaySeconds: 10
+            failureThreshold: 10
+            periodSeconds: 10
           env:
             - name: SLOW_QUERIES_LOGGING
               value: "true"
@@ -75,6 +88,19 @@ spec:
           ports:
             - name: prisma-w-4466
               containerPort: 4466
+          livenessProbe:
+            httpGet:
+              path: /
+              port: prisma-w-4466
+            failureThreshold: 1
+            periodSeconds: 10
+          startupProbe:
+            httpGet:
+              path: /
+              port: prisma-w-4466
+            initialDelaySeconds: 10
+            failureThreshold: 10
+            periodSeconds: 10
           env:
             - name: SLOW_QUERIES_LOGGING
               value: "true"
@@ -124,6 +150,19 @@ spec:
           ports:
             - name: prisma-w-4466
               containerPort: 4466
+          livenessProbe:
+            httpGet:
+              path: /
+              port: prisma-w-4466
+            failureThreshold: 1
+            periodSeconds: 10
+          startupProbe:
+            httpGet:
+              path: /
+              port: prisma-w-4466
+            initialDelaySeconds: 10
+            failureThreshold: 10
+            periodSeconds: 10
           env:
             - name: SLOW_QUERIES_LOGGING
               value: "true"
