@@ -44,7 +44,7 @@ spec:
           {{- end }}
           imagePullPolicy: Always
           command: ["/bin/sh"]
-          args: ["-c", "./wait.sh -t $WAIT_TIMEOUT -e $BOTIUMBOX_QUEUE_REDISURL && npm run start:dist"]
+          args: ["-c", "node -r dotenv-flow/config dist/botium-box-agent.js"]
           ports:
             - name: box-m-4100
               containerPort: 4100
@@ -201,7 +201,7 @@ spec:
           {{- end }}
           imagePullPolicy: Always
           command: ["/bin/sh"]
-          args: ["-c", "./wait.sh -t $WAIT_TIMEOUT -e $BOTIUMBOX_QUEUE_REDISURL && npm run start:dist"]
+          args: ["-c", "node -r dotenv-flow/config dist/botium-box-agent.js"]
           ports:
             - name: box-m-4100
               containerPort: 4100
