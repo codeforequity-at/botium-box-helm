@@ -30,7 +30,7 @@ package_all:
 	helm package botium-speech-processing
 
 package_all_dev:
-	helm package --version 0.0.0-dev001 botium-box-advanced
+	helm package --version 0.0.0-dev002 botium-box-advanced
 
 package: package_all index
 

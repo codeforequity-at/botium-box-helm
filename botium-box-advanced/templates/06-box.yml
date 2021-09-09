@@ -79,20 +79,20 @@ spec:
           ports:
             - name: box-4000
               containerPort: 4000
-            - name: box-management-4100
+            - name: box-m-4100
               containerPort: 4100
           lifecycle:
             preStop:
               httpGet:
                 path: /shutdown
-                port: box-management-4100
+                port: box-m-4100
                 httpHeaders:
                   - name: ManagementApiKey
                     value: {{ $managementApiKey }}
           livenessProbe:
             httpGet:
               path: /live
-              port: box-management-4100
+              port: box-m-4100
               httpHeaders:
                 - name: ManagementApiKey
                   value: {{ $managementApiKey }}
@@ -101,7 +101,7 @@ spec:
           readinessProbe:
             httpGet:
               path: /ready
-              port: box-management-4100
+              port: box-m-4100
               httpHeaders:
                 - name: ManagementApiKey
                   value: {{ $managementApiKey }}
@@ -110,7 +110,7 @@ spec:
           startupProbe:
             httpGet:
               path: /startup
-              port: box-management-4100
+              port: box-m-4100
               httpHeaders:
                 - name: ManagementApiKey
                   value: {{ $managementApiKey }}
