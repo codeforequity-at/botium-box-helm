@@ -1,3 +1,4 @@
+{{- $managementApiKey := randAlphaNum 24 | nospace | quote -}}
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
@@ -44,6 +45,45 @@ spec:
           imagePullPolicy: Always
           command: ["/bin/sh"]
           args: ["-c", "./wait.sh -t $WAIT_TIMEOUT -e $BOTIUMBOX_QUEUE_REDISURL && npm run start:dist"]
+          ports:
+            - name: box-management-4100
+              containerPort: 4100
+          lifecycle:
+            preStop:
+              httpGet:
+                path: /shutdown
+                port: box-management-4100
+                httpHeaders:
+                  - name: ManagementApiKey
+                    value: {{ $managementApiKey }}
+          livenessProbe:
+            httpGet:
+              path: /live
+              port: box-management-4100
+              httpHeaders:
+                - name: ManagementApiKey
+                  value: {{ $managementApiKey }}
+            failureThreshold: 1
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: box-management-4100
+              httpHeaders:
+                - name: ManagementApiKey
+                  value: {{ $managementApiKey }}
+            failureThreshold: 1
+            periodSeconds: 10
+          startupProbe:
+            httpGet:
+              path: /startup
+              port: box-management-4100
+              httpHeaders:
+                - name: ManagementApiKey
+                  value: {{ $managementApiKey }}
+            initialDelaySeconds: 10
+            failureThreshold: 30
+            periodSeconds: 10
           {{- if .Values.ENABLE_RESOURCE_LIMIT }}
           resources:
             limits:
@@ -69,6 +109,14 @@ spec:
               value: /app/server/storage/resources
             - name: BOTIUM_TEMPDIR
               value: /app/server/storage/botiumwork
+            {{- if .Values.BOTIUMBOX_TERMINATION_GRACE_PERIOD }}
+            - name: BOTIUMBOX_TERMINATION_GRACE_PERIOD
+              value: "{{ .Values.BOTIUMBOX_TERMINATION_GRACE_PERIOD }}"
+            {{- end }}
+            - name: BOTIUMBOX_MANAGEMENT_API_PORT
+              value: "4100"
+            - name: BOTIUMBOX_MANAGEMENT_API_KEY
+              value: {{ $managementApiKey }}
             - name: BOTIUMBOX_QUEUE_CONCURRENCY
               value: "10"
             - name: BOTIUMBOX_QUEUE_CONCURRENCY_COACH
@@ -87,6 +135,9 @@ spec:
                 configMapKeyRef:
                   name: botium-box-configmap
                   key: BOTIUMBOX_QUEUE_PREFIX
+    {{- if .Values.BOTIUMBOX_TERMINATION_GRACE_PERIOD }}
+      terminationGracePeriodSeconds: {{ div .Values.BOTIUMBOX_TERMINATION_GRACE_PERIOD 1000 }}
+    {{- end }}
       volumes:
         - name: botium-box-storage
           persistentVolumeClaim:
@@ -151,6 +202,45 @@ spec:
           imagePullPolicy: Always
           command: ["/bin/sh"]
           args: ["-c", "./wait.sh -t $WAIT_TIMEOUT -e $BOTIUMBOX_QUEUE_REDISURL && npm run start:dist"]
+          ports:
+            - name: box-management-4100
+              containerPort: 4100
+          lifecycle:
+            preStop:
+              httpGet:
+                path: /shutdown
+                port: box-management-4100
+                httpHeaders:
+                  - name: ManagementApiKey
+                    value: {{ $managementApiKey }}
+          livenessProbe:
+            httpGet:
+              path: /live
+              port: box-management-4100
+              httpHeaders:
+                - name: ManagementApiKey
+                  value: {{ $managementApiKey }}
+            failureThreshold: 1
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: box-management-4100
+              httpHeaders:
+                - name: ManagementApiKey
+                  value: {{ $managementApiKey }}
+            failureThreshold: 1
+            periodSeconds: 10
+          startupProbe:
+            httpGet:
+              path: /startup
+              port: box-management-4100
+              httpHeaders:
+                - name: ManagementApiKey
+                  value: {{ $managementApiKey }}
+            initialDelaySeconds: 10
+            failureThreshold: 30
+            periodSeconds: 10
           {{- if .Values.ENABLE_RESOURCE_LIMIT }}
           resources:
             limits:
@@ -176,6 +266,14 @@ spec:
               value: /app/server/storage/resources
             - name: BOTIUM_TEMPDIR
               value: /app/server/storage/botiumwork
+            {{- if .Values.BOTIUMBOX_TERMINATION_GRACE_PERIOD }}
+            - name: BOTIUMBOX_TERMINATION_GRACE_PERIOD
+              value: "{{ .Values.BOTIUMBOX_TERMINATION_GRACE_PERIOD }}"
+            {{- end }}
+            - name: BOTIUMBOX_MANAGEMENT_API_PORT
+              value: "4100"
+            - name: BOTIUMBOX_MANAGEMENT_API_KEY
+              value: {{ $managementApiKey }}
             - name: BOTIUMBOX_QUEUE_CONCURRENCY
               value: "0"
             - name: BOTIUMBOX_QUEUE_CONCURRENCY_COACH
@@ -194,6 +292,9 @@ spec:
                 configMapKeyRef:
                   name: botium-box-configmap
                   key: BOTIUMBOX_QUEUE_PREFIX
+    {{- if .Values.BOTIUMBOX_TERMINATION_GRACE_PERIOD }}
+      terminationGracePeriodSeconds: {{ div .Values.BOTIUMBOX_TERMINATION_GRACE_PERIOD 1000 }}
+    {{- end }}                  
       volumes:
         - name: botium-box-storage
           persistentVolumeClaim:

@@ -1,3 +1,4 @@
+{{- $managementApiKey := randAlphaNum 24 | nospace | quote -}}
 apiVersion: apps/v1
 {{- if and (eq .Values.ENABLE_MULTI_TENANCY true) (eq .Values.FORCE_SINGLE_BOX_SERVER false) }}
 kind: DaemonSet
@@ -78,6 +79,44 @@ spec:
           ports:
             - name: box-4000
               containerPort: 4000
+            - name: box-management-4100
+              containerPort: 4100
+          lifecycle:
+            preStop:
+              httpGet:
+                path: /shutdown
+                port: box-management-4100
+                httpHeaders:
+                  - name: ManagementApiKey
+                    value: {{ $managementApiKey }}
+          livenessProbe:
+            httpGet:
+              path: /live
+              port: box-management-4100
+              httpHeaders:
+                - name: ManagementApiKey
+                  value: {{ $managementApiKey }}
+            failureThreshold: 1
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: box-management-4100
+              httpHeaders:
+                - name: ManagementApiKey
+                  value: {{ $managementApiKey }}
+            failureThreshold: 1
+            periodSeconds: 10
+          startupProbe:
+            httpGet:
+              path: /startup
+              port: box-management-4100
+              httpHeaders:
+                - name: ManagementApiKey
+                  value: {{ $managementApiKey }}
+            initialDelaySeconds: 30
+            failureThreshold: 30
+            periodSeconds: 10
           volumeMounts:
           - mountPath: "/app/server/storage/"
             name: botium-box-storage
@@ -94,6 +133,14 @@ spec:
               value: /app/server/storage/resources
             - name: TESTSETDIR
               value: /app/server/storage/testsets
+            {{- if .Values.BOTIUMBOX_TERMINATION_GRACE_PERIOD }}
+            - name: BOTIUMBOX_TERMINATION_GRACE_PERIOD
+              value: "{{ .Values.BOTIUMBOX_TERMINATION_GRACE_PERIOD }}"
+            {{- end }}
+            - name: BOTIUMBOX_MANAGEMENT_API_PORT
+              value: "4100"
+            - name: BOTIUMBOX_MANAGEMENT_API_KEY
+              value: {{ $managementApiKey }}
             {{- if .Values.ENABLE_MULTI_TENANCY }}
             - name: BOTIUMBOX_SCANFORTESTSETS
               value: ""
@@ -327,6 +374,9 @@ spec:
                 secretKeyRef:
                   name: botium-box-secrets
                   key: PARAPHRASING_APIKEY
+    {{- if .Values.BOTIUMBOX_TERMINATION_GRACE_PERIOD }}
+      terminationGracePeriodSeconds: {{ div .Values.BOTIUMBOX_TERMINATION_GRACE_PERIOD 1000 }}
+    {{- end }}
       volumes:
         - name: botium-box-storage
           persistentVolumeClaim:

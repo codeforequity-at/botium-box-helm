@@ -12,7 +12,10 @@ update:
 	helm dependency update botium-wildcard-ingress
 	helm dependency update botium-speech-processing
 
-package:
+index:
+	helm repo index . --url https://github.com/codeforequity-at/botium-box-helm/raw/master/
+
+package_all:
 	#rm -f botium-box-advanced-*.tgz botium-box-prisma-*.tgz botium-box-mini-*.tgz botium-box-standalone-*.tgz botium-coach-worker-*.tgz botium-efs-provisioner-*.tgz botium-wildcard-ingress-*.tgz ingress-nginx-*.tgz botium-box-redis-*.tgz botium-box-zap-*.tgz botium-speech-processing-*.tgz
 	helm package botium-box-advanced
 	helm package botium-box-prisma
@@ -25,7 +28,13 @@ package:
 	helm package botium-box-zap
 	helm package botium-wildcard-ingress
 	helm package botium-speech-processing
-	helm repo index . --url https://github.com/codeforequity-at/botium-box-helm/raw/master/
+
+package_all_dev:
+	helm package --version 0.0.0-dev botium-box-advanced
+
+package: package_all index
+
+package_dev: package_all_dev index
 
 publish:
 	git add .

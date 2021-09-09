@@ -8,10 +8,10 @@ appVersion: 2.9.1-v1
 
 dependencies:
   - name: botium-box-redis
-    version: 0.0.3
+    version: 0.0.5
     repository: 'file://../botium-box-redis'
     condition: INSTALL_REDIS
   - name: botium-box-zap
-    version: 0.0.2
+    version: 0.0.4
     repository: 'file://../botium-box-zap'
     condition: INSTALL_ZAP
