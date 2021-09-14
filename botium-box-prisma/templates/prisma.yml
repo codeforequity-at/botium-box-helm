@@ -30,7 +30,7 @@ spec:
             httpGet:
               path: /
               port: prisma-4466
-            failureThreshold: 1
+            failureThreshold: 3
             periodSeconds: 10
           startupProbe:
             httpGet:
@@ -92,7 +92,7 @@ spec:
             httpGet:
               path: /
               port: prisma-w-4466
-            failureThreshold: 1
+            failureThreshold: 3
             periodSeconds: 10
           startupProbe:
             httpGet:
@@ -154,7 +154,7 @@ spec:
             httpGet:
               path: /
               port: prisma-w-4466
-            failureThreshold: 1
+            failureThreshold: 3
             periodSeconds: 10
           startupProbe:
             httpGet:

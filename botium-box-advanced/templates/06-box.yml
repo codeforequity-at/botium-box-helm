@@ -96,7 +96,7 @@ spec:
               httpHeaders:
                 - name: ManagementApiKey
                   value: {{ $managementApiKey }}
-            failureThreshold: 1
+            failureThreshold: 3
             periodSeconds: 10
           readinessProbe:
             httpGet:
@@ -105,7 +105,7 @@ spec:
               httpHeaders:
                 - name: ManagementApiKey
                   value: {{ $managementApiKey }}
-            failureThreshold: 1
+            failureThreshold: 3
             periodSeconds: 10
           startupProbe:
             httpGet:
