@@ -6,9 +6,9 @@ data:
   X-Frame-Options: "sameorigin"
   X-XSS-Protection: "1; mode=block"
   {{- if eq .Values.CSP_DEFAULT true }}
-  Content-Security-Policy: "script-src 'self' 'unsafe-inline'; img-src * data: blob:; media-src * data: blob:; object-src 'self';"
+  Content-Security-Policy: "script-src https://cdn.jsdelivr.net 'self' 'unsafe-inline'; img-src * data: blob:; media-src * data: blob:; object-src 'self';"
   {{- else if eq .Values.CSP_SMARTLOOK true }}
-  Content-Security-Policy: "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://*.ingest.sentry.io https://*.smartlook.com https://*.smartlook.cloud; img-src * data: blob:; media-src * data: blob:; object-src 'self'; worker-src 'self' blob:; connect-src 'self' https://*.ingest.sentry.io https://*.smartlook.com https://*.smartlook.cloud wss://*.botiumbox.com https://www.botium.ai"
+  Content-Security-Policy: "script-src https://cdn.jsdelivr.net 'self' 'unsafe-inline' 'unsafe-eval' https://*.ingest.sentry.io https://*.smartlook.com https://*.smartlook.cloud; img-src * data: blob:; media-src * data: blob:; object-src 'self'; worker-src 'self' blob:; connect-src 'self' https://*.ingest.sentry.io https://*.smartlook.com https://*.smartlook.cloud wss://*.botiumbox.com https://www.botium.ai"
   {{- else if eq .Values.CSP_CUSTOM true }}
   Content-Security-Policy: "{{ .Values.CSP_CUSTOM_HEADER }}"
   {{- end }}
