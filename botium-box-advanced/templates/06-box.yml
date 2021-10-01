@@ -141,6 +141,12 @@ spec:
               value: "4100"
             - name: BOTIUMBOX_MANAGEMENT_API_KEY
               value: {{ $managementApiKey }}
+            - name: BOTIUMBOX_METRICS_PUBLISH
+              value: "{{ .Values.BOTIUMBOX_METRICS_PUBLISH }}"
+            - name: BOTIUMBOX_METRICS_ENABLE_BOX
+              value: "{{ .Values.BOTIUMBOX_METRICS_ENABLE_BOX }}"
+            - name: BOTIUMBOX_METRICS_ENABLE_NODEJS
+              value: "{{ .Values.BOTIUMBOX_METRICS_ENABLE_NODEJS }}"
             {{- if .Values.ENABLE_MULTI_TENANCY }}
             - name: BOTIUMBOX_SCANFORTESTSETS
               value: ""

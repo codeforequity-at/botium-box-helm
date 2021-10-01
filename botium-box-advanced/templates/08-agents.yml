@@ -117,6 +117,10 @@ spec:
               value: "4100"
             - name: BOTIUMBOX_MANAGEMENT_API_KEY
               value: {{ $managementApiKey }}
+            - name: BOTIUMBOX_METRICS_ENABLE_BOX
+              value: "{{ .Values.BOTIUMBOX_METRICS_ENABLE_BOX }}"
+            - name: BOTIUMBOX_METRICS_ENABLE_NODEJS
+              value: "{{ .Values.BOTIUMBOX_METRICS_ENABLE_NODEJS }}"
             - name: BOTIUMBOX_QUEUE_CONCURRENCY
               value: "10"
             - name: BOTIUMBOX_QUEUE_CONCURRENCY_COACH
@@ -274,6 +278,10 @@ spec:
               value: "4100"
             - name: BOTIUMBOX_MANAGEMENT_API_KEY
               value: {{ $managementApiKey }}
+            - name: BOTIUMBOX_METRICS_ENABLE_BOX
+              value: "{{ .Values.BOTIUMBOX_METRICS_ENABLE_BOX }}"
+            - name: BOTIUMBOX_METRICS_ENABLE_NODEJS
+              value: "{{ .Values.BOTIUMBOX_METRICS_ENABLE_NODEJS }}"
             - name: BOTIUMBOX_QUEUE_CONCURRENCY
               value: "0"
             - name: BOTIUMBOX_QUEUE_CONCURRENCY_COACH
