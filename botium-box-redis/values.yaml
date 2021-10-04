@@ -1,4 +1,4 @@
-redis:
+redis-cluster:
   global:
     storageClass: "gp2"
     redis:

@@ -4,9 +4,9 @@ description: Redis for Botium Box
 
 type: application
 version: 1.0.0
-appVersion: 15.4.0-v1
+appVersion: 6.3.8-v1
 
 dependencies:
-  - name: redis
-    version: 15.4.0
+  - name: redis-cluster
+    version: 6.3.8
     repository: https://charts.bitnami.com/bitnami
