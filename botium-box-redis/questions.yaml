@@ -7,5 +7,5 @@ questions:
 - variable: "redis.global.storageClass"
   default: "gp2"
   description: "Storage Class"
-  type: string
+  type: storageclass
   required: true
