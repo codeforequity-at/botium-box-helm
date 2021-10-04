@@ -1,4 +1,4 @@
-apiVersion: v1
+apiVersion: v2
 name: botium-box-redis
 description: Redis for Botium Box
 
