@@ -1,5 +1,7 @@
-redis-cluster:
+redis:
   global:
     storageClass: "gp2"
     redis:
       password: "redis123"
+    sentinel:
+      enabled: true
