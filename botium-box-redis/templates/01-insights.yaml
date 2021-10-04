@@ -20,29 +20,29 @@ metadata:
   namespace: redis
   labels:
     app: redisinsight
-  spec:
-    replicas: 1
-    selector:
-      matchLabels:
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: redisinsight
+  template:
+    metadata:
+      labels:
         app: redisinsight
-    template:
-      metadata:
-        labels:
-          app: redisinsight
-      spec:
-        containers:
-        - name:  redisinsight
-          image: redislabs/redisinsight:1.9.0
-          imagePullPolicy: IfNotPresent
-          securityContext:
-            runAsUser: 0
-          volumeMounts:
-          - name: db
-            mountPath: /db
-          ports:
-          - containerPort: 8001
-            protocol: TCP
-        volumes:
+    spec:
+      containers:
+      - name:  redisinsight
+        image: redislabs/redisinsight:1.9.0
+        imagePullPolicy: IfNotPresent
+        securityContext:
+          runAsUser: 0
+        volumeMounts:
         - name: db
-          persistentVolumeClaim:
-            claimName: redisinsight-pv-claim
+          mountPath: /db
+        ports:
+        - containerPort: 8001
+          protocol: TCP
+      volumes:
+      - name: db
+        persistentVolumeClaim:
+          claimName: redisinsight-pv-claim
