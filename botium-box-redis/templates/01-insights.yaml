@@ -5,19 +5,17 @@ metadata:
   name: redisinsight-pv-claim
   labels:
     app: redisinsight
-    namespace: redis
 spec:
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-    storage: 1Gi
+      storage: 1Gi
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: redisinsight
-  namespace: redis
   labels:
     app: redisinsight
 spec:
