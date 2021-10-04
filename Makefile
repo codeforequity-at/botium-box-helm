@@ -32,6 +32,7 @@ package_all:
 package_all_dev:
 	rm -f *-dev*.tgz
 	helm package --version 0.0.0-dev003 botium-box-advanced
+	helm package --version 0.0.0-dev001 botium-box-redis
 
 package: package_all index
 

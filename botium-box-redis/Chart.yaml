@@ -3,5 +3,10 @@ name: botium-box-redis
 description: Redis for Botium Box
 
 type: application
-version: 0.0.5
-appVersion: 0.0.1
+version: 1.0.0
+appVersion: 15.4.0-v1
+
+dependencies:
+  - name: redis
+    version: 15.4.0
+    repository: https://charts.bitnami.com/bitnami

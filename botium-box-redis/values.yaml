@@ -1,1 +1,5 @@
-REDIS_PASSWORD: ""
+redis:
+  global:
+    storageClass: "gp2"
+    redis:
+      password: "redis123"

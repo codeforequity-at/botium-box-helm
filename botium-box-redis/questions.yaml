@@ -1,6 +1,11 @@
 questions:
-- variable: REDIS_PASSWORD
+- variable: "redis.global.redis.password"
   default: "redis123"
   description: "Redis Password"
+  type: string
+  required: true
+- variable: "redis.global.storageClass"
+  default: "gp2"
+  description: "Storage Class"
   type: string
   required: true
