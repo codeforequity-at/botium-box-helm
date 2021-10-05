@@ -5,3 +5,5 @@ redis:
       password: "redis123"
   sentinel:
     enabled: true
+  metrics:
+    enabled: true
