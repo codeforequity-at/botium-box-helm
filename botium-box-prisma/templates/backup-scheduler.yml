@@ -19,10 +19,10 @@ spec:
   schedule: "{{ .Values.BACKUP_SCHEDULE }}"
   concurrencyPolicy: "Forbid"
   jobTemplate:
-    parallelism: 1
-    completions: 1
     spec:
       template:
+        parallelism: 1
+        completions: 1
         spec:
           containers:
           - name: mysql-backup-s3
