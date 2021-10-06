@@ -9,3 +9,8 @@ questions:
   description: "Storage Class"
   type: storageclass
   required: true
+- variable: installInsights
+  default: true
+  description: "Install Redis Insights"
+  type: boolean
+  required: true

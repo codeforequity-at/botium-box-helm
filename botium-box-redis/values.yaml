@@ -1,3 +1,4 @@
+installInsights: true
 redis:
   global:
     storageClass: "gp2"

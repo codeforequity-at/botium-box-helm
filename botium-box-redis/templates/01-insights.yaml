@@ -1,3 +1,4 @@
+{{- if .Values.installInsights }}
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -44,3 +45,4 @@ spec:
       - name: db
         persistentVolumeClaim:
           claimName: redisinsight-pv-claim
+{{- end }}
