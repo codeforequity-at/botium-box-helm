@@ -238,6 +238,11 @@ spec:
                 secretKeyRef:
                   name: botium-box-secrets
                   key: BOTIUMBOX_QUEUE_SETTINGS
+            - name: BOTIUMBOX_QUEUE_REDISURL
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: BOTIUMBOX_QUEUE_REDISURL                  
             - name: BOTIUMBOX_QUEUE_PREFIX
               valueFrom:
                 configMapKeyRef:
@@ -507,6 +512,11 @@ spec:
                 secretKeyRef:
                   name: botium-box-secrets
                   key: PRISMA_MANAGEMENT_API_SECRET
+            - name: BOTIUMBOX_QUEUE_SETTINGS
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: BOTIUMBOX_QUEUE_SETTINGS
             - name: BOTIUMBOX_QUEUE_REDISURL
               valueFrom:
                 secretKeyRef:

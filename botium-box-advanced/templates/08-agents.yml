@@ -129,6 +129,11 @@ spec:
               value: "0"
             - name: BOTIUMBOX_QUEUE_HEARTBEAT
               value: "0"
+            - name: BOTIUMBOX_QUEUE_SETTINGS
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: BOTIUMBOX_QUEUE_SETTINGS
             - name: BOTIUMBOX_QUEUE_REDISURL
               valueFrom:
                 secretKeyRef:
@@ -290,6 +295,11 @@ spec:
               value: "10"
             - name: BOTIUMBOX_QUEUE_HEARTBEAT
               value: "0"
+            - name: BOTIUMBOX_QUEUE_SETTINGS
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: BOTIUMBOX_QUEUE_SETTINGS
             - name: BOTIUMBOX_QUEUE_REDISURL
               valueFrom:
                 secretKeyRef:
