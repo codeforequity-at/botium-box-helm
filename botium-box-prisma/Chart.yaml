@@ -1,9 +1,9 @@
-apiVersion: v1
+apiVersion: v2
 name: botium-box-prisma
 description: Botium Box Prisma
 
 type: application
-version: 3.4.3
+version: 3.4.4
 appVersion: 2.0.0
 
 dependencies:

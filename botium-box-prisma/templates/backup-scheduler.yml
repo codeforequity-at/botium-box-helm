@@ -20,9 +20,9 @@ spec:
   concurrencyPolicy: "Forbid"
   jobTemplate:
     spec:
+      parallelism: 1
+      completions: 1
       template:
-        parallelism: 1
-        completions: 1
         spec:
           containers:
           - name: mysql-backup-s3
