@@ -63,29 +63,21 @@ questions:
     type: string
     required: true
 
-- variable: INSTALL_REDIS
-  default: true
-  description: "Install Redis Service or use external Redis Service"
-  type: boolean
-  group: "redis"
-  required: true
-  show_subquestion_if: "false"
-  subquestions:
-  - variable: REDIS_SERVICE
-    default: "redis"
-    description: "Redis Service Name"
-    type: string
-    required: true
-- variable: botium-box-redis.REDIS_PASSWORD
-  default: "redis123"
-  description: "Redis Password for Redis Service"
+- variable: REDIS_HOST
+  default: "redis"
+  description: "Redis Host Name"
   type: string
   required: true
   group: "redis"
-  show_if: "INSTALL_REDIS=true"
+- variable: REDIS_PORT
+  default: 6379
+  description: "Redis Port"
+  type: int
+  required: true
+  group: "redis"
 - variable: REDIS_PASSWORD
   default: "redis123"
-  description: "Redis Password for Box"
+  description: "Redis Password"
   type: string
   required: true
   group: "redis"

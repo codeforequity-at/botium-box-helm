@@ -233,11 +233,11 @@ spec:
                 configMapKeyRef:
                   name: botium-box-configmap
                   key: LICENSE_KEY
-            - name: BOTIUMBOX_QUEUE_REDISURL
+            - name: BOTIUMBOX_QUEUE_SETTINGS
               valueFrom:
                 secretKeyRef:
                   name: botium-box-secrets
-                  key: BOTIUMBOX_QUEUE_REDISURL
+                  key: BOTIUMBOX_QUEUE_SETTINGS
             - name: BOTIUMBOX_QUEUE_PREFIX
               valueFrom:
                 configMapKeyRef:
