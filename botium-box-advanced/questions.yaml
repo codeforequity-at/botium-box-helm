@@ -339,26 +339,13 @@ questions:
   type: boolean
   required: true
   group: "maintenance"
-- variable: PRISMA_ENDPOINT
-  default: "https://prisma03.botiumbox.com/box/..."
-  description: "Prisma Endpoint URL"
+- variable: DATABASE_URL
+  default: "mysql://root:prisma@localhost:3306/box@prod13_v2"
+  description: "Prisma Database URL"
   type: string
   required: true
   group: "prisma"
   show_if: "ENABLE_MULTI_TENANCY=false"
-- variable: PRISMA_SECRET
-  default: "prisma123"
-  description: "Prisma Secret"
-  type: string
-  required: true
-  group: "prisma"
-  show_if: "ENABLE_MULTI_TENANCY=false"
-- variable: PRISMA_MANAGEMENT_API_SECRET
-  default: ""
-  description: "Prisma Management API Secret"
-  type: string
-  required: true
-  group: "prisma"
 - variable: FIRST_TENANT_ENABLE
   default: false
   description: "Generate first tenant"
@@ -383,14 +370,14 @@ questions:
       description: "Password"
       type: string
       required: true
-    - variable: FIRST_TENANT_PRISMA_ENDPOINT
+    - variable: FIRST_TENANT_DATABASE_URL
       default: ""
-      description: "Prisma endpoint"
+      description: "Prisma database url"
       type: string
       required: true
-    - variable: FIRST_TENANT_PRISMA_SECRET
+    - variable: FIRST_TENANT_JWT_SECRET
       default: ""
-      description: "Prisma secret"
+      description: "JWT secret"
       type: string
       required: true
     - variable: FIRST_TENANT_BUILDTARGET

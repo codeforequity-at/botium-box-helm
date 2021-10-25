@@ -1,9 +1,4 @@
 questions:
-- variable: PRISMA_VERSION
-  default: "1.34.10"
-  description: "Prisma Version"
-  type: string
-  required: true
 - variable: INSTALL_INGRESS
   default: true
   description: "Install Ingress with Letsencrypt"
@@ -57,31 +52,6 @@ questions:
   type: storageclass
   required: true
   group: "storage"
-- variable: PRISMA_MANAGEMENT_API_SECRET
-  default: ""
-  type: string
-  required: true
-  group: "prisma"
-- variable: PRISMA_MANAGEMENT_SCHEMA
-  default: "prisma"
-  type: string
-  required: true
-  group: "prisma"
-- variable: PRISMA_WORKER_REPLICAS
-  default: 2
-  type: int
-  required: true
-  group: "prisma"
-- variable: PRISMA_SERVICE_WORKER_REPLICAS
-  default: 1
-  type: int
-  required: true
-  group: "prisma"
-- variable: PRISMA_CONNECTION_LIMIT
-  default: 10
-  type: int
-  required: true
-  group: "prisma"
 - variable: INSTALL_MYSQL
   default: true
   description: "Install Mysql Service or use an external service (i.e. RBS)"

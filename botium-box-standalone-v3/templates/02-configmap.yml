@@ -6,7 +6,6 @@ metadata:
     name: config
     app: botium-box
 data:
-  PRISMA_ENDPOINT: "{{ .Values.PRISMA_ENDPOINT }}"
   BOTIUMBOX_QUEUE_PREFIX: "{{ .Values.BOTIUMBOX_QUEUE_PREFIX }}"
   BOTIUMBOX_AGENT_COUNT: "{{ .Values.BOTIUMBOX_AGENT_COUNT }}"
   SMTP_HOST: "{{ .Values.SMTP_HOST }}"

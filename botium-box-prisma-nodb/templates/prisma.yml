@@ -1,59 +1,3 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: prisma
-  labels:
-    name: prisma
-spec:
-  replicas: 1
-  strategy:
-    type: Recreate
-  selector:
-    matchLabels:
-      name: prisma    
-  template:
-    metadata:
-      labels:
-        name: prisma
-    spec:
-      containers:
-        - name: prisma
-          image: prismagraphql/prisma:{{ .Values.PRISMA_VERSION }}
-          ports:
-            - name: prisma-4466
-              containerPort: 4466
-          livenessProbe:
-            httpGet:
-              path: /
-              port: prisma-4466
-            failureThreshold: 3
-            periodSeconds: 10
-          startupProbe:
-            httpGet:
-              path: /
-              port: prisma-4466
-            initialDelaySeconds: 10
-            failureThreshold: 10
-            periodSeconds: 10              
-          env:
-            - name: PRISMA_CONFIG
-              valueFrom:
-                secretKeyRef:
-                  name: botium-box-prisma
-                  key: PRISMA_CONFIG
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: prisma
-spec:
-  ports:
-    - port: 4466
-      targetPort: 4466
-      protocol: TCP
-  selector:
-    name: prisma
----
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
@@ -72,10 +16,6 @@ spec:
   - host: {{ .Values.FQDN }}
     http:
       paths:
-      - path: /
-        backend:
-          serviceName: prisma
-          servicePort: 4466
       - path: /mysql-admin
         backend:
           serviceName: mysql-admin

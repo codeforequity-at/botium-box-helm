@@ -1,4 +1,3 @@
-PRISMA_VERSION: "1.34.10"
 FQDN: ""
 ENABLE_S3_BACKUP: false
 S3_ACCESS_KEY_ID: ""
@@ -13,19 +12,6 @@ INSTALL_MYSQL: true
 MYSQL_HOST: "mysql"
 MYSQL_USER: "root"
 MYSQL_PASSWORD: ""
-PRISMA_MANAGEMENT_SCHEMA: "prisma"
-PRISMA_MANAGEMENT_API_SECRET: ""
-PRISMA_WORKER_REPLICAS: 2
-PRISMA_SERVICE_WORKER_REPLICAS: 1
-PRISMA_CONNECTION_LIMIT: "10"
 LETS_ENCRYPT_EMAIL: ""
 DB_SIZE_THRESHOLD: "1000000"
-rabbitmq:
-  fullnameOverride: "rabbitmq"
-  replicaCount: 1
-  auth:
-    username: "rabbitmq"
-    password: "rabbit123"
-    erlangCookie: "rabbit123secretcookie"
-  persistence:
-    enabled: false
+

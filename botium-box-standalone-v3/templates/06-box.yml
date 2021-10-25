@@ -43,7 +43,7 @@ spec:
           {{- end }}
           imagePullPolicy: Always
           command: ["/bin/sh"]
-          args: ["-c", "npm run deploy && PRISMA_MANAGEMENT_API_SECRET= npm run \"start_$BOTIUMBOX_AGENT_COUNT\""]
+          args: ["-c", "npm run deploy && npm run \"start_$BOTIUMBOX_AGENT_COUNT\""]
           ports:
             - name: box-4000
               containerPort: 4000
@@ -61,28 +61,16 @@ spec:
               value: /app/server/storage/resources
             - name: BOTIUM_TEMPDIR
               value: /app/server/storage/botiumwork
-            - name: PRISMA_HOME
-              value: /app/server/storage/botiumwork
             - name: LICENSE_KEY
               valueFrom:
                 secretKeyRef:
                   name: botium-box-secrets
                   key: LICENSE_KEY
-            - name: PRISMA_ENDPOINT
-              valueFrom:
-                configMapKeyRef:
-                  name: botium-box-configmap
-                  key: PRISMA_ENDPOINT
-            - name: PRISMA_SECRET
+            - name: DATABASE_URL
               valueFrom:
                 secretKeyRef:
                   name: botium-box-secrets
-                  key: PRISMA_SECRET
-            - name: PRISMA_MANAGEMENT_API_SECRET
-              valueFrom:
-                secretKeyRef:
-                  name: botium-box-secrets
-                  key: PRISMA_MANAGEMENT_API_SECRET
+                  key: DATABASE_URL
             - name: SEED_ADMIN_EMAIL
               valueFrom:
                 secretKeyRef:
@@ -213,6 +201,80 @@ spec:
             claimName: botium-box-storage
         - name: storage-botiumwork
           emptyDir: {}
+{{- if .Values.INSTALL_SHELL }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: box-shell
+  labels:
+    name: box-shell
+    app: botium-box
+    tier: frontend
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      name: box-shell
+      app: botium-box
+  template:
+    metadata:
+      labels:
+        name: box-shell
+        app: botium-box
+        tier: frontend
+    spec:
+      containers:
+        - name: box
+          {{- if eq .Values.CONTAINER_REGISTRY "" }}
+          image: botium/botium-box-standalone:{{ .Values.BOTIUM_BOX_VERSION }}
+          {{- else }}
+          image: {{ .Values.CONTAINER_REGISTRY }}/botium/botium-box-standalone:{{ .Values.BOTIUM_BOX_VERSION }}
+          {{- end }}
+          imagePullPolicy: Always
+          command: ["/bin/sh"]
+          args: ["-c", "cd /app/server && while :; do echo 'Press <CTRL+C> to exit.'; sleep 10; done"]
+          securityContext:
+            runAsUser: 0
+            runAsGroup: 0
+          volumeMounts:
+          - mountPath: "/app/server/storage"
+            name: storage
+          env:
+            - name: DEBUG
+              value: botium*
+            - name: TESTSETDIR
+              value: /app/server/storage/testsets
+            - name: RESOURCESDIR
+              value: /app/server/storage/resources
+            - name: LICENSE_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: LICENSE_KEY
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: DATABASE_URL
+            - name: BOTIUMBOX_QUEUE_REDISURL
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: BOTIUMBOX_QUEUE_REDISURL
+            - name: BOTIUMBOX_QUEUE_PREFIX
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: BOTIUMBOX_QUEUE_PREFIX
+
+      volumes:
+        - name: storage
+          persistentVolumeClaim:
+            claimName: botium-box-storage
+{{- end }}
 ---
 apiVersion: v1
 kind: Service

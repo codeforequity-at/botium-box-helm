@@ -74,7 +74,7 @@ spec:
           {{- if .Values.ENABLE_MULTI_TENANCY }}
           args: ["-c", "node -r dotenv-flow/config dist/botium-box-server.js"]
           {{- else }}
-          args: ["-c", "./wait.sh -t $WAIT_TIMEOUT -e $PRISMA_ENDPOINT && npm run prisma-deploy && npm run prisma-seed && node -r dotenv-flow/config dist/botium-box-server.js"]
+          args: ["-c", "npm run prisma-deploy && npm run prisma-seed && node -r dotenv-flow/config dist/botium-box-server.js"]
           {{- end }}
           ports:
             - name: box-4000
@@ -159,8 +159,6 @@ spec:
             {{- end }}
             - name: BOTIUM_TEMPDIR
               value: /app/server/storage/botiumwork
-            - name: PRISMA_HOME
-              value: /app/server/storage/botiumwork
             - name: NODE_OPTIONS
               valueFrom:
                 configMapKeyRef:
@@ -186,48 +184,17 @@ spec:
                 configMapKeyRef:
                   name: botium-box-configmap
                   key: PRISMA_CONFIG_FILE
-            - name: PRISMA_ENDPOINT_FORCE_HOSTNAME
-              valueFrom:
-                configMapKeyRef:
-                  name: botium-box-configmap
-                  key: PRISMA_ENDPOINT_FORCE_HOSTNAME
-            - name: PRISMA_ENDPOINT_FORCE_PORT
-              valueFrom:
-                configMapKeyRef:
-                  name: botium-box-configmap
-                  key: PRISMA_ENDPOINT_FORCE_PORT
-            - name: PRISMA_ENDPOINT_FORCE_SERVICE_HOSTNAME
-              valueFrom:
-                configMapKeyRef:
-                  name: botium-box-configmap
-                  key: PRISMA_ENDPOINT_FORCE_SERVICE_HOSTNAME
-            - name: PRISMA_ENDPOINT_FORCE_SERVICE_PORT
-              valueFrom:
-                configMapKeyRef:
-                  name: botium-box-configmap
-                  key: PRISMA_ENDPOINT_FORCE_SERVICE_PORT                  
-            - name: BOTIUMBOX_AUDIT_FOLDER
-              valueFrom:
-                configMapKeyRef:
-                  name: botium-box-configmap
-                  key: BOTIUMBOX_AUDIT_FOLDER
-            {{- else }}
+            {{- end }}
             - name: JWT_SECRET
               valueFrom:
                 secretKeyRef:
                   name: botium-box-secrets
                   key: JWT_SECRET
-            - name: PRISMA_ENDPOINT
-              valueFrom:
-                configMapKeyRef:
-                  name: botium-box-configmap
-                  key: PRISMA_ENDPOINT
-            - name: PRISMA_SECRET
+            - name: DATABASE_URL
               valueFrom:
                 secretKeyRef:
                   name: botium-box-secrets
-                  key: PRISMA_SECRET
-            {{- end }}
+                  key: DATABASE_URL
             - name: LICENSE_KEY
               valueFrom:
                 configMapKeyRef:
@@ -283,11 +250,6 @@ spec:
                 secretKeyRef:
                   name: botium-box-secrets
                   key: SPEECH_PROCESSING_APIKEY
-            - name: PRISMA_MANAGEMENT_API_SECRET
-              valueFrom:
-                secretKeyRef:
-                  name: botium-box-secrets
-                  key: PRISMA_MANAGEMENT_API_SECRET
             - name: SMTP_HOST
               valueFrom:
                 configMapKeyRef:
@@ -462,7 +424,7 @@ spec:
                   echo '-> Initializing first tenant, updating prisma config' &&
                   echo {} > /app/prisma-config/prisma-config.json &&
                   cd /app/server/botium-box/packages/botium-box-server &&
-                  node src/management/createshared.js {{ .Values.FIRST_TENANT_NAME }}.{{ .Values.FQDN }} {{ .Values.FIRST_TENANT_EMAIL }} {{ .Values.FIRST_TENANT_PASSWORD }} {{ .Values.FIRST_TENANT_PRISMA_ENDPOINT }} {{ .Values.FIRST_TENANT_PRISMA_SECRET }} {{ .Values.FIRST_TENANT_BUILDTARGET }} &&
+                  node src/management/createshared.js {{ .Values.FIRST_TENANT_NAME }}.{{ .Values.FQDN }} {{ .Values.FIRST_TENANT_EMAIL }} {{ .Values.FIRST_TENANT_PASSWORD }} {{ .Values.FIRST_TENANT_DATABASE_URL }} {{ .Values.FIRST_TENANT_JWT_SECRET }} {{ .Values.FIRST_TENANT_BUILDTARGET }} &&
                   cat /app/prisma-config/prisma-config.json;
                 fi &&
               {{- end }}
@@ -470,9 +432,6 @@ spec:
             cd /app/server &&
             while :; do echo 'Press <CTRL+C> to exit.'; sleep 10; done"
           ]
-          ports:
-            - name: box-4000
-              containerPort: 4000
           volumeMounts:
           - mountPath: "/app/storage/"
             name: botium-box-storage
@@ -507,11 +466,11 @@ spec:
                 configMapKeyRef:
                   name: botium-box-configmap
                   key: LICENSE_KEY
-            - name: PRISMA_MANAGEMENT_API_SECRET
+            - name: DATABASE_URL
               valueFrom:
                 secretKeyRef:
                   name: botium-box-secrets
-                  key: PRISMA_MANAGEMENT_API_SECRET
+                  key: DATABASE_URL
             - name: BOTIUMBOX_QUEUE_SETTINGS
               valueFrom:
                 secretKeyRef:
