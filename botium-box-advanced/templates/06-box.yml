@@ -97,7 +97,8 @@ spec:
                 - name: ManagementApiKey
                   value: {{ $managementApiKey }}
             failureThreshold: 3
-            periodSeconds: 10
+            periodSeconds: 30
+            timeoutSeconds: 5
           readinessProbe:
             httpGet:
               path: /ready
@@ -106,7 +107,8 @@ spec:
                 - name: ManagementApiKey
                   value: {{ $managementApiKey }}
             failureThreshold: 3
-            periodSeconds: 10
+            periodSeconds: 30
+            timeoutSeconds: 5
           startupProbe:
             httpGet:
               path: /startup
@@ -116,7 +118,8 @@ spec:
                   value: {{ $managementApiKey }}
             initialDelaySeconds: 30
             failureThreshold: 30
-            periodSeconds: 10
+            periodSeconds: 30
+            timeoutSeconds: 5
           volumeMounts:
           - mountPath: "/app/server/storage/"
             name: botium-box-storage
