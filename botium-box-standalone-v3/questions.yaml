@@ -33,17 +33,6 @@ questions:
   description: "Initial Botium Box Password"
   type: string
   required: true
-- variable: REDIS_PASSWORD
-  default: "redis123"
-  description: "Redis Password"
-  type: string
-  required: true
-- variable: botium-box-redis.REDIS_PASSWORD
-  default: "redis123"
-  description: "Redis Password for Redis Service"
-  type: string
-  required: true
-  group: "redis"
 - variable: FQDN
   default: ""
   description: "Instance FQDN"
@@ -152,6 +141,11 @@ questions:
 - variable: BOTIUMBOX_QUEUE_PREFIX
   default: "qprod"
   description: "Redis Prefix"
+  type: string
+  required: true
+- variable: REDIS_PASSWORD
+  default: "redis123"
+  description: "Redis Password"
   type: string
   required: true
 - variable: FIRST_INSTALLATION
