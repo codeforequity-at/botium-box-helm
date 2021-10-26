@@ -3,7 +3,7 @@ name: botium-box-standalone-v3
 description: Botium Box Standalone
 
 type: application
-version: 2.11.0-v3
+version: 2.11.0-v4
 appVersion: 2.11.0-v1
 
 dependencies:
