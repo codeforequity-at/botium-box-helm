@@ -2,7 +2,7 @@ questions:
 - variable: "redis.architecture"
   default: "replication"
   description: "Redis Architecture"
-  type: string
+  type: enum
   required: true
   options:
     - "standalone"

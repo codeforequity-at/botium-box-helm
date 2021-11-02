@@ -19,7 +19,7 @@ questions:
 - variable: BOTIUM_SPEECH_PROVIDER_TTS
   default: "marytts"
   description: "Provider for TTS"
-  type: string
+  type: enum
   required: true
   options:
     - "marytts"
@@ -28,7 +28,7 @@ questions:
 - variable: BOTIUM_SPEECH_PROVIDER_STT
   default: "kaldi"
   description: "Provider for STT"
-  type: string
+  type: enum
   required: true
   options:
     - "kaldi"
