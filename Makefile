@@ -32,9 +32,9 @@ package_all:
 package_all_dev:
 	rm -f *-dev*.tgz
 	#helm package --version 0.0.0-dev007 botium-box-advanced
-	#helm package --version 0.0.0-dev001 botium-box-redis
+	helm package --version 0.0.0-dev002 botium-box-redis
 	#helm package --version 0.0.0-dev002 botium-box-standalone-v3
-	helm package --version 0.0.0-dev002 botium-box-prisma
+	#helm package --version 0.0.0-dev002 botium-box-prisma
 
 package: package_all index
 
