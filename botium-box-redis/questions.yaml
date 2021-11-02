@@ -1,18 +1,4 @@
 questions:
-- variable: "redis.architecture"
-  default: "replication"
-  description: "Redis Architecture"
-  type: enum
-  required: true
-  options:
-    - "standalone"
-    - "replication"
-- variable: "redis.replica.replicaCount"
-  default: 3
-  description: "Replica Count"
-  type: int
-  required: true
-  show_if: "redis.architecture=replication"
 - variable: "redis.global.redis.password"
   default: "redis123"
   description: "Redis Password"
