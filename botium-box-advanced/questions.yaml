@@ -43,6 +43,12 @@ questions:
   type: string
   required: false
   group: "container"
+- variable: ENABLE_FIX_STORAGE_PERMISSIONS
+  default: false
+  description: "Fix Storage Permissions with sidecar containers (set UID/GID on container startup)"
+  type: boolean
+  required: true
+  group: "container"
 
 - variable: ACTIVATE_ZAP
   default: false
@@ -64,16 +70,28 @@ questions:
     required: true
 
 - variable: REDIS_HOST
-  default: "redis"
   description: "Redis Host Name"
   type: string
-  required: true
   group: "redis"
 - variable: REDIS_PORT
   default: 6379
   description: "Redis Port"
   type: int
-  required: true
+  group: "redis"
+- variable: REDIS_SENTINEL_HOST
+  default: "botium-box-redis.botium-box-redis"
+  description: "Redis Sentinel Host Name"
+  type: string
+  group: "redis"
+- variable: REDIS_SENTINEL_PORT
+  default: 26379
+  description: "Redis Sentinel Port"
+  type: int
+  group: "redis"
+- variable: REDIS_SENTINEL_NAME
+  default: "mymaster"
+  description: "Redis Sentinal Name"
+  type: string
   group: "redis"
 - variable: REDIS_PASSWORD
   default: "redis123"

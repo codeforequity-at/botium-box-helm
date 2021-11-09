@@ -24,17 +24,6 @@ spec:
       nodeSelector:
         box-agent-type: common
       {{- end }}
-      initContainers:
-        - name: box-agent-chmod-er
-          image: busybox:latest
-          command:
-          - /bin/chown
-          - -R
-          - "1000:1000"
-          - /app/agent/storage
-          volumeMounts:
-          - mountPath: "/app/agent/storage"
-            name: botium-box-storage
       containers:
         - name: box-agent
           {{- if eq .Values.CONTAINER_REGISTRY "" }}
@@ -190,17 +179,6 @@ spec:
       nodeSelector:
         box-agent-type: performance
       {{- end }}
-      initContainers:
-        - name: box-agentp-chmod-er
-          image: busybox:latest
-          command:
-          - /bin/chown
-          - -R
-          - "1000:1000"
-          - /app/agent/storage
-          volumeMounts:
-          - mountPath: "/app/agent/storage"
-            name: botium-box-storage
       containers:
         - name: box-agentp
           {{- if eq .Values.CONTAINER_REGISTRY "" }}

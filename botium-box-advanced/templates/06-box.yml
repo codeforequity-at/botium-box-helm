@@ -37,6 +37,7 @@ spec:
       nodeSelector:
         box-agent-type: common
       {{- end }}
+      {{- if .Values.ENABLE_FIX_STORAGE_PERMISSIONS }}
       initContainers:
         - name: box-server-chmod-er-storage
           image: busybox:latest
@@ -62,6 +63,7 @@ spec:
           - mountPath: "/app/prisma-config/"
             name: botium-box-prisma-config-storage
         {{- end }}
+      {{- end }}
       containers:
         - name: box-server
           imagePullPolicy: Always
