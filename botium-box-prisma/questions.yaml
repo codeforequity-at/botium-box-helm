@@ -47,6 +47,14 @@ questions:
     default: "eu-central-1"
     type: string
     required: true
+  - variable: TELEGRAF_NOTIFICATION
+    default: false
+    type: boolean
+    required: true
+  - variable: TELEGRAF_URL
+    default: ""
+    type: string
+    required: true
 - variable: STORAGE_CLASS_BOX
   description: "Storage Class for Mysql Database"
   type: storageclass
