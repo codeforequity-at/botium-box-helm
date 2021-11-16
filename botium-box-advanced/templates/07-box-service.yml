@@ -1,3 +1,4 @@
+---
 apiVersion: v1
 kind: Service
 metadata:
@@ -12,12 +13,11 @@ spec:
       protocol: TCP
     {{- end }}
   selector:
+    {{- if eq .Values.MAINTENANCE false }}
     name: box-server
     app: botium-box
-    {{- if eq .Values.MAINTENANCE false }}
-    mode: live
     {{- else }}
-    mode: maintenance
+    app: maintenance
     {{- end }}
 {{- if .Values.MAINTENANCE }}
 ---
@@ -26,10 +26,8 @@ kind: Deployment
 metadata:
   name: maintenance
   labels:
-    name: box-server
-    app: botium-box
-    tier: frontend
-    mode: maintenance
+    app: maintenance
+    tier: backend
 spec:
   selector:
     matchLabels:

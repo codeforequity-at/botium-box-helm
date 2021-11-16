@@ -8,6 +8,15 @@ metadata:
     app: botium-box
     tier: frontend
 spec:
+  {{- if eq .Values.MAINTENANCE false }}
+  updateStrategy:
+    type: OnDelete
+  {{- else }}
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+  {{- end }}
   serviceName: "box-agent"
   replicas: {{ .Values.AGENT_COUNT }}
   selector:
@@ -86,7 +95,7 @@ spec:
           - mountPath: "/app/server/storage/"
             name: botium-box-storage
           - mountPath: "/app/server/storage/botiumwork/"
-            name: botium-box-storage-botiumwork               
+            name: botium-box-storage-botiumwork
           env:
             - name: BOTIUMBOX_AGENT_NAME
               valueFrom:
@@ -141,7 +150,7 @@ spec:
           persistentVolumeClaim:
             claimName: botium-box-storage
         - name: botium-box-storage-botiumwork
-          emptyDir: { }            
+          emptyDir: { }
 ---
 apiVersion: v1
 kind: Service
@@ -163,6 +172,15 @@ metadata:
     app: botium-box
     tier: frontend
 spec:
+  {{- if eq .Values.MAINTENANCE false }}
+  updateStrategy:
+    type: OnDelete
+  {{- else }}
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+  {{- end }}
   serviceName: "box-agentp"
   replicas: {{ .Values.AGENTP_COUNT }}
   selector:
@@ -241,7 +259,7 @@ spec:
           - mountPath: "/app/server/storage/"
             name: botium-box-storage
           - mountPath: "/app/server/storage/botiumwork/"
-            name: botium-box-storage-botiumwork            
+            name: botium-box-storage-botiumwork
           env:
             - name: BOTIUMBOX_AGENT_NAME
               valueFrom:
@@ -290,13 +308,13 @@ spec:
                   key: BOTIUMBOX_QUEUE_PREFIX
     {{- if .Values.BOTIUMBOX_TERMINATION_GRACE_PERIOD }}
       terminationGracePeriodSeconds: {{ div .Values.BOTIUMBOX_TERMINATION_GRACE_PERIOD 1000 }}
-    {{- end }}                  
+    {{- end }}
       volumes:
         - name: botium-box-storage
           persistentVolumeClaim:
             claimName: botium-box-storage
         - name: botium-box-storage-botiumwork
-          emptyDir: { }            
+          emptyDir: { }
 ---
 apiVersion: v1
 kind: Service
