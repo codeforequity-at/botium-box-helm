@@ -14,10 +14,15 @@ metadata:
     mode: live
 spec:
   {{- if .Values.ENABLE_MULTI_TENANCY }}
+  {{- if eq .Values.MAINTENANCE false }}
+  updateStrategy:
+    type: OnDelete
+  {{- else }}
   updateStrategy:
     type: RollingUpdate
     rollingUpdate:
       maxUnavailable: 1
+  {{- end }}
   {{- else }}
   replicas: 1
   strategy:
