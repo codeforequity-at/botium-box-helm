@@ -26,7 +26,7 @@ spec:
         spec:
           containers:
           - name: mysql-backup-s3
-            image: murliwatz/mysql-backup-s3:0.0.6
+            image: murliwatz/mysql-backup-s3:0.0.7
             env:
             - name: MYSQL_HOST
               valueFrom:
