@@ -11,6 +11,7 @@ spec:
   {{- if eq .Values.MAINTENANCE false }}
   updateStrategy:
     type: OnDelete
+    rollingUpdate: null
   {{- else }}
   updateStrategy:
     type: RollingUpdate
@@ -175,6 +176,7 @@ spec:
   {{- if eq .Values.MAINTENANCE false }}
   updateStrategy:
     type: OnDelete
+    rollingUpdate: null
   {{- else }}
   updateStrategy:
     type: RollingUpdate
