@@ -26,7 +26,7 @@ spec:
         spec:
           containers:
           - name: mysql-backup-s3
-            image: murliwatz/mysql-backup-s3:0.0.7
+            image: murliwatz/mysql-backup-s3:0.0.8
             env:
             - name: MYSQL_HOST
               valueFrom:
@@ -71,5 +71,7 @@ spec:
               value: "{{ .Values.TELEGRAF_URL }}"
             - name: TELEGRAF_NOTIFICATION
               value: "{{ .Values.TELEGRAF_NOTIFICATION }}"
+            - name: FQDN
+              value: "{{ .Values.FQDN }}"
           restartPolicy: OnFailure
 {{- end }}
