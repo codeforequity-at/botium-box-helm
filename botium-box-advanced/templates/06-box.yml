@@ -11,6 +11,7 @@ metadata:
     name: box-server
     app: botium-box
     tier: frontend
+    mode: live
 spec:
   {{- if .Values.ENABLE_MULTI_TENANCY }}
   updateStrategy:
