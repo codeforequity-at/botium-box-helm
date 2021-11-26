@@ -496,6 +496,11 @@ spec:
                 configMapKeyRef:
                   name: botium-box-configmap
                   key: BOTIUMBOX_QUEUE_PREFIX
+            - name: BOTIUMBOX_LOG_JSON
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: BOTIUMBOX_LOG_JSON
       volumes:
         - name: botium-box-storage
           persistentVolumeClaim:

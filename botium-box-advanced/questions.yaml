@@ -175,6 +175,13 @@ questions:
   required: false
   group: "crm"
 
+- variable: BOTIUMBOX_LOG_JSON
+  default: false
+  description: "Enable JSON Logging"
+  type: boolean
+  required: true
+  group: "logging"
+
 - variable: SPEECH_PROCESSING_ENDPOINT
   default: "https://speech.botiumbox.com"
   description: "Speech Processing Endpoint"
