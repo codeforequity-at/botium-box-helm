@@ -19,3 +19,8 @@ data:
   {{- if .Values.ACTIVATE_ZAP }}
   ZAP_ENDPOINT: "http://{{ .Values.ZAP_SERVICE }}:8080"
   {{- end }}
+  {{- if .Values.BOTIUMBOX_LOG_JSON }}
+  BOTIUMBOX_LOG_JSON: "1"
+  {{- else }}
+  BOTIUMBOX_LOG_JSON: "0"
+  {{- end }}
