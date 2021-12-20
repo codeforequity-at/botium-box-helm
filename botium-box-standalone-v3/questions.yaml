@@ -15,7 +15,7 @@ questions:
   type: string
   required: false
 - variable: BOTIUM_BOX_VERSION
-  default: "2.11.0"
+  default: "2.12.0"
   description: "Botium Box Version"
   type: string
   required: true
@@ -133,9 +133,9 @@ questions:
   description: "Install Redis"
   type: boolean
   required: true
-- variable: REDIS_SERVICE
+- variable: REDIS_HOST
   default: "redis"
-  description: "Redis Service Name"
+  description: "Redis Host Name"
   type: string
   required: true
 - variable: BOTIUMBOX_QUEUE_PREFIX
