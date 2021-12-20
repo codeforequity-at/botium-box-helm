@@ -9,6 +9,29 @@ questions:
   description: "Storage Class"
   type: storageclass
   required: true
+- variable: "redis.architecture"
+  default: "replication"
+  description: "Redis Architecture"
+  type: enum
+  required: true
+  options:
+    - "standalone"
+    - "replication"
+- variable: "redis.replica.replicaCount"
+  default: 3
+  description: "Replica Count"
+  type: int
+  required: true
+- variable: "redis.sentinel.enabled"
+  default: true
+  description: "Enable Redis Sentinel"
+  type: boolean
+  required: true
+- variable: "redis.metrics.enabled"
+  default: true
+  description: "Enable Redis Metrics"
+  type: boolean
+  required: true
 - variable: installInsights
   default: true
   description: "Install Redis Insights"
