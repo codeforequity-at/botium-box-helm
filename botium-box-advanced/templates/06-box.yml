@@ -12,21 +12,9 @@ metadata:
     app: botium-box
     tier: frontend
 spec:
-  {{- if .Values.ENABLE_MULTI_TENANCY }}
-  {{- if eq .Values.MAINTENANCE false }}
-  updateStrategy:
-    type: OnDelete
-  {{- else }}
-  updateStrategy:
-    type: RollingUpdate
-    rollingUpdate:
-      maxUnavailable: 1
-  {{- end }}
-  {{- else }}
   replicas: 1
   strategy:
     type: Recreate
-  {{- end }}
   selector:
     matchLabels:
       name: box-server
