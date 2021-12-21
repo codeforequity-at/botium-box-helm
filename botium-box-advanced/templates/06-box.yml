@@ -362,6 +362,12 @@ spec:
                 configMapKeyRef:
                   name: botium-box-configmap
                   key: BOTIUMBOX_LOG_JSON
+            {{- if .Values.ENABLE_BACKEND_PROCESSING }}
+            - name: BOTIUMBOX_LAUNCH_BACKEND_PROCESSING
+              value: "0"
+            - name: BOTIUMBOX_LAUNCH_CLIENT_FACING
+              value: "1"
+            {{- end }}
     {{- if .Values.BOTIUMBOX_TERMINATION_GRACE_PERIOD }}
       terminationGracePeriodSeconds: {{ div .Values.BOTIUMBOX_TERMINATION_GRACE_PERIOD 1000 }}
     {{- end }}
@@ -376,6 +382,334 @@ spec:
           persistentVolumeClaim:
             claimName: botium-box-prisma-config-storage
         {{- end }}
+{{- if .Values.ENABLE_BACKEND_PROCESSING }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: box-server-backend
+  labels:
+    name: box-server-backend
+    app: botium-box
+    tier: backend
+spec:
+  {{- if .Values.ENABLE_MULTI_TENANCY }}
+  {{- if eq .Values.MAINTENANCE false }}
+  updateStrategy:
+    type: OnDelete
+  {{- else }}
+  updateStrategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+  {{- end }}
+  {{- else }}
+  replicas: 1
+  strategy:
+    type: Recreate
+  {{- end }}
+  selector:
+    matchLabels:
+      name: box-server-backend
+      app: botium-box
+  template:
+    metadata:
+      labels:
+        name: box-server-backend
+        app: botium-box
+        tier: backend
+    spec:
+      containers:
+        - name: box-server-backend
+          imagePullPolicy: Always
+          {{- if eq .Values.CONTAINER_REGISTRY "" }}
+          image: botium/botium-box-server:{{ .Values.BOTIUM_BOX_VERSION }}
+          {{- else }}
+          image: {{ .Values.CONTAINER_REGISTRY }}/botium/botium-box-server:{{ .Values.BOTIUM_BOX_VERSION }}
+          {{- end }}
+          command: ["/bin/sh"]
+          args: ["-c", "node -r dotenv-flow/config dist/botium-box-server.js"]
+          ports:
+            - name: box-m-4100
+              containerPort: 4100
+          lifecycle:
+            preStop:
+              httpGet:
+                path: /shutdown
+                port: box-m-4100
+                httpHeaders:
+                  - name: ManagementApiKey
+                    value: {{ $managementApiKey }}
+          livenessProbe:
+            httpGet:
+              path: /live
+              port: box-m-4100
+              httpHeaders:
+                - name: ManagementApiKey
+                  value: {{ $managementApiKey }}
+            failureThreshold: 3
+            periodSeconds: 30
+            timeoutSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: box-m-4100
+              httpHeaders:
+                - name: ManagementApiKey
+                  value: {{ $managementApiKey }}
+            failureThreshold: 3
+            periodSeconds: 30
+            timeoutSeconds: 5
+          startupProbe:
+            httpGet:
+              path: /startup
+              port: box-m-4100
+              httpHeaders:
+                - name: ManagementApiKey
+                  value: {{ $managementApiKey }}
+            initialDelaySeconds: 30
+            failureThreshold: 30
+            periodSeconds: 30
+            timeoutSeconds: 5
+          volumeMounts:
+          - mountPath: "/app/server/storage/"
+            name: botium-box-storage
+          - mountPath: "/app/server/storage/botiumwork/"
+            name: botium-box-storage-botiumwork
+          {{- if .Values.ENABLE_MULTI_TENANCY }}
+          - mountPath: "/app/prisma-config/"
+            name: botium-box-prisma-config-storage
+          {{- end }}
+          env:
+            - name: DEBUG
+              value: botium*
+            - name: RESOURCESDIR
+              value: /app/server/storage/resources
+            - name: TESTSETDIR
+              value: /app/server/storage/testsets
+            {{- if .Values.BOTIUMBOX_TERMINATION_GRACE_PERIOD }}
+            - name: BOTIUMBOX_TERMINATION_GRACE_PERIOD
+              value: "{{ .Values.BOTIUMBOX_TERMINATION_GRACE_PERIOD }}"
+            {{- end }}
+            - name: BOTIUMBOX_MANAGEMENT_API_PORT
+              value: "4100"
+            - name: BOTIUMBOX_MANAGEMENT_API_KEY
+              value: {{ $managementApiKey }}
+            - name: BOTIUMBOX_METRICS_PUBLISH
+              value: "{{ .Values.BOTIUMBOX_METRICS_PUBLISH }}"
+            - name: BOTIUMBOX_METRICS_ENABLE_BOX
+              value: "{{ .Values.BOTIUMBOX_METRICS_ENABLE_BOX }}"
+            - name: BOTIUMBOX_METRICS_ENABLE_NODEJS
+              value: "{{ .Values.BOTIUMBOX_METRICS_ENABLE_NODEJS }}"
+            {{- if .Values.ENABLE_MULTI_TENANCY }}
+            - name: BOTIUMBOX_SCANFORTESTSETS
+              value: ""
+            {{- else }}
+            - name: BOTIUMBOX_SCANFORTESTSETS
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: BOTIUMBOX_SCANFORTESTSETS
+            {{- end }}
+            - name: BOTIUM_TEMPDIR
+              value: /app/server/storage/botiumwork
+            - name: NODE_OPTIONS
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: NODE_OPTIONS
+            - name: BOTIUMBOX_AGENT_LIST
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: BOTIUMBOX_AGENT_LIST
+            - name: CHOKIDAR_USEPOLLING
+              value: "1"
+            - name: BOTIUMBOX_MAX_EXECUTION_INTERVAL_MINUTES
+              value: "10"
+            - name: JWT_EXPIRY_MINUTES
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: JWT_EXPIRY_MINUTES
+            {{- if .Values.ENABLE_MULTI_TENANCY }}
+            - name: PRISMA_CONFIG_FILE
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: PRISMA_CONFIG_FILE
+            {{- end }}
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: JWT_SECRET
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: DATABASE_URL
+            - name: LICENSE_KEY
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: LICENSE_KEY
+            - name: BOTIUMBOX_QUEUE_SETTINGS
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: BOTIUMBOX_QUEUE_SETTINGS
+            - name: BOTIUMBOX_QUEUE_REDISURL
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: BOTIUMBOX_QUEUE_REDISURL
+            - name: BOTIUMBOX_QUEUE_PREFIX
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: BOTIUMBOX_QUEUE_PREFIX
+            - name: COACH_WORKER_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: COACH_WORKER_ENDPOINT
+            - name: COACH_WORKER_APIKEY
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: COACH_WORKER_APIKEY
+            - name: BOTIUMBOX_AUDIT_CRMURL
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: BOTIUMBOX_AUDIT_CRMURL
+            - name: BOTIUMBOX_AUDIT_CRMAUTH_CLIENTID
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: BOTIUMBOX_AUDIT_CRMAUTH_CLIENTID
+            - name: BOTIUMBOX_AUDIT_CRMAUTH_CLIENTSECRET
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: BOTIUMBOX_AUDIT_CRMAUTH_CLIENTSECRET
+            - name: SPEECH_PROCESSING_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: SPEECH_PROCESSING_ENDPOINT
+            - name: SPEECH_PROCESSING_APIKEY
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: SPEECH_PROCESSING_APIKEY
+            - name: SMTP_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: SMTP_HOST
+            - name: SMTP_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: SMTP_PORT
+            - name: SMTP_SECURE
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: SMTP_SECURE
+            - name: SMTP_USER
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: SMTP_USER
+            - name: SMTP_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: SMTP_PASSWORD
+            - name: BOTIUMBOX_CLEANUP_JOB_INTERVAL_MINUTES
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: BOTIUMBOX_CLEANUP_JOB_INTERVAL_MINUTES
+            - name: BOTIUMBOX_KEEP_SUCCESS_SCREENSHOTS_DAYS
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: BOTIUMBOX_KEEP_SUCCESS_SCREENSHOTS_DAYS
+            - name: BOTIUMBOX_KEEP_SUCCESS_CONVERSATION_DAYS
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: BOTIUMBOX_KEEP_SUCCESS_CONVERSATION_DAYS
+            - name: BOTIUMBOX_KEEP_FAILED_SCREENSHOTS_DAYS
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: BOTIUMBOX_KEEP_FAILED_SCREENSHOTS_DAYS
+            - name: BOTIUMBOX_KEEP_FAILED_CONVERSATION_DAYS
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: BOTIUMBOX_KEEP_FAILED_CONVERSATION_DAYS
+            - name: BOTIUMBOX_KEEP_COACH_DETAILS_DAYS
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: BOTIUMBOX_KEEP_COACH_DETAILS_DAYS
+            {{- if .Values.ACTIVATE_ZAP }}
+            - name: ZAP_ENDPOINT
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: ZAP_ENDPOINT
+            {{- end }}
+            - name: BOTIUMBOX_SENTRY_DSN
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: BOTIUMBOX_SENTRY_DSN
+            - name: GOOGLE_TRANSLATE_CLIENT_EMAIL
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: GOOGLE_TRANSLATE_CLIENT_EMAIL
+            - name: GOOGLE_TRANSLATE_PRIVATE_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: GOOGLE_TRANSLATE_PRIVATE_KEY
+            - name: PARAPHRASING_APIKEY
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: PARAPHRASING_APIKEY
+            - name: BOTIUMBOX_LOG_JSON
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: BOTIUMBOX_LOG_JSON
+            - name: BOTIUMBOX_LAUNCH_BACKEND_PROCESSING
+              value: "1"
+            - name: BOTIUMBOX_LAUNCH_CLIENT_FACING
+              value: "0"
+    {{- if .Values.BOTIUMBOX_TERMINATION_GRACE_PERIOD }}
+      terminationGracePeriodSeconds: {{ div .Values.BOTIUMBOX_TERMINATION_GRACE_PERIOD 1000 }}
+    {{- end }}
+      volumes:
+        - name: botium-box-storage
+          persistentVolumeClaim:
+            claimName: botium-box-storage
+        - name: botium-box-storage-botiumwork
+          emptyDir: { }
+        {{- if .Values.ENABLE_MULTI_TENANCY }}
+        - name: botium-box-prisma-config-storage
+          persistentVolumeClaim:
+            claimName: botium-box-prisma-config-storage
+        {{- end }}
+{{- end }}
 {{- if .Values.ENABLE_MULTI_TENANCY }}
 ---
 apiVersion: apps/v1
