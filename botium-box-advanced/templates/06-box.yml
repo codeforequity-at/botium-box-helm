@@ -385,7 +385,7 @@ spec:
 {{- if .Values.ENABLE_BACKEND_PROCESSING }}
 ---
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: box-server-backend
   labels:
@@ -394,10 +394,15 @@ metadata:
     tier: backend
 spec:
   replicas: 1
-  strategy:
+  {{- if eq .Values.MAINTENANCE false }}
+  updateStrategy:
+    type: OnDelete
+  {{- else }}
+  updateStrategy:
     type: RollingUpdate
     rollingUpdate:
-      maxUnavailable: 0
+      maxUnavailable: 1
+  {{- end }}
   selector:
     matchLabels:
       name: box-server-backend
