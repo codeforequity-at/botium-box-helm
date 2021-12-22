@@ -394,6 +394,8 @@ metadata:
     tier: backend
 spec:
   replicas: 1
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
       name: box-server-backend
