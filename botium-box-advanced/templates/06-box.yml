@@ -395,8 +395,9 @@ metadata:
 spec:
   replicas: 1
   strategy:
-    type: Recreate
-    rollingUpdate: null
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
   selector:
     matchLabels:
       name: box-server-backend
