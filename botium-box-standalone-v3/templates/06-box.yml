@@ -195,6 +195,11 @@ spec:
                 secretKeyRef:
                   name: botium-box-secrets
                   key: PARAPHRASING_APIKEY
+            - name: OPENAI_APIKEY
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: OPENAI_APIKEY
             - name: BOTIUMBOX_LOG_JSON
               valueFrom:
                 configMapKeyRef:
