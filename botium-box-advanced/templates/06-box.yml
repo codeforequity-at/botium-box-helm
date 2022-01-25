@@ -361,7 +361,12 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: botium-box-secrets
-                  key: OPENAI_APIKEY                
+                  key: OPENAI_APIKEY
+            - name: OPENAI_RATE_BY_MINUTE
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: OPENAI_RATE_BY_MINUTE
             - name: BOTIUMBOX_LOG_JSON
               valueFrom:
                 configMapKeyRef:
@@ -690,7 +695,12 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: botium-box-secrets
-                  key: OPENAI_APIKEY                    
+                  key: OPENAI_APIKEY
+            - name: OPENAI_RATE_BY_MINUTE
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: OPENAI_RATE_BY_MINUTE
             - name: BOTIUMBOX_LOG_JSON
               valueFrom:
                 configMapKeyRef:

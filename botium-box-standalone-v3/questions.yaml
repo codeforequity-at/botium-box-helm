@@ -15,7 +15,7 @@ questions:
   type: string
   required: false
 - variable: BOTIUM_BOX_VERSION
-  default: "2.13.0"
+  default: "2.13.1"
   description: "Botium Box Version"
   type: string
   required: true
@@ -236,4 +236,8 @@ questions:
 - variable: OPENAI_APIKEY
   description: "Api Key for OpenAI"
   type: string
+  required: false
+- variable: OPENAI_RATE_BY_MINUTE
+  description: "OpenAI Rate Limit per Minute"
+  type: int
   required: false
