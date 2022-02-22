@@ -121,9 +121,3 @@ questions:
   group: "AWS Settings"
   required: true
   show_if: "BOTIUM_SPEECH_PROVIDER_STT=awstranscribe"
-
-- variable: BOTIUM_SPEECH_PROCESSING_STORAGE_CLASS
-  default: "efs"
-  description: "Storage Class"
-  type: string
-  required: true
