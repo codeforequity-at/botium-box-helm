@@ -45,11 +45,23 @@ spec:
                 configMapKeyRef:
                   name: botium-coach-worker-configmap
                   key: WEB_CONCURRENCY
+            - name: COACH_PARALLEL_WORKERS
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-coach-worker-configmap
+                  key: COACH_PARALLEL_WORKERS
+            - name: COACH_MAX_CALCULATIONS_PER_WORKER
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-coach-worker-configmap
+                  key: COACH_MAX_CALCULATIONS_PER_WORKER
             - name: COACH_MAX_UTTERANCES_FOR_EMBEDDINGS
               valueFrom:
                 configMapKeyRef:
                   name: botium-coach-worker-configmap
                   key: COACH_MAX_UTTERANCES_FOR_EMBEDDINGS
+            - name: COACH_HOSTNAME
+              value: coach-worker
 ---
 {{- if not .Values.MINIKUBE }}
 apiVersion: autoscaling/v1
@@ -86,6 +98,7 @@ spec:
   selector:
     name: coach-worker
     app: botium-coach-worker
+{{- if .Values.INSTALL_INGRESS }}
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
@@ -97,15 +110,15 @@ metadata:
     nginx.ingress.kubernetes.io/proxy-connect-timeout: "1800"
     nginx.ingress.kubernetes.io/proxy-send-timeout: "1800"
     nginx.ingress.kubernetes.io/proxy-read-timeout: "1800"
-    rancher.io/globalDNS.hostname: {{ .Values.SHORTNAME }}.botiumbox.com
-    cert-manager.io/cluster-issuer: {{ .Values.SHORTNAME }}-letsencrypt-prod
+    rancher.io/globalDNS.hostname: {{ .Values.FQDN }}
+    cert-manager.io/cluster-issuer: {{ .Values.FQDN }}-letsencrypt-prod
 spec:
   tls:
   - hosts:
-    - {{ .Values.SHORTNAME }}.botiumbox.com
-    secretName: {{ .Values.SHORTNAME }}.botiumbox-com-tls
+    - {{ .Values.FQDN }}
+    secretName: {{ .Values.FQDN }}.coach-worker-tls  
   rules:
-  - host: {{ .Values.SHORTNAME }}.botiumbox.com
+  - host: {{ .Values.FQDN }}
     http:
       paths:
       - path: /
@@ -116,13 +129,13 @@ spec:
 apiVersion: cert-manager.io/v1alpha2
 kind: Issuer
 metadata:
-  name: {{ .Values.SHORTNAME }}-letsencrypt-prod
+  name: {{ .Values.FQDN }}-letsencrypt-prod
 spec:
   acme:
     server: https://acme-v02.api.letsencrypt.org/directory
-    email: florian.treml@botium.at
+    email: {{ .Values.LETS_ENCRYPT_EMAIL }}
     privateKeySecretRef:
-      name: {{ .Values.SHORTNAME }}-letsencrypt-prod
+      name: {{ .Values.FQDN }}-letsencrypt-prod
     solvers:
     - selector: {}
       http01:
@@ -132,11 +145,13 @@ spec:
 apiVersion: cert-manager.io/v1alpha2
 kind: Certificate
 metadata:
-  name: {{ .Values.SHORTNAME }}.botiumbox-com
+  name: {{ .Values.FQDN }}.coach-worker
 spec:
-  secretName: {{ .Values.SHORTNAME }}.botiumbox-com-tls
+  secretName: {{ .Values.FQDN }}.coach-worker-tls
   issuerRef:
-    name: {{ .Values.SHORTNAME }}-letsencrypt-prod
-  commonName: {{ .Values.SHORTNAME }}.botiumbox.com
+    name: {{ .Values.FQDN }}-letsencrypt-prod
+    kind: Issuer
+  commonName: {{ .Values.FQDN }}
   dnsNames:
-  - {{ .Values.SHORTNAME }}.botiumbox.com
+  - {{ .Values.FQDN }}
+{{- end }}

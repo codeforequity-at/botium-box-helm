@@ -1,20 +1,31 @@
 questions:
-- variable: SHORTNAME
+- variable: INSTALL_INGRESS
+  default: false
+  description: "Install Ingress with Letsencrypt"
+  type: boolean
+  required: true
+- variable: FQDN
   default: ""
-  description: "Instance Shortname (for domain name)"
+  description: "Instance FQDN"
   type: string
   required: true
+  show_if: "INSTALL_INGRESS=true"
 - variable: BOTIUM_COACH_WORKER_VERSION
-  default: "latest"
+  default: "0.1.0"
   description: "Botium Coach Worker Version"
   type: string
   required: true
 - variable: AUTH_APIKEYS
   description: "Valid API Keys (comma separated)"
   type: string
-- variable: WEB_CONCURRENCY
+- variable: COACH_PARALLEL_WORKERS
   default: 1
-  description: "Botium Coach Worker Web Concurrency"
+  description: "Number of Parallel Worker Threads"
+  type: int
+  required: true
+- variable: COACH_MAX_CALCULATIONS_PER_WORKER
+  default: 3
+  description: "Max Number of Calculations per Worker Thread"
   type: int
   required: true
 - variable: COACH_MAX_UTTERANCES_FOR_EMBEDDINGS
