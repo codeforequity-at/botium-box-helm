@@ -1,19 +1,25 @@
 questions:
-- variable: SHORTNAME
-  default: "speechprocessing"
-  description: "Instance Shortname (for domain name)"
+- variable: INSTALL_INGRESS
+  default: false
+  description: "Install Ingress with Letsencrypt"
+  type: boolean
+  required: true
+- variable: FQDN
+  default: ""
+  description: "Instance FQDN"
   type: string
   required: true
+  show_if: "INSTALL_INGRESS=true"
 - variable: BOTIUM_SPEECH_PROCESSING_STORAGE_CLASS
   description: "Storage Class for Botium Speech Processing Files"
   type: storageclass
   required: true
 - variable: BOTIUM_SPEECH_PROCESSING_VERSION
-  default: "latest"
+  default: "1.3.0"
   description: "Botium Speech Processing Version"
   type: string
   required: true
-- variable: AUTH_APIKEYS
+- variable: BOTIUM_API_TOKENS
   description: "Valid API Keys (comma separated)"
   type: string
 - variable: BOTIUM_SPEECH_PROVIDER_TTS
@@ -25,6 +31,9 @@ questions:
     - "marytts"
     - "google"
     - "picotts"
+    - "ibm"
+    - "azure"
+    - "polly"
 - variable: BOTIUM_SPEECH_PROVIDER_STT
   default: "kaldi"
   description: "Provider for STT"
@@ -33,6 +42,10 @@ questions:
   options:
     - "kaldi"
     - "google"
+    - "ibm"
+    - "azure"
+    - "awstranscribe"
+
 - variable: BOTIUM_SPEECH_GOOGLE_CLIENT_EMAIL
   description: "Google Client Email"
   type: string
@@ -45,6 +58,70 @@ questions:
   group: "Google Settings"
   required: true
   show_if: "BOTIUM_SPEECH_PROVIDER_TTS=google || BOTIUM_SPEECH_PROVIDER_STT=google"
+
+- variable: BOTIUM_SPEECH_IBM_STT_APIKEY
+  description: "IBM Speech-To-Text Api Key"
+  type: string
+  required: true
+  group: "IBM Settings"
+  show_if: "BOTIUM_SPEECH_PROVIDER_STT=ibm"
+- variable: BOTIUM_SPEECH_IBM_STT_SERVICEURL
+  description: "IBM Speech-To-Text Service Url"
+  type: string
+  group: "IBM Settings"
+  required: true
+  show_if: "BOTIUM_SPEECH_PROVIDER_STT=ibm"
+- variable: BOTIUM_SPEECH_IBM_TTS_APIKEY
+  description: "IBM Text-To-Speech Api Key"
+  type: string
+  required: true
+  group: "IBM Settings"
+  show_if: "BOTIUM_SPEECH_PROVIDER_TTS=ibm"
+- variable: BOTIUM_SPEECH_IBM_TTS_SERVICEURL
+  description: "IBM Text-To-Speech Service Url"
+  type: string
+  group: "IBM Settings"
+  required: true
+  show_if: "BOTIUM_SPEECH_PROVIDER_TTS=ibm"
+
+- variable: BOTIUM_SPEECH_AZURE_SUBSCRIPTION_KEY
+  description: "Azure Subscription Key"
+  type: string
+  required: true
+  group: "Azure Settings"
+  show_if: "BOTIUM_SPEECH_PROVIDER_TTS=azure || BOTIUM_SPEECH_PROVIDER_STT=azure"
+- variable: BOTIUM_SPEECH_AZURE_REGION
+  description: "Azure Region"
+  type: string
+  group: "Azure Settings"
+  required: true
+  show_if: "BOTIUM_SPEECH_PROVIDER_TTS=azure || BOTIUM_SPEECH_PROVIDER_STT=azure"
+
+- variable: BOTIUM_SPEECH_AWS_REGION
+  description: "AWS Region"
+  type: string
+  required: true
+  group: "AWS Settings"
+  show_if: "BOTIUM_SPEECH_PROVIDER_TTS=polly || BOTIUM_SPEECH_PROVIDER_STT=awstranscribe"
+- variable: BOTIUM_SPEECH_AWS_ACCESS_KEY_ID
+  description: "AWS Access Key ID"
+  type: string
+  group: "AWS Settings"
+  required: true
+  show_if: "BOTIUM_SPEECH_PROVIDER_TTS=polly || BOTIUM_SPEECH_PROVIDER_STT=awstranscribe"
+- variable: BOTIUM_SPEECH_AWS_SECRET_ACCESS_KEY
+  description: "AWS Secret Access Key"
+  type: string
+  group: "AWS Settings"
+  required: true
+  show_if: "BOTIUM_SPEECH_PROVIDER_TTS=polly || BOTIUM_SPEECH_PROVIDER_STT=awstranscribe"
+- variable: BOTIUM_SPEECH_AWS_S3_BUCKET
+  description: "AWS S3 Bucket Name"
+  type: string
+  group: "AWS Settings"
+  required: true
+  show_if: "BOTIUM_SPEECH_PROVIDER_STT=awstranscribe"
+
 - variable: BOTIUM_SPEECH_PROCESSING_STORAGE_CLASS
   default: "efs"
   description: "Storage Class"
