@@ -63,29 +63,6 @@ spec:
             - name: COACH_HOSTNAME
               value: coach-worker
 ---
-{{- if not .Values.MINIKUBE }}
-apiVersion: autoscaling/v1
-{{- else }}
-apiVersion: autoscaling/v2beta2
-kind: HorizontalPodAutoscaler
-metadata:
-  name: coach-worker-memory-scale
-spec:
-  scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: coach-worker
-  minReplicas: 1
-  maxReplicas: 3
-  metrics:
-  - type: Resource
-    resource:
-      name: memory
-      target:
-        type: Utilization
-        averageValue: "2.7Gi"
-  {{- end }}
----
 apiVersion: v1
 kind: Service
 metadata:
