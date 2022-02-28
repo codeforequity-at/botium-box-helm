@@ -37,7 +37,7 @@ package_all_dev:
 	#helm package --version 0.0.0-dev004 botium-box-redis
 	#helm package --version 0.0.0-dev002 botium-box-standalone-v3
 	#helm package --version 0.0.0-dev002 botium-box-prisma
-	helm package --version 0.0.0-dev001 botium-speech-processing
+	helm package --version 0.0.0-dev002 botium-speech-processing
 
 package: package_all index
 

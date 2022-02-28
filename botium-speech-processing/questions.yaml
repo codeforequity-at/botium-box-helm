@@ -4,24 +4,29 @@ questions:
   description: "Install Ingress with Letsencrypt"
   type: boolean
   required: true
+  group: "Botium Speech Processing Settings"
 - variable: FQDN
   default: ""
   description: "Instance FQDN"
   type: string
   required: true
   show_if: "INSTALL_INGRESS=true"
+  group: "Botium Speech Processing Settings"
 - variable: BOTIUM_SPEECH_PROCESSING_STORAGE_CLASS
   description: "Storage Class for Botium Speech Processing Files"
   type: storageclass
   required: true
+  group: "Botium Speech Processing Settings"
 - variable: BOTIUM_SPEECH_PROCESSING_VERSION
   default: "1.3.0"
   description: "Botium Speech Processing Version"
   type: string
   required: true
+  group: "Botium Speech Processing Settings"
 - variable: BOTIUM_API_TOKENS
   description: "Valid API Keys (comma separated)"
   type: string
+  group: "Botium Speech Processing Settings"
 - variable: BOTIUM_SPEECH_PROVIDER_TTS
   default: "marytts"
   description: "Provider for TTS"
@@ -34,6 +39,7 @@ questions:
     - "ibm"
     - "azure"
     - "polly"
+  group: "Botium Speech Processing Settings"
 - variable: BOTIUM_SPEECH_PROVIDER_STT
   default: "kaldi"
   description: "Provider for STT"
@@ -45,6 +51,7 @@ questions:
     - "ibm"
     - "azure"
     - "awstranscribe"
+  group: "Botium Speech Processing Settings"
 
 - variable: BOTIUM_SPEECH_GOOGLE_CLIENT_EMAIL
   description: "Google Client Email"
