@@ -28,11 +28,11 @@ spec:
           - path: /stt-en
             backend:
               serviceName: stt-en
-              servicePort: 80
+              servicePort: 56180
           - path: /stt-de
             backend:
               serviceName: stt-de
-              servicePort: 80
+              servicePort: 56180
           - path: /dictate
             backend:
               serviceName: dictate

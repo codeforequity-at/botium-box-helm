@@ -25,6 +25,9 @@ spec:
       containers:
         - name: tts
           image: botium/botium-speech-marytts:{{ .Values.BOTIUM_SPEECH_PROCESSING_VERSION }}
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
 ---
 apiVersion: v1
 kind: Service

@@ -25,6 +25,9 @@ spec:
       containers:
         - name: dictate
           image: botium/botium-speech-dictate:{{ .Values.BOTIUM_SPEECH_PROCESSING_VERSION }}
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
           ports:
             - name: dictate-56100
               containerPort: 56100

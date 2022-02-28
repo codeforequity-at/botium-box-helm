@@ -28,6 +28,9 @@ spec:
       containers:
         - name: frontend
           image: botium/botium-speech-frontend:{{ .Values.BOTIUM_SPEECH_PROCESSING_VERSION }}
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
           ports:
             - name: frontend-56000
               containerPort: 56000

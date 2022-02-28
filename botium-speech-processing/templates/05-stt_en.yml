@@ -29,9 +29,12 @@ spec:
       containers:
         - name: stt-en
           image: botium/botium-speech-kaldi-en:{{ .Values.BOTIUM_SPEECH_PROCESSING_VERSION }}
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 1000
           ports:
             - name: stt-en
-              containerPort: 80
+              containerPort: 56180
           volumeMounts:
             - mountPath: /opt/logs
               name: botium-speech-processing-storage
@@ -44,8 +47,8 @@ spec:
   type: ClusterIP
   ports:
     - protocol: TCP
-      port: 80
-      targetPort: 80
+      port: 56180
+      targetPort: 56180
   selector:
     name: stt-en
     app: botium-speech-processing
