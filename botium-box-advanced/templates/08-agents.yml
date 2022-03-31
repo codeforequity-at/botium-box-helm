@@ -93,9 +93,9 @@ spec:
               memory: {{ .Values.RESOURCE_MEM_REQUEST }}
           {{- end }}
           volumeMounts:
-          - mountPath: "/app/server/storage/"
+          - mountPath: "/app/agent/storage/"
             name: botium-box-storage
-          - mountPath: "/app/server/storage/botiumwork/"
+          - mountPath: "/app/agent/storage/botiumwork/"
             name: botium-box-storage-botiumwork
           env:
             - name: BOTIUMBOX_AGENT_NAME
@@ -105,9 +105,9 @@ spec:
             - name: DEBUG
               value: botium*
             - name: RESOURCESDIR
-              value: /app/server/storage/resources
+              value: /app/agent/storage/resources
             - name: BOTIUM_TEMPDIR
-              value: /app/server/storage/botiumwork
+              value: /app/agent/storage/botiumwork
             {{- if .Values.BOTIUMBOX_TERMINATION_GRACE_PERIOD }}
             - name: BOTIUMBOX_TERMINATION_GRACE_PERIOD
               value: "{{ .Values.BOTIUMBOX_TERMINATION_GRACE_PERIOD }}"
