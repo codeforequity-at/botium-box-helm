@@ -32,7 +32,7 @@ questions:
   group: "agents"
 
 - variable: BOTIUM_BOX_VERSION
-  default: "2.13.3"
+  default: "2.13.4"
   description: "Botium Box Version"
   type: string
   required: true
