@@ -793,6 +793,7 @@ spec:
                 fi &&
               {{- end }}
             {{- end }}
+            echo 'cd /app/server/botium-box/packages/botium-box-server' > /root/.bashrc &&
             cd /app/server &&
             while :; do echo 'Press <CTRL+C> to exit.'; sleep 10; done"
           ]
