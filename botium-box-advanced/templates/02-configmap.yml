@@ -34,3 +34,6 @@ data:
   {{- else }}
   BOTIUMBOX_LOG_JSON: "0"
   {{- end }}
+  BOTIUMBOX_FQDN: "{{ .Values.FQDN }}"
+  BOTIUMBOX_FQDN_CLIENTID_PREFIX: ""
+  BOTIUMBOX_FQDN_CLIENTID_SUFFIX: ""

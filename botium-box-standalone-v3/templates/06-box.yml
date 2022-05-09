@@ -210,6 +210,11 @@ spec:
                 configMapKeyRef:
                   name: botium-box-configmap
                   key: BOTIUMBOX_LOG_JSON
+            - name: BOTIUMBOX_FQDN
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: BOTIUMBOX_FQDN                
       volumes:
         - name: storage
           persistentVolumeClaim:

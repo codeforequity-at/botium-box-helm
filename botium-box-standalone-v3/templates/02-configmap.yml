@@ -24,3 +24,4 @@ data:
   {{- else }}
   BOTIUMBOX_LOG_JSON: "0"
   {{- end }}
+  BOTIUMBOX_FQDN: "{{ .Values.FQDN }}"
