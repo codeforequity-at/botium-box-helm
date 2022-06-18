@@ -1,6 +1,6 @@
 INSTALL_INGRESS: false
 FQDN: ""
-BOTIUM_SPEECH_PROCESSING_VERSION: "1.4.0"
+BOTIUM_SPEECH_PROCESSING_VERSION: "1.4.1"
 BOTIUM_API_TOKENS: ""
 # if the helm chart is not deployed using Rancher but first converted to kubernetes workload, then features of Rancher will be disabled
 # in questions.yaml is not there because its set to true here, and to false in /k8s dir
