@@ -330,11 +330,6 @@ questions:
   type: string
   required: false
   group: "others"
-- variable: PARAPHRASING_APIKEY
-  description: "Paraphrasing API Key"
-  type: string
-  required: false
-  group: "others"
 - variable: NODE_OPTIONS
   default: "--max-old-space-size=4096"
   type: string

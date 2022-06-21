@@ -229,10 +229,6 @@ questions:
   description: "Google Translate Private Key"
   type: string
   required: false
-- variable: PARAPHRASING_APIKEY
-  description: "Api Key for Quillbot"
-  type: string
-  required: false
 - variable: OPENAI_APIKEY
   description: "Api Key for OpenAI"
   type: string
