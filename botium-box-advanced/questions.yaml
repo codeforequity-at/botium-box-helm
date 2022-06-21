@@ -32,7 +32,7 @@ questions:
   group: "agents"
 
 - variable: BOTIUM_BOX_VERSION
-  default: "2.13.4"
+  default: "3.0.0"
   description: "Botium Box Version"
   type: string
   required: true
@@ -150,30 +150,12 @@ questions:
   required: false
   group: "coach"
 
-- variable: BOTIUMBOX_AUDIT_FOLDER
+- variable: BOTIUMBOX_AUDIT_URL
   default: ""
-  description: "Audit Folder (/app/prisma-config/audit)"
+  description: "Audit URL"
   type: string
   required: false
-  group: "crm"
-- variable: BOTIUMBOX_AUDIT_CRMURL
-  default: ""
-  description: "Audit CRM URL"
-  type: string
-  required: false
-  group: "crm"
-- variable: BOTIUMBOX_AUDIT_CRMAUTH_CLIENTID
-  default: ""
-  description: "Audit CRM Client-Id"
-  type: string
-  required: false
-  group: "crm"
-- variable: BOTIUMBOX_AUDIT_CRMAUTH_CLIENTSECRET
-  default: ""
-  description: "Audit CRM Client-Secret"
-  type: string
-  required: false
-  group: "crm"
+  group: "logging"
 
 - variable: BOTIUMBOX_LOG_JSON
   default: false

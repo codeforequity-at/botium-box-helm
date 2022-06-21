@@ -24,4 +24,6 @@ data:
   {{- else }}
   BOTIUMBOX_LOG_JSON: "0"
   {{- end }}
+  BOTIUMBOX_AUDIT_URL: "{{ .Values.BOTIUMBOX_AUDIT_URL }}"
+  BOTIUMBOX_AUDIT_CLIENTID: "{{ .Values.FQDN }}"
   BOTIUMBOX_FQDN: "{{ .Values.FQDN }}"

@@ -210,6 +210,16 @@ spec:
                 configMapKeyRef:
                   name: botium-box-configmap
                   key: BOTIUMBOX_LOG_JSON
+            - name: BOTIUMBOX_AUDIT_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: BOTIUMBOX_AUDIT_URL
+            - name: BOTIUMBOX_AUDIT_CLIENTID
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: BOTIUMBOX_AUDIT_CLIENTID
             - name: BOTIUMBOX_FQDN
               valueFrom:
                 configMapKeyRef:

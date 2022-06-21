@@ -15,7 +15,7 @@ questions:
   type: string
   required: false
 - variable: BOTIUM_BOX_VERSION
-  default: "2.13.4"
+  default: "3.0.0"
   description: "Botium Box Version"
   type: string
   required: true
@@ -240,4 +240,9 @@ questions:
 - variable: OPENAI_RATE_BY_MINUTE
   description: "OpenAI Rate Limit per Minute"
   type: int
+  required: false
+- variable: BOTIUMBOX_AUDIT_URL
+  default: ""
+  description: "Audit URL"
+  type: string
   required: false
