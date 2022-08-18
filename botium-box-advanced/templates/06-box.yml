@@ -774,14 +774,6 @@ spec:
                 fi &&
               {{- end }}
             {{- end }}
-            echo '-> Initializing box repo' &&
-            git clone https://{{ .Values.BITBUCKET_USERNAME }}:{{ .Values.BITBUCKET_PASSWORD }}@bitbucket.org/botiumcoreteam/botium-box.git &&
-            cd botium-box &&
-            git fetch &&
-            git checkout {{ if eq .Values.BOTIUM_BOX_VERSION "develop" }}develop{{ else }} release/{{ .Values.BOTIUM_BOX_VERSION }}{{ end }} &&
-            mkdir packages/botium-box-server/node_modules &&
-            ln -s ../../license-creator packages/botium-box-server/node_modules/license-creator &&
-            ln -s ../../botium-box-shared packages/botium-box-server/node_modules/botium-box-shared &&
             {{- if .Values.ENABLE_MULTI_TENANCY }}
               {{- if eq .Values.FIRST_TENANT_ENABLE true }}
                 if test -f /app/prisma-config/prisma-config.json; then
@@ -789,13 +781,13 @@ spec:
                 else
                   echo '-> Initializing first tenant, updating prisma config' &&
                   echo {} > /app/prisma-config/prisma-config.json &&
-                  cd /app/server/botium-box/packages/botium-box-server &&
-                  node src/management/createshared.js {{ .Values.FIRST_TENANT_NAME }}.{{ .Values.FQDN }} {{ .Values.FIRST_TENANT_EMAIL }} {{ .Values.FIRST_TENANT_PASSWORD }} {{ .Values.FIRST_TENANT_DATABASE_URL }} {{ .Values.FIRST_TENANT_JWT_SECRET }} {{ .Values.FIRST_TENANT_BUILDTARGET }} &&
+                  cd /app/server/ &&
+                  node dist/management/createshared.js {{ .Values.FIRST_TENANT_NAME }}.{{ .Values.FQDN }} {{ .Values.FIRST_TENANT_EMAIL }} {{ .Values.FIRST_TENANT_PASSWORD }} {{ .Values.FIRST_TENANT_DATABASE_URL }} {{ .Values.FIRST_TENANT_JWT_SECRET }} {{ .Values.FIRST_TENANT_BUILDTARGET }} &&
                   cat /app/prisma-config/prisma-config.json;
                 fi &&
               {{- end }}
             {{- end }}
-            echo 'cd /app/server/botium-box/packages/botium-box-server' > /root/.bashrc &&
+            echo 'cd /app/server/' > /root/.bashrc &&
             cd /app/server &&
             while :; do echo 'Press <CTRL+C> to exit.'; sleep 10; done"
           ]

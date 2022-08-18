@@ -194,16 +194,6 @@ questions:
       description: "AWS Secret Access Key for Wildcard Certificate Challenge"
       type: string
       required: true
-    - variable: BITBUCKET_USERNAME
-      default: ""
-      description: "BitBucket Username for Box Shell (to fetch management scripts)"
-      type: string
-      required: true
-    - variable: BITBUCKET_PASSWORD
-      default: ""
-      description: "BitBucket Password Box Shell (to fetch management scripts)"
-      type: string
-      required: true
     - variable: ENABLE_BACKUP_PRISMA_CONFIG
       default: false
       description: "Enable Backup for prisma config folder"
