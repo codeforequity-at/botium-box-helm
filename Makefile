@@ -31,6 +31,10 @@ package_all:
 	helm package botium-wildcard-ingress
 	helm package botium-speech-processing
 
+package_box:
+	helm package botium-box-advanced
+	helm package botium-box-standalone-v3
+
 package_all_dev:
 	rm -f *-dev*.tgz
 	#helm package --version 0.0.0-dev007 botium-box-advanced
