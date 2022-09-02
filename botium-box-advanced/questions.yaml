@@ -30,9 +30,15 @@ questions:
   type: string
   required: true
   group: "agents"
+- variable: ENABLE_LIVENESS_PROBE
+  default: true
+  description: "Enable Liveness Probe to kill unresponsive Botium services"
+  type: boolean
+  required: true
+  group: "agents"
 
 - variable: BOTIUM_BOX_VERSION
-  default: "3.0.2"
+  default: "3.0.3"
   description: "Botium Box Version"
   type: string
   required: true

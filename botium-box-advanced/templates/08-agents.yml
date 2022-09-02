@@ -55,6 +55,7 @@ spec:
                 httpHeaders:
                   - name: ManagementApiKey
                     value: {{ $managementApiKey }}
+          {{- if .Values.ENABLE_LIVENESS_PROBE }}
           livenessProbe:
             httpGet:
               path: /live
@@ -64,6 +65,7 @@ spec:
                   value: {{ $managementApiKey }}
             failureThreshold: 3
             periodSeconds: 10
+          {{- end }}
           readinessProbe:
             httpGet:
               path: /ready
@@ -225,6 +227,7 @@ spec:
                 httpHeaders:
                   - name: ManagementApiKey
                     value: {{ $managementApiKey }}
+          {{- if .Values.ENABLE_LIVENESS_PROBE }}
           livenessProbe:
             httpGet:
               path: /live
@@ -234,6 +237,7 @@ spec:
                   value: {{ $managementApiKey }}
             failureThreshold: 3
             periodSeconds: 10
+          {{- end }}
           readinessProbe:
             httpGet:
               path: /ready
