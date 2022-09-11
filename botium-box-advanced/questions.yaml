@@ -36,6 +36,12 @@ questions:
   type: boolean
   required: true
   group: "agents"
+- variable: UPGADE_AGENTS
+  default: true
+  description: "Upgrade agents pod to roll out the upgrade / config to agents as well"
+  type: boolean
+  required: true
+  group: "agents"
 
 - variable: BOTIUM_BOX_VERSION
   default: "3.0.3"
