@@ -3,7 +3,7 @@ name: botium-box-advanced
 description: Botium Box Advanced
 
 type: application
-version: 3.0.3-v3
+version: 3.0.3-v4
 appVersion: 3.0.3-v1
 
 dependencies:

@@ -29,9 +29,10 @@ spec:
         name: box-agent
         app: botium-box
         tier: frontend
-      annotations: 
-        timestamp: "{{ now | date "20060102150405" }}"
     spec:
+      metadata:
+        annotations: 
+          timestamp: "{{ now | date "20060102150405" }}"
       {{- if .Values.ENABLE_AGENT_NODESELECTION}}
       nodeSelector:
         box-agent-type: common
