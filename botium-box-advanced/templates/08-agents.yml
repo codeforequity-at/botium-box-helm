@@ -7,8 +7,6 @@ metadata:
     name: box-agent
     app: botium-box
     tier: frontend
-  annotations: 
-    timestamp: "{{ now | date "20060102150405" }}"
 spec:
   {{- if eq .Values.MAINTENANCE false }}
   updateStrategy:
@@ -31,6 +29,8 @@ spec:
         name: box-agent
         app: botium-box
         tier: frontend
+      annotations: 
+        timestamp: "{{ now | date "20060102150405" }}"
     spec:
       {{- if .Values.ENABLE_AGENT_NODESELECTION}}
       nodeSelector:
