@@ -8,7 +8,7 @@ metadata:
     app: botium-box
     tier: frontend
 spec:
-  {{- if eq .Values.MAINTENANCE false }}
+  {{- if eq .Values.UPGRADE_AGENTS false }}
   updateStrategy:
     type: OnDelete
     rollingUpdate: null
@@ -180,7 +180,7 @@ metadata:
     app: botium-box
     tier: frontend
 spec:
-  {{- if eq .Values.MAINTENANCE false }}
+  {{- if eq .Values.UPGRADE_AGENTS false }}
   updateStrategy:
     type: OnDelete
     rollingUpdate: null

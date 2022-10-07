@@ -1,0 +1,71 @@
+{{- if .Values.ENABLE_PROVISIONER }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: box-provisioner
+  labels:
+    name: box-provisioner
+    app: botium-box-provisioner
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      name: box-provisioner
+      app: botium-box-provisioner
+  template:
+    metadata:
+      labels:
+        name: box-provisioner
+        app: botium-box-provisioner
+    spec:
+      containers:
+        - name: box-provisioner
+          {{- if eq .Values.CONTAINER_REGISTRY "" }}
+          mage: botium/botium-box-server:{{ .Values.BOTIUM_BOX_VERSION }}
+          {{- else }}
+          image: {{ .Values.CONTAINER_REGISTRY }}/botium/botium-box-server:{{ .Values.BOTIUM_BOX_VERSION }}
+          {{- end }}
+          imagePullPolicy: Always
+          command: ["/bin/sh"]
+          args: ["-c", "npx prisma migrate deploy && npx prisma generate && npm start:dist:provisioner"]
+          env:
+            - name: DEBUG
+              value: box-provisioner*
+            - name: LICENSE_SERVICE_APIKEY
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: LICENSE_SERVICE_APIKEY
+            - name: LICENSE_SERVICE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: LICENSE_SERVICE_URL
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: DATABASE_URL
+            - name: BOTIUMBOX_LOG_JSON
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: BOTIUMBOX_LOG_JSON
+            - name: PROVISIONER_COMPANY_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: PROVISIONER_COMPANY_NAME
+            - name: PROVISIONER_CLUSTER_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: PROVISIONER_CLUSTER_NAME
+            - name: BUILDTARGET
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: BUILDTARGET
+{{- end }}
