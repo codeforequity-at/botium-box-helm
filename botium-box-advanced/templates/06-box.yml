@@ -223,6 +223,12 @@ spec:
                 secretKeyRef:
                   name: botium-box-secrets
                   key: DATABASE_URL
+            - name: BOTIUMBOX_PRISMA_CHECK_INTERVAL_SECONDS
+              value: "{{ .Values.BOTIUMBOX_PRISMA_CHECK_INTERVAL_SECONDS }}"
+            - name: BOTIUMBOX_PRISMA_TIMEOUT_SECONDS
+              value: "{{ .Values.BOTIUMBOX_PRISMA_TIMEOUT_SECONDS }}"
+            - name: BOTIUMBOX_PRISMA_LIFETIME_SECONDS
+              value: "{{ .Values.BOTIUMBOX_PRISMA_LIFETIME_SECONDS }}"                  
             - name: LICENSE_KEY
               valueFrom:
                 configMapKeyRef:
@@ -575,6 +581,12 @@ spec:
                 secretKeyRef:
                   name: botium-box-secrets
                   key: DATABASE_URL
+            - name: BOTIUMBOX_PRISMA_CHECK_INTERVAL_SECONDS
+              value: "{{ .Values.BOTIUMBOX_PRISMA_CHECK_INTERVAL_SECONDS }}"
+            - name: BOTIUMBOX_PRISMA_TIMEOUT_SECONDS
+              value: "{{ .Values.BOTIUMBOX_PRISMA_TIMEOUT_SECONDS }}"
+            - name: BOTIUMBOX_PRISMA_LIFETIME_SECONDS
+              value: "{{ .Values.BOTIUMBOX_PRISMA_LIFETIME_SECONDS }}"   
             - name: LICENSE_KEY
               valueFrom:
                 configMapKeyRef:
