@@ -781,27 +781,12 @@ spec:
           command: ["/bin/sh"]
           args: ["-c", "
             {{- if .Values.ENABLE_MULTI_TENANCY }}
-              {{- if eq .Values.FIRST_TENANT_ENABLE false }}
-                if test -f /app/prisma-config/prisma-config.json; then
-                  echo 'Creating empty prisma-config skipped, file exists';
-                else
-                  echo 'Creating empty prisma-config.json' &&
-                  echo {} > /app/prisma-config/prisma-config.json;
-                fi &&
-              {{- end }}
-            {{- end }}
-            {{- if .Values.ENABLE_MULTI_TENANCY }}
-              {{- if eq .Values.FIRST_TENANT_ENABLE true }}
-                if test -f /app/prisma-config/prisma-config.json; then
-                  echo 'Initializing first tenant skipped, prisma-config.json exists';
-                else
-                  echo '-> Initializing first tenant, updating prisma config' &&
-                  echo {} > /app/prisma-config/prisma-config.json &&
-                  cd /app/server/ &&
-                  node dist/management/createshared.js {{ .Values.FIRST_TENANT_NAME }}.{{ .Values.FQDN }} {{ .Values.FIRST_TENANT_EMAIL }} {{ .Values.FIRST_TENANT_PASSWORD }} {{ .Values.FIRST_TENANT_DATABASE_URL }} {{ .Values.FIRST_TENANT_JWT_SECRET }} {{ .Values.FIRST_TENANT_BUILDTARGET }} &&
-                  cat /app/prisma-config/prisma-config.json;
-                fi &&
-              {{- end }}
+              if test -f /app/prisma-config/prisma-config.json; then
+                echo 'Creating empty prisma-config skipped, file exists';
+              else
+                echo 'Creating empty prisma-config.json' &&
+                echo {} > /app/prisma-config/prisma-config.json;
+              fi &&
             {{- end }}
             echo 'cd /app/server/' > /root/.bashrc &&
             cd /app/server &&

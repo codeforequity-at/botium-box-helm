@@ -275,6 +275,18 @@ questions:
   type: string
   required: true
   group: "ingress"
+- variable: FQDN_CLIENTID_PREFIX
+  default: ""
+  description: "ClientId FQDN Prefix (https:// or http://) for multi-tenancy"
+  type: string
+  group: "ingress"
+  show_if: "ENABLE_MULTI_TENANCY=true"
+- variable: FQDN_CLIENTID_SUFFIX
+  default: ""
+  description: "ClientId FQDN Suffix (.mini01.botiumbox.com) for multi-tenancy"
+  type: string
+  group: "ingress"
+  show_if: "ENABLE_MULTI_TENANCY=true"
 - variable: INSTALL_INGRESS
   default: true
   description: "Install 'Ingress'"
@@ -365,42 +377,3 @@ questions:
   required: true
   group: "prisma"
   show_if: "ENABLE_MULTI_TENANCY=false"
-- variable: FIRST_TENANT_ENABLE
-  default: false
-  description: "Generate first tenant"
-  type: boolean
-  required: true
-  group: "Init first tenant"
-  show_if: "ENABLE_MULTI_TENANCY=true"
-  show_subquestion_if: "true"
-  subquestions:
-    - variable: FIRST_TENANT_NAME
-      default: ""
-      description: "Subdomain"
-      type: string
-      required: true
-    - variable: FIRST_TENANT_EMAIL
-      default: ""
-      description: "Email"
-      type: string
-      required: true
-    - variable: FIRST_TENANT_PASSWORD
-      default: ""
-      description: "Password"
-      type: string
-      required: true
-    - variable: FIRST_TENANT_DATABASE_URL
-      default: ""
-      description: "Prisma database url"
-      type: string
-      required: true
-    - variable: FIRST_TENANT_JWT_SECRET
-      default: ""
-      description: "JWT secret"
-      type: string
-      required: true
-    - variable: FIRST_TENANT_BUILDTARGET
-      default: ""
-      description: "Build target"
-      type: string
-      required: true
