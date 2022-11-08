@@ -33,16 +33,11 @@ spec:
           env:
             - name: DEBUG
               value: box-provisioner*
-            - name: LICENSE_SERVICE_APIKEY
+            - name: LICENSE_KEY
               valueFrom:
-                secretKeyRef:
-                  name: botium-box-secrets
-                  key: LICENSE_SERVICE_APIKEY
-            - name: LICENSE_SERVICE_URL
-              valueFrom:
-                secretKeyRef:
-                  name: botium-box-secrets
-                  key: LICENSE_SERVICE_URL
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: LICENSE_KEY
             - name: DATABASE_URL
               valueFrom:
                 secretKeyRef:
@@ -53,19 +48,6 @@ spec:
                 configMapKeyRef:
                   name: botium-box-configmap
                   key: BOTIUMBOX_LOG_JSON
-            - name: PROVISIONER_COMPANY_NAME
-              valueFrom:
-                configMapKeyRef:
-                  name: botium-box-configmap
-                  key: PROVISIONER_COMPANY_NAME
-            - name: PROVISIONER_CLUSTER_NAME
-              valueFrom:
-                configMapKeyRef:
-                  name: botium-box-configmap
-                  key: PROVISIONER_CLUSTER_NAME
             - name: BUILDTARGET
-              valueFrom:
-                configMapKeyRef:
-                  name: botium-box-configmap
-                  key: BUILDTARGET
+              value: {{ .Values.BUILDTARGET }}
 {{- end }}

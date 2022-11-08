@@ -198,34 +198,19 @@ questions:
   subquestions:
     - variable: ENABLE_PROVISIONER
       default: false
-      description: "Enable Provisioner"
+      description: "Enable Multi-Tenancy Provisioner"
       type: boolean
       required: true
       group: "multi tenancy provisioner"
-    - variable: PROVISIONER_CLUSTER_NAME
-      default: ""
-      description: "Corresponding Cluster Name of License Service"
-      type: string
+    - variable: BUILDTARGET
+      default: "premium"
+      description: "Provisioner Build Target"
+      type: enum
       required: true
       group: "multi tenancy provisioner"
-    - variable: PROVISIONER_COMPANY_NAME
-      default: ""
-      description: "Corresponding Company Name of License Service"
-      type: string
-      required: true
-      group: "multi tenancy provisioner"
-    - variable: LICENSE_SERVICE_URL
-      default: ""
-      description: "License Service Url"
-      type: string
-      required: true
-      group: "multi tenancy provisioner"
-    - variable: LICENSE_SERVICE_APIKEY
-      default: ""
-      description: "Api Key of License Service"
-      type: string
-      required: true
-      group: "multi tenancy provisioner"
+      options:
+        - "mini"
+        - "premium"      
     - variable: AWS_ACCESS_KEY_ID
       default: ""
       description: "AWS Access Key ID for Wildcard Certificate Challenge"
