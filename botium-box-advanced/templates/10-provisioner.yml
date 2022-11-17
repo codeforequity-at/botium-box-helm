@@ -48,6 +48,4 @@ spec:
                 configMapKeyRef:
                   name: botium-box-configmap
                   key: BOTIUMBOX_LOG_JSON
-            - name: BUILDTARGET
-              value: {{ .Values.BUILDTARGET }}
 {{- end }}

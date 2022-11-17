@@ -202,15 +202,6 @@ questions:
       type: boolean
       required: true
       group: "multi tenancy provisioner"
-    - variable: BUILDTARGET
-      default: "premium"
-      description: "Provisioner Build Target"
-      type: enum
-      required: true
-      group: "multi tenancy provisioner"
-      options:
-        - "mini"
-        - "premium"      
     - variable: AWS_ACCESS_KEY_ID
       default: ""
       description: "AWS Access Key ID for Wildcard Certificate Challenge"
