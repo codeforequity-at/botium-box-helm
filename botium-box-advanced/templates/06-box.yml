@@ -213,6 +213,17 @@ spec:
                   name: botium-box-configmap
                   key: BOTIUMBOX_FQDN
             {{- end }}
+            {{- if .Values.ENABLE_PROVISIONER }}
+            - name: ENABLE_PRISMA_CONFIG_FILE_WATCHER
+              value: "0"
+            - name: ENABLE_PRISMA_CONFIG_REDIS_WATCHER
+              value: "1"
+            {{- else }}
+            - name: ENABLE_PRISMA_CONFIG_FILE_WATCHER
+              value: "1"
+            - name: ENABLE_PRISMA_CONFIG_REDIS_WATCHER
+              value: "0"
+            {{- end }}
             - name: JWT_SECRET
               valueFrom:
                 secretKeyRef:

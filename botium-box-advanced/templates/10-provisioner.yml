@@ -30,9 +30,22 @@ spec:
           imagePullPolicy: Always
           command: ["/bin/sh"]
           args: ["-c", " npx prisma generate && npm start:dist:provisioner"]
+          volumeMounts:
+          - mountPath: "/app/prisma-config/"
+            name: botium-box-prisma-config-storage
           env:
             - name: DEBUG
-              value: box-provisioner*
+              value: botium*
+            - name: BOTIUMBOX_QUEUE_SETTINGS
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: BOTIUMBOX_QUEUE_SETTINGS
+            - name: BOTIUMBOX_QUEUE_REDISURL
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: BOTIUMBOX_QUEUE_REDISURL              
             - name: LICENSE_KEY
               valueFrom:
                 configMapKeyRef:
@@ -48,4 +61,13 @@ spec:
                 configMapKeyRef:
                   name: botium-box-configmap
                   key: BOTIUMBOX_LOG_JSON
+            - name: PRISMA_CONFIG_FILE
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: PRISMA_CONFIG_FILE
+      volumes:
+        - name: botium-box-prisma-config-storage
+          persistentVolumeClaim:
+            claimName: botium-box-prisma-config-storage
 {{- end }}
