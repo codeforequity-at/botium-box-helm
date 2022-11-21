@@ -29,7 +29,7 @@ spec:
           {{- end }}
           imagePullPolicy: Always
           command: ["/bin/sh"]
-          args: ["-c", "npx prisma migrate deploy && npx prisma generate && npm start:dist:provisioner"]
+          args: ["-c", " npx prisma generate && npm start:dist:provisioner"]
           env:
             - name: DEBUG
               value: box-provisioner*
