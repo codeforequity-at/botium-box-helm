@@ -29,7 +29,7 @@ spec:
           {{- end }}
           imagePullPolicy: Always
           command: ["/bin/sh"]
-          args: ["-c", "npm start:dist:provisioner"]
+          args: ["-c", "npm run start:dist:provisioner"]
           volumeMounts:
           - mountPath: "/app/prisma-config/"
             name: botium-box-prisma-config-storage
