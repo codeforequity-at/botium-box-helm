@@ -330,8 +330,8 @@ questions:
   type: string
   required: false
   group: "others"
-- variable: BOTIUMBOX_PASSPORT_ADMINPASSWORD
-  description: "Administrative Access Password"
+- variable: BOTIUMBOX_PASSPORT_ADMINPASSWORD_HASH
+  description: "Administrative Access Password (bcrypt hash)"
   type: string
   required: false
   group: "others"
