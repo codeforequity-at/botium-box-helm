@@ -61,6 +61,11 @@ spec:
                 configMapKeyRef:
                   name: botium-box-configmap
                   key: BOTIUMBOX_LOG_JSON
+            - name: BOTIUMBOX_SENTRY_DSN
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: BOTIUMBOX_SENTRY_DSN
             - name: PRISMA_CONFIG_FILE
               valueFrom:
                 configMapKeyRef:
