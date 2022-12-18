@@ -62,7 +62,7 @@ metadata:
     kubernetes.io/ingress.class: alb
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
-    rancher.io/globalDNS.hostname: {{ .Values.FQDN }}
+    alb.ingress.kubernetes.io/certificate-arn: {{ .Values.AWS_ALB_CERT_ARN }}
 spec:
   rules:
   - host: {{ .Values.FQDN }}
