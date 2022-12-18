@@ -10,14 +10,6 @@ spec:
   accessModes:
     - ReadWriteOnce
   storageClassName: {{ .Values.STORAGE_CLASS_BOX }}
-  mountOptions:
-    - rsize=1048576
-    - wsize=1048576
-    - hard
-    - timeo=600
-    - retrans=2
-    - noresvport
-    - _netdev
   resources:
     requests:
       storage: 20Gi
@@ -34,14 +26,6 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
-  mountOptions:
-    - rsize=1048576
-    - wsize=1048576
-    - hard
-    - timeo=600
-    - retrans=2
-    - noresvport
-    - _netdev
   storageClassName: {{ .Values.STORAGE_CLASS_BOX }}
   resources:
     requests:
