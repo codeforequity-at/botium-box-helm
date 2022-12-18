@@ -19,8 +19,6 @@ spec:
   {{- else }}
   updateStrategy:
     type: RollingUpdate
-    rollingUpdate:
-      maxUnavailable: 100%
   {{- end }}
   {{- else }}
   replicas: 1
@@ -430,8 +428,6 @@ spec:
   {{- else }}
   updateStrategy:
     type: RollingUpdate
-    rollingUpdate:
-      maxUnavailable: 100%
   {{- end }}
   selector:
     matchLabels:
