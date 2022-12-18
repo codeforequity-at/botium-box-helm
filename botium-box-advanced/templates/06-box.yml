@@ -962,7 +962,7 @@ spec:
   - host: '*.{{ .Values.FQDN }}'
     http:
       paths:
-      - path: /
+      - path: /*
         pathType: ImplementationSpecific
         backend:
           service:
