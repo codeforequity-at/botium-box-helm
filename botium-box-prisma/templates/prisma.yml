@@ -1,4 +1,5 @@
 {{- if .Values.INSTALL_INGRESS }}
+{{- if .Values.USE_LETSENCRYPT }}
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
@@ -50,4 +51,27 @@ spec:
   commonName: {{ .Values.FQDN }}
   dnsNames:
   - {{ .Values.FQDN }}
+{{- end }}
+{{- if .Values.USE_AWS_ALB}}
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: prisma-ingress
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    rancher.io/globalDNS.hostname: {{ .Values.FQDN }}
+spec:
+  ingressClassName: alb
+  rules:
+  - host: {{ .Values.FQDN }}
+    http:
+      paths:
+      - path: /mysql-admin
+        backend:
+          serviceName: mysql-admin
+          servicePort: 8080
+{{- end }}
 {{- end }}
