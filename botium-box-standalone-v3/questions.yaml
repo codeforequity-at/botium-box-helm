@@ -15,7 +15,7 @@ questions:
   type: string
   required: false
 - variable: BOTIUM_BOX_VERSION
-  default: "3.0.8"
+  default: "3.0.10"
   description: "Botium Box Version"
   type: string
   required: true
@@ -185,8 +185,8 @@ questions:
 - variable: BOTIUMBOX_SENTRY_DSN
   type: string
   required: false
-- variable: BOTIUMBOX_PASSPORT_ADMINPASSWORD
-  description: "Administrative Access Password"
+- variable: BOTIUMBOX_PASSPORT_ADMINPASSWORD_HASH
+  description: "Administrative Access Password (bcrypt hash)"
   type: string
   required: false
 - variable: BOTIUMBOX_ADMIN_APIKEY

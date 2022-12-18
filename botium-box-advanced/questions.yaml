@@ -44,7 +44,7 @@ questions:
   group: "agents"
 
 - variable: BOTIUM_BOX_VERSION
-  default: "3.0.8"
+  default: "3.0.10"
   description: "Botium Box Version"
   type: string
   required: true
@@ -330,8 +330,8 @@ questions:
   type: string
   required: false
   group: "others"
-- variable: BOTIUMBOX_PASSPORT_ADMINPASSWORD
-  description: "Administrative Access Password"
+- variable: BOTIUMBOX_PASSPORT_ADMINPASSWORD_HASH
+  description: "Administrative Access Password (bcrypt hash)"
   type: string
   required: false
   group: "others"

@@ -45,7 +45,12 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: botium-box-secrets
-                  key: BOTIUMBOX_QUEUE_REDISURL              
+                  key: BOTIUMBOX_QUEUE_REDISURL
+            - name: BOTIUMBOX_QUEUE_PREFIX
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: BOTIUMBOX_QUEUE_PREFIX                             
             - name: LICENSE_KEY
               valueFrom:
                 configMapKeyRef:
@@ -61,6 +66,11 @@ spec:
                 configMapKeyRef:
                   name: botium-box-configmap
                   key: BOTIUMBOX_LOG_JSON
+            - name: BOTIUMBOX_SENTRY_DSN
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: BOTIUMBOX_SENTRY_DSN
             - name: PRISMA_CONFIG_FILE
               valueFrom:
                 configMapKeyRef:
