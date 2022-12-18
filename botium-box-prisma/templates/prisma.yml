@@ -68,6 +68,7 @@ spec:
     http:
       paths:
       - path: /mysql-admin
+        pathType: Prefix
         backend:
           service:
             name: mysql-admin
