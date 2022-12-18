@@ -885,6 +885,7 @@ spec:
 {{- end }}
 {{- if .Values.INSTALL_INGRESS }}
 {{- if .Values.ENABLE_MULTI_TENANCY }}
+{{- if .Values.USE_LETSENCRYPT }}
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
@@ -947,7 +948,33 @@ spec:
           provider: route53
         domains:
           - '*.{{ .Values.FQDN }}'
+{{- end}}
+{{- if .Values.USE_AWS_ALB}}
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: box-ingress
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/certificate-arn: {{ .Values.AWS_ALB_CERT_ARN }}
+spec:
+  rules:
+  - host: '*.{{ .Values.FQDN }}'
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: box-server
+            port:
+              number: 4000
+{{- end }}
 {{- else}}
+{{- if .Values.USE_LETSENCRYPT }}
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
@@ -1002,5 +1029,30 @@ spec:
   commonName: {{ .Values.FQDN }}.botiumbox
   dnsNames:
   - {{ .Values.FQDN }}
+{{- end }}
+{{- if .Values.USE_AWS_ALB}}
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: box-ingress
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/certificate-arn: {{ .Values.AWS_ALB_CERT_ARN }}
+spec:
+  rules:
+  - host: {{ .Values.FQDN }}
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: box-server
+            port:
+              number: 4000
+{{- end }}
 {{- end }}
 {{- end }}
