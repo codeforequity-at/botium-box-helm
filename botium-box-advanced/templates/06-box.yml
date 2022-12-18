@@ -1,9 +1,9 @@
 {{- $managementApiKey := randAlphaNum 24 | nospace | quote -}}
 apiVersion: apps/v1
-{{- if and (eq .Values.ENABLE_MULTI_TENANCY true) (eq .Values.FORCE_SINGLE_BOX_SERVER false) }}
-kind: DaemonSet
-{{- else }}
+{{- if eq .Values.ENABLE_MULTI_TENANCY false }}
 kind: Deployment
+{{- else }}
+kind: DaemonSet
 {{- end }}
 metadata:
   name: box-server
