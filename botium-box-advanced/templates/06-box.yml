@@ -422,6 +422,7 @@ metadata:
     tier: backend
 spec:
   replicas: 1
+  serviceName: "box-backend"
   {{- if eq .Values.MAINTENANCE false }}
   updateStrategy:
     type: OnDelete
@@ -970,7 +971,7 @@ spec:
               number: 4000
 {{- end }}
 {{- else}}
-{{- if .Values.USE_LETSENCRYPT }}
+{{- if eq .Values.USE_LETSENCRYPT true }}
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
