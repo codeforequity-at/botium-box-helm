@@ -15,8 +15,6 @@ spec:
   {{- else }}
   updateStrategy:
     type: RollingUpdate
-    rollingUpdate:
-      maxUnavailable: 100%
   {{- end }}
   serviceName: "box-agent"
   replicas: {{ .Values.AGENT_COUNT }}
@@ -187,8 +185,6 @@ spec:
   {{- else }}
   updateStrategy:
     type: RollingUpdate
-    rollingUpdate:
-      maxUnavailable: 100%
   {{- end }}
   serviceName: "box-agentp"
   replicas: {{ .Values.AGENTP_COUNT }}
