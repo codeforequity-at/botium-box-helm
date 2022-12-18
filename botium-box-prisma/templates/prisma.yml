@@ -69,7 +69,9 @@ spec:
       paths:
       - path: /mysql-admin
         backend:
-          serviceName: mysql-admin
-          servicePort: 8080
+          service:
+            name: mysql-admin
+            port:
+              number: 8080
 {{- end }}
 {{- end }}
