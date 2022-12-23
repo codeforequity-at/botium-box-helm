@@ -76,6 +76,24 @@ spec:
                 configMapKeyRef:
                   name: botium-box-configmap
                   key: PRISMA_CONFIG_FILE
+            {{- if .Values.ENABLE_MULTI_TENANCY }}
+            - name: BOTIUMBOX_FQDN_CLIENTID_PREFIX
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: BOTIUMBOX_FQDN_CLIENTID_PREFIX
+            - name: BOTIUMBOX_FQDN_CLIENTID_SUFFIX
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: BOTIUMBOX_FQDN_CLIENTID_SUFFIX
+            {{- else }}
+            - name: BOTIUMBOX_FQDN
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: BOTIUMBOX_FQDN
+            {{- end }}
       volumes:
         - name: botium-box-prisma-config-storage
           persistentVolumeClaim:
