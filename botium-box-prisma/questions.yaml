@@ -87,3 +87,8 @@ questions:
   type: string
   required: true
   group: "mysql"
+- variable: ADMINER_MYSQL_SSL_CERT
+  default: false
+  description: "Enable SSL connection to DB"
+  type: boolean
+  required: true

@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-admin
+  labels:
+    name: mysql-admin
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      name: mysql-admin
+  template:
+    metadata:
+      labels:
+        name: mysql-admin
+    spec:
+      containers:
+        - name: mysql-admin
+          image: adminer
+          ports:
+            - name: admin-8080
+              containerPort: 8080
+          env:
+            - name: ADMINER_DEFAULT_SERVER
+              value: mysql
+            {{- if .Values.ADMINER_ENABLE_SSL }}
+            - name: ADMINER_PLUGINS
+              value: "login-ssl"
+            {{- end }}
+          volumeMounts:
+            - name: mysql-admin-storage-ca
+              mountPath: "/secrets/"
+              readOnly: true
+            - name: mysql-admin-storage-plugins-enabled
+              mountPath: "/var/www/html/plugins-enabled/"
+              readOnly: true
+      volumes:
+        - name: mysql-admin-storage-ca
+          secret:
+            secretName: ca
+        - name: mysql-admin-storage-plugins-enabled
+            configMap:
+              name: plugins-enabled
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-admin
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+      protocol: TCP
+  selector:
+    name: mysql-admin
