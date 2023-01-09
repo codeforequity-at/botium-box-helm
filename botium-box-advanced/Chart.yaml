@@ -1,9 +1,9 @@
-apiVersion: v2
+apiVersion: v1
 name: botium-box-advanced
 description: Botium Box Advanced
 
 type: application
-version: 3.0.10-v13
+version: 3.0.10-v14
 appVersion: 3.0.10-v1
 
 dependencies:
