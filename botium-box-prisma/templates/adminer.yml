@@ -50,7 +50,6 @@ spec:
               readOnly: true
             - name: mysql-admin-storage-plugins-enabled
               mountPath: "/var/www/html/plugins-enabled/"
-              readOnly: true
       volumes:
         - name: mysql-admin-storage-ca
           secret:
