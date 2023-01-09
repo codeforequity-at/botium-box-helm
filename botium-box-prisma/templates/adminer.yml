@@ -1,3 +1,18 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mysql-admin-secret
+stringData:
+  "ca.pem": {{ .Values.ADMINER_MYSQL_SSL_CERT }}
+type: Opaque
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-admin-config
+data:
+  "login-ssl.php": "<?php require_once('plugins/login-ssl.php'); return new AdminerLoginSsl(array('ca' => '/secrets/ca.pem'));"
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
