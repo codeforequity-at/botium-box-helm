@@ -56,8 +56,8 @@ spec:
           secret:
             secretName: ca
         - name: mysql-admin-storage-plugins-enabled
-            configMap:
-              name: plugins-enabled
+          configMap:
+            name: plugins-enabled
 ---
 apiVersion: v1
 kind: Service
