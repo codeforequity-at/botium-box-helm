@@ -3,7 +3,7 @@ kind: Secret
 metadata:
   name: mysql-admin-secret
 stringData:
-  "ca.pem": {{ .Values.ADMINER_MYSQL_SSL_CERT }}
+  "ca.pem": {{ .Values.ADMINER_MYSQL_SSL_CERT | indent 8 }}
 type: Opaque
 ---
 apiVersion: v1
