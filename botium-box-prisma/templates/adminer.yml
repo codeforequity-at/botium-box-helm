@@ -11,7 +11,11 @@ kind: ConfigMap
 metadata:
   name: mysql-admin-config
 data:
+  {{- if .Values.ADMINER_ENABLE_SSL }}
   "login-ssl.php": "<?php require_once('plugins/login-ssl.php'); return new AdminerLoginSsl(array('ca' => '/secrets/ca.pem'));"
+  {{- else }}
+  "login-ssl.php": "<?php"
+  {{- end }}
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -40,10 +44,6 @@ spec:
           env:
             - name: ADMINER_DEFAULT_SERVER
               value: mysql
-            {{- if .Values.ADMINER_ENABLE_SSL }}
-            - name: ADMINER_PLUGINS
-              value: "login-ssl"
-            {{- end }}
           volumeMounts:
             - name: mysql-admin-storage-ca
               mountPath: "/secrets/"
