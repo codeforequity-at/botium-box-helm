@@ -54,10 +54,10 @@ spec:
       volumes:
         - name: mysql-admin-storage-ca
           secret:
-            secretName: ca
+            secretName: mysql-admin-secret
         - name: mysql-admin-storage-plugins-enabled
           configMap:
-            name: plugins-enabled
+            name: mysql-admin-config
 ---
 apiVersion: v1
 kind: Service
