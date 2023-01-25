@@ -212,12 +212,6 @@ questions:
       description: "AWS Secret Access Key for Wildcard Certificate Challenge"
       type: string
       required: true
-    - variable: ENABLE_BACKUP_PRISMA_CONFIG
-      default: false
-      description: "Enable Backup for prisma config folder"
-      type: boolean
-      required: true
-      group: "multi tenancy backup"
     - variable: BACKUP_SCHEDULE
       type: string
       default: "0 0 * * *"
