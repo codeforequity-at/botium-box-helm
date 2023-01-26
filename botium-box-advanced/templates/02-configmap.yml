@@ -11,10 +11,7 @@ data:
   SPEECH_PROCESSING_ENDPOINT: "{{ .Values.SPEECH_PROCESSING_ENDPOINT }}"
   BOTIUMBOX_SCANFORTESTSETS: "{{ .Values.BOTIUMBOX_SCANFORTESTSETS }}"
   PRISMA_CONFIG_FILE: "/app/prisma-config/prisma-config.json"
-  BOTIUMBOX_AUDIT_URL: "{{ .Values.BOTIUMBOX_AUDIT_URL }}"
-  {{- if .Values.ACTIVATE_ZAP }}
-  ZAP_ENDPOINT: http://{{ .Values.ZAP_SERVICE }}:8080
-  {{- end }}
+  ZAP_ENDPOINT: "{{ .Values.ZAP_ENDPOINT }}"
   SMTP_HOST: "{{ .Values.SMTP_HOST }}"
   SMTP_PORT: "{{ .Values.SMTP_PORT }}"
   SMTP_SECURE: "{{ .Values.SMTP_SECURE }}"

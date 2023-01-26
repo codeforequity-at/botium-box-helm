@@ -268,11 +268,6 @@ spec:
                 secretKeyRef:
                   name: botium-box-secrets
                   key: COACH_WORKER_APIKEY
-            - name: BOTIUMBOX_AUDIT_URL
-              valueFrom:
-                configMapKeyRef:
-                  name: botium-box-configmap
-                  key: BOTIUMBOX_AUDIT_URL
             - name: SPEECH_PROCESSING_ENDPOINT
               valueFrom:
                 configMapKeyRef:
@@ -636,11 +631,6 @@ spec:
                 secretKeyRef:
                   name: botium-box-secrets
                   key: COACH_WORKER_APIKEY
-            - name: BOTIUMBOX_AUDIT_URL
-              valueFrom:
-                configMapKeyRef:
-                  name: botium-box-configmap
-                  key: BOTIUMBOX_AUDIT_URL
             - name: SPEECH_PROCESSING_ENDPOINT
               valueFrom:
                 configMapKeyRef:
@@ -971,7 +961,7 @@ spec:
               number: 4000
 {{- end }}
 {{- else}}
-{{- if eq .Values.USE_LETSENCRYPT true }}
+{{- if .Values.USE_LETSENCRYPT }}
 ---
 apiVersion: extensions/v1beta1
 kind: Ingress
