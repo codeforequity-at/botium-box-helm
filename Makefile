@@ -1,5 +1,5 @@
 template:
-	helm template --debug botium-box-advanced botium-box-advanced --set ENABLE_BACKEND_PROCESSING=true
+	helm template --debug botium-box-advanced botium-box-advanced
 
 update:
 	helm dependency update botium-box-advanced

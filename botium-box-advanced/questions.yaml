@@ -7,7 +7,7 @@ questions:
     required: true
     group: Upgrade Process
   - variable: UPGRADE_AGENTS
-    default: true
+    default: false
     description: Upgrade agents pod to roll out the upgrade / config to agents as well
     type: boolean
     required: true
@@ -149,13 +149,13 @@ questions:
     required: true
     group: Storage
   - variable: AGENT_COUNT
-    default: 1
+    default: 10
     description: Botium Box Common Agent Count
     type: int
     required: true
     group: Botium Agents
   - variable: AGENTP_COUNT
-    default: 1
+    default: 5
     description: Botium Box Performance Test Agent Count
     type: int
     required: true
@@ -165,12 +165,6 @@ questions:
     description: "Deploy Agents on specific nodes only (box-agent-type: common /
       performance)"
     type: boolean
-    required: true
-    group: Botium Agents
-  - variable: BOTIUMBOX_AGENT_LIST
-    default: box-agent-0,box-agent-1,box-agent-2,box-agent-3,box-agent-4,box-agent-5,box-agent-6,box-agent-7,box-agent-8,box-agent-9,box-agent-10,box-agent-11,box-agent-12,box-agent-13,box-agent-14,box-agent-15,box-agent-16,box-agent-17,box-agent-18,box-agent-19
-    description: List of Agent Names (separated by komma)
-    type: string
     required: true
     group: Botium Agents
   - variable: ENABLE_BACKEND_PROCESSING
@@ -324,7 +318,7 @@ questions:
     group: Security & Logging
     show_if: ENABLE_MULTI_TENANCY=false
   - variable: BOTIUMBOX_LOG_JSON
-    default: false
+    default: true
     description: Enable JSON Logging
     type: boolean
     required: true
