@@ -17,6 +17,9 @@ update:
 index:
 	helm repo index . --url https://github.com/codeforequity-at/botium-box-helm/raw/master/
 
+index_dev:
+	helm repo index . --url https://github.com/codeforequity-at/botium-box-helm/raw/develop/
+
 package_all:
 	#rm -f botium-box-advanced-*.tgz botium-box-prisma-*.tgz botium-box-mini-*.tgz botium-box-standalone-*.tgz botium-coach-worker-*.tgz botium-efs-provisioner-*.tgz botium-wildcard-ingress-*.tgz ingress-nginx-*.tgz botium-box-redis-*.tgz botium-box-zap-*.tgz botium-speech-processing-*.tgz
 	helm package botium-box-advanced
