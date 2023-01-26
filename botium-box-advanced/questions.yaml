@@ -1,364 +1,325 @@
+---
 questions:
-- variable: LICENSE_KEY
-  default: ""
-  description: "Botium Box License Key"
-  type: string
-  required: true
-  group: "license"
-
-- variable: AGENT_COUNT
-  default: 1
-  description: "Botium Box Common Agent Count"
-  type: int
-  required: true
-  group: "agents"
-- variable: AGENTP_COUNT
-  default: 1
-  description: "Botium Box Performance Test Agent Count"
-  type: int
-  required: true
-  group: "agents"
-- variable: ENABLE_AGENT_NODESELECTION
-  default: false
-  description: "Deploy Agents on specific nodes only (box-agent-type: common / performance)"
-  type: boolean
-  required: true
-  group: "agents"
-- variable: BOTIUMBOX_AGENT_LIST
-  default: "box-agent-0,box-agent-1,box-agent-2,box-agent-3,box-agent-4,box-agent-5,box-agent-6,box-agent-7,box-agent-8,box-agent-9,box-agent-10,box-agent-11,box-agent-12,box-agent-13,box-agent-14,box-agent-15,box-agent-16,box-agent-17,box-agent-18,box-agent-19"
-  description: "List of Agent Names (separated by komma)"
-  type: string
-  required: true
-  group: "agents"
-- variable: ENABLE_LIVENESS_PROBE
-  default: true
-  description: "Enable Liveness Probe to kill unresponsive Botium services"
-  type: boolean
-  required: true
-  group: "agents"
-- variable: UPGADE_AGENTS
-  default: true
-  description: "Upgrade agents pod to roll out the upgrade / config to agents as well"
-  type: boolean
-  required: true
-  group: "agents"
-
-- variable: BOTIUM_BOX_VERSION
-  default: "3.0.10"
-  description: "Botium Box Version"
-  type: string
-  required: true
-  group: "container"
-- variable: CONTAINER_REGISTRY
-  default: ""
-  description: "Container Registry (default is dockerhub)"
-  type: string
-  required: false
-  group: "container"
-- variable: ENABLE_FIX_STORAGE_PERMISSIONS
-  default: false
-  description: "Fix Storage Permissions with sidecar containers (set UID/GID on container startup)"
-  type: boolean
-  required: true
-  group: "container"
-
-- variable: ACTIVATE_ZAP
-  default: false
-  description: "Activate ZAP"
-  type: boolean
-  required: true
-  group: "zap"
-  show_subquestion_if: "true"
-  subquestions:
-  - variable: INSTALL_ZAP
+  - variable: MAINTENANCE
     default: false
-    description: "Install ZAP"
+    description: Enable maintenance mode for Botium Box
     type: boolean
     required: true
-  - variable: ZAP_SERVICE
-    default: "zap"
-    description: "ZAP Service"
+    group: Upgrade Process
+  - variable: UPGRADE_AGENTS
+    default: false
+    description: Upgrade agents pod to roll out the upgrade / config to agents as well
+    type: boolean
+    required: true
+    group: Upgrade Process
+  - variable: BOTIUM_BOX_VERSION
+    default: 3.0.12
+    description: Botium Box Version
     type: string
     required: true
-
-- variable: REDIS_HOST
-  description: "Redis Host Name"
-  type: string
-  group: "redis"
-- variable: REDIS_PORT
-  default: 6379
-  description: "Redis Port"
-  type: int
-  group: "redis"
-- variable: REDIS_SENTINEL_HOST
-  default: "botium-box-redis.botium-box-redis"
-  description: "Redis Sentinel Host Name"
-  type: string
-  group: "redis"
-- variable: REDIS_SENTINEL_PORT
-  default: 26379
-  description: "Redis Sentinel Port"
-  type: int
-  group: "redis"
-- variable: REDIS_SENTINEL_NAME
-  default: "mymaster"
-  description: "Redis Sentinal Name"
-  type: string
-  group: "redis"
-- variable: REDIS_PASSWORD
-  default: "redis123"
-  description: "Redis Password"
-  type: string
-  required: true
-  group: "redis"
-
-- variable: SMTP_HOST
-  default: "email-smtp.eu-west-1.amazonaws.com"
-  description: "SMTP Host"
-  type: string
-  required: false
-  group: "email"
-- variable: SMTP_PORT
-  default: 465
-  description: "SMTP Port"
-  type: int
-  required: false
-  group: "email"
-- variable: SMTP_SECURE
-  default: true
-  description: "SMTP Secure"
-  type: boolean
-  required: false
-  group: "email"
-- variable: SMTP_USER
-  default: ""
-  description: "SMTP User"
-  type: string
-  required: false
-  group: "email"
-- variable: SMTP_PASSWORD
-  default: ""
-  description: "SMTP Password"
-  type: string
-  required: false
-  group: "email"
-
-- variable: STORAGE_CLASS_BOX
-  description: "Storage Class for Botium Box Files"
-  type: storageclass
-  required: true
-  group: "storage"
-
-- variable: COACH_WORKER_ENDPOINT
-  default: "https://coach.botiumcloud.com/1.0"
-  description: "Coach Worker Endpoint"
-  type: string
-  required: false
-  group: "coach"
-- variable: COACH_WORKER_APIKEY
-  default: ""
-  description: "Coach Worker Api Key"
-  type: string
-  required: false
-  group: "coach"
-
-- variable: BOTIUMBOX_AUDIT_URL
-  default: ""
-  description: "Audit URL"
-  type: string
-  required: false
-  group: "logging"
-
-- variable: BOTIUMBOX_LOG_JSON
-  default: false
-  description: "Enable JSON Logging"
-  type: boolean
-  required: true
-  group: "logging"
-
-- variable: SPEECH_PROCESSING_ENDPOINT
-  default: "https://speech.botiumbox.com"
-  description: "Speech Processing Endpoint"
-  type: string
-  required: false
-  group: "speech processing"
-- variable: SPEECH_PROCESSING_APIKEY
-  default: ""
-  description: "Speech Processing Api Key"
-  type: string
-  required: false
-  group: "speech processing"
-- variable: ENABLE_MULTI_TENANCY
-  default: false
-  description: "Enable Multi Tenancy"
-  type: boolean
-  required: true
-  group: "multi tenancy"
-  show_subquestion_if: "true"
-  subquestions:
-    - variable: ENABLE_PROVISIONER
-      default: false
-      description: "Enable Multi-Tenancy Provisioner"
-      type: boolean
-      required: true
-      group: "multi tenancy provisioner"
-    - variable: AWS_ACCESS_KEY_ID
-      default: ""
-      description: "AWS Access Key ID for Wildcard Certificate Challenge"
-      type: string
-      required: true
-    - variable: AWS_SECRET_ACCESS_KEY
-      default: ""
-      description: "AWS Secret Access Key for Wildcard Certificate Challenge"
-      type: string
-      required: true
-    - variable: BACKUP_SCHEDULE
-      type: string
-      default: "0 0 * * *"
-      description: "Default schedule is daily at 00:00"
-      required: false
-      group: "multi tenancy backup"
-    - variable: S3_ACCESS_KEY_ID
-      type: string
-      required: false
-      group: "multi tenancy backup"
-    - variable: S3_SECRET_ACCESS_KEY
-      type: string
-      required: false
-      group: "multi tenancy backup"
-    - variable: S3_BUCKET
-      default: "botium-mini-backups"
-      type: string
-      required: true
-      group: "multi tenancy backup"
-    - variable: S3_ENDPOINT
-      default: "https://s3.eu-central-1.wasabisys.com"
-      type: string
-      required: false
-      group: "multi tenancy backup"
-    - variable: S3_REGION
-      default: "eu-central-1"
-      type: string
-      required: false
-      group: "multi tenancy backup"
-- variable: JWT_SECRET
-  description: "The JWT Secret"
-  type: string
-  required: true
-  group: "jwt"
-  show_if: "ENABLE_MULTI_TENANCY=false"
-- variable: JWT_EXPIRY_MINUTES
-  default: 43200
-  description: "JWT expiry in minutes (default: 43200 = 30 days)"
-  type: int
-  required: false
-  group: "jwt"
-  show_if: "ENABLE_MULTI_TENANCY=false"
-- variable: FQDN
-  default: ""
-  description: "Cluster FQDN (shortname.botiumbox.com, e.g. mini01.botiumbox.com)"
-  type: string
-  required: true
-  group: "ingress"
-- variable: FQDN_CLIENTID_PREFIX
-  default: ""
-  description: "ClientId FQDN Prefix (https:// or http://) for multi-tenancy"
-  type: string
-  group: "ingress"
-  show_if: "ENABLE_MULTI_TENANCY=true"
-- variable: FQDN_CLIENTID_SUFFIX
-  default: ""
-  description: "ClientId FQDN Suffix (.mini01.botiumbox.com) for multi-tenancy"
-  type: string
-  group: "ingress"
-  show_if: "ENABLE_MULTI_TENANCY=true"
-- variable: INSTALL_INGRESS
-  default: true
-  description: "Install 'Ingress'"
-  type: boolean
-  required: true
-  group: "ingress"
-  show_subquestion_if: "true"
-  subquestions:
-  - variable: LETS_ENCRYPT_EMAIL
+    group: Botium Version
+  - variable: CONTAINER_REGISTRY
+    default: 687577257180.dkr.ecr.eu-west-1.amazonaws.com
+    description: Container Registry
+    type: string
+    required: false
+    group: Botium Version
+  - variable: ENABLE_MULTI_TENANCY
+    default: false
+    description: Enable Multi Tenancy Mode
+    type: boolean
+    required: true
+    group: Botium Version
+  - variable: ENABLE_PROVISIONER
+    default: false
+    description: Enable Multi-Tenancy Provisioner
+    type: boolean
+    required: true
+    group: Botium Version
+    show_if: ENABLE_MULTI_TENANCY=true
+  - variable: ENABLE_LIVENESS_PROBE
+    default: true
+    description: Enable Liveness Probe to kill unresponsive Botium services
+    type: boolean
+    required: true
+    group: Computing Resources
+  - variable: ENABLE_RESOURCE_LIMIT
+    default: false
+    description: Enable Limits for agents
+    type: boolean
+    required: true
+    group: Computing Resources
+    show_subquestion_if: "true"
+    subquestions:
+      - variable: RESOURCE_CPU_REQUEST
+        default: "0.1"
+        description: Minimum required CPU
+        type: string
+        required: true
+      - variable: RESOURCE_CPU_LIMIT
+        default: "0.5"
+        description: CPU Limit
+        type: string
+        required: true
+      - variable: RESOURCE_MEM_REQUEST
+        default: 512Mi
+        description: Minimum required MEM
+        type: string
+        required: true
+      - variable: RESOURCE_MEM_LIMIT
+        default: 1Gi
+        description: MEM Limit
+        type: string
+        required: true
+  - variable: NODE_OPTIONS
+    default: --max-old-space-size=4096
+    type: string
+    required: false
+    group: Computing Resources
+  - variable: INSTALL_INGRESS
+    default: true
+    description: Install 'Ingress'
+    type: boolean
+    required: true
+    group: Ingress
+    show_subquestion_if: "true"
+    subquestions:
+      - variable: USE_LETSENCRYPT
+        default: true
+        description: Use Letsencrypt
+        type: boolean
+        required: true
+      - variable: LETS_ENCRYPT_EMAIL
+        default: ""
+        description: Email for Lets Encrypt
+        type: string
+        required: true
+        show_if: USE_LETSENCRYPT=true
+      - variable: AWS_ACCESS_KEY_ID
+        default: ""
+        description: AWS Access Key ID for Wildcard Certificate Challenge
+        type: string
+        required: true
+        show_if: ENABLE_MULTI_TENANCY=true
+      - variable: AWS_SECRET_ACCESS_KEY
+        default: ""
+        description: AWS Secret Access Key for Wildcard Certificate Challenge
+        type: string
+        required: true
+        show_if: ENABLE_MULTI_TENANCY=true
+      - variable: USE_AWS_ALB
+        default: false
+        description: Use AWS Application Load Balancer
+        type: boolean
+        required: true
+      - variable: AWS_ALB_CERT_ARN
+        default: ""
+        description: AWS ALB Certificate ARN
+        type: string
+        required: true
+        show_if: USE_AWS_ALB=true
+  - variable: FQDN
     default: ""
-    description: "Email for Lets Encrypt"
+    description: Cluster FQDN (shortname.botiumbox.com, e.g. mini01.botiumbox.com)
     type: string
     required: true
-    show_if: "ENABLE_MULTI_TENANCY=false"
-- variable: ENABLE_RESOURCE_LIMIT
-  default: false
-  description: "Enable Limits for agents"
-  type: boolean
-  required: true
-  group: "resources"
-  show_subquestion_if: "true"
-  subquestions:
-  - variable: RESOURCE_CPU_REQUEST
-    default: "0.1"
-    description: "Minimum required CPU"
+    group: Ingress
+  - variable: FQDN_CLIENTID_PREFIX
+    default: ""
+    description: ClientId FQDN Prefix (https:// or http://) for multi-tenancy
+    type: string
+    group: Ingress
+    show_if: ENABLE_MULTI_TENANCY=true
+  - variable: FQDN_CLIENTID_SUFFIX
+    default: ""
+    description: ClientId FQDN Suffix (.mini01.botiumbox.com) for multi-tenancy
+    type: string
+    group: Ingress
+    show_if: ENABLE_MULTI_TENANCY=true
+  - variable: STORAGE_CLASS_BOX
+    description: Storage Class for Botium Box Files
+    type: storageclass
+    required: true
+    group: Storage
+  - variable: ENABLE_FIX_STORAGE_PERMISSIONS
+    default: false
+    description: Fix Storage Permissions with sidecar containers (set UID/GID on
+      container startup)
+    type: boolean
+    required: true
+    group: Storage
+  - variable: AGENT_COUNT
+    default: 10
+    description: Botium Box Common Agent Count
+    type: int
+    required: true
+    group: Botium Agents
+  - variable: AGENTP_COUNT
+    default: 5
+    description: Botium Box Performance Test Agent Count
+    type: int
+    required: true
+    group: Botium Agents
+  - variable: ENABLE_AGENT_NODESELECTION
+    default: false
+    description: "Deploy Agents on specific nodes only (box-agent-type: common /
+      performance)"
+    type: boolean
+    required: true
+    group: Botium Agents
+  - variable: ENABLE_BACKEND_PROCESSING
+    default: true
+    description: Process Botium Agent traffic in background
+    type: boolean
+    required: true
+    group: Botium Agents
+  - variable: LICENSE_KEY
+    default: ""
+    description: Botium Box License Key
     type: string
     required: true
-  - variable: RESOURCE_CPU_LIMIT
-    default: "0.5"
-    description: "CPU Limit"
+    group: License
+  - variable: DATABASE_URL
+    default: mysql://root:prisma@localhost:3306/box@prod13_v2
+    description: Prisma Database URL
     type: string
     required: true
-  - variable: RESOURCE_MEM_REQUEST
-    default: "512Mi"
-    description: "Minimum required MEM"
+    group: Service Connections
+    show_if: ENABLE_MULTI_TENANCY=false
+  - variable: BOTIUMBOX_SMARTLOOK_KEY
+    description: Smartlook Key
+    type: string
+    required: false
+    group: Service Connections
+  - variable: BOTIUMBOX_SENTRY_DSN
+    default: ""
+    type: string
+    required: false
+    group: Service Connections
+  - variable: GOOGLE_TRANSLATE_CLIENT_EMAIL
+    description: Google Translate Client Email
+    type: string
+    required: false
+    group: Service Connections
+  - variable: GOOGLE_TRANSLATE_PRIVATE_KEY
+    description: Google Translate Private Key
+    type: string
+    required: false
+    group: Service Connections
+  - variable: SPEECH_PROCESSING_ENDPOINT
+    default: https://speech.botiumbox.com
+    description: Speech Processing Endpoint
+    type: string
+    required: false
+    group: Service Connections
+  - variable: SPEECH_PROCESSING_APIKEY
+    default: ""
+    description: Speech Processing Api Key
+    type: string
+    required: false
+    group: Service Connections
+  - variable: COACH_WORKER_ENDPOINT
+    default: https://coach.botiumcloud.com/1.0
+    description: Coach Worker Endpoint
+    type: string
+    required: false
+    group: Service Connections
+  - variable: COACH_WORKER_APIKEY
+    default: ""
+    description: Coach Worker Api Key
+    type: string
+    required: false
+    group: Service Connections
+  - variable: ZAP_ENDPOINT
+    default: http://zap:8080
+    description: ZAP Endpoint Url
+    type: string
+    required: false
+    group: Service Connections
+  - variable: OPENAI_APIKEY
+    description: OpenAI API Key
+    type: string
+    required: false
+    group: Service Connections
+  - variable: OPENAI_RATE_BY_MINUTE
+    description: OpenAI Rate Limit (req/min)
+    type: string
+    required: false
+    group: Service Connections
+  - variable: BOTIUMBOX_QUEUE_PREFIX
+    default: qprod
+    description: Redis Queue Prefix
+    type: string
+    group: Redis Connection
+  - variable: BOTIUMBOX_QUEUE_SETTINGS
+    default: ""
+    description: 'Queue Settings (as JSON), for example: { "redis": { "sentinels":
+      [{"host": "my-redis-host", "port": 26379 }], "sentinelPassword":
+      "my-sentinel-pwd", "password": "my-redis-password", "name":
+      "my-sentinel-name" } }'
+    type: string
+    group: Redis Connection
+  - variable: BOTIUMBOX_QUEUE_REDISURL
+    default: redis://:my-redis-pwd@my-redis-host:6379/0
+    description: Redis Url
+    type: string
+    group: Redis Connection
+  - variable: SMTP_HOST
+    default: email-smtp.eu-west-1.amazonaws.com
+    description: SMTP Host
+    type: string
+    required: false
+    group: SMTP Connection
+  - variable: SMTP_PORT
+    default: 465
+    description: SMTP Port
+    type: int
+    required: false
+    group: SMTP Connection
+  - variable: SMTP_SECURE
+    default: true
+    description: SMTP Secure
+    type: boolean
+    required: false
+    group: SMTP Connection
+  - variable: SMTP_USER
+    default: ""
+    description: SMTP User
+    type: string
+    required: false
+    group: SMTP Connection
+  - variable: SMTP_PASSWORD
+    default: ""
+    description: SMTP Password
+    type: string
+    required: false
+    group: SMTP Connection
+  - variable: BOTIUMBOX_PASSPORT_ADMINPASSWORD_HASH
+    description: Administrative Access Password (bcrypt hash)
+    type: string
+    required: false
+    group: Security & Logging
+  - variable: BOTIUMBOX_ADMIN_APIKEY
+    description: Administrative API Access Key
+    type: string
+    required: false
+    group: Security & Logging
+  - variable: JWT_SECRET
+    description: The JWT Secret
     type: string
     required: true
-  - variable: RESOURCE_MEM_LIMIT
-    default: "1Gi"
-    description: "MEM Limit"
-    type: string
+    group: Security & Logging
+    show_if: ENABLE_MULTI_TENANCY=false
+  - variable: JWT_EXPIRY_MINUTES
+    default: 43200
+    description: "JWT expiry in minutes (default: 43200 = 30 days)"
+    type: int
+    required: false
+    group: Security & Logging
+    show_if: ENABLE_MULTI_TENANCY=false
+  - variable: BOTIUMBOX_LOG_JSON
+    default: true
+    description: Enable JSON Logging
+    type: boolean
     required: true
-- variable: BOTIUMBOX_SMARTLOOK_KEY
-  description: "Smartlook Key"
-  type: string
-  required: false
-  group: "others"
-- variable: BOTIUMBOX_SENTRY_DSN
-  default: ""
-  type: string
-  required: false
-  group: "others"
-- variable: BOTIUMBOX_PASSPORT_ADMINPASSWORD_HASH
-  description: "Administrative Access Password (bcrypt hash)"
-  type: string
-  required: false
-  group: "others"
-- variable: BOTIUMBOX_ADMIN_APIKEY
-  description: "Administrative API Access Key"
-  type: string
-  required: false
-  group: "others"
-- variable: GOOGLE_TRANSLATE_CLIENT_EMAIL
-  description: "Google Translate Client Email"
-  type: string
-  required: false
-  group: "others"
-- variable: GOOGLE_TRANSLATE_PRIVATE_KEY
-  description: "Google Translate Private Key"
-  type: string
-  required: false
-  group: "others"
-- variable: NODE_OPTIONS
-  default: "--max-old-space-size=4096"
-  type: string
-  required: false
-  group: "others"
-- variable: MAINTENANCE
-  default: false
-  description: "Enable maintenance mode for Botium Box"
-  type: boolean
-  required: true
-  group: "maintenance"
-- variable: DATABASE_URL
-  default: "mysql://root:prisma@localhost:3306/box@prod13_v2"
-  description: "Prisma Database URL"
-  type: string
-  required: true
-  group: "prisma"
-  show_if: "ENABLE_MULTI_TENANCY=false"
+    group: Security & Logging
