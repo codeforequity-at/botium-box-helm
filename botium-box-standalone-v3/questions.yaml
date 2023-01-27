@@ -52,6 +52,7 @@ questions:
     type: string
     required: true
     show_if: INSTALL_INGRESS=true
+    group: Ingress
   - variable: FQDN
     default: ""
     description: Cluster FQDN (shortname.botiumbox.com, e.g. mini01.botiumbox.com)
