@@ -78,6 +78,8 @@ spec:
           command: ["/bin/sh"]
           {{- if .Values.ENABLE_MULTI_TENANCY }}
           args: ["-c", "node -r dotenv-flow/config dist/botium-box-server.js"]
+          {{- else if .Values.ENABLE_BACKEND_PROCESSING }}
+          args: ["-c", "node -r dotenv-flow/config dist/botium-box-server.js"]
           {{- else }}
           args: ["-c", "npm run prisma-deploy && npm run prisma-seed && node -r dotenv-flow/config dist/botium-box-server.js"]
           {{- end }}
@@ -445,7 +447,11 @@ spec:
           image: {{ .Values.CONTAINER_REGISTRY }}/botium/botium-box-server:{{ .Values.BOTIUM_BOX_VERSION }}
           {{- end }}
           command: ["/bin/sh"]
+          {{- if .Values.ENABLE_MULTI_TENANCY }}
           args: ["-c", "node -r dotenv-flow/config dist/botium-box-server.js"]
+          {{- else }}
+          args: ["-c", "npm run prisma-deploy && npm run prisma-seed && node -r dotenv-flow/config dist/botium-box-server.js"]
+          {{- end }}
           ports:
             - name: box-m-4100
               containerPort: 4100
@@ -752,7 +758,6 @@ spec:
             claimName: botium-box-prisma-config-storage
         {{- end }}
 {{- end }}
-{{- if .Values.ENABLE_MULTI_TENANCY }}
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -869,7 +874,6 @@ spec:
           persistentVolumeClaim:
             claimName: botium-box-prisma-config-storage
         {{- end }}
-{{- end }}
 {{- if .Values.INSTALL_INGRESS }}
 {{- if .Values.ENABLE_MULTI_TENANCY }}
 {{- if .Values.USE_LETSENCRYPT }}
