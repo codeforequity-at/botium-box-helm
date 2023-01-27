@@ -86,6 +86,11 @@ spec:
                 secretKeyRef:
                   name: botium-box-secrets
                   key: BOTIUMBOX_QUEUE_REDISURL
+            - name: BOTIUMBOX_QUEUE_SETTINGS
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: BOTIUMBOX_QUEUE_SETTINGS
             - name: BOTIUMBOX_QUEUE_PREFIX
               valueFrom:
                 configMapKeyRef:
@@ -210,16 +215,6 @@ spec:
                 configMapKeyRef:
                   name: botium-box-configmap
                   key: BOTIUMBOX_LOG_JSON
-            - name: BOTIUMBOX_AUDIT_URL
-              valueFrom:
-                configMapKeyRef:
-                  name: botium-box-configmap
-                  key: BOTIUMBOX_AUDIT_URL
-            - name: BOTIUMBOX_AUDIT_CLIENTID
-              valueFrom:
-                configMapKeyRef:
-                  name: botium-box-configmap
-                  key: BOTIUMBOX_AUDIT_CLIENTID
             - name: BOTIUMBOX_FQDN
               valueFrom:
                 configMapKeyRef:
@@ -231,7 +226,6 @@ spec:
             claimName: botium-box-storage
         - name: storage-botiumwork
           emptyDir: {}
-{{- if .Values.INSTALL_SHELL }}
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -294,6 +288,11 @@ spec:
                 secretKeyRef:
                   name: botium-box-secrets
                   key: BOTIUMBOX_QUEUE_REDISURL
+            - name: BOTIUMBOX_QUEUE_SETTINGS
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: BOTIUMBOX_QUEUE_SETTINGS                  
             - name: BOTIUMBOX_QUEUE_PREFIX
               valueFrom:
                 configMapKeyRef:
@@ -304,7 +303,6 @@ spec:
         - name: storage
           persistentVolumeClaim:
             claimName: botium-box-storage
-{{- end }}
 ---
 apiVersion: v1
 kind: Service
