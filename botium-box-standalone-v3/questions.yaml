@@ -64,11 +64,6 @@ questions:
     type: storageclass
     required: true
     group: Storage
-  - variable: STORAGE_CLASS_BOX_BOTIUMWORK
-    description: Storage Class for Botium Box Botiumwork (temp folder)
-    type: storageclass
-    required: true
-    group: Storage
   - variable: BOTIUMBOX_AGENT_COUNT
     default: 1
     description: Botium Box Agent Count
