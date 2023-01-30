@@ -9,9 +9,9 @@ questions:
   description: "script-src https://cdn.jsdelivr.net 'self' 'unsafe-inline'; img-src * data: blob:; media-src * data: blob:; object-src 'self';"
   required: true
   type: boolean
-- variable: CSP_SMARTLOOK
+- variable: CSP_WITHSENTRY
   default: false
-  description: "script-src https://cdn.jsdelivr.net 'self' 'unsafe-inline' 'unsafe-eval' https://*.ingest.sentry.io https://*.smartlook.com https://*.smartlook.cloud; img-src * data: blob:; media-src * data: blob:; object-src 'self'; worker-src 'self' blob:; connect-src 'self' https://*.ingest.sentry.io https://*.smartlook.com https://*.smartlook.cloud wss://*.botiumbox.com https://www.botium.ai"
+  description: "script-src https://cdn.jsdelivr.net 'self' 'unsafe-inline' 'unsafe-eval' https://*.ingest.sentry.io; img-src * data: blob:; media-src * data: blob:; object-src 'self'; worker-src 'self' blob:; connect-src 'self' https://*.ingest.sentry.io wss://*.botiumbox.com https://www.botium.ai"
   required: true
   type: boolean
 - variable: CSP_CUSTOM

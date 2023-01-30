@@ -93,11 +93,6 @@ questions:
     type: string
     required: true
     group: Service Connections
-  - variable: BOTIUMBOX_SMARTLOOK_KEY
-    description: Smartlook Key
-    type: string
-    required: false
-    group: Service Connections
   - variable: BOTIUMBOX_SENTRY_DSN
     default: ""
     type: string

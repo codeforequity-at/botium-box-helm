@@ -128,13 +128,11 @@ spec:
                 secretKeyRef:
                   name: botium-box-secrets
                   key: SMTP_PASSWORD
-            {{- if .Values.ACTIVATE_ZAP }}
             - name: ZAP_ENDPOINT
               valueFrom:
                 configMapKeyRef:
                   name: botium-box-configmap
                   key: ZAP_ENDPOINT
-            {{- end }}
             - name: COACH_WORKER_ENDPOINT
               valueFrom:
                 configMapKeyRef:
@@ -165,11 +163,6 @@ spec:
                 configMapKeyRef:
                   name: botium-box-configmap
                   key: JWT_EXPIRY_MINUTES
-            - name: BOTIUMBOX_SMARTLOOK_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: botium-box-secrets
-                  key: BOTIUMBOX_SMARTLOOK_KEY
             - name: BOTIUMBOX_SENTRY_DSN
               valueFrom:
                 secretKeyRef:

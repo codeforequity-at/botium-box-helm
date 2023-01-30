@@ -1,6 +1,6 @@
 PROXY_BODY_SIZE: "16m"
 CSP_DEFAULT: true
-CSP_SMARTLOOK: false
+CSP_WITHSENTRY: false
 CSP_CUSTOM: false
 CSP_CUSTOM_HEADER: "script-src https://cdn.jsdelivr.net 'self' 'unsafe-inline'; img-src * data: blob:; media-src * data: blob:; object-src 'none';"
 AWS_CONNECTION_IDLE_TIMEOUT: "1800"

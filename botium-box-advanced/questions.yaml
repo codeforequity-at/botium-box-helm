@@ -186,11 +186,6 @@ questions:
     required: true
     group: Service Connections
     show_if: ENABLE_MULTI_TENANCY=false
-  - variable: BOTIUMBOX_SMARTLOOK_KEY
-    description: Smartlook Key
-    type: string
-    required: false
-    group: Service Connections
   - variable: BOTIUMBOX_SENTRY_DSN
     default: ""
     type: string

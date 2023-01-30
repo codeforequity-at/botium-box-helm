@@ -335,18 +335,11 @@ spec:
                 configMapKeyRef:
                   name: botium-box-configmap
                   key: BOTIUMBOX_KEEP_COACH_DETAILS_DAYS
-            {{- if .Values.ACTIVATE_ZAP }}
             - name: ZAP_ENDPOINT
               valueFrom:
                 configMapKeyRef:
                   name: botium-box-configmap
                   key: ZAP_ENDPOINT
-            {{- end }}
-            - name: BOTIUMBOX_SMARTLOOK_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: botium-box-secrets
-                  key: BOTIUMBOX_SMARTLOOK_KEY
             - name: BOTIUMBOX_SENTRY_DSN
               valueFrom:
                 secretKeyRef:
@@ -702,13 +695,11 @@ spec:
                 configMapKeyRef:
                   name: botium-box-configmap
                   key: BOTIUMBOX_KEEP_COACH_DETAILS_DAYS
-            {{- if .Values.ACTIVATE_ZAP }}
             - name: ZAP_ENDPOINT
               valueFrom:
                 configMapKeyRef:
                   name: botium-box-configmap
                   key: ZAP_ENDPOINT
-            {{- end }}
             - name: BOTIUMBOX_SENTRY_DSN
               valueFrom:
                 secretKeyRef:
