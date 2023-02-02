@@ -1009,7 +1009,7 @@ spec:
   issuerRef:
     name: {{ .Values.FQDN }}-letsencrypt-prod
     kind: Issuer
-  commonName: {{ .Values.FQDN }}.botiumbox
+  commonName: {{ .Values.FQDN }}
   dnsNames:
   - {{ .Values.FQDN }}
 {{- end }}
