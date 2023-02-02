@@ -335,6 +335,11 @@ spec:
                 secretKeyRef:
                   name: botium-box-secrets
                   key: BOTIUMBOX_SENTRY_DSN
+            - name: BOTIUMBOX_PASSPORT_STRATEGY
+              valueFrom:
+                secretKeyRef:
+                  name: botium-box-secrets
+                  key: BOTIUMBOX_PASSPORT_STRATEGY                  
             - name: BOTIUMBOX_PASSPORT_ADMINPASSWORD_HASH
               valueFrom:
                 secretKeyRef:
