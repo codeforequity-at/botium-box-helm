@@ -1,10 +1,6 @@
 {{- $managementApiKey := randAlphaNum 24 | nospace | quote -}}
 apiVersion: apps/v1
-{{- if eq .Values.ENABLE_MULTI_TENANCY false }}
-kind: Deployment
-{{- else }}
 kind: DaemonSet
-{{- end }}
 metadata:
   name: box-server
   labels:
@@ -12,18 +8,12 @@ metadata:
     app: botium-box
     tier: frontend
 spec:
-  {{- if eq .Values.ENABLE_MULTI_TENANCY true }}
   {{- if eq .Values.MAINTENANCE false }}
   updateStrategy:
     type: OnDelete
   {{- else }}
   updateStrategy:
     type: RollingUpdate
-  {{- end }}
-  {{- else }}
-  replicas: 1
-  strategy:
-    type: Recreate
   {{- end }}
   selector:
     matchLabels:
