@@ -1008,6 +1008,7 @@ spec:
   secretName: {{ .Values.FQDN }}.botiumbox-tls
   issuerRef:
     name: {{ .Values.FQDN }}-letsencrypt-prod
+    kind: Issuer
   commonName: {{ .Values.FQDN }}.botiumbox
   dnsNames:
   - {{ .Values.FQDN }}
