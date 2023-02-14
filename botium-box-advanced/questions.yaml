@@ -187,7 +187,7 @@ questions:
     group: Service Connections
   - variable: DATABASE_CERT
     description: Prisma Database Certificate (*.pem). It will be mapped to /app/prisma-cert/sslcert.pem, so add "&sslcert=/app/prisma-cert/sslcert.pem" to DATABASE_URL
-    type: string
+    type: multiline
     required: false
     group: Service Connections    
   - variable: BOTIUMBOX_SENTRY_DSN
@@ -202,7 +202,7 @@ questions:
     group: Service Connections
   - variable: GOOGLE_TRANSLATE_PRIVATE_KEY
     description: Google Translate Private Key
-    type: string
+    type: multiline
     required: false
     group: Service Connections
   - variable: SPEECH_PROCESSING_ENDPOINT
