@@ -128,6 +128,11 @@ spec:
           - mountPath: "/app/prisma-config/"
             name: botium-box-prisma-config-storage
           {{- end }}
+          {{- if .Values.DATABASE_CERT }}
+          - mountPath: "/app/prisma-cert/"
+            name: botium-box-prisma-cert-storage
+            readOnly: true
+          {{- end }}
           env:
             - name: DEBUG
               value: botium*
@@ -381,9 +386,9 @@ spec:
             - name: BOTIUMBOX_LAUNCH_CLIENT_FACING
               value: "1"
             {{- end }}
-    {{- if .Values.BOTIUMBOX_TERMINATION_GRACE_PERIOD }}
+      {{- if .Values.BOTIUMBOX_TERMINATION_GRACE_PERIOD }}
       terminationGracePeriodSeconds: {{ div .Values.BOTIUMBOX_TERMINATION_GRACE_PERIOD 1000 }}
-    {{- end }}
+      {{- end }}
       volumes:
         - name: botium-box-storage
           persistentVolumeClaim:
@@ -394,6 +399,14 @@ spec:
         - name: botium-box-prisma-config-storage
           persistentVolumeClaim:
             claimName: botium-box-prisma-config-storage
+        {{- end }}
+        {{- if .Values.DATABASE_CERT }}
+        - name: botium-box-prisma-cert-storage
+          secret:
+            secretName: botium-box-secrets
+            items:
+            - key: DATABASE_CERT
+              path: sslcert.pem
         {{- end }}
 {{- if .Values.ENABLE_BACKEND_PROCESSING }}
 ---
@@ -493,6 +506,11 @@ spec:
           - mountPath: "/app/prisma-config/"
             name: botium-box-prisma-config-storage
           {{- end }}
+          {{- if .Values.DATABASE_CERT }}
+          - mountPath: "/app/prisma-cert/"
+            name: botium-box-prisma-cert-storage
+            readOnly: true
+          {{- end }}          
           env:
             - name: DEBUG
               value: botium*
@@ -743,6 +761,14 @@ spec:
           persistentVolumeClaim:
             claimName: botium-box-prisma-config-storage
         {{- end }}
+        {{- if .Values.DATABASE_CERT }}
+        - name: botium-box-prisma-cert-storage
+          secret:
+            secretName: botium-box-secrets
+            items:
+            - key: DATABASE_CERT
+              path: sslcert.pem
+        {{- end }}          
 {{- end }}
 ---
 apiVersion: apps/v1
@@ -799,6 +825,11 @@ spec:
           - mountPath: "/app/prisma-config/"
             name: botium-box-prisma-config-storage
           {{- end }}
+          {{- if .Values.DATABASE_CERT }}
+          - mountPath: "/app/prisma-cert/"
+            name: botium-box-prisma-cert-storage
+            readOnly: true
+          {{- end }}          
           securityContext:
             runAsUser: 0
             runAsGroup: 0
@@ -860,6 +891,14 @@ spec:
           persistentVolumeClaim:
             claimName: botium-box-prisma-config-storage
         {{- end }}
+        {{- if .Values.DATABASE_CERT }}
+        - name: botium-box-prisma-cert-storage
+          secret:
+            secretName: botium-box-secrets
+            items:
+            - key: DATABASE_CERT
+              path: sslcert.pem
+        {{- end }}         
 {{- if .Values.INSTALL_INGRESS }}
 {{- if .Values.ENABLE_MULTI_TENANCY }}
 {{- if .Values.USE_LETSENCRYPT }}

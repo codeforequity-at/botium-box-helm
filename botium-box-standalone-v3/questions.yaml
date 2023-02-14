@@ -93,6 +93,11 @@ questions:
     type: string
     required: true
     group: Service Connections
+  - variable: DATABASE_CERT
+    description: Prisma Database Certificate (*.pem). It will be mapped to /app/prisma-cert/sslcert.pem, so add "&sslcert=/app/prisma-cert/sslcert.pem" to DATABASE_URL
+    type: string
+    required: false
+    group: Service Connections
   - variable: BOTIUMBOX_SENTRY_DSN
     default: ""
     type: string
