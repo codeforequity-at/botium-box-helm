@@ -386,6 +386,11 @@ spec:
             - name: BOTIUMBOX_LAUNCH_CLIENT_FACING
               value: "1"
             {{- end }}
+            - name: JOBDATA_MIN_SIZE_FOR_FILE
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: JOBDATA_MIN_SIZE_FOR_FILE            
       {{- if .Values.BOTIUMBOX_TERMINATION_GRACE_PERIOD }}
       terminationGracePeriodSeconds: {{ div .Values.BOTIUMBOX_TERMINATION_GRACE_PERIOD 1000 }}
       {{- end }}
@@ -747,6 +752,11 @@ spec:
               value: "1"
             - name: BOTIUMBOX_LAUNCH_CLIENT_FACING
               value: "0"
+            - name: JOBDATA_MIN_SIZE_FOR_FILE
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: JOBDATA_MIN_SIZE_FOR_FILE              
     {{- if .Values.BOTIUMBOX_TERMINATION_GRACE_PERIOD }}
       terminationGracePeriodSeconds: {{ div .Values.BOTIUMBOX_TERMINATION_GRACE_PERIOD 1000 }}
     {{- end }}
