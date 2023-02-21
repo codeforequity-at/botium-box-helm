@@ -67,10 +67,6 @@ spec:
               value: "{{ .Values.S3_ENDPOINT }}"
             - name: DB_SIZE_THRESHOLD
               value: "{{ .Values.DB_SIZE_THRESHOLD }}"
-            - name: TELEGRAF_URL
-              value: "{{ .Values.TELEGRAF_URL }}"
-            - name: TELEGRAF_NOTIFICATION
-              value: "{{ .Values.TELEGRAF_NOTIFICATION }}"
             - name: FQDN
               value: "{{ .Values.FQDN }}"
           restartPolicy: OnFailure
