@@ -1,3 +1,4 @@
+{{- if .Values.ADMINER_ENABLE_SSL }}
 apiVersion: v1
 kind: Secret
 metadata:
@@ -6,6 +7,7 @@ stringData:
   "ca.pem": {{ .Values.ADMINER_MYSQL_SSL_CERT | indent 8 }}
 type: Opaque
 ---
+{{- end }}
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -45,15 +47,19 @@ spec:
             - name: ADMINER_DEFAULT_SERVER
               value: mysql
           volumeMounts:
+            {{- if .Values.ADMINER_ENABLE_SSL }}              
             - name: mysql-admin-storage-ca
               mountPath: "/secrets/"
               readOnly: true
+            {{- end }} 
             - name: mysql-admin-storage-plugins-enabled
               mountPath: "/var/www/html/plugins-enabled/"
       volumes:
+        {{- if .Values.ADMINER_ENABLE_SSL }}
         - name: mysql-admin-storage-ca
           secret:
             secretName: mysql-admin-secret
+        {{- end }} 
         - name: mysql-admin-storage-plugins-enabled
           configMap:
             name: mysql-admin-config
