@@ -300,6 +300,11 @@ spec:
                 secretKeyRef:
                   name: botium-box-secrets
                   key: SMTP_PASSWORD
+            - name: SMTP_FROM
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: SMTP_FROM
             - name: BOTIUMBOX_CLEANUP_JOB_INTERVAL_MINUTES
               valueFrom:
                 configMapKeyRef:
@@ -683,6 +688,11 @@ spec:
                 secretKeyRef:
                   name: botium-box-secrets
                   key: SMTP_PASSWORD
+            - name: SMTP_FROM
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: SMTP_FROM
             - name: BOTIUMBOX_CLEANUP_JOB_INTERVAL_MINUTES
               valueFrom:
                 configMapKeyRef:

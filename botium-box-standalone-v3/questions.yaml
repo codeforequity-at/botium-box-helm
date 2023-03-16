@@ -1,7 +1,7 @@
 ---
 questions:
   - variable: BOTIUM_BOX_VERSION
-    default: 3.0.12
+    default: 3.1.0
     description: Botium Box Version
     type: string
     required: true
@@ -201,6 +201,12 @@ questions:
     type: string
     required: false
     group: SMTP Connection
+  - variable: SMTP_FROM
+    default: ""
+    description: SMTP Sender Address
+    type: string
+    required: false
+    group: SMTP Connection    
   - variable: BOTIUMBOX_PASSPORT_ADMINPASSWORD_HASH
     description: Administrative Access Password (bcrypt hash)
     type: string

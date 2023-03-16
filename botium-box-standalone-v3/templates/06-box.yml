@@ -133,6 +133,11 @@ spec:
                 secretKeyRef:
                   name: botium-box-secrets
                   key: SMTP_PASSWORD
+            - name: SMTP_FROM
+              valueFrom:
+                configMapKeyRef:
+                  name: botium-box-configmap
+                  key: SMTP_FROM                  
             - name: ZAP_ENDPOINT
               valueFrom:
                 configMapKeyRef:

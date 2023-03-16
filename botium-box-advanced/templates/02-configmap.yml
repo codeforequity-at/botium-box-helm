@@ -17,6 +17,7 @@ data:
   {{- if .Values.SMTP_SECURE }}
   SMTP_SECURE: "1"
   {{- end }}
+  SMTP_FROM: "{{ .Values.SMTP_FROM }}"
   BOTIUMBOX_AGENT_LIST: "{{- range untilStep 1 (.Values.AGENT_COUNT | add 1 | int) 1 }}box-agent-{{ . }},{{- end }}{{- range untilStep 1 (.Values.AGENTP_COUNT | add 1 | int) 1 }}box-agentp-{{ . }},{{- end }}"
   BOTIUMBOX_QUEUE_PREFIX: "{{ .Values.BOTIUMBOX_QUEUE_PREFIX }}"
   BOTIUMBOX_CLEANUP_JOB_INTERVAL_MINUTES: "{{ .Values.BOTIUMBOX_CLEANUP_JOB_INTERVAL_MINUTES }}"
