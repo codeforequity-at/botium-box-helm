@@ -126,8 +126,13 @@ spec:
               value: "10"
             - name: BOTIUMBOX_QUEUE_CONCURRENCY_PERFORMANCE
               value: "0"
+            {{- if .Values.ENABLE_MULTI_TENANCY }}
             - name: BOTIUMBOX_QUEUE_HEARTBEAT
               value: "0"
+            {{- else }}
+            - name: BOTIUMBOX_QUEUE_HEARTBEAT
+              value: "60000"
+            {{- end }}
             - name: BOTIUMBOX_QUEUE_SETTINGS
               valueFrom:
                 secretKeyRef:
@@ -296,8 +301,13 @@ spec:
               value: "0"
             - name: BOTIUMBOX_QUEUE_CONCURRENCY_PERFORMANCE
               value: "10"
+            {{- if .Values.ENABLE_MULTI_TENANCY }}              
             - name: BOTIUMBOX_QUEUE_HEARTBEAT
               value: "0"
+            {{- else }}
+            - name: BOTIUMBOX_QUEUE_HEARTBEAT
+              value: "60000"
+            {{- end }}
             - name: BOTIUMBOX_QUEUE_SETTINGS
               valueFrom:
                 secretKeyRef:
