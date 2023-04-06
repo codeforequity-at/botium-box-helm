@@ -171,11 +171,6 @@ spec:
                 configMapKeyRef:
                   name: botium-box-configmap
                   key: NODE_OPTIONS
-            - name: BOTIUMBOX_AGENT_LIST
-              valueFrom:
-                configMapKeyRef:
-                  name: botium-box-configmap
-                  key: BOTIUMBOX_AGENT_LIST
             - name: CHOKIDAR_USEPOLLING
               value: "1"
             - name: BOTIUMBOX_MAX_EXECUTION_INTERVAL_MINUTES
@@ -559,11 +554,6 @@ spec:
                 configMapKeyRef:
                   name: botium-box-configmap
                   key: NODE_OPTIONS
-            - name: BOTIUMBOX_AGENT_LIST
-              valueFrom:
-                configMapKeyRef:
-                  name: botium-box-configmap
-                  key: BOTIUMBOX_AGENT_LIST
             - name: CHOKIDAR_USEPOLLING
               value: "1"
             - name: BOTIUMBOX_MAX_EXECUTION_INTERVAL_MINUTES
