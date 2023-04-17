@@ -97,6 +97,9 @@ spec:
             name: botium-box-storage
           - mountPath: "/app/server/storage/botiumwork/"
             name: botium-box-storage-botiumwork
+          - mountPath: "/app/node-extra-ca-certs/"
+            name: botium-box-node-extra-ca-certs
+            readOnly: true
           env:
             - name: BOTIUMBOX_AGENT_NAME
               valueFrom:
@@ -126,6 +129,8 @@ spec:
               value: "10"
             - name: BOTIUMBOX_QUEUE_CONCURRENCY_PERFORMANCE
               value: "0"
+            - name: NODE_EXTRA_CA_CERTS
+              value: /app/node-extra-ca-certs/certs.pem
             {{- if .Values.ENABLE_MULTI_TENANCY }}
             - name: BOTIUMBOX_QUEUE_HEARTBEAT
               value: "0"
@@ -162,6 +167,12 @@ spec:
             claimName: botium-box-storage
         - name: botium-box-storage-botiumwork
           emptyDir: { }
+        - name: botium-box-node-extra-ca-certs
+          secret:
+            secretName: botium-box-secrets
+            items:
+            - key: NODE_EXTRA_CA_CERTS
+              path: certs.pem
 ---
 apiVersion: v1
 kind: Service
@@ -272,6 +283,9 @@ spec:
             name: botium-box-storage
           - mountPath: "/app/server/storage/botiumwork/"
             name: botium-box-storage-botiumwork
+          - mountPath: "/app/node-extra-ca-certs/"
+            name: botium-box-node-extra-ca-certs
+            readOnly: true
           env:
             - name: BOTIUMBOX_AGENT_NAME
               valueFrom:
@@ -301,6 +315,8 @@ spec:
               value: "0"
             - name: BOTIUMBOX_QUEUE_CONCURRENCY_PERFORMANCE
               value: "10"
+            - name: NODE_EXTRA_CA_CERTS
+              value: /app/node-extra-ca-certs/certs.pem
             {{- if .Values.ENABLE_MULTI_TENANCY }}              
             - name: BOTIUMBOX_QUEUE_HEARTBEAT
               value: "0"
@@ -342,6 +358,12 @@ spec:
             claimName: botium-box-storage
         - name: botium-box-storage-botiumwork
           emptyDir: { }
+        - name: botium-box-node-extra-ca-certs
+          secret:
+            secretName: botium-box-secrets
+            items:
+            - key: NODE_EXTRA_CA_CERTS
+              path: certs.pem
 ---
 apiVersion: v1
 kind: Service

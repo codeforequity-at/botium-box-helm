@@ -133,6 +133,9 @@ spec:
             name: botium-box-prisma-cert-storage
             readOnly: true
           {{- end }}
+          - mountPath: "/app/node-extra-ca-certs/"
+            name: botium-box-node-extra-ca-certs
+            readOnly: true
           env:
             - name: DEBUG
               value: botium*
@@ -175,6 +178,8 @@ spec:
               value: "1"
             - name: BOTIUMBOX_MAX_EXECUTION_INTERVAL_MINUTES
               value: "10"
+            - name: NODE_EXTRA_CA_CERTS
+              value: /app/node-extra-ca-certs/certs.pem
             - name: JWT_EXPIRY_MINUTES
               valueFrom:
                 configMapKeyRef:
@@ -413,6 +418,12 @@ spec:
             - key: DATABASE_CERT
               path: sslcert.pem
         {{- end }}
+        - name: botium-box-node-extra-ca-certs
+          secret:
+            secretName: botium-box-secrets
+            items:
+            - key: NODE_EXTRA_CA_CERTS
+              path: certs.pem
 {{- if .Values.ENABLE_BACKEND_PROCESSING }}
 ---
 apiVersion: apps/v1
