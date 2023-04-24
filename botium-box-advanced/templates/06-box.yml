@@ -395,7 +395,12 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: botium-box-configmap
-                  key: JOBDATA_MIN_SIZE_FOR_FILE            
+                  key: JOBDATA_MIN_SIZE_FOR_FILE
+            - name: JOBDATA_FILE_EXISTS_ATTEMPTS
+              valueFrom:
+                configMapReyRef:
+                  name: botium-box-configmap
+                  key: JOBDATA_FILE_EXISTS_ATTEMPTS
       {{- if .Values.BOTIUMBOX_TERMINATION_GRACE_PERIOD }}
       terminationGracePeriodSeconds: {{ div .Values.BOTIUMBOX_TERMINATION_GRACE_PERIOD 1000 }}
       {{- end }}
