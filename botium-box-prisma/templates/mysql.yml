@@ -13,7 +13,7 @@ spec:
   storageClassName: {{ .Values.STORAGE_CLASS_BOX }}
   resources:
     requests:
-      storage: 20Gi
+      storage: 200Gi
 ---
 apiVersion: apps/v1
 kind: Deployment
