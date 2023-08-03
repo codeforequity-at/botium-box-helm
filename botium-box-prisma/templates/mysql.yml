@@ -36,6 +36,7 @@ spec:
       containers:
         - name: mysql
           image: mysql:5.7
+          args: ["--max_allowed_packet=32505856"]
           ports:
             - name: mysql-3306
               containerPort: 3306
