@@ -40,6 +40,26 @@ spec:
                 secretKeyRef:
                   name: botium-coach-worker-secrets
                   key: AUTH_APIKEYS
+            - name: PINECONE_API
+              valueFrom:
+                secretKeyRef:
+                  name: botium-coach-worker-secrets
+                  key: PINECONE_API
+            - name: PINECONE_ENVIRONMENT
+              valueFrom:
+                secretKeyRef:
+                  name: botium-coach-worker-secrets
+                  key: PINECONE_ENVIRONMENT
+            - name: PINECONE_INDEX
+              valueFrom:
+                secretKeyRef:
+                  name: botium-coach-worker-secrets
+                  key: PINECONE_INDEX
+            - name: OPEN_API
+              valueFrom:
+                secretKeyRef:
+                  name: botium-coach-worker-secrets
+                  key: OPEN_API
             - name: WEB_CONCURRENCY
               valueFrom:
                 configMapKeyRef:

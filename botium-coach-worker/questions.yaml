@@ -19,17 +19,47 @@ questions:
   description: "Valid API Keys (comma separated)"
   type: string
 - variable: COACH_PARALLEL_WORKERS
-  default: 1
+  default: 10
   description: "Number of Parallel Worker Threads"
   type: int
   required: true
+  group: Coach Workers
 - variable: COACH_MAX_CALCULATIONS_PER_WORKER
-  default: 3
+  default: 100
   description: "Max Number of Calculations per Worker Thread"
   type: int
   required: true
+  group: Coach Workers
 - variable: COACH_MAX_UTTERANCES_FOR_EMBEDDINGS
   default: 500
   description: "Max Utterance Count per Call"
   type: int
   required: true
+  group: Coach Workers
+- variable: PINECONE_API
+  default: 500
+  description: "Pinecone API Key"
+  type: int
+  required: true
+  group: LLM Fact Checker
+- variable: PINECONE_ENVIRONMENT
+  default: 500
+  description: "Pinecone Environment Name"
+  type: int
+  required: true
+  group: LLM Fact Checker
+- variable: PINECONE_INDEX
+  default: 500
+  description: "Pinecone Index Name"
+  type: int
+  required: true
+  group: LLM Fact Checker
+- variable: OPEN_API
+  default: 500
+  description: "OpenAI API Key"
+  type: int
+  required: true
+  group: LLM Fact Checker
+
+
+
