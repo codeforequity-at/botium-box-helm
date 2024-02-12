@@ -37,25 +37,21 @@ questions:
   required: true
   group: Coach Workers
 - variable: PINECONE_API
-  default: 500
   description: "Pinecone API Key"
   type: int
   required: true
   group: LLM Fact Checker
 - variable: PINECONE_ENVIRONMENT
-  default: 500
   description: "Pinecone Environment Name"
   type: int
   required: true
   group: LLM Fact Checker
 - variable: PINECONE_INDEX
-  default: 500
   description: "Pinecone Index Name"
   type: int
   required: true
   group: LLM Fact Checker
 - variable: OPEN_API
-  default: 500
   description: "OpenAI API Key"
   type: int
   required: true
