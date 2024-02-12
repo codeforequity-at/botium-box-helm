@@ -109,6 +109,8 @@ spec:
               value: botium*
             - name: RESOURCESDIR
               value: /app/server/storage/resources
+            - name: TESTSETDIR
+              value: /app/server/storage/testsets              
             - name: BOTIUM_TEMPDIR
               value: /app/server/storage/botiumwork
             {{- if .Values.BOTIUMBOX_TERMINATION_GRACE_PERIOD }}
