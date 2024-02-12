@@ -38,22 +38,22 @@ questions:
   group: Coach Workers
 - variable: PINECONE_API
   description: "Pinecone API Key"
-  type: int
+  type: string
   required: true
   group: LLM Fact Checker
 - variable: PINECONE_ENVIRONMENT
   description: "Pinecone Environment Name"
-  type: int
+  type: string
   required: true
   group: LLM Fact Checker
 - variable: PINECONE_INDEX
   description: "Pinecone Index Name"
-  type: int
+  type: string
   required: true
   group: LLM Fact Checker
 - variable: OPEN_API
   description: "OpenAI API Key"
-  type: int
+  type: string
   required: true
   group: LLM Fact Checker
 
