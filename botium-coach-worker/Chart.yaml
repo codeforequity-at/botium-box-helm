@@ -3,5 +3,5 @@ name: botium-coach-worker
 description: Botium Coach Worker
 
 type: application
-version: 0.2.0-v2
+version: 0.2.0-v3
 appVersion: 0.2.0

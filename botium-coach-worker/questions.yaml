@@ -18,6 +18,12 @@ questions:
 - variable: AUTH_APIKEYS
   description: "Valid API Keys (comma separated)"
   type: string
+- variable: WEB_CONCURRENCY
+  default: 1
+  description: "Number of Parallel Web Threads"
+  type: int
+  required: true
+  group: Coach Workers
 - variable: COACH_PARALLEL_WORKERS
   default: 10
   description: "Number of Parallel Worker Threads"
